@@ -23,7 +23,3 @@ coverage
 # Compiled Dirs (http://nodejs.org/api/addons.html)
 build/
 dist/
-
-# Sample image data; only for database seeding
-data/sample_images/
-
