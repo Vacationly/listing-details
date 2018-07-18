@@ -2,7 +2,7 @@ const faker = require('faker');
 
 const imageUrl = 'https://s3.amazonaws.com/fec-overview-service-images/';
 
-const listingCount = 100;
+const listingCount = 101;
 const listingTypeCount = 3;
 const hostCount = 10;
 const amenityCount = 20;
