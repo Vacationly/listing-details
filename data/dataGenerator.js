@@ -1,11 +1,26 @@
+const fs = require("fs");
+const path = require("path");
 const faker = require("faker");
 const db = require("./index.js");
+
+const baseURL = "https://s3.amazonaws.com/fec-overview-service-images/";
 
 const listingCount = 100;
 const listingTypeCount = 3;
 const hostCount = 10;
 const amenityCount = 20;
 const cancellationTypeCount = 4;
+
+const saveAvatars = function() {
+  for (let i = 0; i < hostCount; i++) {
+    faker.image.avatar();
+    fs.writeFile(
+      path.join(__dirname, `/sample_images/host/host${i}_image.jpg`),
+      avatar,
+      (err, result) => {}
+    );
+  }
+};
 
 const getFakeListing = function(id) {
   let numAmenities = Math.random() * 10;
@@ -18,7 +33,6 @@ const getFakeListing = function(id) {
   for (let i = 0; i < numRules; i++) {
     rules.push(faker.random.words());
   }
-
   return {
     listing_id: id,
     type_id: Math.floor(Math.random() * listingTypeCount),
@@ -78,11 +92,11 @@ const getFakeListingType = function(id) {
 };
 
 const getFakeHost = function(id) {
-  return { id, name: faker.name.findName(), photo: faker.image.imageUrl() };
+  return { id, name: faker.name.findName(), avatar: `baseUrl/host${id}_image` };
 };
 
 const getFakeAmenity = function(id) {
-  return { id, value: faker.random.words(), icon: faker.image.imageUrl() };
+  return { id, value: faker.random.words() };
 };
 
 const getFakeCancellationType = function(id) {
@@ -114,11 +128,17 @@ const seedDatabase = function() {
   for (let i = 0; i < cancellationTypeCount; i++) {
     cancellationTypes.push(getFakeCancellationType(i));
   }
-  db.Listing.insertMany(listings)
+  db.Listing.remove({})
+    .then(db.ListingType.remove({}))
+    .then(db.Host.remove({}))
+    .then(db.Amenity.remove({}))
+    .then(db.CancellationType.remove({}))
+    .then(db.Listing.insertMany(listings))
     .then(db.ListingType.insertMany(listingTypes))
     .then(db.Host.insertMany(hosts))
     .then(db.Amenity.insertMany(amenities))
     .then(db.CancellationType.insertMany(cancellationTypes));
 };
 
+generateAvatars();
 seedDatabase();

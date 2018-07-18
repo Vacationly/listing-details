@@ -1,6 +1,5 @@
 const mongoose = require("mongoose");
 const schemas = require("./schemas.js");
-const dataGenerator = require("./dataGenerator.js");
 
 mongoose.connect("mongodb://localhost/airbnb");
 
