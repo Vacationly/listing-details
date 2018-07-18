@@ -33,13 +33,12 @@ const listingType = {
 const host = {
   id: Number,
   name: String,
-  photo: { data: Buffer, contentType: String }
+  avatar: String
 };
 
 const amenity = {
   id: Number,
-  value: String,
-  icon: String
+  value: String
 };
 
 const cancellationType = {

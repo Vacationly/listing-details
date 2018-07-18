@@ -1,26 +1,13 @@
-const fs = require("fs");
-const path = require("path");
-const faker = require("faker");
-const db = require("./index.js");
+const faker = require('faker');
+const db = require('../index.js');
 
-const baseURL = "https://s3.amazonaws.com/fec-overview-service-images/";
+const baseURL = 'https://s3.amazonaws.com/fec-overview-service-images/';
 
 const listingCount = 100;
 const listingTypeCount = 3;
 const hostCount = 10;
 const amenityCount = 20;
 const cancellationTypeCount = 4;
-
-const saveAvatars = function() {
-  for (let i = 0; i < hostCount; i++) {
-    faker.image.avatar();
-    fs.writeFile(
-      path.join(__dirname, `/sample_images/host/host${i}_image.jpg`),
-      avatar,
-      (err, result) => {}
-    );
-  }
-};
 
 const getFakeListing = function(id) {
   let numAmenities = Math.random() * 10;
@@ -92,7 +79,11 @@ const getFakeListingType = function(id) {
 };
 
 const getFakeHost = function(id) {
-  return { id, name: faker.name.findName(), avatar: `baseUrl/host${id}_image` };
+  return {
+    id,
+    name: faker.name.findName(),
+    avatar: faker.internet.avatar()
+  };
 };
 
 const getFakeAmenity = function(id) {
@@ -107,7 +98,7 @@ const getFakeCancellationType = function(id) {
   };
 };
 
-const seedDatabase = function() {
+const getFakeData = function() {
   let listings = [];
   let listingTypes = [];
   let hosts = [];
@@ -128,17 +119,19 @@ const seedDatabase = function() {
   for (let i = 0; i < cancellationTypeCount; i++) {
     cancellationTypes.push(getFakeCancellationType(i));
   }
-  db.Listing.remove({})
-    .then(db.ListingType.remove({}))
-    .then(db.Host.remove({}))
-    .then(db.Amenity.remove({}))
-    .then(db.CancellationType.remove({}))
-    .then(db.Listing.insertMany(listings))
-    .then(db.ListingType.insertMany(listingTypes))
-    .then(db.Host.insertMany(hosts))
-    .then(db.Amenity.insertMany(amenities))
-    .then(db.CancellationType.insertMany(cancellationTypes));
+  return [listings, listingTypes, hosts, amenities, cancellationTypes];
 };
 
-generateAvatars();
+const seedDatabase = function() {
+  let data = getFakeData();
+  Object.values(db).forEach((schema, index) => {
+    schema
+      .find({})
+      .remove()
+      .exec()
+      .then(schema.insertMany(data[index]));
+  });
+};
+
+// generateAvatars();
 seedDatabase();
