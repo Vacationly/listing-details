@@ -20,9 +20,9 @@ const getFakeListing = function(id) {
     rules.push(faker.random.words());
   }
   return {
-    listing_id: id,
-    type_id: Math.floor(Math.random() * listingTypeCount),
-    host_id: Math.floor(Math.random() * hostCount),
+    listingId: id,
+    typeId: Math.floor(Math.random() * listingTypeCount),
+    hostId: Math.floor(Math.random() * hostCount),
     title: faker.random.words(),
     city: faker.address.city(),
     state: faker.address.state(),
@@ -51,25 +51,25 @@ const getFakeListing = function(id) {
         downvotes: 0
       }
     ],
-    description_summary: faker.lorem.paragraphs(),
-    description_space: faker.lorem.paragraphs(),
-    description_interaction: faker.lorem.paragraphs(),
-    description_other: faker.lorem.paragraph(),
-    amenity_ids: amenities,
-    sleeping_arrangements: [
+    descriptionSummary: faker.lorem.paragraphs(),
+    descriptionSpace: faker.lorem.paragraphs(),
+    descriptionInteraction: faker.lorem.paragraphs(),
+    descriptionOther: faker.lorem.paragraph(),
+    amenityIds: amenities,
+    sleepingArrangements: [
       {
-        space_name: faker.random.words(),
+        spaceName: faker.random.words(),
         mattressType: faker.random.word(),
         number: Math.floor(Math.random() * 2)
       },
       {
-        space_name: faker.random.words(),
+        spaceName: faker.random.words(),
         mattressType: faker.random.word(),
         number: Math.floor(Math.random() * 2)
       }
     ],
     rules: rules,
-    cancellation_type_id: Math.floor(Math.random() * cancellationTypeCount)
+    cancellationTypeId: Math.floor(Math.random() * cancellationTypeCount)
   };
 };
 

@@ -1,7 +1,7 @@
 const listing = {
-  listing_id: { type: Number, unique: true },
-  type_id: Number,
-  host_id: Number,
+  listingId: { type: Number, unique: true },
+  typeId: Number,
+  hostId: Number,
   title: String,
   city: String,
   state: String,
@@ -13,16 +13,16 @@ const listing = {
   highlights: [
     { tagline: String, description: String, upvotes: Number, downvotes: Number }
   ],
-  description_summary: String,
-  description_space: String,
-  description_interaction: String,
-  description_other: String,
-  amenity_ids: [Number],
-  sleeping_arrangements: [
-    { space_name: String, mattressType: String, number: Number }
+  descriptionSummary: String,
+  descriptionSpace: String,
+  descriptionInteraction: String,
+  descriptionOther: String,
+  amenityIds: [Number],
+  sleepingArrangements: [
+    { spaceName: String, mattressType: String, number: Number }
   ],
   rules: [String],
-  cancellation_type_id: Number
+  cancellationTypeId: Number
 };
 
 const listingType = {

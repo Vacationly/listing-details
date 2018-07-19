@@ -19,9 +19,11 @@ const CancellationType = mongoose.model(
 );
 
 module.exports = {
-  Listing,
-  ListingType,
-  Host,
-  Amenity,
-  CancellationType
+  models: {
+    Listing,
+    ListingType,
+    Host,
+    Amenity,
+    CancellationType
+  }
 };
