@@ -1,9 +1,28 @@
 version: 2
 jobs:
-  build:
+  test:
     docker: # See https://docs.docker.com/get-started/#docker-concepts if you are new to Docker.
       - image: circleci/ruby:2.4.1-jessie
     steps:
       - checkout
-      - run: echo "A first hello"
-      
+      - run: npm test
+
+#       jobs:
+#   build:
+#     docker:
+#       - image: circleci/<language>:<version TAG>
+#     steps:
+#       - checkout
+#       - run: <command>
+#   test:
+#     docker:
+#       - image: circleci/<language>:<version TAG>
+#     steps:
+#       - checkout
+#       - run: <command>
+# workflows:
+#   version: 2
+#   build_and_test:
+#     jobs:
+#       - build
+#       - test
