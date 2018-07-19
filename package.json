@@ -11,6 +11,8 @@
     "postinstall": "curl -s https://raw.githubusercontent.com/reactorcore/pomander/master/bin/install | bash",
     "seed": "node ./data/sampleData/dataInitializer.js",
     "lint": "eslint ./",
+    "build-dev": "webpack --mode dev",
+    "start-dev": "nodemon server/main.js",
     "build": "webpack --mode production"
   },
   "dependencies": {
