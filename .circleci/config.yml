@@ -1,19 +1,19 @@
 version: 2
 jobs:
-  build:
-    # The primary container is an instance of the first image listed. The job's commands run in this container.
-    docker:
-      - image: circleci/node:10-browsers
-    steps:
-      - checkout
-      - run:
-          name: Update npm
-          command: 'sudo npm install -g npm@latest'
-      - restore_cache:
-          key: dependency-cache-{{ checksum "package.json" }}
-      - run:
-          name: Install npm
-          command: npm install
+  # build:
+  #   # The primary container is an instance of the first image listed. The job's commands run in this container.
+  #   docker:
+  #     - image: circleci/node:10-browsers
+  #   steps:
+  #     - checkout
+  #     - run:
+  #         name: Update npm
+  #         command: 'sudo npm install -g npm@latest'
+  #     - restore_cache:
+  #         key: dependency-cache-{{ checksum "package.json" }}
+  #     - run:
+  #         name: Install npm
+  #         command: npm install
   test:
     docker:
       - image: circleci/node:10-browsers
@@ -23,14 +23,14 @@ jobs:
           name: Test
           command: npm test
 
-workflows:
-  version: 2
-  commit:
-    jobs:
-      - build
-      - test:
-          requires:
-            - build
-          filters:
-            branches:
-              only: master
+# workflows:
+#   version: 2
+#   commit:
+#     jobs:
+#       - build
+#       - test:
+#           requires:
+#             - build
+#           filters:
+#             branches:
+#               only: master
