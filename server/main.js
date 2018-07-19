@@ -1,7 +1,4 @@
 const webpack = require('webpack');
-const middleware = require('webpack-dev-middleware');
-
-const compiler = webpack({ publicPath: `${__dirname}/../public/dist` });
 const express = require('express');
 
 const port = process.env.PORT || 3000;
