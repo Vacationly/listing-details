@@ -8,22 +8,17 @@
     "node": ">=6.13.0"
   },
   "scripts": {
-<<<<<<< HEAD
-    "build": "webpack --mode production"
+    "build": "webpack --mode production",
+    "seed": "node ./data/sampleData/dataInitializer.js"
   },
   "dependencies": {
     "body-parser": "^1.18.3",
     "express": "^4.16.3",
     "react": "^16.4.1",
-    "react-dom": "^16.4.1"
-=======
-    "seed": "node ./data/sampleData/dataInitializer.js"
-  },
-  "dependencies": {
+    "react-dom": "^16.4.1",
     "faker": "^4.1.0",
     "mongodb": "^3.1.1",
     "mongoose": "^5.2.4"
->>>>>>> fd329b545fcc246802608e8af5d0bd0a7658cbe9
   },
   "devDependencies": {
     "babel": "^6.23.0",
