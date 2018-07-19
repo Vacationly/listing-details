@@ -8,11 +8,11 @@ const hostCount = 10;
 const amenityCount = 20;
 const cancellationTypeCount = 4;
 
-const getFakeListing = function(id) {
-  let numAmenities = Math.random() * 10;
-  let numRules = Math.random() * 10;
-  let amenities = [];
-  let rules = [];
+const getFakeListing = function (id) {
+  const numAmenities = Math.random() * 10;
+  const numRules = Math.random() * 10;
+  const amenities = [];
+  const rules = [];
   for (let i = 0; i < numAmenities; i++) {
     amenities.push(Math.floor(Math.random() * amenityCount));
   }
@@ -36,20 +36,20 @@ const getFakeListing = function(id) {
         tagline: faker.random.words(),
         description: faker.lorem.paragraph(),
         upvotes: 0,
-        downvotes: 0
+        downvotes: 0,
       },
       {
         tagline: faker.random.words(),
         description: faker.lorem.paragraph(),
         upvotes: 0,
-        downvotes: 0
+        downvotes: 0,
       },
       {
         tagline: faker.random.words(),
         description: faker.lorem.paragraph(),
         upvotes: 0,
-        downvotes: 0
-      }
+        downvotes: 0,
+      },
     ],
     descriptionSummary: faker.lorem.paragraphs(),
     descriptionSpace: faker.lorem.paragraphs(),
@@ -60,49 +60,49 @@ const getFakeListing = function(id) {
       {
         spaceName: faker.random.words(),
         mattressType: faker.random.word(),
-        number: Math.floor(Math.random() * 2)
+        number: Math.floor(Math.random() * 2),
       },
       {
         spaceName: faker.random.words(),
         mattressType: faker.random.word(),
-        number: Math.floor(Math.random() * 2)
-      }
+        number: Math.floor(Math.random() * 2),
+      },
     ],
-    rules: rules,
-    cancellationTypeId: Math.floor(Math.random() * cancellationTypeCount)
+    rules,
+    cancellationTypeId: Math.floor(Math.random() * cancellationTypeCount),
   };
 };
 
-const getFakeListingType = function(id) {
+const getFakeListingType = function (id) {
   return { id, value: faker.random.words() };
 };
 
-const getFakeHost = function(id) {
+const getFakeHost = function (id) {
   return {
     id,
     name: faker.name.findName(),
-    avatar: `${imageUrl}/host_${id}.jpg`
+    avatar: `${imageUrl}/host_${id}.jpg`,
   };
 };
 
-const getFakeAmenity = function(id) {
+const getFakeAmenity = function (id) {
   return { id, value: faker.random.words() };
 };
 
-const getFakeCancellationType = function(id) {
+const getFakeCancellationType = function (id) {
   return {
     id,
     title: faker.random.words(),
-    description: faker.lorem.sentence()
+    description: faker.lorem.sentence(),
   };
 };
 
-const generateData = function() {
-  let listings = [];
-  let listingTypes = [];
-  let hosts = [];
-  let amenities = [];
-  let cancellationTypes = [];
+const generateData = function () {
+  const listings = [];
+  const listingTypes = [];
+  const hosts = [];
+  const amenities = [];
+  const cancellationTypes = [];
   for (let i = 0; i < listingCount; i++) {
     listings.push(getFakeListing(i));
   }
@@ -123,7 +123,7 @@ const generateData = function() {
     ListingType: listingTypes,
     Host: hosts,
     Amenity: amenities,
-    CancellationType: cancellationTypes
+    CancellationType: cancellationTypes,
   };
 };
 

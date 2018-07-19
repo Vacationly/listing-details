@@ -14,8 +14,45 @@ const ListingType = mongoose.model('ListingType', listingTypeSchema);
 const Host = mongoose.model('Host', hostSchema);
 const Amenity = mongoose.model('Amenity', amenitySchema);
 const CancellationType = mongoose.model('CancellationType', cancellationTypeSchema);
+<<<<<<< HEAD
+=======
+
+const getListingDetails = function (id, callback) {
+  let listing = {};
+  Listing.findOne({ listingId: id })
+    .then((result) => {
+      listing = { ...result._doc };
+    })
+    .then(() => ListingType.findOne({ id: listing.typeId }))
+    .then((result) => {
+      listing.listingType = result;
+      delete listing.listingTypeId;
+    })
+    .then(() => Host.findOne({ id: listing.hostId }))
+    .then((result) => {
+      listing.host = result;
+      delete listing.hostId;
+    })
+    .then(() => CancellationType.findOne({ id: listing.cancellationTypeId }))
+    .then((result) => {
+      listing.cancealltionType = result;
+      delete listing.cancellationTypeId;
+    })
+    .then(() => Amenity.find({ id: { $in: listing.amenityIds } }))
+    .then((results) => {
+      listing.amenities = results;
+      delete listing.amenityIds;
+    })
+    .then(() => callback(null, listing))
+    .catch((err) => {
+      console.log(`Error fetching record for ${id}`, err);
+      callback(err);
+    });
+};
+>>>>>>> Return database document in response to GET request
 
 module.exports = {
+  getListingDetails,
   models: {
     Listing,
     ListingType,
