@@ -6,11 +6,12 @@
  */
 
 module.exports = {
-  extends: 'airbnb',
+  extends: "airbnb",
   env: {
-    jest: true,
+    jest: true
   },
   rules: {
-    'no-underscore-dangle': 'off',
-  },
+    "no-underscore-dangle": "off",
+    "react/destructuring-assignment": "never"
+  }
 };
