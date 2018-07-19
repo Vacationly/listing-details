@@ -1,6 +1,6 @@
 const faker = require('faker');
 
-const imageUrl = 'https://s3.amazonaws.com/fec-overview-service-images/';
+const imageUrl = 'https://s3.amazonaws.com/fec-overview-service-images';
 
 const listingCount = 101;
 const listingTypeCount = 3;
@@ -24,13 +24,17 @@ const getFakeListing = function (id) {
     typeId: Math.floor(Math.random() * listingTypeCount),
     hostId: Math.floor(Math.random() * hostCount),
     title: faker.random.words(),
-    city: faker.address.city(),
-    state: faker.address.state(),
-    country: faker.address.country(),
-    guests: Math.ceil(Math.random() * 5),
-    bedrooms: Math.ceil(Math.random() * 3),
-    beds: Math.ceil(Math.random() * 5),
-    baths: Math.ceil(Math.random() * 5),
+    location: {
+      city: faker.address.city(),
+      state: faker.address.state(),
+      country: faker.address.country(),
+    },
+    capacity: [
+      { name: 'Guests', value: Math.ceil(Math.random() * 5) },
+      { name: 'Bedrooms', value: Math.ceil(Math.random() * 3) },
+      { name: 'Beds', value: Math.ceil(Math.random() * 5) },
+      { name: 'Baths', value: Math.ceil(Math.random() * 5) },
+    ],
     highlights: [
       {
         tagline: faker.random.words(),
@@ -51,10 +55,12 @@ const getFakeListing = function (id) {
         downvotes: 0,
       },
     ],
-    descriptionSummary: faker.lorem.paragraphs(),
-    descriptionSpace: faker.lorem.paragraphs(),
-    descriptionInteraction: faker.lorem.paragraphs(),
-    descriptionOther: faker.lorem.paragraph(),
+    descriptions: [
+      { name: 'Summary', value: faker.lorem.paragraphs() },
+      { name: 'Space', value: faker.lorem.paragraphs() },
+      { name: 'Host Interaction', value: faker.lorem.paragraphs() },
+      { name: 'Other', value: faker.lorem.paragraphs() },
+    ],
     amenityIds: amenities,
     sleepingArrangements: [
       {

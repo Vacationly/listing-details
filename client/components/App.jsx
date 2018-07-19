@@ -1,6 +1,11 @@
 import React from 'react';
 import axios from 'axios';
 
+<<<<<<< HEAD
+=======
+import ListingSummary from './ListingSummary.jsx';
+
+>>>>>>> Render summary data into ListingSummary component
 const apiBaseUrl = '/api/listings';
 
 export default class extends React.Component {
@@ -21,14 +26,29 @@ export default class extends React.Component {
     });
   }
 
-  // PLACEHOLDER RENDER FUNCTION
   render() {
-    const { title, host } = this.state.listingData;
+    const {
+      title,
+      listingType,
+      host,
+      location,
+      capacity,
+      highlights,
+      descriptions,
+      amenities,
+      sleepingArrangements,
+      rules,
+      cancellationType,
+    } = this.state.listingData;
     if (title) {
       return (
-        <div>
-          {host.name}
-        </div>
+        <ListingSummary
+          title={title}
+          listingType={listingType}
+          location={location}
+          capacity={capacity}
+          host={host}
+        />
       );
     }
     return (
