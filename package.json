@@ -8,8 +8,12 @@
     "node": ">=6.13.0"
   },
   "scripts": {
+    "seed": "node ./data/sampleData/dataInitializer.js"
   },
   "dependencies": {
+    "faker": "^4.1.0",
+    "mongodb": "^3.1.1",
+    "mongoose": "^5.2.4"
   },
   "devDependencies": {
     "eslint-config-hackreactor": "git://github.com/reactorcore/eslint-config-hackreactor"
