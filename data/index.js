@@ -24,7 +24,7 @@ const getListingDetails = function (id, callback) {
     .then(() => ListingType.findOne({ id: listing.typeId }))
     .then((result) => {
       listing.listingType = result;
-      delete listing.listingTypeId;
+      delete listing.typeId;
     })
     .then(() => Host.findOne({ id: listing.hostId }))
     .then((result) => {
@@ -43,7 +43,6 @@ const getListingDetails = function (id, callback) {
     })
     .then(() => callback(null, listing))
     .catch((err) => {
-      console.log(`Error fetching record for ${id}`, err);
       callback(err);
     });
 };
