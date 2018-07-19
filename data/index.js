@@ -13,10 +13,7 @@ const Listing = mongoose.model('Listing', listingSchema);
 const ListingType = mongoose.model('ListingType', listingTypeSchema);
 const Host = mongoose.model('Host', hostSchema);
 const Amenity = mongoose.model('Amenity', amenitySchema);
-const CancellationType = mongoose.model(
-  'CancellationType',
-  cancellationTypeSchema
-);
+const CancellationType = mongoose.model('CancellationType', cancellationTypeSchema);
 
 module.exports = {
   models: {
@@ -24,6 +21,6 @@ module.exports = {
     ListingType,
     Host,
     Amenity,
-    CancellationType
-  }
+    CancellationType,
+  },
 };

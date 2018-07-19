@@ -10,41 +10,39 @@ const listing = {
   bedrooms: Number,
   beds: Number,
   baths: Number,
-  highlights: [
-    { tagline: String, description: String, upvotes: Number, downvotes: Number }
-  ],
+  highlights: [{
+    tagline: String, description: String, upvotes: Number, downvotes: Number,
+  }],
   descriptionSummary: String,
   descriptionSpace: String,
   descriptionInteraction: String,
   descriptionOther: String,
   amenityIds: [Number],
-  sleepingArrangements: [
-    { spaceName: String, mattressType: String, number: Number }
-  ],
+  sleepingArrangements: [{ spaceName: String, mattressType: String, number: Number }],
   rules: [String],
-  cancellationTypeId: Number
+  cancellationTypeId: Number,
 };
 
 const listingType = {
   id: Number,
-  value: String
+  value: String,
 };
 
 const host = {
   id: Number,
   name: String,
-  avatar: String
+  avatar: String,
 };
 
 const amenity = {
   id: Number,
-  value: String
+  value: String,
 };
 
 const cancellationType = {
   id: Number,
   title: String,
-  description: String
+  description: String,
 };
 
 module.exports = {
@@ -52,5 +50,5 @@ module.exports = {
   host,
   listingType,
   amenity,
-  cancellationType
+  cancellationType,
 };
