@@ -4,6 +4,7 @@ jobs:
     # The primary container is an instance of the first image listed. The job's commands run in this container.
     docker:
       - image: circleci/node:10-browsers
+      - image: circleci/mongo:4
     steps:
       - checkout
       - run:
