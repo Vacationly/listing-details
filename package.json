@@ -1,5 +1,11 @@
 {
   "name": "",
+  "jest": {
+    "verbose": true,
+    "testMatch": [
+      "**/__test__/*.js"
+    ]
+  },
   "version": "",
   "description": "",
   "author": "",
@@ -13,7 +19,7 @@
     "seed": "node ./data/sampleData/dataInitializer.js",
     "lint": "eslint ./",
     "build-dev": "webpack --watch --mode development",
-    "start-dev": "nodemon server/main.js",
+    "start-dev": "nodemon server/index.js",
     "build": "webpack --mode production"
   },
   "dependencies": {
@@ -23,7 +29,8 @@
     "mongodb": "^3.1.1",
     "mongoose": "^5.2.4",
     "react": "^16.4.1",
-    "react-dom": "^16.4.1"
+    "react-dom": "^16.4.1",
+    "supertest": "^3.1.0"
   },
   "devDependencies": {
     "babel": "^6.23.0",
@@ -41,10 +48,12 @@
     "eslint-plugin-import": "^2.13.0",
     "eslint-plugin-jsx-a11y": "^6.1.1",
     "eslint-plugin-react": "^7.10.0",
+    "fs": "0.0.1-security",
     "jest": "^23.4.1",
     "node-sass": "^4.9.2",
     "nodemon": "^1.18.3",
     "path": "^0.12.7",
+    "request": "^2.87.0",
     "sass-loader": "^7.0.3",
     "style-loader": "^0.21.0",
     "webpack-cli": "^3.1.0"

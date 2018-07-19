@@ -1,0 +1,6 @@
+{
+  "listingId": 1,
+  "listingType": { "id": 2, "value": "string" },
+  "host": { "id": 3, "name": "string" },
+  "city": "Boston"
+}
