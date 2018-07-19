@@ -118,7 +118,13 @@ const generateData = function() {
   for (let i = 0; i < cancellationTypeCount; i++) {
     cancellationTypes.push(getFakeCancellationType(i));
   }
-  return [listings, listingTypes, hosts, amenities, cancellationTypes];
+  return {
+    Listing: listings,
+    ListingType: listingTypes,
+    Host: hosts,
+    Amenity: amenities,
+    CancellationType: cancellationTypes
+  };
 };
 
 module.exports = { generateData };
