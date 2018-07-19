@@ -4,20 +4,20 @@ const dataGenerator = require('./dataGenerator.js');
 const initializeData = function() {
   let data = dataGenerator.generateData();
   let processes = [];
-  Object.keys(db).forEach(schema => {
+  Object.keys(db.models).forEach(model => {
     processes.push(
-      db[schema]
+      db.models[model]
         .find({})
         .remove()
         .exec()
-        .then(() => db[schema].insertMany(data[schema]))
-        .catch(() => {
-          console.log(`Error initializing data for ${schema}`);
+        .then(() => db.models[model].insertMany(data[model]))
+        .catch(err => {
+          console.log(`Error initializing data for ${model}, ${err}`);
           process.exit(-1);
         })
     );
   });
-  Promise.all(processes).then(results => process.exit(0));
+  Promise.all(processes).then(() => process.exit(0));
 };
 
 initializeData();
