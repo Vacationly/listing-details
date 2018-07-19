@@ -12,5 +12,6 @@ module.exports = {
   },
   rules: {
     'no-underscore-dangle': 'off',
+    'react/destructuring-assignment': 'never',
   },
 };

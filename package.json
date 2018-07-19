@@ -3,7 +3,8 @@
   "jest": {
     "verbose": true,
     "testMatch": [
-      "**/__test__/*.js"
+      "**/__test__/*.js",
+      "**/client/components/**/*.test.js"
     ]
   },
   "version": "",
@@ -23,6 +24,7 @@
     "build": "webpack --mode production"
   },
   "dependencies": {
+    "axios": "^0.18.0",
     "body-parser": "^1.18.3",
     "express": "^4.16.3",
     "faker": "^4.1.0",

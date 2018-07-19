@@ -4,6 +4,7 @@ jobs:
     # The primary container is an instance of the first image listed. The job's commands run in this container.
     docker:
       - image: circleci/node:10-browsers
+      - image: circleci/mongo:4
     steps:
       - checkout
       - run:
@@ -15,11 +16,17 @@ jobs:
           name: Install npm
           command: npm install
       - run:
+          name: Seed database
+          command: npm run seed
+      - run:
           name: Test
           command: npm test
-
-workflows:
-  version: 2
-  build_and_test:
-    jobs:
-      - build
+      # - run:
+      #     name: Generate code coverage
+      #     command: './node_modules/.bin/nyc report --reporter=text-lcov'
+      # - store_artifacts:
+      #     path: test-results.xml
+      #     prefix: tests
+      # - store_artifacts:
+      #     path: coverage
+      #     prefix: coverage
