@@ -23,14 +23,14 @@ jobs:
           name: Test
           command: npm test
 
-# workflows:
-#   version: 2
-#   commit:
-#     jobs:
-#       - build
-#       - test:
-#           requires:
-#             - build
-#           filters:
-#             branches:
-#               only: master
+workflows:
+  version: 2
+  commit:
+    jobs:
+      # - build
+      - test:
+          # requires:
+          #   - build
+          filters:
+            branches:
+              only: master
