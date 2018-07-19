@@ -8,6 +8,7 @@
     "node": ">=6.13.0"
   },
   "scripts": {
+<<<<<<< HEAD
     "build": "webpack --mode production"
   },
   "dependencies": {
@@ -15,6 +16,14 @@
     "express": "^4.16.3",
     "react": "^16.4.1",
     "react-dom": "^16.4.1"
+=======
+    "seed": "node ./data/sampleData/dataInitializer.js"
+  },
+  "dependencies": {
+    "faker": "^4.1.0",
+    "mongodb": "^3.1.1",
+    "mongoose": "^5.2.4"
+>>>>>>> fd329b545fcc246802608e8af5d0bd0a7658cbe9
   },
   "devDependencies": {
     "babel": "^6.23.0",
