@@ -1,6 +1,6 @@
 const path = require('path');
 
-const ENTRY_POINT = path.resolve(__dirname, 'client/index.js');
+const ENTRY_POINT = path.resolve(__dirname, 'client/index.jsx');
 
 const OUTPUT_PATH = path.resolve(__dirname, 'public/dist');
 
@@ -10,28 +10,28 @@ const LOADER_OBJECT = [
     exclude: /node_modules/,
     loader: 'babel-loader',
     query: {
-      presets: ['react', 'env']
-    }
+      presets: ['react', 'env'],
+    },
   },
   {
     test: /\.css$/,
     exclude: /node_modules/,
-    loader: 'style-loader!css-loader'
+    loader: 'style-loader!css-loader',
   },
   {
     test: /\.scss$/,
-    loaders: ['style-loader', 'css-loader', 'sass-loader']
-  }
+    loaders: ['style-loader', 'css-loader', 'sass-loader'],
+  },
 ];
 
 module.exports = {
   entry: ENTRY_POINT,
   output: {
     filename: 'bundle.js',
-    path: OUTPUT_PATH
+    path: OUTPUT_PATH,
   },
   devtool: 'source-map',
   module: {
-    rules: LOADER_OBJECT
-  }
+    rules: LOADER_OBJECT,
+  },
 };
