@@ -21,6 +21,7 @@ export default class extends React.Component {
     });
   }
 
+  // PLACEHOLDER RENDER FUNCTION
   render() {
     const { title, host } = this.state.listingData;
     if (title) {

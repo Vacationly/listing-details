@@ -3,7 +3,8 @@
   "jest": {
     "verbose": true,
     "testMatch": [
-      "**/__test__/*.js"
+      "**/__test__/*.js",
+      "**/client/components/**/*.test.js"
     ]
   },
   "version": "",
