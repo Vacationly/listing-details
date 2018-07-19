@@ -14,8 +14,6 @@ const ListingType = mongoose.model('ListingType', listingTypeSchema);
 const Host = mongoose.model('Host', hostSchema);
 const Amenity = mongoose.model('Amenity', amenitySchema);
 const CancellationType = mongoose.model('CancellationType', cancellationTypeSchema);
-<<<<<<< HEAD
-=======
 
 const getListingDetails = function (id, callback) {
   let listing = {};
@@ -49,7 +47,6 @@ const getListingDetails = function (id, callback) {
       callback(err);
     });
 };
->>>>>>> Return database document in response to GET request
 
 module.exports = {
   getListingDetails,
