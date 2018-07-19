@@ -16,6 +16,9 @@ jobs:
           name: Install npm
           command: npm install
       - run:
+          name: Seed database
+          command: npm run seed
+      - run:
           name: Test
           command: npm test
       # - run:
