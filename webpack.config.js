@@ -1,35 +1,41 @@
-var path = require('path');
+const path = require('path');
 
-var ENTRY_POINT = path.resolve(__dirname, 'client/main.js');
+const ENTRY_POINT = path.resolve(__dirname, 'client/index.js');
 
-var OUTPUT_PATH = path.resolve(__dirname, 'client/dist');
+const OUTPUT_PATH = path.resolve(__dirname, 'public/dist');
 
-var LOADER_OBJECT = [
+const DEV_SERVER = { contentBase: 'public/dist' };
+
+const LOADER_OBJECT = [
   {
     test: /\.jsx?$/,
     exclude: /node_modules/,
     loader: 'babel-loader',
     query: {
-      presets: ['react', 'env']
-    }
+      presets: ['react', 'env'],
+    },
   },
   {
     test: /\.css$/,
     exclude: /node_modules/,
-    loader: 'style-loader!css-loader'
-  }
+    loader: 'style-loader!css-loader',
+  },
+  {
+    test: /\.scss$/,
+    loaders: ['style-loader', 'css-loader', 'sass-loader'],
+  },
 ];
 
 module.exports = {
   entry: ENTRY_POINT,
   output: {
     filename: 'bundle.js',
-    path: OUTPUT_PATH
+    path: OUTPUT_PATH,
   },
+  devServer: DEV_SERVER,
   devtool: 'source-map',
-  mode: 'development',
-  watch: true,
+  // watch: true,
   module: {
-    rules: LOADER_OBJECT
-  }
+    rules: LOADER_OBJECT,
+  },
 };
