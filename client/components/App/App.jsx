@@ -49,6 +49,9 @@ export default class extends React.Component {
           capacity={capacity || {}}
           host={host || {}}
         />
+        <ListingDescriptions
+          descriptions={descriptions || {}}
+        />
       );
     }
     return (
