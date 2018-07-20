@@ -49,7 +49,7 @@ const getFakeListing = function (id, amenities, rules) {
       },
     ],
     descriptions: {
-      main: String,
+      main: faker.lorem.paragraph(),
       more: [
         { title: 'The space', value: faker.lorem.paragraphs() },
         { title: 'Guest access', value: faker.lorem.paragraphs() },
