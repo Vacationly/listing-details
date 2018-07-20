@@ -9,12 +9,12 @@ const amenityCount = 20;
 const cancellationTypeCount = 4;
 
 const getFakeListing = function (id) {
-  const numAmenities = Math.random() * 10;
+  const numAmenities = Math.random() * (amenityCount / 2);
   const numRules = Math.random() * 10;
   const amenities = [];
   const rules = [];
   for (let i = 0; i < numAmenities; i++) {
-    amenities.push(Math.floor(Math.random() * amenityCount));
+    amenities.push(2 * i);
   }
   for (let i = 0; i < numRules; i++) {
     rules.push(faker.random.words());
