@@ -1,6 +1,8 @@
 import React from 'react';
 import axios from 'axios';
 
+import ListingSummary from './ListingSummary.jsx';
+
 const apiBaseUrl = '/api/listings';
 
 export default class extends React.Component {
