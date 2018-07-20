@@ -8,8 +8,8 @@
     "resolver": null,
     "setupTestFrameworkScriptFile": "<rootDir>/__test__/config/setup.js",
     "testMatch": [
-      "**/__test__/*.test.js",
-      "**/client/components/**/*.test.js"
+      "**/client/components/**/*.test.js",
+      "**/__test__/*.js"
     ]
   },
   "version": "",
