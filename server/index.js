@@ -1,6 +1,6 @@
 const express = require('express');
 
-const db = require('../data');
+const model = require('./model.js');
 
 const port = process.env.PORT || 3000;
 
@@ -9,7 +9,7 @@ app.use(express.static(`${__dirname}/../public`));
 
 app.get('/api/listings/:id', (req, res) => {
   const listingId = req.params.id;
-  db.getListingDetails(listingId, (err, results) => {
+  model.getListingDetails(listingId, (err, results) => {
     res.send(err || results);
   });
 });

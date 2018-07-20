@@ -40,18 +40,21 @@ const getFakeListing = function (id) {
     ],
     highlights: [
       {
+        id: 1,
         tagline: faker.random.words(),
         description: faker.lorem.paragraph(),
         upvotes: 0,
         downvotes: 0,
       },
       {
+        id: 2,
         tagline: faker.random.words(),
         description: faker.lorem.paragraph(),
         upvotes: 0,
         downvotes: 0,
       },
       {
+        id: 3,
         tagline: faker.random.words(),
         description: faker.lorem.paragraph(),
         upvotes: 0,
