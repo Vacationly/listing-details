@@ -1,7 +1,7 @@
 import React from 'react';
 import axios from 'axios';
 
-import { shallow, mount } from 'enzyme';
+import { shallow } from 'enzyme';
 import sinon from 'sinon';
 import App from './App';
 
@@ -32,26 +32,6 @@ describe('componentDidMount()', () => {
     return Promise.resolve(wrapper).then(() => {
       expect(wrapper.state()).toHaveProperty('listingData', mockResponse.data);
     });
-  });
-});
-
-describe('setListing()', () => {
-  let wrapper;
-  const spy = sinon.spy(App.prototype, 'setState');
-
-  beforeEach(() => {
-    wrapper = mount(<App />);
-  });
-
-  it('should call setState once if listingId is valid', () => {
-    spy.resetHistory();
-    wrapper.instance().setListing(5);
-    expect(spy.callCount).toBe(1);
-  });
-  it('should not call setState if listingId is invalid', () => {
-    spy.resetHistory();
-    wrapper.instance().setListing(-1);
-    expect(spy.callCount).toBe(0);
   });
 });
 

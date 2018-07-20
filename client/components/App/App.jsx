@@ -9,26 +9,21 @@ export default class extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      listingId: 0,
       listingData: {},
       dataReady: false,
     };
   }
 
   componentDidMount() {
-    this.getListingData();
+    const windowPath = window.location.pathname.split('/');
+    const listingId = parseInt(windowPath[windowPath.length - 2]) || 0;
+    this.getListingData(listingId);
   }
 
-  getListingData() {
-    axios.get(`${apiBaseUrl}/${this.state.listingId}`).then((response) => {
+  getListingData(id) {
+    axios.get(`${apiBaseUrl}/${id}`).then((response) => {
       this.setState({ listingData: response.data, dataReady: true });
     });
-  }
-
-  setListing(id) {
-    if (id >= 0) {
-      this.setState({ listingId: id }, this.getListingData.bind(this));
-    }
   }
 
   render() {
