@@ -3,10 +3,10 @@
   "jest": {
     "verbose": true,
     "moduleNameMapper": {
-      "\\.(css|scss)$": "<rootDir>/testConfig/styleMock.js"
+      "\\.(css|scss)$": "<rootDir>/__test__/config/style.js"
     },
     "resolver": null,
-    "setupTestFrameworkScriptFile": "<rootDir>/testConfig/testSetup.js",
+    "setupTestFrameworkScriptFile": "<rootDir>/__test__/config/setup.js",
     "testMatch": [
       "**/__test__/*.test.js",
       "**/client/components/**/*.test.js"
