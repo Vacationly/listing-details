@@ -22,7 +22,7 @@ describe('GET listing data', () => {
       .get(invalidGetUrl)
       .then((response) => {
         expect(response.body).toEqual({});
-        expect(response.statusCode).toBe(200);
+        expect(response.statusCode).toBe(400);
         done();
       });
   });

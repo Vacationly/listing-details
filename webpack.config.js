@@ -34,4 +34,5 @@ module.exports = {
   module: {
     rules: LOADER_OBJECT,
   },
+  resolve: { extensions: ['.js', '.jsx'] },
 };
