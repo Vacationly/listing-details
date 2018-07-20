@@ -13,10 +13,10 @@ const listing = {
   capacity: [{ name: String, value: Number, icon: String }],
   highlights: [
     {
+      id: Number,
       tagline: String,
       description: String,
       upvotes: Number,
-      downvotes: Number,
     },
   ],
   descriptions: [{ name: String, value: String }],
