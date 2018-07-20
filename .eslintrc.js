@@ -11,9 +11,9 @@ module.exports = {
     jest: true
   },
   rules: {
-    "no-underscore-dangle": "off",
-    "react/destructuring-assignment": "never",
-    "no-plusplus": "off",
-    "func-names": "off"
-  }
+    'no-underscore-dangle': 'off',
+    'no-plusplus': 'off',
+    'func-names': 'off',
+    'react/destructuring-assignment': 'never',
+  },
 };

@@ -11,7 +11,7 @@ describe('GET listing data', () => {
       .then((response) => {
         expect(response.statusCode).toBe(200);
         expect(Object.keys(response.body)).toEqual(
-          expect.arrayContaining(['listingType', 'host', 'beds', 'baths']),
+          expect.arrayContaining(['listingType', 'host', 'location', 'descriptions']),
         );
         done();
       });
