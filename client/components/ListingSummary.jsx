@@ -1,5 +1,6 @@
 import React from 'react';
-import './ListingSummary.scss';
+
+require('./ListingSummary.css');
 
 export default (props) => {
   const {
