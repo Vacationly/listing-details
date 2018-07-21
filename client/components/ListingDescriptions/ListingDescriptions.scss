@@ -1,0 +1,20 @@
+.description {
+  padding: 1em 0;
+}
+
+.description.title {
+  font-weight: 800;
+  margin-bottom: 1em;
+}
+
+.hidden {
+  display: none;
+}
+
+.expandHide {
+  cursor: pointer;
+}
+
+.expandHide:hover {
+  text-decoration: underline;
+}
