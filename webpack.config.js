@@ -15,12 +15,8 @@ const LOADER_OBJECT = [
   },
   {
     test: /\.css$/,
-    exclude: /node_modules/,
-    loader: 'style-loader!css-loader',
-  },
-  {
-    test: /\.scss$/,
-    loaders: ['style-loader', 'css-loader', 'sass-loader'],
+    loader:
+      'style-loader!css-loader?modules&importLoaders=1&localIdentName=[name]__[local]___[hash:base64:5]',
   },
 ];
 

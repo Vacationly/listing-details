@@ -1,34 +1,34 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-require('./ListingSummary.scss');
+import styles from './ListingSummary.css';
 
 const ListingSummary = (props) => {
   const {
     title, listingType, location, capacity, host,
   } = props;
   return (
-    <div className="listingSummary">
-      <div className="listingType">
+    <div className={styles.listingSummary}>
+      <div className={styles.listingType}>
         {listingType.value.toLowerCase()}
       </div>
-      <div className="headline">
+      <div className={styles.headline}>
         <div>
-          <div className="title">
+          <div className={styles.title}>
             {title}
           </div>
-          <div className="city">
+          <div className={styles.city}>
             {location.city}
           </div>
         </div>
-        <div className="host">
-          <img src={host.avatar} className="avatar" alt={host.name} />
+        <div className={styles.host}>
+          <img src={host.avatar} className={styles.avatar} alt={host.name} />
           <span>
             {host.name}
           </span>
         </div>
       </div>
-      <div className="capacity">
+      <div className={styles.capacity}>
         {capacity.map(field => (
           <span>
             {field.name}
@@ -40,8 +40,6 @@ const ListingSummary = (props) => {
     </div>
   );
 };
-
-console.log(PropTypes);
 
 ListingSummary.propTypes = {
   title: PropTypes.string.isRequired,
@@ -67,13 +65,5 @@ ListingSummary.propTypes = {
     avatar: PropTypes.string.isRequired,
   }).isRequired,
 };
-
-// ListingSummary.defaultProps = {
-//   title: "Oops! This listing doesn't exist.",
-//   listingType: 'none',
-//   location: 'nowhere',
-//   capacity: [],
-//   host: { name: 'no one', avatar: '' },
-// };
 
 module.exports = ListingSummary;
