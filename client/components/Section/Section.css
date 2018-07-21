@@ -11,6 +11,7 @@
 }
 
 .link {
+  margin: 0 0 1em;
   font-weight: 400;
   color: #008489;
   cursor: pointer;

@@ -53,6 +53,7 @@ export default class extends React.Component {
             host={host}
           />
           <ListingDescriptions descriptions={descriptions} />
+          <hr />
           <ListingAmenities amenities={amenities} />
         </div>
       );

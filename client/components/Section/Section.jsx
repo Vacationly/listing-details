@@ -9,27 +9,36 @@ const Section = (props) => {
   } = props;
   return (
     <div className={styles.section}>
+      {title && (
       <div className={styles.title}>
         {title}
       </div>
+      )}
+      {content && (
       <div className={styles.content}>
         {content}
       </div>
-      <div className={styles.link} onClick={action} onKeyDown={action} tabIndex="0" role="link">
-        {link}
-      </div>
+      )}
+      {link
+        && action && (
+          <div className={styles.link} onClick={action} onKeyDown={action} tabIndex="0" role="link">
+            {link}
+          </div>
+      )}
     </div>
   );
 };
 
 Section.propTypes = {
-  title: PropTypes.string.isRequired,
-  content: PropTypes.element.isRequired,
+  title: PropTypes.string,
+  content: PropTypes.element,
   link: PropTypes.string,
   action: PropTypes.func,
 };
 
 Section.defaultProps = {
+  title: null,
+  content: null,
   link: null,
   action: null,
 };
