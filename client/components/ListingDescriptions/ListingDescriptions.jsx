@@ -1,6 +1,5 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import Modal from '../Modal/Modal';
 
 import styles from './ListingDescriptions.css';
 
@@ -35,7 +34,6 @@ export default class ListingDescriptions extends React.Component {
         >
           {expanded ? 'Hide ↑' : 'Read more about the space ↓'}
         </div>
-        {expanded && <Modal title="Modal" dismiss={this.toggleMoreInfo} component={null} />}
       </div>
     );
   }

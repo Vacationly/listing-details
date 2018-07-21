@@ -23,10 +23,18 @@
 }
 
 .dismiss {
+  width: 1.2em;
   box-shadow: rgba(0, 0, 0, 0.2) 0px 1px 10px 0px;
   cursor: pointer;
   text-align: center;
   border-radius: 1em;
   font-size: 2em;
   font-weight: 100;
+}
+
+.title {
+  margin-top: 1em;
+  margin-bottom: 0.5em;
+  font-size: 2em;
+  font-weight: 800;
 }
