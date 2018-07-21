@@ -22,7 +22,7 @@ export default class ListingDescriptions extends React.Component {
     return (
       <div>
         <ListingDescription value={main} />
-        <div className={`${styles.moreInfo} ${expanded && styles.hidden}`}>
+        <div className={`${styles.moreInfo} ${!expanded && styles.hidden}`}>
           {more.map(info => <ListingDescription title={info.title} value={info.value} />)}
         </div>
         <div

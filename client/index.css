@@ -2,3 +2,7 @@ body {
   font-family: Circular, "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-weight: 200;
 }
+
+*:focus {
+  outline: 0;
+}
