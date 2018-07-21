@@ -34,7 +34,7 @@ export default class CancellationType extends React.Component {
         </div>
       </div>
     );
-    const link = 'See more';
+    const link = 'Show more';
     const action = this.toggleModal;
     return (
       <div>
