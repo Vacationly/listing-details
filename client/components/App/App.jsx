@@ -5,6 +5,7 @@ import ListingSummary from '../ListingSummary/ListingSummary';
 import ListingDescriptions from '../ListingDescriptions/ListingDescriptions';
 import ListingAmenities from '../ListingAmenities/ListingAmenities';
 import ListingSleepingArrangements from '../ListingSleepingArrangements/ListingSleepingArrangements';
+import ListingRules from '../ListingRules/ListingRules';
 
 const apiBaseUrl = '/api/listings';
 
@@ -58,6 +59,8 @@ export default class extends React.Component {
           <ListingAmenities amenities={amenities} />
           <hr />
           <ListingSleepingArrangements sleepingArrangements={sleepingArrangements} />
+          <hr />
+          <ListingRules rules={rules} />
         </div>
       );
     }
