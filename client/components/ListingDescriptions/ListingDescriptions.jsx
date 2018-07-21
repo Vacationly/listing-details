@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import Section from '../Section/Section';
 
 import styles from '../Section/Section.css';
 
@@ -21,9 +22,20 @@ export default class ListingDescriptions extends React.Component {
     const { expanded } = this.state;
     return (
       <div>
-        <ListingDescription value={main} />
+        <div className={styles.content}>
+          {main}
+        </div>
         <div className={!expanded && styles.hidden}>
-          {more.map(info => <ListingDescription title={info.title} value={info.value} />)}
+          {more.map(info => (
+            <Section
+              title={info.title}
+              content={(
+                <div>
+                  {info.value}
+                </div>
+)}
+            />
+          ))}
         </div>
         <div
           className={styles.link}
@@ -39,22 +51,6 @@ export default class ListingDescriptions extends React.Component {
   }
 }
 
-const ListingDescription = (props) => {
-  const { title, value } = props;
-  return (
-    <div className={styles.content}>
-      {title && (
-      <div className={styles.title}>
-        {title}
-      </div>
-      )}
-      <div>
-        {value}
-      </div>
-    </div>
-  );
-};
-
 ListingDescriptions.propTypes = {
   descriptions: PropTypes.shape({
     main: PropTypes.string.isRequired,
@@ -67,13 +63,4 @@ ListingDescriptions.defaultProps = {
     main: 'placeholder',
     more: [],
   },
-};
-
-ListingDescription.propTypes = {
-  title: PropTypes.string,
-  value: PropTypes.string.isRequired,
-};
-
-ListingDescription.defaultProps = {
-  title: null,
 };
