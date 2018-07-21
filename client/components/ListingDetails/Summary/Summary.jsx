@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import styles from './ListingSummary.css';
+import styles from './Summary.css';
 
 const ListingSummary = (props) => {
   const {

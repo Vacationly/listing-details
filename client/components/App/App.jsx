@@ -1,11 +1,11 @@
-import React from 'react';
 import axios from 'axios';
+import React from 'react';
 
-import ListingSummary from '../ListingSummary/ListingSummary';
-import ListingDescriptions from '../ListingDescriptions/ListingDescriptions';
-import ListingAmenities from '../ListingAmenities/ListingAmenities';
-import ListingSleepingArrangements from '../ListingSleepingArrangements/ListingSleepingArrangements';
-import ListingRules from '../ListingRules/ListingRules';
+import ListingSummary from '../ListingDetails/Summary/Summary';
+import ListingDescriptions from '../ListingDetails/Descriptions/Descriptions';
+import ListingAmenities from '../ListingDetails/Amenities/Amenities';
+import ListingSleepingArrangements from '../ListingDetails/SleepingArrangements/SleepingArrangements';
+import ListingRules from '../ListingDetails/Rules/Rules';
 
 const apiBaseUrl = '/api/listings';
 

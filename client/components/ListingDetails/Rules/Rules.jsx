@@ -1,8 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import Section from '../Section/Section';
+import Section from '../../Utilities/Section/Section';
 
-import styles from './ListingRules.css';
+import styles from './Rules.css';
 
 const rulesThreshold = 3;
 

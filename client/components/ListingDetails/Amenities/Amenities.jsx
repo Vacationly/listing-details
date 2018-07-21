@@ -1,9 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import Section from '../Section/Section';
-import Modal from '../Modal/Modal';
+import Section from '../../Utilities/Section/Section';
+import Modal from '../../Utilities/Modal/Modal';
 
-import styles from './ListingAmenities.css';
+import styles from './Amenities.css';
 
 const amenityThreshold = 6;
 const getAmenitiesList = amenities => amenities.map(
@@ -41,8 +41,8 @@ export default class ListingAmenities extends React.Component {
     const amenitiesList = getAmenitiesList(amenities);
     const amenitiesShort = createElement(amenitiesList, styles.amenityList);
     const amenitiesLong = createElement(amenitiesList);
-    const link = amenities.length > amenityThreshold && `Show all ${amenities.length} amenities`;
-    const action = amenities.length > amenityThreshold && this.toggleModal;
+    const link = amenities.length > amenityThreshold ? `Show all ${amenities.length} amenities` : '';
+    const action = amenities.length > amenityThreshold ? this.toggleModal : null;
     return (
       <div>
         <Section title="Amenities" content={amenitiesShort} link={link} action={action} />
