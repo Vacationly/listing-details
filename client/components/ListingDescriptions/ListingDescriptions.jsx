@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-require('./ListingDescriptions.scss');
+require('./ListingDescriptions.css');
 
 export default class ListingDescriptions extends React.Component {
   constructor(props) {
