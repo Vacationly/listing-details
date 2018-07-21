@@ -7,6 +7,14 @@ const Section = (props) => {
   const {
     title, content, link, action,
   } = props;
+  let actionElement = link;
+  if (typeof actionElement === 'string') {
+    actionElement = (
+      <div>
+        {actionElement}
+      </div>
+    );
+  }
   return (
     <div className={styles.section}>
       {title && (
@@ -19,10 +27,10 @@ const Section = (props) => {
         {content}
       </div>
       )}
-      {link
+      {actionElement
         && action && (
           <div className={styles.link} onClick={action} onKeyDown={action} tabIndex="0" role="link">
-            {link}
+            {actionElement}
           </div>
       )}
     </div>
@@ -32,7 +40,7 @@ const Section = (props) => {
 Section.propTypes = {
   title: PropTypes.string,
   content: PropTypes.element,
-  link: PropTypes.string,
+  link: PropTypes.oneOfType([PropTypes.element, PropTypes.string]),
   action: PropTypes.func,
 };
 
