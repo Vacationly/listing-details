@@ -2,6 +2,7 @@ import React from 'react';
 import axios from 'axios';
 
 import ListingSummary from '../ListingSummary/ListingSummary';
+import ListingDescriptions from '../ListingDescriptions/ListingDescriptions';
 
 const apiBaseUrl = '/api/listings';
 
@@ -42,13 +43,16 @@ export default class extends React.Component {
     } = this.state.listingData || {};
     if (this.state.dataReady) {
       return (
-        <ListingSummary
-          title={title || ''}
-          listingType={listingType || {}}
-          location={location || {}}
-          capacity={capacity || {}}
-          host={host || {}}
-        />
+        <div>
+          <ListingSummary
+            title={title || ''}
+            listingType={listingType || {}}
+            location={location || {}}
+            capacity={capacity || {}}
+            host={host || {}}
+          />
+          <ListingDescriptions descriptions={descriptions || {}} />
+        </div>
       );
     }
     return (

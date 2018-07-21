@@ -48,12 +48,15 @@ const getFakeListing = function (id, amenities, rules) {
         upvotes: 0,
       },
     ],
-    descriptions: [
-      { name: 'Summary', value: faker.lorem.paragraphs() },
-      { name: 'Space', value: faker.lorem.paragraphs() },
-      { name: 'Host Interaction', value: faker.lorem.paragraphs() },
-      { name: 'Other', value: faker.lorem.paragraphs() },
-    ],
+    descriptions: {
+      main: faker.lorem.paragraph(),
+      more: [
+        { title: 'The space', value: faker.lorem.paragraphs() },
+        { title: 'Guest access', value: faker.lorem.paragraphs() },
+        { title: 'Interaction with guests', value: faker.lorem.paragraphs() },
+        { title: 'Other notables', value: faker.lorem.paragraphs() },
+      ],
+    },
     sleepingArrangements: [
       {
         spaceName: faker.random.words(),

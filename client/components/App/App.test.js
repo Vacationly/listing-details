@@ -38,10 +38,10 @@ describe('componentDidMount()', () => {
 describe('render()', () => {
   it('should change what is displayed once component is mounted', () => {
     const wrapper = shallow(<App />);
-    expect(wrapper.find('div')).toHaveLength(1);
+    const initialDiv = expect(wrapper.find('div'));
     return Promise.resolve(wrapper).then(() => {
       wrapper.update();
-      expect(wrapper.find('div')).not.toHaveLength(1);
+      expect(wrapper.find('div')).not.toEqual(initialDiv);
     });
   });
 });
