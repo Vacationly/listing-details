@@ -45,11 +45,7 @@ const Modal = (props) => {
 Modal.propTypes = {
   title: PropTypes.string.isRequired,
   dismiss: PropTypes.func.isRequired,
-  content: PropTypes.element,
-};
-
-Modal.defaultProps = {
-  content: null,
+  content: PropTypes.element.isRequired,
 };
 
 module.exports = Modal;

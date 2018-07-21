@@ -1,82 +1,68 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import Section from '../Section/Section';
+import Modal from '../Modal/Modal';
 
 import styles from './ListingAmenities.css';
+
+const amenityThreshold = 6;
 
 export default class ListingAmenities extends React.Component {
   constructor(props) {
     super(props);
-    this.toggleMoreInfo = this.toggleMoreInfo.bind(this);
+    this.toggleModal = this.toggleModal.bind(this);
     this.state = {
-      expanded: false,
+      showModal: false,
     };
   }
 
-  toggleMoreInfo() {
-    this.setState(prevState => ({ expanded: !prevState.expanded }));
+  toggleModal() {
+    this.setState(prevState => ({ showModal: !prevState.showModal }));
   }
 
   render() {
-    const { main, more } = this.props.descriptions;
-    const { expanded } = this.state;
+    const { amenities } = this.props;
+    const { showModal } = this.state;
+    const amenitiesList = amenities.map(
+      (amenity, index) => index < amenityThreshold && (
+      <div className={`${styles.amenityItem} col${Math.floor(index / (amenityThreshold / 2))}`}>
+        <span>
+          <img className={styles.icon} src={amenity.icon} alt={amenity.value} />
+        </span>
+        {amenity.value}
+      </div>
+      ),
+    );
+    const amenitiesShort = (
+      <div className={styles.amenityList}>
+        {amenitiesList}
+      </div>
+    );
+    const amenitiesLong = (
+      <div>
+        {amenitiesList}
+      </div>
+    );
+    const link = amenities.length > amenityThreshold && `Show all ${amenities.length} amenities`;
+    const action = amenities.length > amenityThreshold && this.toggleModal;
     return (
       <div>
-        <div className={styles.title}>
-Amenities
-        </div>
-        <ListingDescription value={main} />
-        <div className={`${styles.moreInfo} ${!expanded && styles.hidden}`}>
-          {more.map(info => <ListingDescription title={info.title} value={info.value} />)}
-        </div>
-        <div
-          className={styles.expandHide}
-          onClick={this.toggleMoreInfo}
-          onKeyDown={this.toggleMoreInfo}
-          tabIndex="0"
-          role="link"
-        >
-          {expanded ? 'Hide ↑' : 'Read more about the space ↓'}
-        </div>
+        <Section title="Amenities" content={amenitiesShort} link={link} action={action} />
+        {showModal && (
+          <Modal title="Amenities" content={amenitiesLong} dismiss={this.toggleModal} />
+        )}
       </div>
     );
   }
 }
 
-const ListingDescription = (props) => {
-  const { title, value } = props;
-  return (
-    <div className={styles.description}>
-      {title ? (
-        <div className={styles.title}>
-          {title}
-        </div>
-      ) : ''}
-      <div className={styles.value}>
-        {value}
-      </div>
-    </div>
-  );
+ListingAmenities.propTypes = {
+  amenities: PropTypes.arrayOf(
+    PropTypes.shape({
+      value: PropTypes.string.isRequired,
+      icon: PropTypes.string.isRequired,
+    }),
+  ).isRequired,
 };
 
-ListingDescriptions.propTypes = {
-  descriptions: PropTypes.shape({
-    main: PropTypes.string.isRequired,
-    more: PropTypes.array.isRequired,
-  }),
-};
-
-ListingDescriptions.defaultProps = {
-  descriptions: {
-    main: 'placeholder',
-    more: [],
-  },
-};
-
-ListingDescription.propTypes = {
-  title: PropTypes.string,
-  value: PropTypes.string.isRequired,
-};
-
-ListingDescription.defaultProps = {
-  title: null,
-};
+module.exports = ListingAmenities;

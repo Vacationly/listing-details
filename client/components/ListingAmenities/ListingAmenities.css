@@ -1,0 +1,22 @@
+.amenityList {
+  display: grid;
+  grid-template-columns: auto auto;
+}
+
+.col1 {
+  grid-column: 1;
+}
+
+.col2 {
+  grid-column: 2;
+}
+
+.amenityItem {
+  margin: 0.5em 0;
+}
+
+.icon {
+  width: 1.2em;
+  height: auto;
+  margin: 0 0.5em 0 0;
+}
