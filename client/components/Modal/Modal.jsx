@@ -4,17 +4,27 @@ import PropTypes from 'prop-types';
 import styles from './Modal.css';
 
 const Modal = (props) => {
-  const {
-    show, title, content, dismiss,
-  } = props;
+  const { title, content, dismiss } = props;
+  const handleDismiss = (e) => {
+    if (e.target.className === styles.background || e.target.className === styles.dismiss) {
+      e.stopPropagation();
+      dismiss();
+    }
+  };
   return (
     <div>
-      <div className={`${styles.background} ${show && styles.show}`}>
+      <div
+        className={styles.background}
+        onClick={handleDismiss}
+        onKeyUp={handleDismiss}
+        tabIndex="0"
+        role="menuitem"
+      >
         <div className={styles.frame}>
           <div
             className={styles.dismiss}
-            onClick={dismiss}
-            onKeyUp={dismiss}
+            onClick={handleDismiss}
+            onKeyUp={handleDismiss}
             tabIndex="0"
             role="button"
           >
