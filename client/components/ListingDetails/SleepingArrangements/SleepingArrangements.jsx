@@ -1,8 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import Section from '../Section/Section';
-import styles from './ListingSleepingArrangements.css';
+import Section from '../../Utilities/Section/Section';
+import styles from './SleepingArrangements.css';
 
 const ListingSleepingArrangements = (props) => {
   const { sleepingArrangements } = props;

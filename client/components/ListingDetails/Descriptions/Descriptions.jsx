@@ -1,8 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import Section from '../Section/Section';
+import Section from '../../Utilities/Section/Section';
 
-import styles from '../Section/Section.css';
+import styles from '../../Utilities/Section/Section.css';
 
 export default class ListingDescriptions extends React.Component {
   constructor(props) {
