@@ -62,5 +62,3 @@ ListingAmenities.propTypes = {
     }),
   ).isRequired,
 };
-
-module.exports = ListingAmenities;
