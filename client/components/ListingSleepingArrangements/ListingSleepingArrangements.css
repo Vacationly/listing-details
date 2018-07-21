@@ -1,0 +1,17 @@
+.sleepingArrangmentTiles {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.sleepingArrangementTile {
+  width: 33%;
+  border: 1px solid lightgrey;
+  border-radius: 0.5em;
+  padding: 0.5em;
+  flex: 1;
+}
+
+.spaceName {
+  font-weight: 600;
+  margin: 0.5em 0;
+}
