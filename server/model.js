@@ -16,10 +16,10 @@ const getListingDetails = function (id, callback) {
       listing.host = result;
       delete listing.hostId;
     })
-    .then(() => models.CancellationType.findOne({ id: listing.cancellationTypeId }))
+    .then(() => models.CancellationPolicy.findOne({ id: listing.cancellationPolicyId }))
     .then((result) => {
-      listing.cancealltionType = result;
-      delete listing.cancellationTypeId;
+      listing.cancellationPolicy = result;
+      delete listing.cancellationPolicyId;
     })
     .then(() => models.Amenity.find({ id: { $in: listing.amenityIds } }))
     .then((results) => {

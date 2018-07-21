@@ -7,18 +7,18 @@ const listingSchema = mongoose.Schema(schemas.listing);
 const listingTypeSchema = mongoose.Schema(schemas.listingType);
 const hostSchema = mongoose.Schema(schemas.host);
 const amenitySchema = mongoose.Schema(schemas.amenity);
-const cancellationTypeSchema = mongoose.Schema(schemas.cancellationType);
+const cancellationPolicySchema = mongoose.Schema(schemas.cancellationPolicy);
 
 const Listing = mongoose.model('Listing', listingSchema);
 const ListingType = mongoose.model('ListingType', listingTypeSchema);
 const Host = mongoose.model('Host', hostSchema);
 const Amenity = mongoose.model('Amenity', amenitySchema);
-const CancellationType = mongoose.model('CancellationType', cancellationTypeSchema);
+const CancellationPolicy = mongoose.model('CancellationPolicy', cancellationPolicySchema);
 
 module.exports = {
   Listing,
   ListingType,
   Host,
   Amenity,
-  CancellationType,
+  CancellationPolicy,
 };

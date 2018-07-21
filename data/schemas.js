@@ -2,7 +2,7 @@ const listing = {
   listingId: { type: Number, unique: true },
   typeId: Number,
   hostId: Number,
-  cancellationTypeId: Number,
+  cancellationPolicyId: Number,
   title: String,
   amenityIds: [Number],
   location: {
@@ -41,9 +41,9 @@ const amenity = {
   icon: String,
 };
 
-const cancellationType = {
+const cancellationPolicy = {
   id: Number,
-  title: String,
+  name: String,
   description: String,
 };
 
@@ -52,5 +52,5 @@ module.exports = {
   host,
   listingType,
   amenity,
-  cancellationType,
+  cancellationPolicy,
 };
