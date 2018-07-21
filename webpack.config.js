@@ -1,9 +1,5 @@
 const path = require('path');
 
-const locals = {
-  routes: ['/'],
-};
-
 const ENTRY_POINT = path.resolve(__dirname, 'client/index.jsx');
 
 const OUTPUT_PATH = path.resolve(__dirname, 'public/dist');
