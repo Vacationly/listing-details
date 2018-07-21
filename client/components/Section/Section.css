@@ -1,0 +1,22 @@
+.title {
+  margin: 0 0 1em;
+  font-weight: 800;
+}
+
+.content {
+  padding: 1em 0;
+}
+
+.link {
+  font-weight: 600;
+  color: #008489;
+  cursor: pointer;
+}
+
+.link:hover {
+  text-decoration: underline;
+}
+
+.hidden {
+  display: none;
+}
