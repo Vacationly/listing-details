@@ -43,7 +43,6 @@ const Modal = (props) => {
 };
 
 Modal.propTypes = {
-  show: PropTypes.bool.isRequired,
   title: PropTypes.string.isRequired,
   dismiss: PropTypes.func.isRequired,
   content: PropTypes.element,
