@@ -42,13 +42,13 @@ export default class ListingDescriptions extends React.Component {
 const ListingDescription = (props) => {
   const { title, value } = props;
   return (
-    <div className="description">
+    <div className={styles.description}>
       {title ? (
-        <div className="title">
+        <div className={styles.title}>
           {title}
         </div>
       ) : ''}
-      <div className="value">
+      <div className={styles.value}>
         {value}
       </div>
     </div>
