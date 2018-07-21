@@ -1,8 +1,9 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 require('./ListingSummary.scss');
 
-export default (props) => {
+const ListingSummary = (props) => {
   const {
     title, listingType, location, capacity, host,
   } = props;
@@ -21,7 +22,7 @@ export default (props) => {
           </div>
         </div>
         <div className="host">
-          <img src={host.avatar} className="avatar" />
+          <img src={host.avatar} className="avatar" alt={host.name} />
           <span>
             {host.name}
           </span>
@@ -39,3 +40,40 @@ export default (props) => {
     </div>
   );
 };
+
+console.log(PropTypes);
+
+ListingSummary.propTypes = {
+  title: PropTypes.string.isRequired,
+  listingType: PropTypes.shape({
+    id: PropTypes.number.isRequired,
+    value: PropTypes.string.isRequired,
+  }).isRequired,
+  location: PropTypes.shape({
+    city: PropTypes.string.isRequired,
+    state: PropTypes.string.isRequired,
+    country: PropTypes.string.isRequired,
+  }).isRequired,
+  capacity: PropTypes.arrayOf(
+    PropTypes.shape({
+      name: PropTypes.string.isRequired,
+      value: PropTypes.number.isRequired,
+      icon: PropTypes.string.isRequired,
+    }),
+  ).isRequired,
+  host: PropTypes.shape({
+    id: PropTypes.number.isRequired,
+    name: PropTypes.string.isRequired,
+    avatar: PropTypes.string.isRequired,
+  }).isRequired,
+};
+
+// ListingSummary.defaultProps = {
+//   title: "Oops! This listing doesn't exist.",
+//   listingType: 'none',
+//   location: 'nowhere',
+//   capacity: [],
+//   host: { name: 'no one', avatar: '' },
+// };
+
+module.exports = ListingSummary;

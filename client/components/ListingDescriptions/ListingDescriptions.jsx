@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 require('./ListingDescriptions.scss');
 
@@ -12,7 +13,7 @@ export default class ListingDescriptions extends React.Component {
   }
 
   toggleMoreInfo() {
-    this.setState({ expanded: !this.state.expanded });
+    this.setState(prevState => ({ expanded: !prevState.expanded }));
   }
 
   render() {
@@ -24,7 +25,13 @@ export default class ListingDescriptions extends React.Component {
         <div className={`moreInfo ${expanded ? '' : 'hidden'}`}>
           {more.map(info => <ListingDescription title={info.title} value={info.value} />)}
         </div>
-        <div className="expandHide" onClick={this.toggleMoreInfo}>
+        <div
+          className="expandHide"
+          onClick={this.toggleMoreInfo}
+          onKeyDown={this.toggleMoreInfo}
+          tabIndex="0"
+          role="menuitem"
+        >
           {expanded ? 'Hide ↑' : 'Read more about the space ↓'}
         </div>
       </div>
@@ -46,4 +53,27 @@ const ListingDescription = (props) => {
       </div>
     </div>
   );
+};
+
+ListingDescriptions.propTypes = {
+  descriptions: PropTypes.shape({
+    main: PropTypes.string.isRequired,
+    more: PropTypes.array.isRequired,
+  }),
+};
+
+ListingDescriptions.defaultProps = {
+  descriptions: {
+    main: 'placeholder',
+    more: [],
+  },
+};
+
+ListingDescription.propTypes = {
+  title: PropTypes.string,
+  value: PropTypes.string.isRequired,
+};
+
+ListingDescription.defaultProps = {
+  title: null,
 };
