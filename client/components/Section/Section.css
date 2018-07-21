@@ -1,6 +1,9 @@
+.section {
+  margin: 1em 0;
+}
+
 .title {
-  margin: 0 0 1em;
-  font-weight: 800;
+  font-weight: 600;
 }
 
 .content {
@@ -8,7 +11,7 @@
 }
 
 .link {
-  font-weight: 600;
+  font-weight: 400;
   color: #008489;
   cursor: pointer;
 }
