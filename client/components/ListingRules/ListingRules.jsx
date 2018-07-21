@@ -2,7 +2,9 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import Section from '../Section/Section';
 
-import styles from '../Section/Section.css';
+import styles from './ListingRules.css';
+
+const rulesThreshold = 3;
 
 export default class ListingRules extends React.Component {
   constructor(props) {
@@ -23,11 +25,13 @@ export default class ListingRules extends React.Component {
     const link = expanded ? 'Hide' : 'Read all rules';
     const rulesList = (
       <div>
-        {rules.map(rule => (
+        {rules.map(
+          (rule, index) => (expanded || index < rulesThreshold) && (
           <div className={styles.ruleItem}>
             {rule}
           </div>
-        ))}
+          ),
+        )}
       </div>
     );
     return (
