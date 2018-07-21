@@ -1,11 +1,12 @@
 import axios from 'axios';
 import React from 'react';
 
-import ListingSummary from '../ListingDetails/Summary/Summary';
-import ListingDescriptions from '../ListingDetails/Descriptions/Descriptions';
-import ListingAmenities from '../ListingDetails/Amenities/Amenities';
-import ListingSleepingArrangements from '../ListingDetails/SleepingArrangements/SleepingArrangements';
-import ListingRules from '../ListingDetails/Rules/Rules';
+import Summary from '../ListingDetails/Summary/Summary';
+import Descriptions from '../ListingDetails/Descriptions/Descriptions';
+import Amenities from '../ListingDetails/Amenities/Amenities';
+import SleepingArrangements from '../ListingDetails/SleepingArrangements/SleepingArrangements';
+import Rules from '../ListingDetails/Rules/Rules';
+import CancellationPolicy from '../ListingDetails/CancellationPolicy/CancellationPolicy';
 
 const apiBaseUrl = '/api/listings';
 
@@ -42,25 +43,28 @@ export default class extends React.Component {
       amenities,
       sleepingArrangements,
       rules,
-      cancellationType,
+      cancellationPolicy,
     } = this.state.listingData || {};
     if (this.state.dataReady) {
+      console.log(this.state.listingData);
       return (
         <div>
-          <ListingSummary
+          <Summary
             title={title}
             listingType={listingType}
             location={location}
             capacity={capacity}
             host={host}
           />
-          <ListingDescriptions descriptions={descriptions} />
+          <Descriptions descriptions={descriptions} />
           <hr />
-          <ListingAmenities amenities={amenities} />
+          <Amenities amenities={amenities} />
           <hr />
-          <ListingSleepingArrangements sleepingArrangements={sleepingArrangements} />
+          <SleepingArrangements sleepingArrangements={sleepingArrangements} />
           <hr />
-          <ListingRules rules={rules} />
+          <Rules rules={rules} />
+          <hr />
+          <CancellationPolicy cancellationPolicy={cancellationPolicy} />
         </div>
       );
     }

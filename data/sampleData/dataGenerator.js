@@ -6,7 +6,7 @@ const listingCount = 101;
 const listingTypeCount = 3;
 const hostCount = 10;
 const amenityCount = 20;
-const cancellationTypeCount = 4;
+const cancellationPolicyCount = 4;
 
 const getFakeListing = function (id, amenities, rules) {
   return {
@@ -15,7 +15,7 @@ const getFakeListing = function (id, amenities, rules) {
     typeId: Math.floor(Math.random() * listingTypeCount),
     hostId: Math.floor(Math.random() * hostCount),
     amenityIds: amenities,
-    cancellationTypeId: Math.floor(Math.random() * cancellationTypeCount),
+    cancellationPolicyId: Math.floor(Math.random() * cancellationPolicyCount),
     title: faker.random.words(),
     location: {
       city: faker.address.city(),
@@ -88,11 +88,11 @@ const getFakeAmenity = function (id) {
   return { id, value: faker.random.words(), icon: `${imageUrl}/amenity_${id % 5}.png` };
 };
 
-const getFakeCancellationType = function (id) {
+const getFakeCancellationPolicy = function (id) {
   return {
     id,
-    title: faker.random.words(),
-    description: faker.lorem.sentence(),
+    name: faker.random.words(),
+    description: faker.lorem.paragraph(),
   };
 };
 
@@ -115,7 +115,7 @@ const generateData = function () {
   const listingTypes = [];
   const hosts = [];
   const amenities = [];
-  const cancellationTypes = [];
+  const cancellationPolicys = [];
   for (let i = 0; i < listingCount; i++) {
     listings.push(generateFakeListing(i));
   }
@@ -128,15 +128,15 @@ const generateData = function () {
   for (let i = 0; i < amenityCount; i++) {
     amenities.push(getFakeAmenity(i));
   }
-  for (let i = 0; i < cancellationTypeCount; i++) {
-    cancellationTypes.push(getFakeCancellationType(i));
+  for (let i = 0; i < cancellationPolicyCount; i++) {
+    cancellationPolicys.push(getFakeCancellationPolicy(i));
   }
   return {
     Listing: listings,
     ListingType: listingTypes,
     Host: hosts,
     Amenity: amenities,
-    CancellationType: cancellationTypes,
+    CancellationPolicy: cancellationPolicys,
   };
 };
 
