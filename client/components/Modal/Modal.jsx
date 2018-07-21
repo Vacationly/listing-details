@@ -14,7 +14,7 @@ const Modal = (props) => {
           <div
             className={styles.dismiss}
             onClick={dismiss}
-            onKeyDown={dismiss}
+            onKeyUp={dismiss}
             tabIndex="0"
             role="button"
           >

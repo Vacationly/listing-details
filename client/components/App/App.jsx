@@ -3,6 +3,7 @@ import axios from 'axios';
 
 import ListingSummary from '../ListingSummary/ListingSummary';
 import ListingDescriptions from '../ListingDescriptions/ListingDescriptions';
+// import ListingAmenitites from '../ListingAmenitites/ListingAmenitites';
 
 const apiBaseUrl = '/api/listings';
 
@@ -45,13 +46,14 @@ export default class extends React.Component {
       return (
         <div>
           <ListingSummary
-            title={title || ''}
-            listingType={listingType || {}}
-            location={location || {}}
-            capacity={capacity || {}}
-            host={host || {}}
+            title={title}
+            listingType={listingType}
+            location={location}
+            capacity={capacity}
+            host={host}
           />
-          <ListingDescriptions descriptions={descriptions || {}} />
+          <ListingDescriptions descriptions={descriptions} />
+          {/* <ListingAmenities amenities={amenities} /> */}
         </div>
       );
     }

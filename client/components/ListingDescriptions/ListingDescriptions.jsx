@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import styles from './ListingDescriptions.css';
+import styles from '../Section/Section.css';
 
 export default class ListingDescriptions extends React.Component {
   constructor(props) {
@@ -22,13 +22,13 @@ export default class ListingDescriptions extends React.Component {
     return (
       <div>
         <ListingDescription value={main} />
-        <div className={`${styles.moreInfo} ${!expanded && styles.hidden}`}>
+        <div className={!expanded && styles.hidden}>
           {more.map(info => <ListingDescription title={info.title} value={info.value} />)}
         </div>
         <div
-          className={styles.expandHide}
+          className={styles.link}
           onClick={this.toggleMoreInfo}
-          onKeyDown={this.toggleMoreInfo}
+          onKeyUp={this.toggleMoreInfo}
           tabIndex="0"
           role="link"
         >
@@ -42,13 +42,13 @@ export default class ListingDescriptions extends React.Component {
 const ListingDescription = (props) => {
   const { title, value } = props;
   return (
-    <div className={styles.description}>
-      {title ? (
-        <div className={styles.title}>
-          {title}
-        </div>
-      ) : ''}
-      <div className={styles.value}>
+    <div className={styles.content}>
+      {title && (
+      <div className={styles.title}>
+        {title}
+      </div>
+      )}
+      <div>
         {value}
       </div>
     </div>

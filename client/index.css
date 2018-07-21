@@ -3,6 +3,10 @@ body {
   font-weight: 200;
 }
 
+hr {
+  color: grey;
+}
+
 *:focus {
   outline: 0;
 }
