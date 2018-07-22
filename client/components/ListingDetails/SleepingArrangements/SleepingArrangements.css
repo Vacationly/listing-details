@@ -1,15 +1,13 @@
 .sleepingArrangementTiles {
-  display: flex;
-  flex-wrap: wrap;
+  display: grid;
+  grid-template-columns: 32% 32% 32%;
+  grid-gap: 0.5em 2%;
 }
 
 .sleepingArrangementTile {
-  max-width: 29%;
   border: 1px solid lightgrey;
   border-radius: 0.5em;
-  margin: 0.5em 2%;
   padding: 0.5em;
-  flex: 1;
 }
 
 .spaceName {
