@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import Section from '../../Utilities/Section/Section';
+import { expandCollapse } from '../../../utils';
 
 import styles from './Rules.css';
 
@@ -19,9 +20,7 @@ export default class Rules extends React.Component {
     this.setState(
       prevState => ({ expanded: !prevState.expanded }),
       () => {
-        const moreWrapper = window.document.getElementsByClassName(styles.moreWrapper)[0];
-        const moreContent = window.document.getElementsByClassName(styles.moreContent)[0];
-        moreWrapper.style.height = this.state.expanded ? `${moreContent.clientHeight}px` : '0px';
+        expandCollapse(styles.moreWrapper, styles.moreContent, this.state.expanded);
       },
     );
   }
