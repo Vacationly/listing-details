@@ -28,13 +28,7 @@ export default class Amenities extends React.Component {
       <div className={styles.amenityList}>
         {amenities.map(
           (amenity, index) => index < amenitiesThreshold && (
-          <div
-            className={styles.amenityItem}
-            style={{
-              gridRow: (index % (amenitiesThreshold / 2)) + 1,
-              gridColumn: Math.ceil((index + 1) / (amenitiesThreshold / 2)),
-            }}
-          >
+          <div className={styles.amenityItem}>
             <span>
               <img className={styles.icon} src={amenity.icon} alt={amenity.value} />
             </span>

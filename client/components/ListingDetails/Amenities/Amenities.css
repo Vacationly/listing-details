@@ -12,3 +12,9 @@
   height: auto;
   margin: 0 0.5em 0 0;
 }
+
+@media (max-width: 360px) {
+  .amenityList {
+    grid-template-columns: 100%;
+  }
+}

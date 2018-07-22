@@ -8,12 +8,8 @@ const SleepingArrangements = (props) => {
   const { sleepingArrangements } = props;
   const sleepingArrangementsTiles = (
     <div className={styles.sleepingArrangementTiles}>
-      {sleepingArrangements.map(
-        (sleepingArrangement, index) => sleepingArrangement.number > 0 && (
-        <div
-          className={styles.sleepingArrangementTile}
-          style={{ gridRow: Math.floor((index + 1) / 3), gridColumn: (index % 3) + 1 }}
-        >
+      {sleepingArrangements.map(sleepingArrangement => (
+        <div className={styles.sleepingArrangementTile}>
           <div className={styles.spaceName}>
             {sleepingArrangement.spaceName}
           </div>
@@ -21,15 +17,10 @@ const SleepingArrangements = (props) => {
             {sleepingArrangement.number}
             {' '}
             {sleepingArrangement.mattressType}
-            {sleepingArrangement.number > 1
-                  && (sleepingArrangement.mattressType[sleepingArrangement.mattressType.length - 1]
-                  === 's'
-                    ? 'es'
-                    : 's')}
+            {sleepingArrangement.number !== 1 && 's'}
           </div>
         </div>
-        ),
-      )}
+      ))}
     </div>
   );
 
