@@ -17,7 +17,6 @@ const listing = {
       tagline: String,
       description: String,
       upvotes: Number,
-      downvotes: Number,
     },
   ],
   descriptions: { main: String, more: [{ title: String, value: String }] },

@@ -83,7 +83,6 @@ const generateFakeListing = function (id) {
       tagline: faker.random.words(),
       description: faker.lorem.paragraph(),
       upvotes: 0,
-      downvotes: 0,
     });
   }
   for (let i = 0; i < numRules; i++) {
