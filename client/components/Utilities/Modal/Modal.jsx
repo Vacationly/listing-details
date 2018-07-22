@@ -1,7 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { functions } from '../../utils';
 
 import styles from './Modal.css';
+
+const { processKeyUp } = functions;
 
 const Modal = (props) => {
   const { title, content, dismiss } = props;
@@ -18,7 +21,7 @@ const Modal = (props) => {
       <div
         className={styles.background}
         onClick={handleDismiss}
-        onKeyUp={handleDismiss}
+        onKeyUp={e => processKeyUp(e, handleDismiss)}
         tabIndex="0"
         role="menuitem"
       >
@@ -26,7 +29,7 @@ const Modal = (props) => {
           <div
             className={styles.dismiss}
             onClick={handleDismiss}
-            onKeyUp={handleDismiss}
+            onKeyUp={e => processKeyUp(e, handleDismiss)}
             tabIndex="0"
             role="button"
           >

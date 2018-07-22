@@ -3,6 +3,10 @@ const imagesEndpoint = 'https://s3.amazonaws.com/fec-overview-service-images';
 const amenitiesThreshold = 6;
 const rulesThreshold = 3;
 
+const processKeyUp = (e, handler) => {
+  e.key === 'Enter' && handler();
+};
+
 const expandCollapse = (wrapperClass, contentClass, expanded) => {
   const wrapper = window.document.getElementsByClassName(wrapperClass)[0];
   const content = window.document.getElementsByClassName(contentClass)[0];
@@ -18,5 +22,6 @@ module.exports = {
   },
   functions: {
     expandCollapse,
+    processKeyUp,
   },
 };
