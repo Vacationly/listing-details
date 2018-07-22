@@ -34,7 +34,6 @@ const Section = (props) => {
             role="link"
           >
             {link}
-            {'   '}
             {expandable && (
               <img
                 className={styles.icon}
