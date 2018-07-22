@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import Section from '../../Utilities/Section/Section';
 import Modal from '../../Utilities/Modal/Modal';
-import { constants } from '../../../utils';
+import { constants } from '../../utils';
 
 import styles from './Amenities.css';
 

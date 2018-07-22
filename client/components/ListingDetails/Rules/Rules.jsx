@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import Section from '../../Utilities/Section/Section';
-import { constants, functions } from '../../../utils';
+import { constants, functions } from '../../utils';
 
 import styles from './Rules.css';
 
@@ -58,6 +58,8 @@ export default class Rules extends React.Component {
         content={rulesList}
         link={rules.length > 3 ? link : null}
         action={this.toggleMoreInfo}
+        expandable
+        expanded={expanded}
       />
     );
   }

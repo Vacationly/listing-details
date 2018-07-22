@@ -8,7 +8,7 @@ import Amenities from '../ListingDetails/Amenities/Amenities';
 import SleepingArrangements from '../ListingDetails/SleepingArrangements/SleepingArrangements';
 import Rules from '../ListingDetails/Rules/Rules';
 import CancellationPolicy from '../ListingDetails/CancellationPolicy/CancellationPolicy';
-import { constants } from '../../utils';
+import { constants } from '../utils';
 
 const { apiEndpoint } = constants;
 

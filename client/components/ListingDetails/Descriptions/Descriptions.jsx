@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import Section from '../../Utilities/Section/Section';
-import { functions } from '../../../utils';
+import { functions } from '../../utils';
 
 import styles from './Descriptions.css';
 
@@ -52,6 +52,8 @@ export default class Descriptions extends React.Component {
         content={content}
         link={expanded ? 'Hide' : 'Read more about the space'}
         action={this.toggleMoreInfo}
+        expandable
+        expanded={expanded}
       />
     );
   }
