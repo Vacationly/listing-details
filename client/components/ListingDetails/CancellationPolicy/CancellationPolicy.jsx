@@ -58,7 +58,7 @@ export default class CancellationPolicy extends React.Component {
 
 CancellationPolicy.propTypes = {
   cancellationPolicy: PropTypes.shape({
-    title: PropTypes.string.isRequired,
-    value: PropTypes.string.isRequired,
+    name: PropTypes.string.isRequired,
+    description: PropTypes.string.isRequired,
   }).isRequired,
 };

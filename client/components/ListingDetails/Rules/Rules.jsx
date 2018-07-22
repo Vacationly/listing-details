@@ -38,7 +38,7 @@ export default class Rules extends React.Component {
       <Section
         title="House rules"
         content={rulesList}
-        link={rules.length > 3 && link}
+        link={rules.length > 3 ? link : null}
         action={this.toggleMoreInfo}
       />
     );
