@@ -16,7 +16,14 @@ export default class Rules extends React.Component {
   }
 
   toggleMoreInfo() {
-    this.setState(prevState => ({ expanded: !prevState.expanded }));
+    this.setState(
+      prevState => ({ expanded: !prevState.expanded }),
+      () => {
+        const moreWrapper = window.document.getElementsByClassName(styles.moreWrapper)[0];
+        const moreContent = window.document.getElementsByClassName(styles.moreContent)[0];
+        moreWrapper.style.height = this.state.expanded ? `${moreContent.clientHeight}px` : '0px';
+      },
+    );
   }
 
   render() {
@@ -32,8 +39,8 @@ export default class Rules extends React.Component {
           </div>
           ),
         )}
-        {expanded && (
-          <div>
+        <div className={styles.moreWrapper}>
+          <div className={styles.moreContent}>
             {rules.map(
               (rule, index) => index >= rulesThreshold && (
               <div className={styles.ruleItem}>
@@ -42,7 +49,7 @@ export default class Rules extends React.Component {
               ),
             )}
           </div>
-        )}
+        </div>
       </div>
     );
     return (

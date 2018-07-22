@@ -1,3 +1,13 @@
 .ruleItem {
   margin: 0.5em 0;
 }
+
+.moreWrapper {
+  height: 0;
+  transition: 0.5s height ease-out;
+  overflow: hidden;
+}
+
+.moreContent {
+  height: fit-content;
+}
