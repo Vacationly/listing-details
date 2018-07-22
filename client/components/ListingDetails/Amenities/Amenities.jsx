@@ -6,21 +6,6 @@ import Modal from '../../Utilities/Modal/Modal';
 import styles from './Amenities.css';
 
 const amenityThreshold = 6;
-const getAmenitiesList = amenities => amenities.map(
-  (amenity, index) => index < amenityThreshold && (
-    <div className={`${styles.amenityItem} col${Math.floor(index / (amenityThreshold / 2))}`}>
-      <span>
-        <img className={styles.icon} src={amenity.icon} alt={amenity.value} />
-      </span>
-      {amenity.value}
-    </div>
-  ),
-);
-const createElement = (content, className) => (
-  <div className={className}>
-    {content}
-  </div>
-);
 
 export default class Amenities extends React.Component {
   constructor(props) {
@@ -38,9 +23,34 @@ export default class Amenities extends React.Component {
   render() {
     const { amenities } = this.props;
     const { showModal } = this.state;
-    const amenitiesList = getAmenitiesList(amenities);
-    const amenitiesShort = createElement(amenitiesList, styles.amenityList);
-    const amenitiesLong = createElement(amenitiesList);
+    const amenitiesShort = (
+      <div className={styles.amenitiesList}>
+        {amenities.map(
+          (amenity, index) => index < amenityThreshold && (
+          <div
+            className={`${styles.amenityItem} col${Math.floor(index / (amenityThreshold / 2))}`}
+          >
+            <span>
+              <img className={styles.icon} src={amenity.icon} alt={amenity.value} />
+            </span>
+            {amenity.value}
+          </div>
+          ),
+        )}
+      </div>
+    );
+    const amenitiesLong = (
+      <div className={styles.amenitiesList}>
+        {amenities.map(amenity => (
+          <div className={styles.amenityItem}>
+            <span>
+              <img className={styles.icon} src={amenity.icon} alt={amenity.value} />
+            </span>
+            {amenity.value}
+          </div>
+        ))}
+      </div>
+    );
     const link = amenities.length > amenityThreshold ? `Show all ${amenities.length} amenities` : '';
     const action = amenities.length > amenityThreshold ? this.toggleModal : null;
     return (
