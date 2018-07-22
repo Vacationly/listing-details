@@ -2,6 +2,13 @@ const apiEndpoint = '/api/listings';
 const imagesEndpoint = 'https://s3.amazonaws.com/fec-overview-service-images';
 const amenitiesThreshold = 6;
 const rulesThreshold = 3;
+const placeholderListing = {
+  title: 'Oops! No listing found.',
+  listingType: { value: 'Nonexistent' },
+  location: { city: 'Nowheresville', state: 'Nowherenia', country: 'Nowheresland' },
+  host: { name: 'Nobody', avatar: `${imagesEndpoint}/confused_avatar.png` },
+  capacity: [{ name: 'Rooms', value: 0, icon: '' }],
+};
 
 const processKeyUp = (e, handler) => {
   e.key === 'Enter' && handler();
@@ -19,6 +26,7 @@ module.exports = {
     imagesEndpoint,
     amenitiesThreshold,
     rulesThreshold,
+    placeholderListing,
   },
   functions: {
     expandCollapse,

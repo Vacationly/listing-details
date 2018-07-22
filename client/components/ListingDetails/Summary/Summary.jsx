@@ -44,7 +44,6 @@ const Summary = (props) => {
 Summary.propTypes = {
   title: PropTypes.string.isRequired,
   listingType: PropTypes.shape({
-    id: PropTypes.number.isRequired,
     value: PropTypes.string.isRequired,
   }).isRequired,
   location: PropTypes.shape({
@@ -60,7 +59,6 @@ Summary.propTypes = {
     }),
   ).isRequired,
   host: PropTypes.shape({
-    id: PropTypes.number.isRequired,
     name: PropTypes.string.isRequired,
     avatar: PropTypes.string.isRequired,
   }).isRequired,

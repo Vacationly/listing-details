@@ -53,14 +53,17 @@ export default class Rules extends React.Component {
       </div>
     );
     return (
-      <Section
-        title="House rules"
-        content={rulesList}
-        link={rules.length > 3 ? link : null}
-        action={this.toggleMoreInfo}
-        expandable
-        expanded={expanded}
-      />
+      <div>
+        <Section
+          title="House rules"
+          content={rulesList}
+          link={rules.length > 3 ? link : null}
+          action={this.toggleMoreInfo}
+          expandable
+          expanded={expanded}
+        />
+        <hr />
+      </div>
     );
   }
 }

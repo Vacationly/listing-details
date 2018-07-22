@@ -33,7 +33,12 @@ const SleepingArrangements = (props) => {
     </div>
   );
 
-  return <Section title="Sleeping arrangements" content={sleepingArrangementsTiles} />;
+  return (
+    <div>
+      <Section title="Sleeping arrangements" content={sleepingArrangementsTiles} />
+      <hr />
+    </div>
+  );
 };
 
 SleepingArrangements.propTypes = {

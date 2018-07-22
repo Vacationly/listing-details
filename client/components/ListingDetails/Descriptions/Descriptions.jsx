@@ -48,13 +48,16 @@ export default class Descriptions extends React.Component {
       </div>
     );
     return (
-      <Section
-        content={content}
-        link={expanded ? 'Hide' : 'Read more about the space'}
-        action={this.toggleMoreInfo}
-        expandable
-        expanded={expanded}
-      />
+      <div>
+        <Section
+          content={content}
+          link={expanded ? 'Hide' : 'Read more about the space'}
+          action={this.toggleMoreInfo}
+          expandable
+          expanded={expanded}
+        />
+        <hr />
+      </div>
     );
   }
 }
