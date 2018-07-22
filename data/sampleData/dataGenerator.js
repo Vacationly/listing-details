@@ -8,14 +8,15 @@ const hostCount = 10;
 const amenityCount = 20;
 const cancellationPolicyCount = 4;
 
-const getFakeListing = function (id, highlights, rules, amenities) {
+const getFakeListing = function (id, amenityIds, highlights, rules, sleepingArrangements) {
   return {
+    amenityIds,
     highlights,
     rules,
+    sleepingArrangements,
     listingId: id,
     typeId: Math.floor(Math.random() * listingTypeCount),
     hostId: Math.floor(Math.random() * hostCount),
-    amenityIds: amenities,
     cancellationPolicyId: Math.floor(Math.random() * cancellationPolicyCount),
     title: faker.random.words(),
     location: {
@@ -38,18 +39,6 @@ const getFakeListing = function (id, highlights, rules, amenities) {
         { title: 'Other notables', value: faker.lorem.paragraphs() },
       ],
     },
-    sleepingArrangements: [
-      {
-        spaceName: faker.random.words(),
-        mattressType: faker.random.word(),
-        number: Math.floor(Math.random() * 2),
-      },
-      {
-        spaceName: faker.random.words(),
-        mattressType: faker.random.word(),
-        number: Math.floor(Math.random() * 2),
-      },
-    ],
   };
 };
 
@@ -80,9 +69,14 @@ const getFakeCancellationPolicy = function (id) {
 const generateFakeListing = function (id) {
   const numAmenities = Math.random() * (amenityCount / 2);
   const numRules = Math.random() * 10;
+  const numSleepingArrangements = Math.random() * 5;
   const highlights = [];
-  const amenities = [];
+  const amenityIds = [];
   const rules = [];
+  const sleepingArrangements = [];
+  for (let i = 0; i < numAmenities; i++) {
+    amenityIds.push(2 * i);
+  }
   for (let i = 0; i < 3; i++) {
     highlights.push({
       id: i + 1,
@@ -95,10 +89,14 @@ const generateFakeListing = function (id) {
   for (let i = 0; i < numRules; i++) {
     rules.push(faker.random.words());
   }
-  for (let i = 0; i < numAmenities; i++) {
-    amenities.push(2 * i);
+  for (let i = 0; i < numSleepingArrangements; i++) {
+    sleepingArrangements.push({
+      spaceName: faker.random.words(),
+      mattressType: faker.random.word(),
+      number: Math.ceil(Math.random() * 3),
+    });
   }
-  return getFakeListing(id, highlights, rules, amenities);
+  return getFakeListing(id, amenityIds, highlights, rules, sleepingArrangements);
 };
 
 const generateData = function () {
