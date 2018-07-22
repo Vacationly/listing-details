@@ -6,7 +6,7 @@ const placeholderListing = {
   title: 'Oops! No listing found.',
   listingType: { value: 'Nonexistent' },
   location: { city: 'Nowheresville', state: 'Nowherenia', country: 'Nowheresland' },
-  host: { name: 'Nobody', avatar: '' },
+  host: { name: 'Nobody', avatar: `${imagesEndpoint}/confused_avatar.png` },
   capacity: [{ name: 'Rooms', value: 0, icon: '' }],
 };
 
