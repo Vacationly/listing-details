@@ -26,8 +26,16 @@
   color: #888888;
 }
 
+.thumbsUp {
+  position: relative;
+  top: 0.2em;
+  width: 1.2em;
+  height: auto;
+}
+
 .upvote,
 .downvote {
+  font-weight: 400;
   cursor: pointer;
 }
 

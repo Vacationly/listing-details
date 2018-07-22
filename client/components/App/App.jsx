@@ -57,7 +57,6 @@ export default class extends React.Component {
       cancellationPolicy,
     } = this.state.listingData || {};
     if (this.state.dataReady) {
-      console.log(this.state.listingData);
       return (
         <div>
           <Summary

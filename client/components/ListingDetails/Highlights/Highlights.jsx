@@ -1,7 +1,17 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
+import { baseUrl } from '../../../utils';
 import styles from './Highlights.css';
+
+const thumbsUpEmpty = `${baseUrl}/thumbs_up_empty.png`;
+const thumbsUpFull = `${baseUrl}/thumbs_up_full.png`;
+
+const handleUpvoteHover = (e) => {
+  const target = e.target.children[0] || e.target;
+  const oldSource = target.src;
+  target.src = oldSource === thumbsUpEmpty ? thumbsUpFull : thumbsUpEmpty;
+};
 
 export default class Highlights extends React.Component {
   constructor(props) {
@@ -44,13 +54,15 @@ home highlights
             </div>
             <div className={styles.feedback}>
               {feedback[highlight.id] ? (
-                <span className={styles.thankYou}>
+                <span>
 Thank you for your feedback.
                 </span>
               ) : (
                 <span>
                   <span
                     className={styles.upvote}
+                    onMouseEnter={handleUpvoteHover}
+                    onMouseLeave={handleUpvoteHover}
                     onClick={() => this.handleFeedback(highlight.id, 1)}
                     onKeyUp={() => this.handleFeedback(highlight.id, 1)}
                     tabIndex="0"
@@ -58,7 +70,7 @@ Thank you for your feedback.
                   >
                     Helpful
                     {' '}
-                    <span className="thumbsUp" />
+                    <img className={styles.thumbsUp} src={thumbsUpEmpty} alt="thumbs up" />
                   </span>
                   {' '}
                   ·
