@@ -22,7 +22,7 @@ const createElement = (content, className) => (
   </div>
 );
 
-export default class ListingAmenities extends React.Component {
+export default class Amenities extends React.Component {
   constructor(props) {
     super(props);
     this.toggleModal = this.toggleModal.bind(this);
@@ -54,7 +54,7 @@ export default class ListingAmenities extends React.Component {
   }
 }
 
-ListingAmenities.propTypes = {
+Amenities.propTypes = {
   amenities: PropTypes.arrayOf(
     PropTypes.shape({
       value: PropTypes.string.isRequired,

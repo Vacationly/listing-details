@@ -4,7 +4,7 @@ import Section from '../../Utilities/Section/Section';
 
 import styles from '../../Utilities/Section/Section.css';
 
-export default class ListingDescriptions extends React.Component {
+export default class Descriptions extends React.Component {
   constructor(props) {
     super(props);
     this.toggleMoreInfo = this.toggleMoreInfo.bind(this);
@@ -51,14 +51,14 @@ export default class ListingDescriptions extends React.Component {
   }
 }
 
-ListingDescriptions.propTypes = {
+Descriptions.propTypes = {
   descriptions: PropTypes.shape({
     main: PropTypes.string.isRequired,
     more: PropTypes.array.isRequired,
   }),
 };
 
-ListingDescriptions.defaultProps = {
+Descriptions.defaultProps = {
   descriptions: {
     main: 'placeholder',
     more: [],

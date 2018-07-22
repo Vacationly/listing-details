@@ -8,8 +8,9 @@ const hostCount = 10;
 const amenityCount = 20;
 const cancellationPolicyCount = 4;
 
-const getFakeListing = function (id, amenities, rules) {
+const getFakeListing = function (id, highlights, rules, amenities) {
   return {
+    highlights,
     rules,
     listingId: id,
     typeId: Math.floor(Math.random() * listingTypeCount),
@@ -27,26 +28,6 @@ const getFakeListing = function (id, amenities, rules) {
       { name: 'Bedrooms', value: Math.ceil(Math.random() * 3), icon: `${imageUrl}/room.png` },
       { name: 'Beds', value: Math.ceil(Math.random() * 5), icon: `${imageUrl}/bed.png` },
       { name: 'Baths', value: Math.ceil(Math.random() * 5), icon: `${imageUrl}/bath.png` },
-    ],
-    highlights: [
-      {
-        id: 1,
-        tagline: faker.random.words(),
-        description: faker.lorem.paragraph(),
-        upvotes: 0,
-      },
-      {
-        id: 2,
-        tagline: faker.random.words(),
-        description: faker.lorem.paragraph(),
-        upvotes: 0,
-      },
-      {
-        id: 3,
-        tagline: faker.random.words(),
-        description: faker.lorem.paragraph(),
-        upvotes: 0,
-      },
     ],
     descriptions: {
       main: faker.lorem.paragraph(),
@@ -99,15 +80,25 @@ const getFakeCancellationPolicy = function (id) {
 const generateFakeListing = function (id) {
   const numAmenities = Math.random() * (amenityCount / 2);
   const numRules = Math.random() * 10;
+  const highlights = [];
   const amenities = [];
   const rules = [];
-  for (let i = 0; i < numAmenities; i++) {
-    amenities.push(2 * i);
+  for (let i = 0; i < 3; i++) {
+    highlights.push({
+      id: i + 1,
+      tagline: faker.random.words(),
+      description: faker.lorem.paragraph(),
+      upvotes: 0,
+      downvotes: 0,
+    });
   }
   for (let i = 0; i < numRules; i++) {
     rules.push(faker.random.words());
   }
-  return getFakeListing(id, amenities, rules);
+  for (let i = 0; i < numAmenities; i++) {
+    amenities.push(2 * i);
+  }
+  return getFakeListing(id, highlights, rules, amenities);
 };
 
 const generateData = function () {

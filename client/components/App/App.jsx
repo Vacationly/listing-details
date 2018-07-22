@@ -2,6 +2,7 @@ import axios from 'axios';
 import React from 'react';
 
 import Summary from '../ListingDetails/Summary/Summary';
+import Highlights from '../ListingDetails/Highlights/Highlights';
 import Descriptions from '../ListingDetails/Descriptions/Descriptions';
 import Amenities from '../ListingDetails/Amenities/Amenities';
 import SleepingArrangements from '../ListingDetails/SleepingArrangements/SleepingArrangements';
@@ -13,6 +14,7 @@ const apiBaseUrl = '/api/listings';
 export default class extends React.Component {
   constructor(props) {
     super(props);
+    this.saveFeedbackData = this.saveFeedbackData.bind(this);
     this.state = {
       listingData: {},
       dataReady: false,
@@ -31,6 +33,15 @@ export default class extends React.Component {
     });
   }
 
+  saveFeedbackData(id, value) {
+    // axios.put(`${apiBaseUrl}/${this.state.listingData.listingId}/highlights/${id}`, {
+    //   feedback: value,
+    // });
+    // .then((response) => {
+    //   this.setState({ listingData: response.data, dataReady: true });
+    // });
+  }
+
   render() {
     const {
       title,
@@ -46,7 +57,6 @@ export default class extends React.Component {
       cancellationPolicy,
     } = this.state.listingData || {};
     if (this.state.dataReady) {
-      console.log(this.state.listingData);
       return (
         <div>
           <Summary
@@ -56,6 +66,7 @@ export default class extends React.Component {
             capacity={capacity}
             host={host}
           />
+          <Highlights highlights={highlights} saveFeedback={this.saveFeedbackData} />
           <Descriptions descriptions={descriptions} />
           <hr />
           <Amenities amenities={amenities} />

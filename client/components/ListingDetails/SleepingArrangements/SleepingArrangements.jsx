@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import Section from '../../Utilities/Section/Section';
 import styles from './SleepingArrangements.css';
 
-const ListingSleepingArrangements = (props) => {
+const SleepingArrangements = (props) => {
   const { sleepingArrangements } = props;
   const sleepingArrangementsTiles = (
     <div className={styles.sleepingArrangementTiles}>
@@ -33,7 +33,7 @@ const ListingSleepingArrangements = (props) => {
   return <Section title="Sleeping arrangements" content={sleepingArrangementsTiles} />;
 };
 
-ListingSleepingArrangements.propTypes = {
+SleepingArrangements.propTypes = {
   sleepingArrangements: PropTypes.arrayOf(
     PropTypes.shape({
       spaceName: PropTypes.string.isRequired,
@@ -43,4 +43,4 @@ ListingSleepingArrangements.propTypes = {
   ).isRequired,
 };
 
-module.exports = ListingSleepingArrangements;
+module.exports = SleepingArrangements;
