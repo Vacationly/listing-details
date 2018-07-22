@@ -1,10 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import Section from '../../Utilities/Section/Section';
-import styles from './SleepingArrangements.css';
+import styles from './Highlights.css';
 
-const SleepingArrangements = (props) => {
+const Highlights = (props) => {
   const { sleepingArrangements } = props;
   const sleepingArrangementsTiles = (
     <div className={styles.sleepingArrangementTiles}>
@@ -33,14 +32,16 @@ const SleepingArrangements = (props) => {
   return <Section title="Sleeping arrangements" content={sleepingArrangementsTiles} />;
 };
 
-SleepingArrangements.propTypes = {
-  sleepingArrangements: PropTypes.arrayOf(
+Highlights.propTypes = {
+  highlights: PropTypes.arrayOf(
     PropTypes.shape({
-      spaceName: PropTypes.string.isRequired,
-      mattressType: PropTypes.string.isRequired,
-      number: PropTypes.number.isRequired,
+      id: PropTypes.number.isRequired,
+      tagline: PropTypes.string.isRequired,
+      description: PropTypes.string.isRequired,
+      upvotes: PropTypes.number.isRequired,
+      downvotes: PropTypes.number.isRequired,
     }),
   ).isRequired,
 };
 
-module.exports = SleepingArrangements;
+module.exports = Highlights;

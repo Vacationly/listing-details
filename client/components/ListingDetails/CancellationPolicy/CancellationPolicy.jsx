@@ -5,7 +5,7 @@ import Modal from '../../Utilities/Modal/Modal';
 
 import styles from './CancellationPolicy.css';
 
-export default class CancellationType extends React.Component {
+export default class CancellationPolicy extends React.Component {
   constructor(props) {
     super(props);
     this.toggleModal = this.toggleModal.bind(this);
@@ -56,7 +56,7 @@ export default class CancellationType extends React.Component {
   }
 }
 
-CancellationType.propTypes = {
+CancellationPolicy.propTypes = {
   cancellationPolicy: PropTypes.shape({
     title: PropTypes.string.isRequired,
     value: PropTypes.string.isRequired,

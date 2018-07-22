@@ -6,7 +6,7 @@ import styles from './Rules.css';
 
 const rulesThreshold = 3;
 
-export default class ListingRules extends React.Component {
+export default class Rules extends React.Component {
   constructor(props) {
     super(props);
     this.toggleMoreInfo = this.toggleMoreInfo.bind(this);
@@ -45,6 +45,6 @@ export default class ListingRules extends React.Component {
   }
 }
 
-ListingRules.propTypes = {
+Rules.propTypes = {
   rules: PropTypes.arrayOf(PropTypes.string).isRequired,
 };

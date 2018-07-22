@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 
 import styles from './Summary.css';
 
-const ListingSummary = (props) => {
+const Summary = (props) => {
   const {
     title, listingType, location, capacity, host,
   } = props;
@@ -41,7 +41,7 @@ const ListingSummary = (props) => {
   );
 };
 
-ListingSummary.propTypes = {
+Summary.propTypes = {
   title: PropTypes.string.isRequired,
   listingType: PropTypes.shape({
     id: PropTypes.number.isRequired,
@@ -66,4 +66,4 @@ ListingSummary.propTypes = {
   }).isRequired,
 };
 
-module.exports = ListingSummary;
+module.exports = Summary;
