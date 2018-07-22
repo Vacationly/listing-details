@@ -59,8 +59,8 @@ Summary.propTypes = {
   }).isRequired,
   location: PropTypes.shape({
     city: PropTypes.string.isRequired,
-    state: PropTypes.string.isRequired,
-    country: PropTypes.string.isRequired,
+    state: PropTypes.string,
+    country: PropTypes.string,
   }).isRequired,
   capacity: PropTypes.arrayOf(
     PropTypes.shape({
