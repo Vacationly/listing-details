@@ -8,9 +8,11 @@ const Modal = (props) => {
   const handleDismiss = (e) => {
     if (e.target.className === styles.background || e.target.className === styles.dismiss) {
       e.stopPropagation();
+      window.document.body.style.overflow = 'visible';
       dismiss();
     }
   };
+  window.document.body.style.overflow = 'hidden';
   return (
     <div>
       <div
