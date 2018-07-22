@@ -20,12 +20,12 @@ export default class Descriptions extends React.Component {
   render() {
     const { main, more } = this.props.descriptions;
     const { expanded } = this.state;
-    return (
+    const content = (
       <div>
         <div className={styles.content}>
           {main}
         </div>
-        <div className={!expanded && styles.hidden}>
+        <div className={expanded ? '' : styles.hidden}>
           {more.map(info => (
             <Section
               title={info.title}
@@ -37,16 +37,14 @@ export default class Descriptions extends React.Component {
             />
           ))}
         </div>
-        <div
-          className={styles.link}
-          onClick={this.toggleMoreInfo}
-          onKeyUp={this.toggleMoreInfo}
-          tabIndex="0"
-          role="link"
-        >
-          {expanded ? 'Hide ↑' : 'Read more about the space ↓'}
-        </div>
       </div>
+    );
+    return (
+      <Section
+        content={content}
+        link={expanded ? 'Hide ↑' : 'Read more about the space ↓'}
+        action={this.toggleMoreInfo}
+      />
     );
   }
 }
