@@ -26,11 +26,22 @@ export default class Rules extends React.Component {
     const rulesList = (
       <div>
         {rules.map(
-          (rule, index) => (expanded || index < rulesThreshold) && (
+          (rule, index) => index < rulesThreshold && (
           <div className={styles.ruleItem}>
             {rule}
           </div>
           ),
+        )}
+        {expanded && (
+          <div>
+            {rules.map(
+              (rule, index) => index >= rulesThreshold && (
+              <div className={styles.ruleItem}>
+                {rule}
+              </div>
+              ),
+            )}
+          </div>
         )}
       </div>
     );
