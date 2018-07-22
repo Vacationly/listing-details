@@ -25,18 +25,20 @@ export default class Descriptions extends React.Component {
         <div className={styles.content}>
           {main}
         </div>
-        <div className={expanded ? '' : styles.hidden}>
-          {more.map(info => (
-            <Section
-              title={info.title}
-              content={(
-                <div>
-                  {info.value}
-                </div>
+        {expanded && (
+          <div>
+            {more.map(info => (
+              <Section
+                title={info.title}
+                content={(
+                  <div>
+                    {info.value}
+                  </div>
 )}
-            />
-          ))}
-        </div>
+              />
+            ))}
+          </div>
+        )}
       </div>
     );
     return (
