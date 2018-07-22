@@ -1,8 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import Section from '../../Utilities/Section/Section';
+import { expandCollapse } from '../../../utils';
 
-import styles from '../../Utilities/Section/Section.css';
+import styles from './Descriptions.css';
 
 export default class Descriptions extends React.Component {
   constructor(props) {
@@ -14,7 +15,10 @@ export default class Descriptions extends React.Component {
   }
 
   toggleMoreInfo() {
-    this.setState(prevState => ({ expanded: !prevState.expanded }));
+    this.setState(
+      prevState => ({ expanded: !prevState.expanded }),
+      () => expandCollapse(styles.moreWrapper, styles.moreContent, this.state.expanded),
+    );
   }
 
   render() {
@@ -22,11 +26,11 @@ export default class Descriptions extends React.Component {
     const { expanded } = this.state;
     const content = (
       <div>
-        <div className={styles.content}>
+        <div>
           {main}
         </div>
-        {expanded && (
-          <div>
+        <div className={styles.moreWrapper}>
+          <div className={styles.moreContent}>
             {more.map(info => (
               <Section
                 title={info.title}
@@ -38,13 +42,13 @@ export default class Descriptions extends React.Component {
               />
             ))}
           </div>
-        )}
+        </div>
       </div>
     );
     return (
       <Section
         content={content}
-        link={expanded ? 'Hide ↑' : 'Read more about the space ↓'}
+        link={expanded ? 'Hide' : 'Read more about the space'}
         action={this.toggleMoreInfo}
       />
     );

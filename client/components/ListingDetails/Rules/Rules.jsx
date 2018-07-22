@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import Section from '../../Utilities/Section/Section';
+import { expandCollapse } from '../../../utils';
 
 import styles from './Rules.css';
 
@@ -16,7 +17,12 @@ export default class Rules extends React.Component {
   }
 
   toggleMoreInfo() {
-    this.setState(prevState => ({ expanded: !prevState.expanded }));
+    this.setState(
+      prevState => ({ expanded: !prevState.expanded }),
+      () => {
+        expandCollapse(styles.moreWrapper, styles.moreContent, this.state.expanded);
+      },
+    );
   }
 
   render() {
@@ -32,8 +38,8 @@ export default class Rules extends React.Component {
           </div>
           ),
         )}
-        {expanded && (
-          <div>
+        <div className={styles.moreWrapper}>
+          <div className={styles.moreContent}>
             {rules.map(
               (rule, index) => index >= rulesThreshold && (
               <div className={styles.ruleItem}>
@@ -42,7 +48,7 @@ export default class Rules extends React.Component {
               ),
             )}
           </div>
-        )}
+        </div>
       </div>
     );
     return (
