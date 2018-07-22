@@ -10,7 +10,7 @@ import Rules from '../ListingDetails/Rules/Rules';
 import CancellationPolicy from '../ListingDetails/CancellationPolicy/CancellationPolicy';
 import { constants } from '../utils';
 
-const { apiEndpoint } = constants;
+const { apiEndpoint, placeholderListing } = constants;
 
 export default class extends React.Component {
   constructor(props) {
@@ -28,13 +28,18 @@ export default class extends React.Component {
     this.getListingData(listingId);
   }
 
-  getListingData(id) {
+  getListingData(listingId) {
     axios
-      .get(`${apiEndpoint}/${id}`)
+      .get(`${apiEndpoint}/${listingId}`)
       .then((response) => {
         this.setState({ listingData: response.data, dataReady: true });
       })
-      .catch((err) => {});
+      .catch((err) => {
+        this.setState(
+          { listingData: placeholderListing, dataReady: true },
+          console.log(this.state.listingData),
+        );
+      });
   }
 
   saveFeedbackData(id, value) {
@@ -69,16 +74,16 @@ export default class extends React.Component {
             capacity={capacity}
             host={host}
           />
-          <Highlights highlights={highlights} saveFeedback={this.saveFeedbackData} />
-          <Descriptions descriptions={descriptions} />
-          <hr />
-          <Amenities amenities={amenities} />
-          <hr />
-          <SleepingArrangements sleepingArrangements={sleepingArrangements} />
-          <hr />
-          <Rules rules={rules} />
-          <hr />
-          <CancellationPolicy cancellationPolicy={cancellationPolicy} />
+          {highlights && (
+            <Highlights highlights={highlights} saveFeedback={this.saveFeedbackData} />
+          )}
+          {descriptions && <Descriptions descriptions={descriptions} />}
+          {amenities && <Amenities amenities={amenities} />}
+          {sleepingArrangements && (
+            <SleepingArrangements sleepingArrangements={sleepingArrangements} />
+          )}
+          {rules && <Rules rules={rules} />}
+          {cancellationPolicy && <CancellationPolicy cancellationPolicy={cancellationPolicy} />}
         </div>
       );
     }

@@ -64,6 +64,7 @@ export default class Amenities extends React.Component {
         {showModal && (
           <Modal title="Amenities" content={amenitiesLong} dismiss={this.toggleModal} />
         )}
+        <hr />
       </div>
     );
   }
