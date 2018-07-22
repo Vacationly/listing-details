@@ -52,9 +52,16 @@
   margin: 0 0.5em;
 }
 
+@media (max-width: 640px) {
+  .frame {
+    margin: 0 20px;
+  }
+}
+
 @media (max-width: 360px) {
   .frame {
     width: 100vw;
     height: 100vh;
+    margin: 0;
   }
 }
