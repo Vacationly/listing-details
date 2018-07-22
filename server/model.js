@@ -33,7 +33,6 @@ const getListingDetails = function (id, callback) {
 };
 
 const updateHighlightFeedback = function (listingId, highlightId, feedback, callback) {
-  console.log('updating feedback for ', listingId, highlightId);
   models.Listing.findOneAndUpdate(
     { listingId, 'highlights.id': highlightId },
     { $inc: { 'highlights.$.upvotes': feedback } },
