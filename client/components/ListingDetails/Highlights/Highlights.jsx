@@ -3,34 +3,84 @@ import PropTypes from 'prop-types';
 
 import styles from './Highlights.css';
 
-const Highlights = (props) => {
-  const { sleepingArrangements } = props;
-  const sleepingArrangementsTiles = (
-    <div className={styles.sleepingArrangementTiles}>
-      {sleepingArrangements.map(
-        sleepingArrangement => sleepingArrangement.number > 0 && (
-        <div className={styles.sleepingArrangementTile}>
-          <div className={styles.spaceName}>
-            {sleepingArrangement.spaceName}
-          </div>
-          <div className={styles.mattressType}>
-            {sleepingArrangement.number}
-            {' '}
-            {sleepingArrangement.mattressType}
-            {sleepingArrangement.number > 1
-                  && (sleepingArrangement.mattressType[sleepingArrangement.mattressType.length - 1]
-                  === 's'
-                    ? 'es'
-                    : 's')}
-          </div>
-        </div>
-        ),
-      )}
-    </div>
-  );
+export default class Highlights extends React.Component {
+  constructor(props) {
+    super(props);
+    this.handleFeedback = this.handleFeedback.bind(this);
+    this.state = {
+      feedback: [],
+    };
+  }
 
-  return <Section title="Sleeping arrangements" content={sleepingArrangementsTiles} />;
-};
+  handleFeedback(index, value) {
+    const { feedback } = this.state;
+    feedback[index] = value;
+    this.props.saveFeedback(index, value);
+    this.setState({ feedback }, () => {
+      this.props.saveFeedback(index, value);
+    });
+  }
+
+  render() {
+    const { highlights } = this.props;
+    const { feedback } = this.state;
+    return (
+      <div className={styles.highlights}>
+        <div className={styles.heading}>
+home highlights
+        </div>
+        {highlights.map(highlight => (
+          <div className={styles.highlight}>
+            <div className={styles.details}>
+              <span className={styles.tagline}>
+                {highlight.tagline}
+              </span>
+              {' '}
+·
+              {' '}
+              <span className={styles.description}>
+                {highlight.description}
+              </span>
+            </div>
+            <div className={styles.feedback}>
+              {feedback[highlight.id] ? (
+                <span className={styles.thankYou}>
+Thank you for your feedback.
+                </span>
+              ) : (
+                <span>
+                  <span
+                    className={styles.upvote}
+                    onClick={() => this.handleFeedback(highlight.id, 1)}
+                    onKeyUp={() => this.handleFeedback(highlight.id, 1)}
+                    tabIndex="0"
+                    role="link"
+                  >
+                    Helpful
+                    {' '}
+                    <span className="thumbsUp" />
+                  </span>
+                  {' '}
+                  ·
+                  {' '}
+                  <span
+                    className={styles.downvote}
+                    onClick={() => this.handleFeedback(highlight.id, -1)}
+                    onKeyUp={() => this.handleFeedback(highlight.id, -1)}
+                    tabIndex="0"
+                    role="link"
+                  >
+                    Not helpful
+                  </span>
+                </span>
+              )}
+            </div>
+          </div>
+        ))}
+      </div>
+    );
+  }
+}
 
 Highlights.propTypes = {
   highlights: PropTypes.arrayOf(
@@ -42,6 +92,5 @@ Highlights.propTypes = {
       downvotes: PropTypes.number.isRequired,
     }),
   ).isRequired,
+  saveFeedback: PropTypes.func.isRequired,
 };
-
-module.exports = Highlights;

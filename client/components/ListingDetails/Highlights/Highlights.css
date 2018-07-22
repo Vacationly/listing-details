@@ -1,18 +1,37 @@
-.sleepingArrangementTiles {
-  display: flex;
-  flex-wrap: wrap;
-}
-
-.sleepingArrangementTile {
-  max-width: 30%;
-  border: 1px solid lightgrey;
+.highlights {
+  border: 1px lightgrey solid;
   border-radius: 0.5em;
-  margin: 0.5em;
-  padding: 0.5em;
-  flex: 1;
+  margin: 0.5em 0;
+  padding: 1.5em 1.5em 1em 1.5em;
 }
 
-.spaceName {
-  margin: 0.5em 0;
+.heading {
+  margin: 0 0 0.5em;
   font-weight: 600;
+  font-variant: small-caps;
+  color: #888888;
+}
+
+.highlight {
+  margin: 1em 0;
+}
+
+.tagline {
+  font-weight: 400;
+}
+
+.feedback {
+  margin: 0.5em 0;
+  font-size: 0.8em;
+  color: #888888;
+}
+
+.upvote,
+.downvote {
+  cursor: pointer;
+}
+
+.upvote:hover,
+.downvote:hover {
+  color: #008489;
 }
