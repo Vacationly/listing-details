@@ -15,12 +15,8 @@ hr {
   outline: 0;
 }
 
-.moreWrapper {
-  height: 0;
-  transition: 0.5s height ease-out;
-  overflow: hidden;
-}
-
-.moreContent {
-  height: fit-content;
+@media (max-width: 640px) {
+  body {
+    margin: 0 20px;
+  }
 }
