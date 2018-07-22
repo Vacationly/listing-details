@@ -38,8 +38,11 @@ const Summary = (props) => {
         </div>
       </div>
       <div className={styles.capacity}>
-        {capacity.map(field => (
-          <span className={styles.capacityField}>
+        {capacity.map((field, index) => (
+          <span
+            className={styles.capacityField}
+            styles={{ gridRow: Math.floor((index + 1) / 2), gridColumn: (index % 2) + 1 }}
+          >
             <img src={imageSources[field.name]} alt={field.name} />
             {field.value}
             {' '}
