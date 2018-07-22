@@ -25,10 +25,10 @@ const getFakeListing = function (id, amenityIds, highlights, rules, sleepingArra
       country: faker.address.country(),
     },
     capacity: [
-      { name: 'Guests', value: Math.ceil(Math.random() * 5), icon: `${imageUrl}/guest.png` },
-      { name: 'Bedrooms', value: Math.ceil(Math.random() * 3), icon: `${imageUrl}/room.png` },
-      { name: 'Beds', value: Math.ceil(Math.random() * 5), icon: `${imageUrl}/bed.png` },
-      { name: 'Baths', value: Math.ceil(Math.random() * 5), icon: `${imageUrl}/bath.png` },
+      { name: 'Guest', value: Math.ceil(Math.random() * 5) },
+      { name: 'Bedroom', value: Math.ceil(Math.random() * 3) },
+      { name: 'Bed', value: Math.ceil(Math.random() * 5) },
+      { name: 'Bath', value: Math.ceil(Math.random() * 5) },
     ],
     descriptions: {
       main: faker.lorem.paragraph(),
