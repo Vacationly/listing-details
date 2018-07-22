@@ -1,7 +1,6 @@
 .listingSummary {
-  display: grid;
-  grid-template-rows: auto [listingType] auto [headline] auto [city] auto [capacity] auto;
-  grid-template-columns: auto fit-content;
+  display: flex;
+  flex-direction: column;
 }
 
 .listingType {
@@ -9,11 +8,10 @@
 }
 
 .headline {
-  grid-row: 2;
   display: flex;
-  justify-content: space-between;
   align-items: center;
-  padding: 0.6em 0 1.2em;
+  justify-content: space-between;
+  margin: 0.5em 0 1em;
 }
 
 .title {
@@ -21,29 +19,35 @@
   font-weight: 600;
 }
 
-.city {
-  grid-row: city;
+.capacity {
+  display: flex;
 }
 
-.capacity > span {
+.capacityField {
+  display: flex;
+  align-items: center;
   grid-row: capacity;
   font-size: 0.8em;
-  margin-right: 0.5em;
+  margin-right: 1em;
+}
+
+.capacityField > img {
+  margin: 0 0.25em 0 0;
 }
 
 .host {
-  width: fit-content;
-  grid-row: title;
-  font-size: 0.8em;
   display: flex;
   flex-direction: column;
   align-items: center;
+  grid-row: title;
   align-self: top;
+  width: fit-content;
+  font-size: 0.8em;
 }
 
 .avatar {
-  width: 3em;
+  width: 4em;
   height: auto;
-  border-radius: 1.5rem;
+  border-radius: 2em;
   border-color: white;
 }

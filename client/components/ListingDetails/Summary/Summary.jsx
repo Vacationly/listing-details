@@ -1,7 +1,16 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { constants } from '../../utils';
 
 import styles from './Summary.css';
+
+const { imagesEndpoint } = constants;
+const imageSources = {
+  Bed: `${imagesEndpoint}/bed.png`,
+  Bath: `${imagesEndpoint}/bath.png`,
+  Bedroom: `${imagesEndpoint}/bedroom.png`,
+  Guest: `${imagesEndpoint}/guest.png`,
+};
 
 const Summary = (props) => {
   const {
@@ -24,16 +33,17 @@ const Summary = (props) => {
         <div className={styles.host}>
           <img src={host.avatar} className={styles.avatar} alt={host.name} />
           <span>
-            {host.name}
+            {host.name.split(' ')[0]}
           </span>
         </div>
       </div>
       <div className={styles.capacity}>
         {capacity.map(field => (
-          <span>
-            {field.name}
-            :
+          <span className={styles.capacityField}>
+            <img src={imageSources[field.name]} alt={field.name} />
             {field.value}
+            {' '}
+            {field.value === 1 ? field.name : `${field.name}s`}
           </span>
         ))}
       </div>
@@ -55,7 +65,6 @@ Summary.propTypes = {
     PropTypes.shape({
       name: PropTypes.string.isRequired,
       value: PropTypes.number.isRequired,
-      icon: PropTypes.string.isRequired,
     }),
   ).isRequired,
   host: PropTypes.shape({
