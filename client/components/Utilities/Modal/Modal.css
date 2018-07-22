@@ -17,7 +17,7 @@
   flex-direction: column;
   width: fit-content;
   height: fit-content;
-  max-width: 648px;
+  max-width: 600px;
   z-index: 1000;
   box-shadow: rgba(0, 0, 0, 0.2) 0px 1px 10px 0px;
   padding: 2em;
@@ -29,11 +29,11 @@
   height: 1.2em;
   border-radius: 1em;
   text-align: center;
-  line-height: 0.99em;
   font-size: 1.6em;
   font-weight: 100;
   color: grey;
   cursor: pointer;
+  line-height: 0.99em;
 }
 
 .dismiss:focus {
@@ -43,11 +43,18 @@
 }
 
 .title {
-  margin: 0.5em 0.25em;
+  margin: 0.25em 0.25em;
   font-size: 1.6em;
   font-weight: 800;
 }
 
 .content {
   margin: 0 0.5em;
+}
+
+@media (max-width: 360px) {
+  .frame {
+    width: 100vw;
+    height: 100vh;
+  }
 }
