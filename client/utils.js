@@ -1,4 +1,8 @@
-const baseUrl = 'https://s3.amazonaws.com/fec-overview-service-images';
+const apiEndpoint = '/api/listings';
+const imagesEndpoint = 'https://s3.amazonaws.com/fec-overview-service-images';
+const amenitiesThreshold = 6;
+const rulesThreshold = 3;
+
 const expandCollapse = (wrapperClass, contentClass, expanded) => {
   const wrapper = window.document.getElementsByClassName(wrapperClass)[0];
   const content = window.document.getElementsByClassName(contentClass)[0];
@@ -6,6 +10,13 @@ const expandCollapse = (wrapperClass, contentClass, expanded) => {
 };
 
 module.exports = {
-  baseUrl,
-  expandCollapse,
+  constants: {
+    apiEndpoint,
+    imagesEndpoint,
+    amenitiesThreshold,
+    rulesThreshold,
+  },
+  functions: {
+    expandCollapse,
+  },
 };

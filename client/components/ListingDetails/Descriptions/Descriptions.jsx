@@ -1,9 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import Section from '../../Utilities/Section/Section';
-import { expandCollapse } from '../../../utils';
+import { functions } from '../../../utils';
 
 import styles from './Descriptions.css';
+
+const { expandCollapse } = functions;
 
 export default class Descriptions extends React.Component {
   constructor(props) {

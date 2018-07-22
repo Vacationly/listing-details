@@ -2,10 +2,11 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import Section from '../../Utilities/Section/Section';
 import Modal from '../../Utilities/Modal/Modal';
+import { constants } from '../../../utils';
 
 import styles from './Amenities.css';
 
-const amenityThreshold = 6;
+const { amenitiesThreshold } = constants;
 
 export default class Amenities extends React.Component {
   constructor(props) {
@@ -26,12 +27,12 @@ export default class Amenities extends React.Component {
     const amenitiesShort = (
       <div className={styles.amenityList}>
         {amenities.map(
-          (amenity, index) => index < amenityThreshold && (
+          (amenity, index) => index < amenitiesThreshold && (
           <div
             className={styles.amenityItem}
             style={{
-              gridRow: (index % (amenityThreshold / 2)) + 1,
-              gridColumn: Math.ceil((index + 1) / (amenityThreshold / 2)),
+              gridRow: (index % (amenitiesThreshold / 2)) + 1,
+              gridColumn: Math.ceil((index + 1) / (amenitiesThreshold / 2)),
             }}
           >
             <span>
@@ -55,8 +56,8 @@ export default class Amenities extends React.Component {
         ))}
       </div>
     );
-    const link = amenities.length > amenityThreshold ? `Show all ${amenities.length} amenities` : '';
-    const action = amenities.length > amenityThreshold ? this.toggleModal : null;
+    const link = amenities.length > amenitiesThreshold ? `Show all ${amenities.length} amenities` : '';
+    const action = amenities.length > amenitiesThreshold ? this.toggleModal : null;
     return (
       <div>
         <Section title="Amenities" content={amenitiesShort} link={link} action={action} />

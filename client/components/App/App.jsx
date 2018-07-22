@@ -8,8 +8,9 @@ import Amenities from '../ListingDetails/Amenities/Amenities';
 import SleepingArrangements from '../ListingDetails/SleepingArrangements/SleepingArrangements';
 import Rules from '../ListingDetails/Rules/Rules';
 import CancellationPolicy from '../ListingDetails/CancellationPolicy/CancellationPolicy';
+import { constants } from '../../utils';
 
-const apiBaseUrl = '/api/listings';
+const { apiEndpoint } = constants;
 
 export default class extends React.Component {
   constructor(props) {
@@ -29,7 +30,7 @@ export default class extends React.Component {
 
   getListingData(id) {
     axios
-      .get(`${apiBaseUrl}/${id}`)
+      .get(`${apiEndpoint}/${id}`)
       .then((response) => {
         this.setState({ listingData: response.data, dataReady: true });
       })
@@ -38,7 +39,7 @@ export default class extends React.Component {
 
   saveFeedbackData(id, value) {
     axios
-      .put(`${apiBaseUrl}/${this.state.listingData.listingId}/highlights/${id}`, {
+      .put(`${apiEndpoint}/${this.state.listingData.listingId}/highlights/${id}`, {
         feedback: value,
       })
       .catch(err => console.log('Error updating database', err));

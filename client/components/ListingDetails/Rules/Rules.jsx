@@ -1,11 +1,12 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import Section from '../../Utilities/Section/Section';
-import { expandCollapse } from '../../../utils';
+import { constants, functions } from '../../../utils';
 
 import styles from './Rules.css';
 
-const rulesThreshold = 3;
+const { rulesThreshold } = constants;
+const { expandCollapse } = functions;
 
 export default class Rules extends React.Component {
   constructor(props) {

@@ -2,11 +2,11 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 import Section from '../../Utilities/Section/Section';
-import { baseUrl } from '../../../utils';
+import { constants } from '../../../utils';
 import styles from './Highlights.css';
 
-const thumbsUpEmpty = `${baseUrl}/thumbs_up_empty.png`;
-const thumbsUpFull = `${baseUrl}/thumbs_up_full.png`;
+const thumbsUpEmpty = `${constants.imagesEndpoint}/thumbs_up_empty.png`;
+const thumbsUpFull = `${constants.imagesEndpoint}/thumbs_up_full.png`;
 
 export default class Highlights extends React.Component {
   constructor(props) {
