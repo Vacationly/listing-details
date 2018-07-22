@@ -9,8 +9,11 @@ const SleepingArrangements = (props) => {
   const sleepingArrangementsTiles = (
     <div className={styles.sleepingArrangementTiles}>
       {sleepingArrangements.map(
-        sleepingArrangement => sleepingArrangement.number > 0 && (
-        <div className={styles.sleepingArrangementTile}>
+        (sleepingArrangement, index) => sleepingArrangement.number > 0 && (
+        <div
+          className={styles.sleepingArrangementTile}
+          style={{ gridRow: Math.floor((index + 1) / 3), gridColumn: (index % 3) + 1 }}
+        >
           <div className={styles.spaceName}>
             {sleepingArrangement.spaceName}
           </div>

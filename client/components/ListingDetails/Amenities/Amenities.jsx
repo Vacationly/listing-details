@@ -24,11 +24,15 @@ export default class Amenities extends React.Component {
     const { amenities } = this.props;
     const { showModal } = this.state;
     const amenitiesShort = (
-      <div className={styles.amenitiesList}>
+      <div className={styles.amenityList}>
         {amenities.map(
           (amenity, index) => index < amenityThreshold && (
           <div
-            className={`${styles.amenityItem} col${Math.floor(index / (amenityThreshold / 2))}`}
+            className={styles.amenityItem}
+            style={{
+              gridRow: (index % (amenityThreshold / 2)) + 1,
+              gridColumn: Math.ceil((index + 1) / (amenityThreshold / 2)),
+            }}
           >
             <span>
               <img className={styles.icon} src={amenity.icon} alt={amenity.value} />
