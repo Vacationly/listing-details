@@ -20,7 +20,6 @@ export default class Highlights extends React.Component {
   handleFeedback(index, value) {
     const { feedbackStatus } = this.state;
     feedbackStatus[index] = value;
-    this.props.saveFeedback(index, value);
     this.setState({ feedbackStatus }, () => {
       this.props.saveFeedback(index, value);
     });

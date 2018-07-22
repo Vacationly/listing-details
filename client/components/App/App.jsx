@@ -28,18 +28,20 @@ export default class extends React.Component {
   }
 
   getListingData(id) {
-    axios.get(`${apiBaseUrl}/${id}`).then((response) => {
-      this.setState({ listingData: response.data, dataReady: true });
-    });
+    axios
+      .get(`${apiBaseUrl}/${id}`)
+      .then((response) => {
+        this.setState({ listingData: response.data, dataReady: true });
+      })
+      .catch((err) => {});
   }
 
   saveFeedbackData(id, value) {
-    // axios.put(`${apiBaseUrl}/${this.state.listingData.listingId}/highlights/${id}`, {
-    //   feedback: value,
-    // });
-    // .then((response) => {
-    //   this.setState({ listingData: response.data, dataReady: true });
-    // });
+    axios
+      .put(`${apiBaseUrl}/${this.state.listingData.listingId}/highlights/${id}`, {
+        feedback: value,
+      })
+      .catch(err => console.log('Error updating database', err));
   }
 
   render() {
