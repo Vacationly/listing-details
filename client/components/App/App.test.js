@@ -73,8 +73,13 @@ describe('componentDidMount() with unsuccessful API request', () => {
 });
 
 describe('saveFeedbackData()', () => {
-  const axiosPut = sinon.spy(axios, 'put');
-
+  let axiosPut;
+  beforeEach(() => {
+    axiosPut = sinon.spy(axios, 'put');
+  });
+  afterEach(() => {
+    axiosPut.restore();
+  });
   it('should call axios.put to update feedback data', (done) => {
     const wrapper = shallow(<App />);
     return Promise.resolve(wrapper).then(() => {
