@@ -1,7 +1,5 @@
 .backdrop {
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  display: block;
   position: fixed;
   top: 0;
   left: 0;
@@ -15,11 +13,14 @@
 .frame {
   display: flex;
   flex-direction: column;
+  position: relative;
+  top: 2rem;
   width: fit-content;
   height: fit-content;
   max-width: 600px;
   z-index: 1000;
   box-shadow: rgba(0, 0, 0, 0.2) 0px 1px 10px 0px;
+  margin: 0 auto;
   padding: 2rem;
   background-color: white;
 }
