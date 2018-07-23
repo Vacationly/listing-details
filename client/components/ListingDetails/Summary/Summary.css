@@ -5,11 +5,12 @@
 
 .listingType {
   font-variant: small-caps;
+  font-weight: 400;
 }
 
 .headline {
   display: flex;
-  align-items: center;
+  align-items: start;
   justify-content: space-between;
   margin: 0.5rem 0 1rem;
 }
