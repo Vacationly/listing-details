@@ -32,7 +32,7 @@ const invalidProps = {
   },
 };
 
-describe('action', () => {
+describe('interaction', () => {
   const action = sinon.spy(validProps, 'action');
   afterEach(() => {
     action.resetHistory();
@@ -45,52 +45,26 @@ describe('action', () => {
   });
 });
 
-// describe('rendering', () => {
-//   const props = {
-//     title: 'Testing',
-//     content: <div />,
-//     dismiss() {
-//       return true;
-//     },
-//   };
-//   const clickEvent = {
-//     stopPropagation() {
-//       return true;
-//     },
-//   };
-//   const dismiss = sinon.spy(props, 'dismiss');
+describe('rendering', () => {
+  it('should change icons when value of "expanded" changes', () => {
+    let wrapper = shallow(<Section {...validProps} />);
+    const oldIcon = wrapper.find('#icon');
 
-//   afterEach(() => {
-//     dismiss.resetHistory();
-//   });
+    const newProps = Object.assign({}, validProps);
+    newProps.expanded = true;
+    wrapper = shallow(<Section {...newProps} />);
+    const newIcon = wrapper.find('#icon');
 
-//   it('should call dismiss once when clicking the x in the top left corner', () => {
-//     const wrapper = shallow(<Modal {...props} />);
-//     const target = wrapper.find('#dismiss');
-//     target.className = 'dismiss';
-//     clickEvent.target = target;
-//     target.simulate('click', clickEvent);
-//     expect(dismiss.callCount).toBe(1);
-//   });
-
-//   it('should call dismiss once when clicking the backdrop', () => {
-//     const wrapper = shallow(<Modal {...props} />);
-//     const target = wrapper.find('#backdrop');
-//     target.className = 'backdrop';
-//     clickEvent.target = target;
-//     target.simulate('click', clickEvent);
-//     expect(dismiss.callCount).toBe(1);
-//   });
-
-//   it('should call dismiss zero times when clicking the frame', () => {
-//     const wrapper = shallow(<Modal {...props} />);
-//     const target = wrapper.find('#frame');
-//     target.className = 'frame';
-//     clickEvent.target = target;
-//     target.simulate('click', clickEvent);
-//     expect(dismiss.callCount).toBe(0);
-//   });
-// });
+    expect(newIcon).not.toEqual(oldIcon);
+  });
+  it('should not display a link when no action is given', () => {
+    const newProps = Object.assign({}, validProps);
+    newProps.action = null;
+    const wrapper = shallow(<Section {...newProps} />);
+    const link = wrapper.find('#link');
+    expect(link.length).toBe(0);
+  });
+});
 
 describe('PropTypes', () => {
   const error = sinon.spy(console, 'error');
