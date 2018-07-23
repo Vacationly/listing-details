@@ -62,7 +62,6 @@ export default class Rules extends React.Component {
           expandable
           expanded={expanded}
         />
-        <hr />
       </div>
     );
   }

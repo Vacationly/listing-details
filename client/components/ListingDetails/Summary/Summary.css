@@ -15,9 +15,9 @@
 }
 
 .title {
+  padding: 0 1em 0 0;
   font-size: 2em;
   font-weight: 600;
-  padding: 0 1em 0 0;
 }
 
 .capacity {

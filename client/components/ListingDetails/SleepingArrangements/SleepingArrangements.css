@@ -1,6 +1,7 @@
 .sleepingArrangementTiles {
   display: grid;
   grid-template-columns: 32% 32% 32%;
+  margin: 0.5em 0 0;
   grid-gap: 0.5em 2%;
 }
 

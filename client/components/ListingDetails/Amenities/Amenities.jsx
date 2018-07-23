@@ -42,10 +42,8 @@ export default class Amenities extends React.Component {
       <div className={styles.amenitiesList}>
         {amenities.map(amenity => (
           <div className={styles.amenityItem}>
-            <span>
-              <img className={styles.icon} src={amenity.icon} alt={amenity.value} />
-            </span>
             {amenity.value}
+            <hr />
           </div>
         ))}
       </div>
@@ -58,7 +56,6 @@ export default class Amenities extends React.Component {
         {showModal && (
           <Modal title="Amenities" content={amenitiesLong} dismiss={this.toggleModal} />
         )}
-        <hr />
       </div>
     );
   }

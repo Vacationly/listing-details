@@ -27,7 +27,6 @@ const SleepingArrangements = (props) => {
   return (
     <div>
       <Section title="Sleeping arrangements" content={sleepingArrangementsTiles} />
-      <hr />
     </div>
   );
 };

@@ -35,7 +35,7 @@ export default class Descriptions extends React.Component {
           <div className={styles.moreContent}>
             {more.map(info => (
               <Section
-                title={info.title}
+                subtitle={info.title}
                 content={(
                   <div>
                     {info.value}
@@ -56,7 +56,6 @@ export default class Descriptions extends React.Component {
           expandable
           expanded={expanded}
         />
-        <hr />
       </div>
     );
   }
