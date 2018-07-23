@@ -1,11 +1,11 @@
-.sleepingArrangementTiles {
+.sleepingArrangements {
   display: grid;
   grid-template-columns: 32% 32% 32%;
   margin: 0.5em 0 0;
   grid-gap: 0.5em 2%;
 }
 
-.sleepingArrangementTile {
+.sleepingArrangement {
   border: 1px solid lightgrey;
   border-radius: 0.5em;
   padding: 0.5em;
@@ -14,6 +14,16 @@
 .spaceName {
   margin: 0.5em 0;
   font-weight: 600;
+}
+
+.moreWrapper {
+  height: 0;
+  transition: 0.5s height ease-out;
+  overflow: hidden;
+}
+
+.moreContent {
+  height: fit-content;
 }
 
 @media (max-width: 400px) {
