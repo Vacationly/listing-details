@@ -22,11 +22,11 @@ describe('GET listing data', () => {
           'listingType',
           'host',
           'location',
-          'descriptions',
+          'description',
           'highlights',
           'amenities',
           'sleepingArrangements',
-          'rules',
+          'houseRules',
           'cancellationPolicy',
         ]),
       );
