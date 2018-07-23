@@ -5,7 +5,7 @@ import styles from './Summary.css';
 
 const Summary = (props) => {
   const {
-    title, listingType, location, capacity, host,
+    title, listingType, location, host,
   } = props;
   return (
     <div className={styles.listingSummary}>
