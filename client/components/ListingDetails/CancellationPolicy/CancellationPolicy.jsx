@@ -21,12 +21,8 @@ export default class CancellationPolicy extends React.Component {
   render() {
     const { cancellationPolicy } = this.props;
     const { modalVisible } = this.state;
-    const cancellationPolicyOverview = (
-      <CancellationPolicyOverview cancellationPolicy={cancellationPolicy} />
-    );
-    const cancellationPolicyDetails = (
-      <CancellationPolicyDetails cancellationPolicy={cancellationPolicy} />
-    );
+    const cancellationPolicyOverview = <CancellationPolicyOverview {...this.props} />;
+    const cancellationPolicyDetails = <CancellationPolicyDetails {...this.props} />;
     return (
       <div>
         {cancellationPolicy.name && (

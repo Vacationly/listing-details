@@ -29,7 +29,7 @@ const completeProps = {
 };
 
 describe('rendering', () => {
-  it('should NOT render Section component when all props are empty', () => {
+  it('should NOT render component when all props are empty', () => {
     const wrapper = mount(<CancellationPolicy {...emptyProps} />);
     const target = wrapper.find('#title');
     expect(target.length).toBe(0);

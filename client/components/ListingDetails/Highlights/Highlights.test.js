@@ -42,7 +42,7 @@ describe('interaction', () => {
     const wrapper = mount(<Highlights {...completeProps} />);
     wrapper.find('#downvote').simulate('click');
     wrapper.update();
-    const feedbackStatus = wrapper.state().feedbackStatus;
+    const { feedbackStatus } = wrapper.state();
     expect(feedbackStatus).not.toEqual([]);
   });
 });

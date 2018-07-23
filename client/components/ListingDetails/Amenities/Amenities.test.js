@@ -30,7 +30,7 @@ const completeProps = {
 };
 
 describe('rendering', () => {
-  it('should NOT render Section component when there are no amenities', () => {
+  it('should NOT render component when there are no amenities', () => {
     const wrapper = mount(<Amenities {...emptyProps} />);
     const target = wrapper.find('#title');
     expect(target.length).toBe(0);

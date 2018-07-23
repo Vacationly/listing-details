@@ -24,8 +24,8 @@ export default class Amenities extends React.Component {
   render() {
     const { amenities } = this.props;
     const { showModal } = this.state;
-    const amenitiesShort = <AmenitiesShortList amenities={amenities} />;
-    const amenitiesLong = <AmenitiesFullList amenities={amenities} />;
+    const amenitiesShort = <AmenitiesShortList {...this.props} />;
+    const amenitiesLong = <AmenitiesFullList {...this.props} />;
     const link = amenities.length > amenitiesThreshold ? `Show all ${amenities.length} amenities` : '';
     const action = amenities.length > amenitiesThreshold ? this.toggleModal : null;
     return (
