@@ -37,17 +37,7 @@ const Summary = (props) => {
           </span>
         </div>
       </div>
-      <div className={styles.capacity}>
-        {capacity.map(field => (
-          <span className={styles.capacityField}>
-            <img src={imageSources[field.name]} alt={field.name} />
-            {field.value}
-            {' '}
-            {field.name}
-            {field.value !== 1 && 's'}
-          </span>
-        ))}
-      </div>
+      <Capacity capacity={capacity} />
     </div>
   );
 };
@@ -72,6 +62,32 @@ Summary.propTypes = {
     name: PropTypes.string.isRequired,
     avatar: PropTypes.string.isRequired,
   }).isRequired,
+};
+
+const Capacity = (props) => {
+  const { capacity } = props;
+  return (
+    <div className={styles.capacity}>
+      {capacity.map(field => (
+        <span className={styles.capacityField}>
+          <img src={imageSources[field.name]} alt={field.name} />
+          {field.value}
+          {' '}
+          {field.name}
+          {field.value !== 1 && 's'}
+        </span>
+      ))}
+    </div>
+  );
+};
+
+Capacity.propTypes = {
+  capacity: PropTypes.arrayOf(
+    PropTypes.shape({
+      name: PropTypes.string.isRequired,
+      value: PropTypes.number.isRequired,
+    }),
+  ).isRequired,
 };
 
 module.exports = Summary;

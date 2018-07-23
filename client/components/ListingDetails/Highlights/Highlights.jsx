@@ -58,6 +58,18 @@ home highlights
   }
 }
 
+Highlights.propTypes = {
+  highlights: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.number.isRequired,
+      tagline: PropTypes.string.isRequired,
+      description: PropTypes.string.isRequired,
+      upvotes: PropTypes.number.isRequired,
+    }),
+  ).isRequired,
+  saveFeedback: PropTypes.func.isRequired,
+};
+
 const HighlightFeedback = (props) => {
   const { id, feedbackStatus, handleFeedback } = props;
   const handleUpvoteHover = (e) => {
@@ -102,19 +114,6 @@ Thank you for your feedback.
       )}
     </div>
   );
-};
-
-Highlights.propTypes = {
-  highlights: PropTypes.arrayOf(
-    PropTypes.shape({
-      id: PropTypes.number.isRequired,
-      tagline: PropTypes.string.isRequired,
-      description: PropTypes.string.isRequired,
-      upvotes: PropTypes.number.isRequired,
-      downvotes: PropTypes.number.isRequired,
-    }),
-  ).isRequired,
-  saveFeedback: PropTypes.func.isRequired,
 };
 
 HighlightFeedback.propTypes = {

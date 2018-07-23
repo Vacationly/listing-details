@@ -26,31 +26,11 @@ export default class Descriptions extends React.Component {
   render() {
     const { main, more } = this.props.descriptions;
     const { expanded } = this.state;
-    const content = (
-      <div>
-        <div>
-          {main}
-        </div>
-        <div className={styles.moreWrapper}>
-          <div className={styles.moreContent}>
-            {more.map(info => (
-              <Section
-                subtitle={info.title}
-                content={(
-                  <div>
-                    {info.value}
-                  </div>
-)}
-              />
-            ))}
-          </div>
-        </div>
-      </div>
-    );
+    const descriptions = <DescriptionContent main={main} more={more} />;
     return (
       <div>
         <Section
-          content={content}
+          content={descriptions}
           link={expanded ? 'Hide' : 'Read more about the space'}
           action={this.toggleMoreInfo}
           expandable
@@ -68,9 +48,34 @@ Descriptions.propTypes = {
   }),
 };
 
-Descriptions.defaultProps = {
-  descriptions: {
-    main: 'placeholder',
-    more: [],
-  },
+const DescriptionContent = (props) => {
+  const { main, more } = props;
+  return (
+    <div>
+      <div>
+        {main}
+      </div>
+      <div className={styles.moreWrapper}>
+        <div className={styles.moreContent}>
+          {more.map(info => (
+            <Section
+              subtitle={info.title}
+              content={(
+                <div>
+                  {info.value}
+                </div>
+)}
+            />
+          ))}
+        </div>
+      </div>
+    </div>
+  );
+};
+
+DescriptionContent.propTypes = {
+  main: PropTypes.string.isRequired,
+  more: PropTypes.arrayOf(
+    PropTypes.shape({ title: PropTypes.string.isRequired, value: PropTypes.string.isRequired }),
+  ).isRequired,
 };
