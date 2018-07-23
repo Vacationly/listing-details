@@ -19,7 +19,6 @@
 .moreWrapper {
   height: 0;
   opacity: 0;
-  top: 0.5rem;
   transition: 0.5s all ease-out;
   overflow: hidden;
 }
