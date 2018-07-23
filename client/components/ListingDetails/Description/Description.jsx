@@ -3,11 +3,11 @@ import PropTypes from 'prop-types';
 import Section from '../../Utilities/Section/Section';
 import { functions } from '../../utils';
 
-import styles from './Descriptions.css';
+import styles from './Description.css';
 
 const { expandCollapse } = functions;
 
-export default class Descriptions extends React.Component {
+export default class Description extends React.Component {
   constructor(props) {
     super(props);
     this.toggleMoreInfo = this.toggleMoreInfo.bind(this);
@@ -24,15 +24,15 @@ export default class Descriptions extends React.Component {
   }
 
   render() {
-    const { main, more } = this.props.descriptions;
+    const { main, more } = this.props.description;
     const { expanded } = this.state;
-    const descriptions = <DescriptionContent main={main} more={more} />;
+    const description = <DescriptionContent {...this.props} />;
     const linkVariant = expanded ? 'Hide' : 'Read more about the space';
     const link = more.length ? linkVariant : null;
     return (
       <div>
         <Section
-          content={descriptions}
+          content={description}
           link={link}
           action={this.toggleMoreInfo}
           expandable
@@ -43,7 +43,7 @@ export default class Descriptions extends React.Component {
   }
 }
 
-Descriptions.propTypes = {
+Description.propTypes = {
   descriptions: PropTypes.shape({
     main: PropTypes.string.isRequired,
     more: PropTypes.array.isRequired,
@@ -51,7 +51,7 @@ Descriptions.propTypes = {
 };
 
 const DescriptionContent = (props) => {
-  const { main, more } = props;
+  const { main, more } = props.description;
   return (
     <div>
       <div>
@@ -76,8 +76,8 @@ const DescriptionContent = (props) => {
 };
 
 DescriptionContent.propTypes = {
-  main: PropTypes.string.isRequired,
-  more: PropTypes.arrayOf(
-    PropTypes.shape({ title: PropTypes.string.isRequired, value: PropTypes.string.isRequired }),
-  ).isRequired,
+  descriptions: PropTypes.shape({
+    main: PropTypes.string.isRequired,
+    more: PropTypes.array.isRequired,
+  }).isRequired,
 };

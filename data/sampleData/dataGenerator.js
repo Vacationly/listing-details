@@ -30,13 +30,13 @@ const getFakeListing = function (id, amenityIds, highlights, rules, sleepingArra
       { name: 'Bed', value: Math.ceil(Math.random() * 5) },
       { name: 'Bath', value: Math.ceil(Math.random() * 5) },
     ],
-    descriptions: {
+    description: {
       main: faker.lorem.paragraph(),
       more: [
-        { title: 'The space', value: faker.lorem.paragraphs() },
-        { title: 'Guest access', value: faker.lorem.paragraphs() },
-        { title: 'Interaction with guests', value: faker.lorem.paragraphs() },
-        { title: 'Other notables', value: faker.lorem.paragraphs() },
+        { title: 'The space', value: faker.lorem.paragraph() },
+        { title: 'Guest access', value: faker.lorem.paragraph() },
+        { title: 'Interaction with guests', value: faker.lorem.paragraph() },
+        { title: 'Other notables', value: faker.lorem.paragraph() },
       ],
     },
   };
@@ -81,7 +81,7 @@ const generateFakeListing = function (id) {
     highlights.push({
       id: i + 1,
       tagline: faker.random.words(),
-      description: faker.lorem.paragraph(),
+      description: faker.lorem.sentence(),
       upvotes: 0,
     });
   }

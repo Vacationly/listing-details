@@ -19,7 +19,7 @@ const listing = {
       upvotes: Number,
     },
   ],
-  descriptions: { main: String, more: [{ title: String, value: String }] },
+  description: { main: String, more: [{ title: String, value: String }] },
   sleepingArrangements: [{ spaceName: String, mattressType: String, number: Number }],
   rules: [String],
 };

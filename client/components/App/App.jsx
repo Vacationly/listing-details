@@ -3,7 +3,7 @@ import React from 'react';
 
 import Summary from '../ListingDetails/Summary/Summary';
 import Highlights from '../ListingDetails/Highlights/Highlights';
-import Descriptions from '../ListingDetails/Descriptions/Descriptions';
+import Description from '../ListingDetails/Description/Description';
 import Amenities from '../ListingDetails/Amenities/Amenities';
 import SleepingArrangements from '../ListingDetails/SleepingArrangements/SleepingArrangements';
 import Rules from '../ListingDetails/Rules/Rules';
@@ -25,8 +25,8 @@ export default class extends React.Component {
   }
 
   componentDidMount() {
-    const windowPath = window.location.pathname.split('/');
-    const listingId = parseInt(windowPath[windowPath.length - 2]) || 0;
+    const windowPath = window.location.pathname.split('/listings');
+    const listingId = parseInt(windowPath[0], 10) || 0;
     this.getListingData(listingId);
   }
 
@@ -50,39 +50,27 @@ export default class extends React.Component {
   }
 
   render() {
+    const { listingData } = this.state;
     const {
-      title,
-      listingType,
-      host,
-      location,
-      capacity,
       highlights,
-      descriptions,
+      description,
       amenities,
       sleepingArrangements,
       rules,
       cancellationPolicy,
-    } = this.state.listingData;
+    } = listingData;
     if (this.state.dataReady) {
       return (
         <div>
-          <Summary
-            title={title}
-            listingType={listingType}
-            location={location}
-            capacity={capacity}
-            host={host}
-          />
+          <Summary {...listingData} />
           {highlights && (
             <Highlights highlights={highlights} saveFeedback={this.saveFeedbackData} />
           )}
-          {descriptions && <Descriptions descriptions={descriptions} />}
-          {amenities && <Amenities amenities={amenities} />}
-          {sleepingArrangements && (
-            <SleepingArrangements sleepingArrangements={sleepingArrangements} />
-          )}
-          {rules && <Rules rules={rules} />}
-          {cancellationPolicy && <CancellationPolicy cancellationPolicy={cancellationPolicy} />}
+          {description && <Description {...listingData} />}
+          {amenities && <Amenities {...listingData} />}
+          {sleepingArrangements && <SleepingArrangements {...listingData} />}
+          {rules && <Rules {...listingData} />}
+          {cancellationPolicy && <CancellationPolicy {...listingData} />}
         </div>
       );
     }
