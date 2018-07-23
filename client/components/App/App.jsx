@@ -6,7 +6,7 @@ import Highlights from '../ListingDetails/Highlights/Highlights';
 import Description from '../ListingDetails/Description/Description';
 import Amenities from '../ListingDetails/Amenities/Amenities';
 import SleepingArrangements from '../ListingDetails/SleepingArrangements/SleepingArrangements';
-import Rules from '../ListingDetails/Rules/Rules';
+import HouseRules from '../ListingDetails/HouseRules/HouseRules';
 import CancellationPolicy from '../ListingDetails/CancellationPolicy/CancellationPolicy';
 import { constants } from '../utils';
 
@@ -56,7 +56,7 @@ export default class extends React.Component {
       description,
       amenities,
       sleepingArrangements,
-      rules,
+      houseRules,
       cancellationPolicy,
     } = listingData;
     if (this.state.dataReady) {
@@ -69,7 +69,7 @@ export default class extends React.Component {
           {description && <Description {...listingData} />}
           {amenities && <Amenities {...listingData} />}
           {sleepingArrangements && <SleepingArrangements {...listingData} />}
-          {rules && <Rules {...listingData} />}
+          {houseRules && <HouseRules {...listingData} />}
           {cancellationPolicy && <CancellationPolicy {...listingData} />}
         </div>
       );

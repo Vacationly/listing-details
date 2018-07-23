@@ -8,11 +8,11 @@ const hostCount = 10;
 const amenityCount = 20;
 const cancellationPolicyCount = 4;
 
-const getFakeListing = function (id, amenityIds, highlights, rules, sleepingArrangements) {
+const getFakeListing = function (id, amenityIds, highlights, houseRules, sleepingArrangements) {
   return {
     amenityIds,
     highlights,
-    rules,
+    houseRules,
     sleepingArrangements,
     listingId: id,
     typeId: Math.floor(Math.random() * listingTypeCount),
@@ -72,7 +72,7 @@ const generateFakeListing = function (id) {
   const numSleepingArrangements = Math.random() * 5;
   const highlights = [];
   const amenityIds = [];
-  const rules = [];
+  const houseRules = [];
   const sleepingArrangements = [];
   for (let i = 0; i < numAmenities; i++) {
     amenityIds.push(2 * i);
@@ -86,7 +86,7 @@ const generateFakeListing = function (id) {
     });
   }
   for (let i = 0; i < numRules; i++) {
-    rules.push(faker.random.words());
+    houseRules.push(faker.random.words());
   }
   for (let i = 0; i < numSleepingArrangements; i++) {
     sleepingArrangements.push({
@@ -95,7 +95,7 @@ const generateFakeListing = function (id) {
       number: Math.ceil(Math.random() * 3),
     });
   }
-  return getFakeListing(id, amenityIds, highlights, rules, sleepingArrangements);
+  return getFakeListing(id, amenityIds, highlights, houseRules, sleepingArrangements);
 };
 
 const generateData = function () {

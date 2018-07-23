@@ -21,7 +21,7 @@ const listing = {
   ],
   description: { main: String, more: [{ title: String, value: String }] },
   sleepingArrangements: [{ spaceName: String, mattressType: String, number: Number }],
-  rules: [String],
+  houseRules: [String],
 };
 
 const listingType = {

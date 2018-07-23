@@ -2,7 +2,7 @@ const apiEndpoint = '/api/listings';
 const imagesEndpoint = 'https://s3.amazonaws.com/fec-overview-service-images';
 const amenitiesThreshold = 6;
 const sleepingArrangementsThreshold = 3;
-const rulesThreshold = 3;
+const houseRulesThreshold = 3;
 const dummyListing = {
   title: 'Oops! No listing found.',
   listingType: { value: 'Nonexistent' },
@@ -26,7 +26,7 @@ module.exports = {
     apiEndpoint,
     imagesEndpoint,
     amenitiesThreshold,
-    rulesThreshold,
+    houseRulesThreshold,
     sleepingArrangementsThreshold,
     dummyListing,
   },

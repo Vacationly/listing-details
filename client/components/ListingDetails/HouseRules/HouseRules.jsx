@@ -3,12 +3,12 @@ import PropTypes from 'prop-types';
 import Section from '../../Utilities/Section/Section';
 import { constants, functions } from '../../utils';
 
-import styles from './Rules.css';
+import styles from './HouseRules.css';
 
-const { rulesThreshold } = constants;
+const { houseRulesThreshold } = constants;
 const { expandCollapse } = functions;
 
-export default class Rules extends React.Component {
+export default class HouseRules extends React.Component {
   constructor(props) {
     super(props);
     this.toggleMoreInfo = this.toggleMoreInfo.bind(this);
@@ -27,17 +27,17 @@ export default class Rules extends React.Component {
   }
 
   render() {
-    const { rules } = this.props;
+    const { houseRules } = this.props;
     const { expanded } = this.state;
     const link = expanded ? 'Hide' : 'Read all rules';
-    const rulesList = <RulesList rules={rules} />;
+    const rulesList = <RulesList {...this.props} />;
     return (
       <div>
-        {rules.length && (
+        {houseRules.length && (
           <Section
             title="House rules"
             content={rulesList}
-            link={rules.length > 3 ? link : null}
+            link={houseRules.length > houseRulesThreshold ? link : null}
             action={this.toggleMoreInfo}
             expandable
             expanded={expanded}
@@ -48,16 +48,16 @@ export default class Rules extends React.Component {
   }
 }
 
-Rules.propTypes = {
-  rules: PropTypes.arrayOf(PropTypes.string).isRequired,
+HouseRules.propTypes = {
+  houseRules: PropTypes.arrayOf(PropTypes.string).isRequired,
 };
 
 const RulesList = (props) => {
-  const { rules } = props;
+  const { houseRules } = props;
   return (
     <div>
-      {rules.map(
-        (rule, index) => index < rulesThreshold && (
+      {houseRules.map(
+        (rule, index) => index < houseRulesThreshold && (
         <div className={styles.ruleItem}>
           {rule}
         </div>
@@ -65,8 +65,8 @@ const RulesList = (props) => {
       )}
       <div className={styles.moreWrapper}>
         <div className={styles.moreContent}>
-          {rules.map(
-            (rule, index) => index >= rulesThreshold && (
+          {houseRules.map(
+            (rule, index) => index >= houseRulesThreshold && (
             <div className={styles.ruleItem}>
               {rule}
             </div>
