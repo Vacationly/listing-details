@@ -23,7 +23,7 @@ const incompleteProps = {
 };
 
 const completeProps = {
-  houseRules: generateRules(constants.rulesThreshold + 1),
+  houseRules: generateRules(constants.houseRulesThreshold + 1),
 };
 
 describe('rendering', () => {
