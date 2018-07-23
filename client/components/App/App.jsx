@@ -10,6 +10,8 @@ import Rules from '../ListingDetails/Rules/Rules';
 import CancellationPolicy from '../ListingDetails/CancellationPolicy/CancellationPolicy';
 import { constants } from '../utils';
 
+import './App.css';
+
 const { apiEndpoint, dummyListing } = constants;
 
 export default class extends React.Component {
