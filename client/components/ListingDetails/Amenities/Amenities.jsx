@@ -84,7 +84,6 @@ const AmenitiesFullList = (props) => {
       {amenities.map(amenity => (
         <div className={styles.amenityItem}>
           {amenity.name}
-          <hr />
         </div>
       ))}
     </div>
