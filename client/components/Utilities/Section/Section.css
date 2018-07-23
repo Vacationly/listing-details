@@ -15,7 +15,7 @@
 }
 
 .link {
-  margin: 0.5em 0 1em;
+  margin: 0.5em 0 1rem;
   font-weight: 400;
   color: #008489;
   cursor: pointer;
@@ -26,5 +26,5 @@
 }
 
 .icon {
-  margin: 0 0 0 0.5em;
+  margin: 0 0 0 0.5rem;
 }

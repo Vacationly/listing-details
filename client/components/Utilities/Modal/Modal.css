@@ -20,20 +20,20 @@
   max-width: 600px;
   z-index: 1000;
   box-shadow: rgba(0, 0, 0, 0.2) 0px 1px 10px 0px;
-  padding: 2em;
+  padding: 2rem;
   background-color: white;
 }
 
 .dismiss {
-  width: 1.2em;
-  height: 1.2em;
-  border-radius: 1em;
+  width: 1.2rem;
+  height: 1.2rem;
+  border-radius: 1rem;
   text-align: center;
-  font-size: 1.6em;
+  font-size: 1.6rem;
   font-weight: 100;
   color: grey;
   cursor: pointer;
-  line-height: 0.99em;
+  line-height: 0.99rem;
 }
 
 .dismiss:focus {
@@ -43,13 +43,13 @@
 }
 
 .title {
-  margin: 0.25em 0.25em;
-  font-size: 1.6em;
+  margin: 0.5rem;
+  font-size: 1.2rem;
   font-weight: 800;
 }
 
 .content {
-  margin: 0 0.5em;
+  margin: 0 0.5rem;
 }
 
 @media (max-width: 640px) {
