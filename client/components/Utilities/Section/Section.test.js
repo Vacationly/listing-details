@@ -4,7 +4,7 @@ import { shallow } from 'enzyme';
 import sinon from 'sinon';
 import Section from './Section';
 
-const validProps = {
+const completeProps = {
   title: 'title',
   subtitle: 'subtitle',
   content: <div />,
@@ -32,44 +32,48 @@ const invalidProps = {
   },
 };
 
+describe('rendering', () => {
+  it('should not display a link when no action is given', () => {
+    const newProps = Object.assign({}, completeProps);
+    newProps.action = null;
+    const wrapper = shallow(<Section {...newProps} />);
+    const link = wrapper.find('#link');
+    expect(link.length).toBe(0);
+  });
+  it('should change icons when value of "expanded" changes', () => {
+    let wrapper = shallow(<Section {...completeProps} />);
+    const oldIcon = wrapper.find('#icon');
+    const newProps = Object.assign({}, completeProps);
+    newProps.expanded = true;
+    wrapper = shallow(<Section {...newProps} />);
+    const newIcon = wrapper.find('#icon');
+    expect(newIcon).not.toEqual(oldIcon);
+  });
+});
+
 describe('interaction', () => {
-  const action = sinon.spy(validProps, 'action');
+  let action;
+  beforeEach(() => {
+    action = sinon.spy(completeProps, 'action');
+  });
   afterEach(() => {
-    action.resetHistory();
+    action.restore();
   });
   it('should call action once when clicking the link', () => {
-    const wrapper = shallow(<Section {...validProps} />);
+    const wrapper = shallow(<Section {...completeProps} />);
     const target = wrapper.find('#link');
     target.simulate('click');
     expect(action.callCount).toBe(1);
   });
 });
 
-describe('rendering', () => {
-  it('should change icons when value of "expanded" changes', () => {
-    let wrapper = shallow(<Section {...validProps} />);
-    const oldIcon = wrapper.find('#icon');
-
-    const newProps = Object.assign({}, validProps);
-    newProps.expanded = true;
-    wrapper = shallow(<Section {...newProps} />);
-    const newIcon = wrapper.find('#icon');
-
-    expect(newIcon).not.toEqual(oldIcon);
+describe('validation', () => {
+  let error;
+  beforeEach(() => {
+    error = sinon.spy(console, 'error');
   });
-  it('should not display a link when no action is given', () => {
-    const newProps = Object.assign({}, validProps);
-    newProps.action = null;
-    const wrapper = shallow(<Section {...newProps} />);
-    const link = wrapper.find('#link');
-    expect(link.length).toBe(0);
-  });
-});
-
-describe('PropTypes', () => {
-  const error = sinon.spy(console, 'error');
   afterEach(() => {
-    error.resetHistory();
+    error.restore();
   });
   it('should NOT throw an error when given only some props', () => {
     shallow(<Section {...incompleteProps} />);
