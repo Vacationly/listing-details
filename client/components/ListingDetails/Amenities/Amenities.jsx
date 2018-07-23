@@ -30,7 +30,9 @@ export default class Amenities extends React.Component {
     const action = amenities.length > amenitiesThreshold ? this.toggleModal : null;
     return (
       <div>
-        <Section title="Amenities" content={amenitiesShort} link={link} action={action} />
+        {amenities.length && (
+          <Section title="Amenities" content={amenitiesShort} link={link} action={action} />
+        )}
         {showModal && (
           <Modal title="Amenities" content={amenitiesLong} dismiss={this.toggleModal} />
         )}
