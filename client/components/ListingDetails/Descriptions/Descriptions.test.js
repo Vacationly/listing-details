@@ -35,6 +35,9 @@ describe('rendering', () => {
     const target = wrapper.find('#link');
     expect(target.length).toBe(1);
   });
+});
+
+describe('interaction', () => {
   it('action link should call "toggleMoreInfo"', () => {
     const toggleStub = sinon.stub(Descriptions.prototype, 'toggleMoreInfo');
     const wrapper = mount(<Descriptions {...fullProps} />);
