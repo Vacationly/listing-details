@@ -27,11 +27,13 @@ export default class Descriptions extends React.Component {
     const { main, more } = this.props.descriptions;
     const { expanded } = this.state;
     const descriptions = <DescriptionContent main={main} more={more} />;
+    const linkVariant = expanded ? 'Hide' : 'Read more about the space';
+    const link = more.length ? linkVariant : null;
     return (
       <div>
         <Section
           content={descriptions}
-          link={expanded ? 'Hide' : 'Read more about the space'}
+          link={link}
           action={this.toggleMoreInfo}
           expandable
           expanded={expanded}
