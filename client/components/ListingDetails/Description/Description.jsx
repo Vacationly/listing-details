@@ -24,7 +24,7 @@ export default class Description extends React.Component {
   }
 
   render() {
-    const { main, more } = this.props.description;
+    const { more } = this.props.description;
     const { expanded } = this.state;
     const description = <DescriptionContent {...this.props} />;
     const linkVariant = expanded ? 'Hide' : 'Read more about the space';
@@ -64,7 +64,7 @@ const DescriptionContent = (props) => {
               subtitle={info.title}
               content={(
                 <div>
-                  {info.value}
+                  {info.text}
                 </div>
 )}
             />

@@ -1,6 +1,6 @@
 const faker = require('faker');
 
-const imageUrl = 'https://s3.amazonaws.com/fec-overview-service-images';
+const imageEndpoint = 'https://s3.amazonaws.com/fec-overview-service-images';
 
 const listingCount = 101;
 const listingTypeCount = 3;
@@ -25,43 +25,48 @@ const getFakeListing = function (id, amenityIds, highlights, houseRules, sleepin
       country: faker.address.country(),
     },
     capacity: [
-      { name: 'Guest', value: Math.ceil(Math.random() * 5) },
-      { name: 'Bedroom', value: Math.ceil(Math.random() * 3) },
-      { name: 'Bed', value: Math.ceil(Math.random() * 5) },
-      { name: 'Bath', value: Math.ceil(Math.random() * 5) },
+      { name: 'Guest', number: Math.ceil(Math.random() * 5), icon: `${imageEndpoint}/guest.png` },
+      {
+        name: 'Bedroom',
+        number: Math.ceil(Math.random() * 3),
+        icon: `${imageEndpoint}/bedroom.png`,
+      },
+      { name: 'Bed', number: Math.ceil(Math.random() * 5), icon: `${imageEndpoint}/bed.png` },
+      { name: 'Bath', number: Math.ceil(Math.random() * 5), icon: `${imageEndpoint}/bath.png` },
     ],
     description: {
       main: faker.lorem.paragraph(),
       more: [
-        { title: 'The space', value: faker.lorem.paragraph() },
-        { title: 'Guest access', value: faker.lorem.paragraph() },
-        { title: 'Interaction with guests', value: faker.lorem.paragraph() },
-        { title: 'Other notables', value: faker.lorem.paragraph() },
+        { title: 'The space', text: faker.lorem.paragraph() },
+        { title: 'Guest access', text: faker.lorem.paragraph() },
+        { title: 'Interaction with guests', text: faker.lorem.paragraph() },
+        { title: 'Other notables', text: faker.lorem.paragraph() },
       ],
     },
   };
 };
 
 const getFakeListingType = function (id) {
-  return { id, value: faker.random.words() };
+  return { id, name: faker.random.words() };
 };
 
 const getFakeHost = function (id) {
   return {
     id,
     name: faker.name.findName(),
-    avatar: `${imageUrl}/host_${id}.jpg`,
+    avatar: `${imageEndpoint}/host_${id}.jpg`,
   };
 };
 
 const getFakeAmenity = function (id) {
-  return { id, value: faker.random.words(), icon: `${imageUrl}/amenity_${id % 5}.png` };
+  return { id, name: faker.random.words(), icon: `${imageEndpoint}/amenity_${id % 5}.png` };
 };
 
 const getFakeCancellationPolicy = function (id) {
   return {
     id,
     name: faker.random.words(),
+    overview: faker.lorem.sentence(),
     description: faker.lorem.paragraph(),
   };
 };

@@ -44,7 +44,7 @@ export default class Amenities extends React.Component {
 Amenities.propTypes = {
   amenities: PropTypes.arrayOf(
     PropTypes.shape({
-      value: PropTypes.string.isRequired,
+      name: PropTypes.string.isRequired,
       icon: PropTypes.string.isRequired,
     }),
   ).isRequired,
@@ -58,9 +58,9 @@ const AmenitiesShortList = (props) => {
         (amenity, index) => index < amenitiesThreshold && (
         <div className={styles.amenityItem}>
           <span>
-            <img className={styles.icon} src={amenity.icon} alt={amenity.value} />
+            <img className={styles.icon} src={amenity.icon} alt={amenity.name} />
           </span>
-          {amenity.value}
+          {amenity.name}
         </div>
         ),
       )}
@@ -71,7 +71,7 @@ const AmenitiesShortList = (props) => {
 AmenitiesShortList.propTypes = {
   amenities: PropTypes.arrayOf(
     PropTypes.shape({
-      value: PropTypes.string.isRequired,
+      name: PropTypes.string.isRequired,
       icon: PropTypes.string.isRequired,
     }),
   ).isRequired,
@@ -83,7 +83,7 @@ const AmenitiesFullList = (props) => {
     <div className={styles.amenitiesList}>
       {amenities.map(amenity => (
         <div className={styles.amenityItem}>
-          {amenity.value}
+          {amenity.name}
           <hr />
         </div>
       ))}
@@ -94,7 +94,7 @@ const AmenitiesFullList = (props) => {
 AmenitiesFullList.propTypes = {
   amenities: PropTypes.arrayOf(
     PropTypes.shape({
-      value: PropTypes.string.isRequired,
+      name: PropTypes.string.isRequired,
       icon: PropTypes.string.isRequired,
     }),
   ).isRequired,

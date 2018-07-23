@@ -2,15 +2,15 @@ const listing = {
   listingId: { type: Number, unique: true },
   typeId: Number,
   hostId: Number,
+  amenityIds: [Number],
   cancellationPolicyId: Number,
   title: String,
-  amenityIds: [Number],
   location: {
     city: String,
     state: String,
     country: String,
   },
-  capacity: [{ name: String, value: Number, icon: String }],
+  capacity: [{ name: String, number: Number, icon: String }],
   highlights: [
     {
       id: Number,
@@ -19,14 +19,14 @@ const listing = {
       upvotes: Number,
     },
   ],
-  description: { main: String, more: [{ title: String, value: String }] },
+  description: { main: String, more: [{ title: String, text: String }] },
   sleepingArrangements: [{ spaceName: String, mattressType: String, number: Number }],
   houseRules: [String],
 };
 
 const listingType = {
   id: Number,
-  value: String,
+  name: String,
 };
 
 const host = {
@@ -37,7 +37,7 @@ const host = {
 
 const amenity = {
   id: Number,
-  value: String,
+  name: String,
   icon: String,
 };
 

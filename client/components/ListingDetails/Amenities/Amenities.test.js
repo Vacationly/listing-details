@@ -10,7 +10,7 @@ const generateAmenities = (numAmenities) => {
   const amenities = [];
   for (let i = 0; i < numAmenities; i++) {
     amenities.push({
-      value: 'placeholder',
+      name: 'placeholder',
       icon: 'placeholder',
     });
   }

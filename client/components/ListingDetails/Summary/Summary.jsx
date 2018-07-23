@@ -1,16 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { constants } from '../../utils';
 
 import styles from './Summary.css';
-
-const { imagesEndpoint } = constants;
-const imageSources = {
-  Bed: `${imagesEndpoint}/bed.png`,
-  Bath: `${imagesEndpoint}/bath.png`,
-  Bedroom: `${imagesEndpoint}/bedroom.png`,
-  Guest: `${imagesEndpoint}/guest.png`,
-};
 
 const Summary = (props) => {
   const {
@@ -19,7 +10,7 @@ const Summary = (props) => {
   return (
     <div className={styles.listingSummary}>
       <div className={styles.listingType}>
-        {listingType.value.toLowerCase()}
+        {listingType.name.toLowerCase()}
       </div>
       <div className={styles.headline}>
         <div>
@@ -45,7 +36,7 @@ const Summary = (props) => {
 Summary.propTypes = {
   title: PropTypes.string.isRequired,
   listingType: PropTypes.shape({
-    value: PropTypes.string.isRequired,
+    name: PropTypes.string.isRequired,
   }).isRequired,
   location: PropTypes.shape({
     city: PropTypes.string.isRequired,
@@ -55,7 +46,7 @@ Summary.propTypes = {
   capacity: PropTypes.arrayOf(
     PropTypes.shape({
       name: PropTypes.string.isRequired,
-      value: PropTypes.number.isRequired,
+      number: PropTypes.number.isRequired,
     }),
   ).isRequired,
   host: PropTypes.shape({
@@ -70,11 +61,11 @@ const Capacity = (props) => {
     <div className={styles.capacity}>
       {capacity.map(field => (
         <span className={styles.capacityField}>
-          <img src={imageSources[field.name]} alt={field.name} />
-          {field.value}
+          <img src={field.icon} alt={field.name} />
+          {field.number}
           {' '}
           {field.name}
-          {field.value !== 1 && 's'}
+          {field.number !== 1 && 's'}
         </span>
       ))}
     </div>
@@ -85,7 +76,8 @@ Capacity.propTypes = {
   capacity: PropTypes.arrayOf(
     PropTypes.shape({
       name: PropTypes.string.isRequired,
-      value: PropTypes.number.isRequired,
+      number: PropTypes.number.isRequired,
+      icon: PropTypes.string.isRequired,
     }),
   ).isRequired,
 };
