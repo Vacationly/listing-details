@@ -28,6 +28,9 @@ export default class Highlights extends React.Component {
   render() {
     const { highlights } = this.props;
     const { feedbackStatus } = this.state;
+    if (!highlights.length) {
+      return <div />;
+    }
     return (
       <div className={styles.highlights}>
         <div className={styles.heading}>
@@ -86,6 +89,7 @@ Thank you for your feedback.
       ) : (
         <span>
           <span
+            id="upvote"
             className={styles.upvote}
             onMouseEnter={handleUpvoteHover}
             onMouseLeave={handleUpvoteHover}
@@ -102,6 +106,7 @@ Thank you for your feedback.
           ·
           {' '}
           <span
+            id="downvote"
             className={styles.downvote}
             onClick={() => handleFeedback(id, -1)}
             onKeyUp={e => processKeyUp(e, () => handleFeedback(id, -1))}
