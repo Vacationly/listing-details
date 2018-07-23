@@ -15,24 +15,25 @@ const Section = (props) => {
   return (
     <div className={styles.section}>
       {title && (
-        <div className={styles.title}>
+        <div id="title" className={styles.title}>
           <hr />
           {title}
         </div>
       )}
       {subtitle && (
-      <div className={styles.subtitle}>
-        {subtitle}
-      </div>
+        <div id="subtitle" className={styles.subtitle}>
+          {subtitle}
+        </div>
       )}
       {content && (
-      <div className={styles.content}>
-        {content}
-      </div>
+        <div id="content" className={styles.content}>
+          {content}
+        </div>
       )}
       {link
         && action && (
           <div
+            id="link"
             className={styles.link}
             onClick={action}
             onKeyUp={e => processKeyUp(e, action)}
@@ -42,6 +43,7 @@ const Section = (props) => {
             {link}
             {expandable && (
               <img
+                id="icon"
                 className={styles.icon}
                 src={expanded ? showLess : showMore}
                 alt={expanded ? 'show less' : 'show more'}

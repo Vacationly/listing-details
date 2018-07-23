@@ -30,43 +30,54 @@ export default class Rules extends React.Component {
     const { rules } = this.props;
     const { expanded } = this.state;
     const link = expanded ? 'Hide' : 'Read all rules';
-    const rulesList = (
-      <div>
-        {rules.map(
-          (rule, index) => index < rulesThreshold && (
-          <div className={styles.ruleItem}>
-            {rule}
-          </div>
-          ),
-        )}
-        <div className={styles.moreWrapper}>
-          <div className={styles.moreContent}>
-            {rules.map(
-              (rule, index) => index >= rulesThreshold && (
-              <div className={styles.ruleItem}>
-                {rule}
-              </div>
-              ),
-            )}
-          </div>
-        </div>
-      </div>
-    );
+    const rulesList = <RulesList rules={rules} />;
     return (
       <div>
-        <Section
-          title="House rules"
-          content={rulesList}
-          link={rules.length > 3 ? link : null}
-          action={this.toggleMoreInfo}
-          expandable
-          expanded={expanded}
-        />
+        {rules.length && (
+          <Section
+            title="House rules"
+            content={rulesList}
+            link={rules.length > 3 ? link : null}
+            action={this.toggleMoreInfo}
+            expandable
+            expanded={expanded}
+          />
+        )}
       </div>
     );
   }
 }
 
 Rules.propTypes = {
+  rules: PropTypes.arrayOf(PropTypes.string).isRequired,
+};
+
+const RulesList = (props) => {
+  const { rules } = props;
+  return (
+    <div>
+      {rules.map(
+        (rule, index) => index < rulesThreshold && (
+        <div className={styles.ruleItem}>
+          {rule}
+        </div>
+        ),
+      )}
+      <div className={styles.moreWrapper}>
+        <div className={styles.moreContent}>
+          {rules.map(
+            (rule, index) => index >= rulesThreshold && (
+            <div className={styles.ruleItem}>
+              {rule}
+            </div>
+            ),
+          )}
+        </div>
+      </div>
+    </div>
+  );
+};
+
+RulesList.propTypes = {
   rules: PropTypes.arrayOf(PropTypes.string).isRequired,
 };

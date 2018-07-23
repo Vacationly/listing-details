@@ -9,7 +9,7 @@ const { processKeyUp } = functions;
 const Modal = (props) => {
   const { title, content, dismiss } = props;
   const handleDismiss = (e) => {
-    if (e.target.className === styles.background || e.target.className === styles.dismiss) {
+    if (e.target.className === styles.backdrop || e.target.className === styles.dismiss) {
       e.stopPropagation();
       window.document.body.style.overflow = 'visible';
       dismiss();
@@ -19,14 +19,16 @@ const Modal = (props) => {
   return (
     <div>
       <div
-        className={styles.background}
+        id="backdrop"
+        className={styles.backdrop}
         onClick={handleDismiss}
         onKeyUp={e => processKeyUp(e, handleDismiss)}
         tabIndex="0"
         role="menuitem"
       >
-        <div className={styles.frame}>
+        <div id="frame" className={styles.frame}>
           <div
+            id="dismiss"
             className={styles.dismiss}
             onClick={handleDismiss}
             onKeyUp={e => processKeyUp(e, handleDismiss)}
@@ -35,10 +37,10 @@ const Modal = (props) => {
           >
             &times;
           </div>
-          <div className={styles.title}>
+          <div id="title" className={styles.title}>
             {title}
           </div>
-          <div className={styles.content}>
+          <div id="content" className={styles.content}>
             {content}
           </div>
         </div>

@@ -10,41 +10,30 @@ export default class CancellationPolicy extends React.Component {
     super(props);
     this.toggleModal = this.toggleModal.bind(this);
     this.state = {
-      showModal: false,
+      modalVisible: false,
     };
   }
 
   toggleModal() {
-    this.setState(prevState => ({ showModal: !prevState.showModal }));
+    this.setState(prevState => ({ modalVisible: !prevState.modalVisible }));
   }
 
   render() {
     const { cancellationPolicy } = this.props;
-    const { showModal } = this.state;
-    const cancellationPolicyName = (
-      <div className={styles.cancellationPolicyName}>
-        {cancellationPolicy.name}
-      </div>
-    );
-    const cancellationPolicyDetails = (
-      <div>
-        {cancellationPolicyName}
-        <div className={styles.cancellationPolicyDescription}>
-          {cancellationPolicy.description}
-        </div>
-      </div>
-    );
-    const link = 'Show more';
-    const action = this.toggleModal;
+    const { modalVisible } = this.state;
+    const cancellationPolicyOverview = <CancellationPolicyOverview {...this.props} />;
+    const cancellationPolicyDetails = <CancellationPolicyDetails {...this.props} />;
     return (
       <div>
-        <Section
-          title="Cancellation policy"
-          content={cancellationPolicyName}
-          link={link}
-          action={action}
-        />
-        {showModal && (
+        {cancellationPolicy.name && (
+          <Section
+            title="Cancellation policy"
+            content={cancellationPolicyOverview}
+            link={cancellationPolicy.description ? 'Show more' : null}
+            action={this.toggleModal}
+          />
+        )}
+        {modalVisible && (
           <Modal
             title="Cancellation policy"
             content={cancellationPolicyDetails}
@@ -57,6 +46,41 @@ export default class CancellationPolicy extends React.Component {
 }
 
 CancellationPolicy.propTypes = {
+  cancellationPolicy: PropTypes.shape({
+    name: PropTypes.string.isRequired,
+    description: PropTypes.string.isRequired,
+  }).isRequired,
+};
+
+const CancellationPolicyOverview = (props) => {
+  const { cancellationPolicy } = props;
+  return (
+    <div className={styles.cancellationPolicyName}>
+      {cancellationPolicy.name}
+    </div>
+  );
+};
+
+CancellationPolicyOverview.propTypes = {
+  cancellationPolicy: PropTypes.shape({
+    name: PropTypes.string.isRequired,
+    description: PropTypes.string.isRequired,
+  }).isRequired,
+};
+
+const CancellationPolicyDetails = (props) => {
+  const { cancellationPolicy } = props;
+  return (
+    <div>
+      <CancellationPolicyOverview cancellationPolicy={cancellationPolicy} />
+      <div className={styles.cancellationPolicyDescription}>
+        {cancellationPolicy.description}
+      </div>
+    </div>
+  );
+};
+
+CancellationPolicyDetails.propTypes = {
   cancellationPolicy: PropTypes.shape({
     name: PropTypes.string.isRequired,
     description: PropTypes.string.isRequired,

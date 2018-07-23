@@ -28,6 +28,9 @@ export default class Highlights extends React.Component {
   render() {
     const { highlights } = this.props;
     const { feedbackStatus } = this.state;
+    if (!highlights.length) {
+      return <div />;
+    }
     return (
       <div className={styles.highlights}>
         <div className={styles.heading}>
@@ -58,6 +61,18 @@ home highlights
   }
 }
 
+Highlights.propTypes = {
+  highlights: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.number.isRequired,
+      tagline: PropTypes.string.isRequired,
+      description: PropTypes.string.isRequired,
+      upvotes: PropTypes.number.isRequired,
+    }),
+  ).isRequired,
+  saveFeedback: PropTypes.func.isRequired,
+};
+
 const HighlightFeedback = (props) => {
   const { id, feedbackStatus, handleFeedback } = props;
   const handleUpvoteHover = (e) => {
@@ -74,6 +89,7 @@ Thank you for your feedback.
       ) : (
         <span>
           <span
+            id="upvote"
             className={styles.upvote}
             onMouseEnter={handleUpvoteHover}
             onMouseLeave={handleUpvoteHover}
@@ -90,6 +106,7 @@ Thank you for your feedback.
           ·
           {' '}
           <span
+            id="downvote"
             className={styles.downvote}
             onClick={() => handleFeedback(id, -1)}
             onKeyUp={e => processKeyUp(e, () => handleFeedback(id, -1))}
@@ -102,19 +119,6 @@ Thank you for your feedback.
       )}
     </div>
   );
-};
-
-Highlights.propTypes = {
-  highlights: PropTypes.arrayOf(
-    PropTypes.shape({
-      id: PropTypes.number.isRequired,
-      tagline: PropTypes.string.isRequired,
-      description: PropTypes.string.isRequired,
-      upvotes: PropTypes.number.isRequired,
-      downvotes: PropTypes.number.isRequired,
-    }),
-  ).isRequired,
-  saveFeedback: PropTypes.func.isRequired,
 };
 
 HighlightFeedback.propTypes = {
