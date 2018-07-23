@@ -18,7 +18,9 @@ const processKeyUp = (e, handler) => {
 const expandCollapse = (wrapperClass, contentClass, expanded) => {
   const wrapper = window.document.getElementsByClassName(wrapperClass)[0];
   const content = window.document.getElementsByClassName(contentClass)[0];
-  wrapper.style.height = expanded ? `${content.clientHeight}px` : '0px';
+  wrapper.style.height = expanded ? `${content.clientHeight + content.style.margin}px` : '0px';
+  wrapper.style.opacity = expanded ? 1 : 0;
+  wrapper.style.overflow = expanded ? 'visible' : 'hidden';
 };
 
 module.exports = {

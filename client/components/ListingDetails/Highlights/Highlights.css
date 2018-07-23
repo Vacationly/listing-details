@@ -1,7 +1,7 @@
 .highlights {
   border: 1px lightgrey solid;
   border-radius: 0.5rem;
-  margin: 0.5em 0;
+  margin: 0.5rem 0;
   padding: 1rem;
 }
 
@@ -13,7 +13,7 @@
 }
 
 .highlight {
-  margin: 1em 0 0;
+  margin: 1rem 0 0;
 }
 
 .tagline {
@@ -21,7 +21,7 @@
 }
 
 .feedback {
-  margin: 0.5em 0;
+  margin: 0.5rem 0;
   font-size: 0.8rem;
   color: #888888;
 }

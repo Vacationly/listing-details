@@ -61,14 +61,16 @@ SleepingArrangements.propTypes = {
 const SleepingArrangementsList = (props) => {
   const { sleepingArrangements } = props;
   return (
-    <div className={styles.sleepingArrangements}>
-      {sleepingArrangements.map(
-        (sleepingArrangement, index) => index < sleepingArrangementsThreshold && (
-        <SleepingArrangement {...{ sleepingArrangement }} />
-        ),
-      )}
+    <div>
+      <div className={styles.sleepingArrangements}>
+        {sleepingArrangements.map(
+          (sleepingArrangement, index) => index < sleepingArrangementsThreshold && (
+          <SleepingArrangement {...{ sleepingArrangement }} />
+          ),
+        )}
+      </div>
       <div className={styles.moreWrapper}>
-        <div className={styles.moreContent}>
+        <div className={`${styles.moreContent} ${styles.sleepingArrangements}`}>
           {sleepingArrangements.map(
             (sleepingArrangement, index) => index >= sleepingArrangementsThreshold && (
             <SleepingArrangement {...{ sleepingArrangement }} />

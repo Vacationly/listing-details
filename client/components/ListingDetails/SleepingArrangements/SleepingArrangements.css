@@ -1,8 +1,8 @@
 .sleepingArrangements {
   display: grid;
   grid-template-columns: 32% 32% 32%;
-  margin: 0.5em 0 0;
-  grid-gap: 0.5em 2%;
+  margin: 0.5rem 0 0;
+  grid-gap: 0.5rem 2%;
 }
 
 .sleepingArrangement {
@@ -12,13 +12,15 @@
 }
 
 .spaceName {
-  margin: 0.5em 0;
+  margin: 0.5rem 0;
   font-weight: 600;
 }
 
 .moreWrapper {
   height: 0;
-  transition: 0.5s height ease-out;
+  opacity: 0;
+  top: 0.5rem;
+  transition: 0.5s all ease-out;
   overflow: hidden;
 }
 

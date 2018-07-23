@@ -25,8 +25,8 @@ export default class extends React.Component {
   }
 
   componentDidMount() {
-    const windowPath = window.location.pathname.split('/listings');
-    const listingId = parseInt(windowPath[0], 10) || 0;
+    const windowPath = window.location.pathname.split('listings/');
+    const listingId = parseInt(windowPath[1], 10) || 0;
     this.getListingData(listingId);
   }
 
@@ -42,11 +42,9 @@ export default class extends React.Component {
   }
 
   saveFeedbackData(id, value) {
-    axios
-      .put(`${apiEndpoint}/${this.state.listingData.listingId}/highlights/${id}`, {
-        feedback: value,
-      })
-      .then(() => {}, err => console.log('Error updating database', err));
+    axios.put(`${apiEndpoint}/${this.state.listingData.listingId}/highlights/${id}`, {
+      feedback: value,
+    });
   }
 
   render() {
