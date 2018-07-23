@@ -10,7 +10,7 @@ import Rules from '../ListingDetails/Rules/Rules';
 import CancellationPolicy from '../ListingDetails/CancellationPolicy/CancellationPolicy';
 import { constants } from '../utils';
 
-const { apiEndpoint, placeholderListing } = constants;
+const { apiEndpoint, dummyListing } = constants;
 
 export default class extends React.Component {
   constructor(props) {
@@ -29,17 +29,14 @@ export default class extends React.Component {
   }
 
   getListingData(listingId) {
-    axios
-      .get(`${apiEndpoint}/${listingId}`)
-      .then((response) => {
+    axios.get(`${apiEndpoint}/${listingId}`).then(
+      (response) => {
         this.setState({ listingData: response.data, dataReady: true });
-      })
-      .catch((err) => {
-        this.setState(
-          { listingData: placeholderListing, dataReady: true },
-          console.log(this.state.listingData),
-        );
-      });
+      },
+      () => {
+        this.setState({ listingData: dummyListing, dataReady: true });
+      },
+    );
   }
 
   saveFeedbackData(id, value) {
@@ -47,7 +44,7 @@ export default class extends React.Component {
       .put(`${apiEndpoint}/${this.state.listingData.listingId}/highlights/${id}`, {
         feedback: value,
       })
-      .catch(err => console.log('Error updating database', err));
+      .then(() => {}, err => console.log('Error updating database', err));
   }
 
   render() {
@@ -63,7 +60,7 @@ export default class extends React.Component {
       sleepingArrangements,
       rules,
       cancellationPolicy,
-    } = this.state.listingData || {};
+    } = this.state.listingData;
     if (this.state.dataReady) {
       return (
         <div>
