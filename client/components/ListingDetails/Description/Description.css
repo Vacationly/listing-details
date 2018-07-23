@@ -1,6 +1,7 @@
 .moreWrapper {
   height: 0;
-  transition: 0.5s height ease-out;
+  opacity: 0;
+  transition: 0.5s all ease-out;
   overflow: hidden;
 }
 
