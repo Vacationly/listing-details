@@ -45,7 +45,7 @@ Descriptions.propTypes = {
   descriptions: PropTypes.shape({
     main: PropTypes.string.isRequired,
     more: PropTypes.array.isRequired,
-  }),
+  }).isRequired,
 };
 
 const DescriptionContent = (props) => {
