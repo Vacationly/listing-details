@@ -28,7 +28,7 @@ const Summary = (props) => {
           </span>
         </div>
       </div>
-      <Capacity capacity={capacity} />
+      <Capacity {...props} />
     </div>
   );
 };
