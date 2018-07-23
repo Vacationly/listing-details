@@ -79,5 +79,5 @@ const RulesList = (props) => {
 };
 
 RulesList.propTypes = {
-  rules: PropTypes.arrayOf(PropTypes.string).isRequired,
+  houseRules: PropTypes.arrayOf(PropTypes.string).isRequired,
 };
