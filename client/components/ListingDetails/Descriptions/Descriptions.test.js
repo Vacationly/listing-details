@@ -11,7 +11,7 @@ const emptyProps = {
   },
 };
 
-const fullProps = {
+const completeProps = {
   descriptions: {
     main: 'placeholder',
     more: [{ title: 'placeholder', value: 'placeholder' }],
@@ -31,7 +31,7 @@ describe('rendering', () => {
     error.restore();
   });
   it('should display action link when "more" prop is not empty', () => {
-    const wrapper = mount(<Descriptions {...fullProps} />);
+    const wrapper = mount(<Descriptions {...completeProps} />);
     const target = wrapper.find('#link');
     expect(target.length).toBe(1);
   });
@@ -40,7 +40,7 @@ describe('rendering', () => {
 describe('interaction', () => {
   it('action link should call "toggleMoreInfo"', () => {
     const toggleStub = sinon.stub(Descriptions.prototype, 'toggleMoreInfo');
-    const wrapper = mount(<Descriptions {...fullProps} />);
+    const wrapper = mount(<Descriptions {...completeProps} />);
     wrapper.find('#link').simulate('click');
     expect(toggleStub.callCount).toBe(1);
     toggleStub.restore();

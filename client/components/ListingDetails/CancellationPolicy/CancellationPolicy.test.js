@@ -12,7 +12,7 @@ const emptyProps = {
   },
 };
 
-const semiEmptyProps = {
+const incompleteProps = {
   cancellationPolicy: {
     name: 'placeholder',
     overview: 'placeholder',
@@ -20,7 +20,7 @@ const semiEmptyProps = {
   },
 };
 
-const fullProps = {
+const completeProps = {
   cancellationPolicy: {
     name: 'placeholder',
     overview: 'placeholder',
@@ -35,18 +35,18 @@ describe('rendering', () => {
     expect(target.length).toBe(0);
   });
   it('should NOT display action link when "description" prop is empty', () => {
-    const wrapper = mount(<CancellationPolicy {...semiEmptyProps} />);
+    const wrapper = mount(<CancellationPolicy {...incompleteProps} />);
     const target = wrapper.find('#link');
     expect(target.length).toBe(0);
   });
   it('should NOT throw an error when "description" prop is empty', () => {
     const error = sinon.spy(console, 'error');
-    mount(<CancellationPolicy {...semiEmptyProps} />);
+    mount(<CancellationPolicy {...incompleteProps} />);
     expect(error.callCount).toBe(0);
     error.restore();
   });
   it('should display action link when "description" prop is not empty', () => {
-    const wrapper = mount(<CancellationPolicy {...fullProps} />);
+    const wrapper = mount(<CancellationPolicy {...completeProps} />);
     const target = wrapper.find('#link');
     expect(target.length).toBe(1);
   });
@@ -55,7 +55,7 @@ describe('rendering', () => {
 describe('interaction', () => {
   it('action link should call "toggleModal"', () => {
     const toggleStub = sinon.stub(CancellationPolicy.prototype, 'toggleModal');
-    const wrapper = mount(<CancellationPolicy {...fullProps} />);
+    const wrapper = mount(<CancellationPolicy {...completeProps} />);
     wrapper.find('#link').simulate('click');
     expect(toggleStub.callCount).toBe(1);
     toggleStub.restore();
