@@ -43,5 +43,6 @@ describe('interaction', () => {
     const wrapper = mount(<Descriptions {...fullProps} />);
     wrapper.find('#link').simulate('click');
     expect(toggleStub.callCount).toBe(1);
+    toggleStub.restore();
   });
 });
