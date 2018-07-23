@@ -33,14 +33,16 @@ export default class Rules extends React.Component {
     const rulesList = <RulesList rules={rules} />;
     return (
       <div>
-        <Section
-          title="House rules"
-          content={rulesList}
-          link={rules.length > 3 ? link : null}
-          action={this.toggleMoreInfo}
-          expandable
-          expanded={expanded}
-        />
+        {rules.length && (
+          <Section
+            title="House rules"
+            content={rulesList}
+            link={rules.length > 3 ? link : null}
+            action={this.toggleMoreInfo}
+            expandable
+            expanded={expanded}
+          />
+        )}
       </div>
     );
   }
