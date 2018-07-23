@@ -44,6 +44,7 @@ const amenity = {
 const cancellationPolicy = {
   id: Number,
   name: String,
+  overview: String,
   description: String,
 };
 

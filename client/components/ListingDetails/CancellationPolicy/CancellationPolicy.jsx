@@ -55,8 +55,13 @@ CancellationPolicy.propTypes = {
 const CancellationPolicyOverview = (props) => {
   const { cancellationPolicy } = props;
   return (
-    <div className={styles.cancellationPolicyName}>
-      {cancellationPolicy.name}
+    <div>
+      <div className={styles.cancellationPolicyName}>
+        {cancellationPolicy.name}
+      </div>
+      <div className={styles.cancellatinPolicyOverview}>
+        {cancellationPolicy.overview}
+      </div>
     </div>
   );
 };
@@ -72,7 +77,9 @@ const CancellationPolicyDetails = (props) => {
   const { cancellationPolicy } = props;
   return (
     <div>
-      <CancellationPolicyOverview cancellationPolicy={cancellationPolicy} />
+      <div className={styles.cancellationPolicyName}>
+        {cancellationPolicy.name}
+      </div>
       <div className={styles.cancellationPolicyDescription}>
         {cancellationPolicy.description}
       </div>

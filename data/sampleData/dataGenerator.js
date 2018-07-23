@@ -5,7 +5,7 @@ const imageEndpoint = 'https://s3.amazonaws.com/fec-overview-service-images';
 const listingCount = 101;
 const listingTypeCount = 3;
 const hostCount = 10;
-const amenityCount = 20;
+const amenityCount = 40;
 const cancellationPolicyCount = 4;
 
 const getFakeListing = function (id, amenityIds, highlights, houseRules, sleepingArrangements) {
