@@ -1,12 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import Section from '../../Utilities/Section/Section';
-import { constants, functions } from '../../utils';
+import Collapsible from '../../Utilities/Collapsible/Collapsible';
+import { constants } from '../../utils';
 
 import styles from './HouseRules.css';
 
 const { houseRulesThreshold } = constants;
-const { expandCollapse } = functions;
 
 export default class HouseRules extends React.Component {
   constructor(props) {
@@ -17,28 +16,26 @@ export default class HouseRules extends React.Component {
     };
   }
 
-  toggleMoreInfo() {
-    this.setState(
-      prevState => ({ expanded: !prevState.expanded }),
-      () => {
-        expandCollapse(styles.moreWrapper, styles.moreContent, this.state.expanded);
-      },
-    );
+  toggleMoreInfo(callback) {
+    this.setState(prevState => ({ expanded: !prevState.expanded }), callback);
   }
 
   render() {
     const { houseRules } = this.props;
     const { expanded } = this.state;
     const link = expanded ? 'Hide' : 'Read all rules';
-    const rulesList = <RulesList {...this.props} />;
+    const rulesMain = <RulesMain {...this.props} />;
+    const rulesMore = <RulesMore {...this.props} />;
     return (
       <div>
         {houseRules.length && (
-          <Section
+          <Collapsible
+            id="houseRules"
             title="House rules"
-            content={rulesList}
+            main={rulesMain}
+            more={rulesMore}
             link={houseRules.length > houseRulesThreshold ? link : null}
-            action={this.toggleMoreInfo}
+            toggle={this.toggleMoreInfo}
             expandable
             expanded={expanded}
           />
@@ -52,7 +49,7 @@ HouseRules.propTypes = {
   houseRules: PropTypes.arrayOf(PropTypes.string).isRequired,
 };
 
-const RulesList = (props) => {
+const RulesMain = (props) => {
   const { houseRules } = props;
   return (
     <div>
@@ -63,21 +60,29 @@ const RulesList = (props) => {
         </div>
         ),
       )}
-      <div className={styles.moreWrapper}>
-        <div className={styles.moreContent}>
-          {houseRules.map(
-            (rule, index) => index >= houseRulesThreshold && (
-            <div className={styles.ruleItem}>
-              {rule}
-            </div>
-            ),
-          )}
-        </div>
-      </div>
     </div>
   );
 };
 
-RulesList.propTypes = {
+RulesMain.propTypes = {
+  houseRules: PropTypes.arrayOf(PropTypes.string).isRequired,
+};
+
+const RulesMore = (props) => {
+  const { houseRules } = props;
+  return (
+    <div>
+      {houseRules.map(
+        (rule, index) => index >= houseRulesThreshold && (
+        <div className={styles.ruleItem}>
+          {rule}
+        </div>
+        ),
+      )}
+    </div>
+  );
+};
+
+RulesMore.propTypes = {
   houseRules: PropTypes.arrayOf(PropTypes.string).isRequired,
 };

@@ -1,11 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import Section from '../../Utilities/Section/Section';
-import { functions } from '../../utils';
-
-import styles from './Description.css';
-
-const { expandCollapse } = functions;
+import Collapsible from '../../Utilities/Collapsible/Collapsible';
 
 export default class Description extends React.Component {
   constructor(props) {
@@ -16,29 +12,26 @@ export default class Description extends React.Component {
     };
   }
 
-  toggleMoreInfo() {
-    this.setState(
-      prevState => ({ expanded: !prevState.expanded }),
-      () => expandCollapse(styles.moreWrapper, styles.moreContent, this.state.expanded),
-    );
+  toggleMoreInfo(callback) {
+    this.setState(prevState => ({ expanded: !prevState.expanded }), callback);
   }
 
   render() {
-    const { more } = this.props.description;
+    const { description } = this.props;
     const { expanded } = this.state;
-    const description = <DescriptionContent {...this.props} />;
-    const linkVariant = expanded ? 'Hide' : 'Read more about the space';
-    const link = more.length ? linkVariant : null;
+    const main = <DescriptionMain {...this.props} />;
+    const more = <DescriptionMore {...this.props} />;
+    const link = expanded ? 'Hide' : 'Read more about the space';
     return (
-      <div>
-        <Section
-          content={description}
-          link={link}
-          action={this.toggleMoreInfo}
-          expandable
-          expanded={expanded}
-        />
-      </div>
+      <Collapsible
+        id="description"
+        main={main}
+        more={more}
+        link={description.more.length ? link : null}
+        toggle={this.toggleMoreInfo}
+        expandable
+        expanded={expanded}
+      />
     );
   }
 }
@@ -50,34 +43,41 @@ Description.propTypes = {
   }).isRequired,
 };
 
-const DescriptionContent = (props) => {
-  const { main, more } = props.description;
+const DescriptionMain = (props) => {
+  const { main } = props.description;
   return (
     <div>
-      <div>
-        {main}
-      </div>
-      <div className={styles.moreWrapper}>
-        <div className={styles.moreContent}>
-          {more.map(info => (
-            <Section
-              subtitle={info.title}
-              content={(
-                <div>
-                  {info.text}
-                </div>
-)}
-            />
-          ))}
-        </div>
-      </div>
+      {main}
     </div>
   );
 };
 
-DescriptionContent.propTypes = {
+DescriptionMain.propTypes = {
   description: PropTypes.shape({
     main: PropTypes.string.isRequired,
-    more: PropTypes.array.isRequired,
+  }).isRequired,
+};
+
+const DescriptionMore = (props) => {
+  const { more } = props.description;
+  return (
+    <div>
+      {more.map(info => (
+        <Section
+          subtitle={info.title}
+          content={(
+            <div>
+              {info.text}
+            </div>
+)}
+        />
+      ))}
+    </div>
+  );
+};
+
+DescriptionMore.propTypes = {
+  description: PropTypes.shape({
+    more: PropTypes.arrayOf(PropTypes.string).isRequired,
   }).isRequired,
 };

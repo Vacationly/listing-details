@@ -16,17 +16,6 @@
   font-weight: 600;
 }
 
-.moreWrapper {
-  height: 0;
-  opacity: 0;
-  transition: 0.5s all ease-out;
-  overflow: hidden;
-}
-
-.moreContent {
-  height: fit-content;
-}
-
 @media (max-width: 400px) {
   .sleepingArrangementTiles {
     grid-template-columns: 50% 50%;
