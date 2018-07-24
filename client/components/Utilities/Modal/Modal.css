@@ -14,7 +14,7 @@
   display: flex;
   flex-direction: column;
   position: relative;
-  top: 2rem;
+  top: 4rem;
   width: fit-content;
   height: fit-content;
   max-width: 600px;
@@ -30,11 +30,11 @@
   height: 1.2rem;
   border-radius: 1rem;
   text-align: center;
-  font-size: 1.6rem;
+  font-size: 1.5rem;
   font-weight: 100;
   color: grey;
   cursor: pointer;
-  line-height: 0.99rem;
+  line-height: 1rem;
 }
 
 .dismiss:focus {
