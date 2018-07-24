@@ -1,12 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import Section from '../../Utilities/Section/Section';
-import { constants, functions } from '../../utils';
+import Collapsible from '../../Utilities/Collapsible/Collapsible';
+import { constants } from '../../utils';
 import styles from './SleepingArrangements.css';
 
 const { sleepingArrangementsThreshold } = constants;
-const { expandCollapse } = functions;
 
 export default class SleepingArrangements extends React.Component {
   constructor(props) {
@@ -17,28 +16,26 @@ export default class SleepingArrangements extends React.Component {
     };
   }
 
-  toggleMoreInfo() {
-    this.setState(
-      prevState => ({ expanded: !prevState.expanded }),
-      () => {
-        expandCollapse(styles.moreWrapper, styles.moreContent, this.state.expanded);
-      },
-    );
+  toggleMoreInfo(callback) {
+    this.setState(prevState => ({ expanded: !prevState.expanded }), callback);
   }
 
   render() {
     const { sleepingArrangements } = this.props;
     const { expanded } = this.state;
     const link = expanded ? 'Hide' : 'Show all';
-    const sleepingArrangementsList = <SleepingArrangementsList {...this.props} />;
+    const sleepingArrangementsMain = <SleepingArrangementsMain {...this.props} />;
+    const sleepingArrangementsMore = <SleepingArrangementsMore {...this.props} />;
     return (
       <div>
         {sleepingArrangements.length && (
-          <Section
+          <Collapsible
+            id="sleepingArrangements"
             title="Sleeping arrangements"
-            content={sleepingArrangementsList}
+            main={sleepingArrangementsMain}
+            more={sleepingArrangementsMore}
             link={sleepingArrangements.length > sleepingArrangementsThreshold ? link : null}
-            action={this.toggleMoreInfo}
+            toggle={this.toggleMoreInfo}
             expandable
             expanded={expanded}
           />
@@ -58,7 +55,7 @@ SleepingArrangements.propTypes = {
   ).isRequired,
 };
 
-const SleepingArrangementsList = (props) => {
+const SleepingArrangementsMain = (props) => {
   const { sleepingArrangements } = props;
   return (
     <div>
@@ -69,20 +66,34 @@ const SleepingArrangementsList = (props) => {
           ),
         )}
       </div>
-      <div className={styles.moreWrapper}>
-        <div className={`${styles.moreContent} ${styles.sleepingArrangements}`}>
-          {sleepingArrangements.map(
-            (sleepingArrangement, index) => index >= sleepingArrangementsThreshold && (
-            <SleepingArrangement {...{ sleepingArrangement }} />
-            ),
-          )}
-        </div>
-      </div>
     </div>
   );
 };
 
-SleepingArrangementsList.propTypes = {
+SleepingArrangementsMain.propTypes = {
+  sleepingArrangements: PropTypes.arrayOf(
+    PropTypes.shape({
+      spaceName: PropTypes.string.isRequired,
+      mattressType: PropTypes.string.isRequired,
+      number: PropTypes.number.isRequired,
+    }),
+  ).isRequired,
+};
+
+const SleepingArrangementsMore = (props) => {
+  const { sleepingArrangements } = props;
+  return (
+    <div className={styles.sleepingArrangements}>
+      {sleepingArrangements.map(
+        (sleepingArrangement, index) => index >= sleepingArrangementsThreshold && (
+        <SleepingArrangement {...{ sleepingArrangement }} />
+        ),
+      )}
+    </div>
+  );
+};
+
+SleepingArrangementsMore.propTypes = {
   sleepingArrangements: PropTypes.arrayOf(
     PropTypes.shape({
       spaceName: PropTypes.string.isRequired,
