@@ -1,6 +1,7 @@
 .listingSummary {
   display: flex;
   flex-direction: column;
+  margin: 0 0 0.5rem;
 }
 
 .listingType {
@@ -12,7 +13,7 @@
   display: flex;
   align-items: start;
   justify-content: space-between;
-  margin: 0.5rem 0 1rem;
+  margin: 0.25rem 0 1rem;
 }
 
 .title {
@@ -22,6 +23,7 @@
 }
 
 .capacity {
+  margin: 1rem 0;
   display: flex;
 }
 
@@ -42,6 +44,7 @@
   align-items: center;
   align-self: top;
   width: fit-content;
+  margin: 0.5rem 0;
   font-size: 0.8rem;
 }
 

@@ -20,6 +20,7 @@ const Summary = (props) => {
           <div className={styles.city}>
             {location.city}
           </div>
+          <Capacity {...props} />
         </div>
         <div className={styles.host}>
           <img src={host.avatar} className={styles.avatar} alt={host.name} />
@@ -28,7 +29,6 @@ const Summary = (props) => {
           </span>
         </div>
       </div>
-      <Capacity {...props} />
     </div>
   );
 };
