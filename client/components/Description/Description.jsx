@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import Section from '../../Utilities/Section/Section';
-import Expandable from '../../Utilities/Expandable/Expandable';
+import Section from '../Utilities/Section/Section';
+import Expandable from '../Utilities/Expandable/Expandable';
 
 export default class Description extends React.Component {
   constructor(props) {

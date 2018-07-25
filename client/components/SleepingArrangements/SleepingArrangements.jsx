@@ -1,8 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import Expandable from '../../Utilities/Expandable/Expandable';
-import { constants } from '../../utils';
+import Expandable from '../Utilities/Expandable/Expandable';
+import { constants } from '../utils';
 import styles from './SleepingArrangements.css';
 
 const { sleepingArrangementsThreshold } = constants;

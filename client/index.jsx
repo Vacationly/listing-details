@@ -1,5 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import App from './components/App/App';
+import App from './components/App';
 
-ReactDOM.render(<App />, window.document.getElementById('Details'));
+const dummyProps = { match: { params: { listingId: Math.floor(Math.random() * 100) } } };
+
+ReactDOM.render(<App {...dummyProps} />, window.document.getElementById('Details'));

@@ -2,14 +2,14 @@ import axios from 'axios';
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import Summary from '../ListingDetails/Summary/Summary';
-import Highlights from '../ListingDetails/Highlights/Highlights';
-import Description from '../ListingDetails/Description/Description';
-import Amenities from '../ListingDetails/Amenities/Amenities';
-import SleepingArrangements from '../ListingDetails/SleepingArrangements/SleepingArrangements';
-import HouseRules from '../ListingDetails/HouseRules/HouseRules';
-import CancellationPolicy from '../ListingDetails/CancellationPolicy/CancellationPolicy';
-import { constants } from '../utils';
+import Summary from './Summary/Summary';
+import Highlights from './Highlights/Highlights';
+import Description from './Description/Description';
+import Amenities from './Amenities/Amenities';
+import SleepingArrangements from './SleepingArrangements/SleepingArrangements';
+import HouseRules from './HouseRules/HouseRules';
+import CancellationPolicy from './CancellationPolicy/CancellationPolicy';
+import { constants } from './utils';
 
 import styles from './App.css';
 
