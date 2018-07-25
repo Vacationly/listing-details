@@ -21,7 +21,8 @@ export default class Highlights extends React.Component {
     const { feedbackStatus } = this.state;
     feedbackStatus[index] = value;
     this.setState({ feedbackStatus }, () => {
-      this.props.saveFeedback(index, value);
+      const { saveFeedback } = this.props;
+      saveFeedback(index, value);
     });
   }
 
@@ -64,10 +65,10 @@ home highlights
 Highlights.propTypes = {
   highlights: PropTypes.arrayOf(
     PropTypes.shape({
-      id: PropTypes.number.isRequired,
-      tagline: PropTypes.string.isRequired,
-      description: PropTypes.string.isRequired,
-      upvotes: PropTypes.number.isRequired,
+      id: PropTypes.number,
+      tagline: PropTypes.string,
+      description: PropTypes.string,
+      upvotes: PropTypes.number,
     }),
   ).isRequired,
   saveFeedback: PropTypes.func.isRequired,

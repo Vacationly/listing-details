@@ -48,9 +48,9 @@ export default class SleepingArrangements extends React.Component {
 SleepingArrangements.propTypes = {
   sleepingArrangements: PropTypes.arrayOf(
     PropTypes.shape({
-      spaceName: PropTypes.string.isRequired,
-      mattressType: PropTypes.string.isRequired,
-      number: PropTypes.number.isRequired,
+      spaceName: PropTypes.string,
+      mattressType: PropTypes.string,
+      number: PropTypes.number,
     }),
   ).isRequired,
 };
@@ -96,9 +96,9 @@ const SleepingArrangementsMore = (props) => {
 SleepingArrangementsMore.propTypes = {
   sleepingArrangements: PropTypes.arrayOf(
     PropTypes.shape({
-      spaceName: PropTypes.string.isRequired,
-      mattressType: PropTypes.string.isRequired,
-      number: PropTypes.number.isRequired,
+      spaceName: PropTypes.string,
+      mattressType: PropTypes.string,
+      number: PropTypes.number,
     }),
   ).isRequired,
 };
@@ -122,8 +122,8 @@ const SleepingArrangement = (props) => {
 
 SleepingArrangement.propTypes = {
   sleepingArrangement: PropTypes.shape({
-    spaceName: PropTypes.string.isRequired,
-    mattressType: PropTypes.string.isRequired,
-    number: PropTypes.number.isRequired,
+    spaceName: PropTypes.string,
+    mattressType: PropTypes.string,
+    number: PropTypes.number,
   }).isRequired,
 };

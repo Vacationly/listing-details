@@ -93,8 +93,8 @@ const AmenitiesFullList = (props) => {
 AmenitiesFullList.propTypes = {
   amenities: PropTypes.arrayOf(
     PropTypes.shape({
-      name: PropTypes.string.isRequired,
-      icon: PropTypes.string.isRequired,
+      name: PropTypes.string,
+      icon: PropTypes.string,
     }),
   ).isRequired,
 };
