@@ -2,4 +2,8 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import App from './components/App/App';
 
-ReactDOM.render(<App />, window.document.getElementById('Details'));
+const pathPattern = /listing\/\d+/;
+
+if (pathPattern.test(window.location.pathname)) {
+  ReactDOM.render(<App />, window.document.getElementById('Details'));
+}
