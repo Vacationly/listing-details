@@ -6,7 +6,7 @@ const model = require('./model.js');
 const port = process.env.PORT || 3000;
 
 const app = express();
-app.use('/listings/:id', express.static(`${__dirname}/../public`));
+app.use('/listing/:listingId', express.static(`${__dirname}/../public`));
 app.use(parser.json());
 app.use(parser.urlencoded({ extended: true }));
 

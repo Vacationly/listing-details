@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import Section from '../Section/Section';
 
-import styles from './Collapsible.css';
+import styles from './Expandable.css';
 
 const toggleCollapse = (wrapperId, contentId, expanded) => {
   const wrapper = window.document.getElementById(wrapperId);
@@ -12,7 +12,7 @@ const toggleCollapse = (wrapperId, contentId, expanded) => {
   wrapper.style.overflow = expanded ? 'visible' : 'hidden';
 };
 
-const Collapsible = (props) => {
+const Expandable = (props) => {
   const {
     id, title, main, more, link, toggle, expanded,
   } = props;
@@ -45,7 +45,7 @@ const Collapsible = (props) => {
   );
 };
 
-Collapsible.propTypes = {
+Expandable.propTypes = {
   id: PropTypes.string.isRequired,
   title: PropTypes.string,
   main: PropTypes.element,
@@ -55,7 +55,7 @@ Collapsible.propTypes = {
   expanded: PropTypes.bool,
 };
 
-Collapsible.defaultProps = {
+Expandable.defaultProps = {
   title: null,
   main: null,
   more: null,
@@ -64,4 +64,4 @@ Collapsible.defaultProps = {
   expanded: false,
 };
 
-module.exports = Collapsible;
+module.exports = Expandable;
