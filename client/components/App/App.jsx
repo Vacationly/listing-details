@@ -25,7 +25,7 @@ export default class extends React.Component {
   }
 
   componentDidMount() {
-    const windowPath = window.location.pathname.split('listings/');
+    const windowPath = window.location.pathname.split('listing/');
     const listingId = parseInt(windowPath[1], 10) || 0;
     this.getListingData(listingId);
   }

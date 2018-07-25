@@ -2,7 +2,7 @@ import React from 'react';
 
 import { shallow, mount } from 'enzyme';
 import sinon from 'sinon';
-import Collapsible from './Collapsible';
+import Expandable from './Expandable';
 
 const validProps = {
   id: 'Id',
@@ -64,7 +64,7 @@ describe('interaction', () => {
     toggle.restore();
   });
   it('should call toggle once when link is clicked', () => {
-    const wrapper = mount(<Collapsible {...validProps} />);
+    const wrapper = mount(<Expandable {...validProps} />);
     const target = wrapper.find('#link');
     expect(target.length).toBe(1);
     target.simulate('click', clickEvent);
@@ -74,12 +74,12 @@ describe('interaction', () => {
 
 describe('rendering', () => {
   it('should not create a #link element when no "link" prop is given', () => {
-    const wrapper = mount(<Collapsible {...partialProps1} />);
+    const wrapper = mount(<Expandable {...partialProps1} />);
     const target = wrapper.find('#link');
     expect(target.length).toBe(0);
   });
   it('should not create a #link element when no "more" prop is given', () => {
-    const wrapper = mount(<Collapsible {...partialProps2} />);
+    const wrapper = mount(<Expandable {...partialProps2} />);
     const target = wrapper.find('#link');
     expect(target.length).toBe(0);
   });
@@ -94,11 +94,11 @@ describe('validation', () => {
     error.restore();
   });
   it('should throw an error when given a prop of invalid type', () => {
-    shallow(<Collapsible {...invalidProps} />);
+    shallow(<Expandable {...invalidProps} />);
     expect(error.callCount).toBe(1);
   });
   it('should throw an error when not given a required prop', () => {
-    shallow(<Collapsible {...incompleteProps} />);
+    shallow(<Expandable {...incompleteProps} />);
     expect(error.callCount).toBe(1);
   });
 });

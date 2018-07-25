@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import Collapsible from '../../Utilities/Collapsible/Collapsible';
+import Expandable from '../../Utilities/Expandable/Expandable';
 import { constants } from '../../utils';
 import styles from './SleepingArrangements.css';
 
@@ -29,7 +29,7 @@ export default class SleepingArrangements extends React.Component {
     return (
       <div>
         {sleepingArrangements.length && (
-          <Collapsible
+          <Expandable
             id="sleepingArrangements"
             title="Sleeping arrangements"
             main={sleepingArrangementsMain}

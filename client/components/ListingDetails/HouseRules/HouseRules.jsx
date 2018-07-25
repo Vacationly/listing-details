@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import Collapsible from '../../Utilities/Collapsible/Collapsible';
+import Expandable from '../../Utilities/Expandable/Expandable';
 import { constants } from '../../utils';
 
 import styles from './HouseRules.css';
@@ -29,7 +29,7 @@ export default class HouseRules extends React.Component {
     return (
       <div>
         {houseRules.length && (
-          <Collapsible
+          <Expandable
             id="houseRules"
             title="House rules"
             main={rulesMain}
