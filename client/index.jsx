@@ -2,6 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import App from './components/App';
 
-const dummyProps = { match: { params: { listingId: Math.floor(Math.random() * 100) } } };
+const listingId = window.location.pathname.split('listing/')[1] || 0;
+const props = { match: { params: { listingId } } };
 
-ReactDOM.render(<App {...dummyProps} />, window.document.getElementById('Details'));
+ReactDOM.render(<App {...props} />, window.document.getElementById('Details'));
