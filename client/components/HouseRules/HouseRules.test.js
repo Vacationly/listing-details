@@ -1,60 +1,60 @@
-import React from 'react';
+import React from "react";
 
-import { mount } from 'enzyme';
-import sinon from 'sinon';
-import HouseRules from './HouseRules';
+import { mount } from "enzyme";
+import sinon from "sinon";
+import HouseRules from "./HouseRules";
 
-import { constants } from '../../utils';
+import { constants } from "../utils";
 
-const generateRules = (numRules) => {
+const generateRules = numRules => {
   const houseRules = [];
   for (let i = 0; i < numRules; i++) {
-    houseRules.push('placeholder');
+    houseRules.push("placeholder");
   }
   return houseRules;
 };
 
 const emptyProps = {
-  houseRules: [],
+  houseRules: []
 };
 
 const incompleteProps = {
-  houseRules: generateRules(1),
+  houseRules: generateRules(1)
 };
 
 const completeProps = {
-  houseRules: generateRules(constants.houseRulesThreshold + 1),
+  houseRules: generateRules(constants.houseRulesThreshold + 1)
 };
 
-describe('rendering', () => {
-  it('should NOT render Section component when there are no rules', () => {
+describe("rendering", () => {
+  it("should NOT render Section component when there are no rules", () => {
     const wrapper = mount(<HouseRules {...emptyProps} />);
-    const target = wrapper.find('#title');
+    const target = wrapper.find("#title");
     expect(target.length).toBe(0);
   });
-  it('should NOT throw an error when there are no rules', () => {
-    const error = sinon.spy(console, 'error');
+  it("should NOT throw an error when there are no rules", () => {
+    const error = sinon.spy(console, "error");
     mount(<HouseRules {...emptyProps} />);
     expect(error.callCount).toBe(0);
     error.restore();
   });
-  it('should NOT display action link when there is only one rule', () => {
+  it("should NOT display action link when there is only one rule", () => {
     const wrapper = mount(<HouseRules {...incompleteProps} />);
-    const target = wrapper.find('#link');
+    const target = wrapper.find("#link");
     expect(target.length).toBe(0);
   });
-  it('should display action link when there are many rules', () => {
+  it("should display action link when there are many rules", () => {
     const wrapper = mount(<HouseRules {...completeProps} />);
-    const target = wrapper.find('#link');
+    const target = wrapper.find("#link");
     expect(target.length).toBe(1);
   });
 });
 
-describe('interaction', () => {
+describe("interaction", () => {
   it('action link should call "toggleMoreInfo"', () => {
-    const toggleStub = sinon.stub(HouseRules.prototype, 'toggleMoreInfo');
+    const toggleStub = sinon.stub(HouseRules.prototype, "toggleMoreInfo");
     const wrapper = mount(<HouseRules {...completeProps} />);
-    wrapper.find('#link').simulate('click');
+    wrapper.find("#link").simulate("click");
     expect(toggleStub.callCount).toBe(1);
     toggleStub.restore();
   });
