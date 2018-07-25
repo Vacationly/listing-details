@@ -93,7 +93,7 @@ Hello, world!
 App.propTypes = {
   match: PropTypes.shape({
     params: PropTypes.shape({
-      listingId: PropTypes.number,
+      listingId: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
     }),
   }).isRequired,
 };
