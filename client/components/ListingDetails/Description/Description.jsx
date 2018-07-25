@@ -38,13 +38,15 @@ export default class Description extends React.Component {
 
 Description.propTypes = {
   description: PropTypes.shape({
-    main: PropTypes.string.isRequired,
-    more: PropTypes.array.isRequired,
+    main: PropTypes.string,
+    more: PropTypes.array,
   }).isRequired,
 };
 
 const DescriptionMain = (props) => {
-  const { main } = props.description;
+  const {
+    description: { main },
+  } = props;
   return (
     <div>
       {main}
@@ -54,12 +56,14 @@ const DescriptionMain = (props) => {
 
 DescriptionMain.propTypes = {
   description: PropTypes.shape({
-    main: PropTypes.string.isRequired,
+    main: PropTypes.string,
   }).isRequired,
 };
 
 const DescriptionMore = (props) => {
-  const { more } = props.description;
+  const {
+    description: { more },
+  } = props;
   return (
     <div>
       {more.map(info => (
@@ -78,6 +82,6 @@ const DescriptionMore = (props) => {
 
 DescriptionMore.propTypes = {
   description: PropTypes.shape({
-    more: PropTypes.arrayOf(PropTypes.string).isRequired,
+    more: PropTypes.arrayOf(PropTypes.string),
   }).isRequired,
 };

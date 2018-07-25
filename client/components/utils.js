@@ -12,7 +12,9 @@ const dummyListing = {
 };
 
 const processKeyUp = (e, handler) => {
-  e.key === 'Enter' && handler();
+  if (e.key === 'Enter') {
+    handler();
+  }
 };
 
 module.exports = {
