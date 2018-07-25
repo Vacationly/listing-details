@@ -15,7 +15,7 @@ import styles from './App.css';
 
 const { apiEndpoint, dummyListing } = constants;
 
-export default class extends React.Component {
+export default class App extends React.Component {
   constructor(props) {
     super(props);
     this.saveFeedbackData = this.saveFeedbackData.bind(this);
