@@ -28,6 +28,7 @@
     "start-dev": "nodemon server/index.js",
     "build": "webpack --mode production"
   },
+  "proxy": "http://localhost:3002/",
   "dependencies": {
     "axios": "^0.18.0",
     "body-parser": "^1.18.3",
