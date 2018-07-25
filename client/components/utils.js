@@ -5,10 +5,10 @@ const sleepingArrangementsThreshold = 3;
 const houseRulesThreshold = 3;
 const dummyListing = {
   title: 'Oops! No listing found.',
-  listingType: { value: 'Nonexistent' },
+  listingType: { name: 'Nonexistent' },
   location: { city: 'Nowheresville', state: 'Nowherenia', country: 'Nowheresland' },
   host: { name: 'Nobody', avatar: `${imagesEndpoint}/confused_avatar.png` },
-  capacity: [{ name: 'Rooms', value: 0 }],
+  capacity: [{ name: 'Rooms', number: 0, icon: '' }],
 };
 
 const processKeyUp = (e, handler) => {
