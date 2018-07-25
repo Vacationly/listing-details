@@ -3,10 +3,10 @@ const parser = require('body-parser');
 
 const model = require('./model.js');
 
-const port = process.env.PORT || 3000;
+const port = process.env.PORT || 3002;
 
 const app = express();
-app.use('/listing/:listingId', express.static(`${__dirname}/../public`));
+app.use('/', express.static(`${__dirname}/../public`));
 app.use(parser.json());
 app.use(parser.urlencoded({ extended: true }));
 
