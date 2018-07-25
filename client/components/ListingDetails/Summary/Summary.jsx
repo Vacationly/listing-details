@@ -36,22 +36,22 @@ const Summary = (props) => {
 Summary.propTypes = {
   title: PropTypes.string.isRequired,
   listingType: PropTypes.shape({
-    name: PropTypes.string.isRequired,
+    name: PropTypes.string,
   }).isRequired,
   location: PropTypes.shape({
-    city: PropTypes.string.isRequired,
-    state: PropTypes.string,
-    country: PropTypes.string,
+    city: PropTypes.string,
+    state: PropTypes,
+    country: PropTypes,
   }).isRequired,
   capacity: PropTypes.arrayOf(
     PropTypes.shape({
-      name: PropTypes.string.isRequired,
-      number: PropTypes.number.isRequired,
+      name: PropTypes.string,
+      number: PropTypes.number,
     }),
   ).isRequired,
   host: PropTypes.shape({
-    name: PropTypes.string.isRequired,
-    avatar: PropTypes.string.isRequired,
+    name: PropTypes.string,
+    avatar: PropTypes.string,
   }).isRequired,
 };
 
@@ -75,9 +75,9 @@ const Capacity = (props) => {
 Capacity.propTypes = {
   capacity: PropTypes.arrayOf(
     PropTypes.shape({
-      name: PropTypes.string.isRequired,
-      number: PropTypes.number.isRequired,
-      icon: PropTypes.string.isRequired,
+      name: PropTypes.string,
+      number: PropTypes.number,
+      icon: PropTypes.string,
     }),
   ).isRequired,
 };

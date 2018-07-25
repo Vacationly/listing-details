@@ -82,6 +82,6 @@ const DescriptionMore = (props) => {
 
 DescriptionMore.propTypes = {
   description: PropTypes.shape({
-    more: PropTypes.arrayOf(PropTypes.string),
+    more: PropTypes.array,
   }).isRequired,
 };
