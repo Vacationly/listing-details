@@ -9,6 +9,8 @@ import { constants } from "./utils";
 const mockResponse = { data: constants.dummyListing };
 const { dummyListing } = constants;
 
+const dummyProps = { match: { params: { listingId: 1 } } };
+
 describe("componentDidMount() with successful API request", () => {
   const getRequest = Promise.resolve(mockResponse);
   let axiosGet;
@@ -20,7 +22,7 @@ describe("componentDidMount() with successful API request", () => {
   });
   it("should call getDataForListing once when mounting", done => {
     const getListingData = sinon.spy(App.prototype, "getListingData");
-    const wrapper = shallow(<App />);
+    const wrapper = shallow(<App {...dummyProps} />);
     return Promise.resolve(wrapper).then(() => {
       expect(getListingData.callCount).toBe(1);
       getListingData.restore();
@@ -28,14 +30,14 @@ describe("componentDidMount() with successful API request", () => {
     });
   });
   it("should receive listingData upon mounting", done => {
-    const wrapper = shallow(<App />);
+    const wrapper = shallow(<App {...dummyProps} />);
     return Promise.resolve(wrapper).then(() => {
       expect(wrapper.state()).toHaveProperty("listingData", mockResponse.data);
       done();
     });
   });
   it("should change what is displayed once component is mounted", done => {
-    const wrapper = shallow(<App />);
+    const wrapper = shallow(<App {...dummyProps} />);
     const initialDiv = expect(wrapper.find("div"));
     return Promise.resolve(wrapper).then(() => {
       wrapper.update();
@@ -55,14 +57,14 @@ describe("componentDidMount() with unsuccessful API request", () => {
     axiosGet.restore();
   });
   it('should set state using "dummyListing" when server returns error', done => {
-    const wrapper = shallow(<App />);
+    const wrapper = shallow(<App {...dummyProps} />);
     return Promise.resolve(wrapper).then(() => {
       expect(wrapper.state()).toHaveProperty("listingData", dummyListing);
       done();
     });
   });
   it("should change what is displayed once component is mounted", done => {
-    const wrapper = shallow(<App />);
+    const wrapper = shallow(<App {...dummyProps} />);
     const initialDiv = expect(wrapper.find("div"));
     return Promise.resolve(wrapper).then(() => {
       wrapper.update();
@@ -81,7 +83,7 @@ describe("saveFeedbackData()", () => {
     axiosPut.restore();
   });
   it("should call axios.put to update feedback data", done => {
-    const wrapper = shallow(<App />);
+    const wrapper = shallow(<App {...dummyProps} />);
     return Promise.resolve(wrapper).then(() => {
       wrapper.instance().saveFeedbackData();
       expect(axiosPut.callCount).toBe(1);
