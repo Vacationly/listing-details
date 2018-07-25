@@ -6,11 +6,20 @@ import Highlights from './Highlights';
 
 const emptyProps = {
   highlights: [],
+  saveFeedback() {
+    return true;
+  },
 };
 
 const completeProps = {
-  id: 1,
-  highlights: [{ tagline: 'placeholder', description: 'placeholder', upvotes: 0 }],
+  highlights: [
+    {
+      id: 1,
+      tagline: 'placeholder',
+      description: 'placeholder',
+      upvotes: 0,
+    },
+  ],
   saveFeedback() {
     return true;
   },

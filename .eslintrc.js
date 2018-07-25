@@ -13,6 +13,7 @@ module.exports = {
   rules: {
     'no-underscore-dangle': 'off',
     'no-plusplus': 'off',
+    'no-undef': 'off',
     'func-names': 'off',
     'react/jsx-filename-extension': 'never',
   },
