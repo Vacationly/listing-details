@@ -6,15 +6,15 @@
  */
 
 module.exports = {
-  extends: 'airbnb',
+  extends: "airbnb",
   env: {
-    jest: true,
+    jest: true
   },
   rules: {
-    'no-underscore-dangle': 'off',
-    'no-plusplus': 'off',
-    'no-undef': 'off',
-    'func-names': 'off',
-    'react/jsx-filename-extension': 'never',
-  },
+    "no-underscore-dangle": "off",
+    "no-plusplus": "off",
+    "no-undef": "off",
+    "func-names": "off",
+    "react/jsx-filename-extension": "off"
+  }
 };
