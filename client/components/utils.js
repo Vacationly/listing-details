@@ -1,4 +1,4 @@
-const apiEndpoint = '/api/listings';
+const apiEndpoint = 'http://localhost:3002/api/listings';
 const imagesEndpoint = 'https://s3.amazonaws.com/fec-overview-service-images';
 const amenitiesThreshold = 6;
 const sleepingArrangementsThreshold = 3;

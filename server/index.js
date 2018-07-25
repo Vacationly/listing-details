@@ -6,9 +6,14 @@ const model = require('./model.js');
 const port = process.env.PORT || 3002;
 
 const app = express();
-app.use('/listing/:listingId', express.static(`${__dirname}/../public`));
+app.use('/', express.static(`${__dirname}/../public`));
 app.use(parser.json());
 app.use(parser.urlencoded({ extended: true }));
+app.use((req, res, next) => {
+  res.header('Access-Control-Allow-Origin', '*');
+  res.header('Access-Control-Allow-Headers', 'X-Requested-With');
+  next();
+});
 
 app.get('/api/listings/:listingId', (req, res) => {
   const { listingId } = req.params;
