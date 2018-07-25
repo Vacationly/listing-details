@@ -62,7 +62,7 @@ export default class extends React.Component {
     } = listingData;
     if (dataReady) {
       return (
-        <div className={styles.container}>
+        <div className={styles.detailsContainer}>
           <Summary {...listingData} />
           {highlights && (
             <Highlights highlights={highlights} saveFeedback={this.saveFeedbackData} />
