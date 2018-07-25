@@ -1,5 +1,6 @@
 import axios from 'axios';
 import React from 'react';
+import PropTypes from 'prop-types';
 
 import Summary from '../ListingDetails/Summary/Summary';
 import Highlights from '../ListingDetails/Highlights/Highlights';
@@ -25,12 +26,18 @@ export default class extends React.Component {
   }
 
   componentDidMount() {
-    const windowPath = window.location.pathname.split('listing/');
-    const listingId = parseInt(windowPath[1], 10) || 0;
-    this.getListingData(listingId);
+    this.getListingData(this.props);
   }
 
-  getListingData(listingId) {
+  componentWillReceiveProps(nextProps) {
+    this.getListingData(nextProps);
+  }
+
+  getListingData(props) {
+    const {
+      match: { params },
+    } = props;
+    const listingId = parseInt(params.listingId, 10) || 0;
     axios.get(`${apiEndpoint}/${listingId}`).then(
       (response) => {
         this.setState({ listingData: response.data, dataReady: true });
@@ -82,3 +89,11 @@ Hello, world!
     );
   }
 }
+
+App.propTypes = {
+  match: PropTypes.shape({
+    params: PropTypes.shape({
+      listingId: PropTypes.number,
+    }),
+  }).isRequired,
+};
