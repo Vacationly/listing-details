@@ -39,8 +39,7 @@
 
 .dismiss:focus {
   box-shadow: rgba(0, 0, 0, 0.2) 0px 1px 10px 0px;
-  outline: 1;
-  outline-color: darkgrey;
+  outline: 0;
 }
 
 .title {
