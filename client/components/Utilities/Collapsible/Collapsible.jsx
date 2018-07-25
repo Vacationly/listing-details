@@ -4,6 +4,14 @@ import Section from '../Section/Section';
 
 import styles from './Collapsible.css';
 
+const toggleCollapse = (wrapperId, contentId, expanded) => {
+  const wrapper = window.document.getElementById(wrapperId);
+  const content = window.document.getElementById(contentId);
+  wrapper.style.height = expanded ? `${content.clientHeight + content.style.margin}px` : '0px';
+  wrapper.style.opacity = expanded ? 1 : 0;
+  wrapper.style.overflow = expanded ? 'visible' : 'hidden';
+};
+
 const Collapsible = (props) => {
   const {
     id, title, main, more, link, toggle, expanded,
@@ -29,20 +37,12 @@ const Collapsible = (props) => {
     <Section
       title={title}
       content={content}
-      link={link}
+      link={more ? link : null}
       action={toggleMoreInfo}
       expandable
       expanded={expanded}
     />
   );
-};
-
-const toggleCollapse = (wrapperId, contentId, expanded) => {
-  const wrapper = window.document.getElementById(wrapperId);
-  const content = window.document.getElementById(contentId);
-  wrapper.style.height = expanded ? `${content.clientHeight + content.style.margin}px` : '0px';
-  wrapper.style.opacity = expanded ? 1 : 0;
-  wrapper.style.overflow = expanded ? 'visible' : 'hidden';
 };
 
 Collapsible.propTypes = {
@@ -51,7 +51,7 @@ Collapsible.propTypes = {
   main: PropTypes.element,
   more: PropTypes.element,
   link: PropTypes.string,
-  action: PropTypes.func,
+  toggle: PropTypes.func,
   expanded: PropTypes.bool,
 };
 
@@ -60,7 +60,7 @@ Collapsible.defaultProps = {
   main: null,
   more: null,
   link: null,
-  action: null,
+  toggle: null,
   expanded: false,
 };
 
