@@ -8,11 +8,13 @@ import Amenities from './Amenities/Amenities';
 import SleepingArrangements from './SleepingArrangements/SleepingArrangements';
 import HouseRules from './HouseRules/HouseRules';
 import CancellationPolicy from './CancellationPolicy/CancellationPolicy';
+import VideoPlayer from './VideoPlayer/VideoPlayer';
+
 import { constants } from './utils';
 
 import styles from './App.css';
 
-const { apiEndpoint, dummyListing } = constants;
+const { apiEndpoint, dummyListing, imagesEndpoint } = constants;
 
 const getListingIdFromUrl = () => window.location.pathname.split('listing/')[1] || 0;
 
@@ -71,6 +73,7 @@ export default class App extends React.Component {
           {sleepingArrangements && <SleepingArrangements {...listingData} />}
           {houseRules && <HouseRules {...listingData} />}
           {cancellationPolicy && <CancellationPolicy {...listingData} />}
+          <VideoPlayer videoSource={`${imagesEndpoint}/home_video.mp4`} />
         </div>
       );
     }
