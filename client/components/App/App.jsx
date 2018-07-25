@@ -10,7 +10,7 @@ import HouseRules from '../ListingDetails/HouseRules/HouseRules';
 import CancellationPolicy from '../ListingDetails/CancellationPolicy/CancellationPolicy';
 import { constants } from '../utils';
 
-import './App.css';
+import styles from './App.css';
 
 const { apiEndpoint, dummyListing } = constants;
 
@@ -42,13 +42,16 @@ export default class extends React.Component {
   }
 
   saveFeedbackData(id, value) {
-    axios.put(`${apiEndpoint}/${this.state.listingData.listingId}/highlights/${id}`, {
+    const {
+      listingData: { listingId },
+    } = this.state;
+    axios.put(`${apiEndpoint}/${listingId}/highlights/${id}`, {
       feedback: value,
     });
   }
 
   render() {
-    const { listingData } = this.state;
+    const { listingData, dataReady } = this.state;
     const {
       highlights,
       description,
@@ -57,9 +60,9 @@ export default class extends React.Component {
       houseRules,
       cancellationPolicy,
     } = listingData;
-    if (this.state.dataReady) {
+    if (dataReady) {
       return (
-        <div>
+        <div className={styles.container}>
           <Summary {...listingData} />
           {highlights && (
             <Highlights highlights={highlights} saveFeedback={this.saveFeedbackData} />

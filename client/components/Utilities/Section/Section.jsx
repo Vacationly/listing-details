@@ -16,7 +16,7 @@ const Section = (props) => {
     <div className={styles.section}>
       {title && (
         <div id="title" className={styles.title}>
-          <hr />
+          <hr className={styles.hr} />
           {title}
         </div>
       )}
