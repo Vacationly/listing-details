@@ -1,22 +1,22 @@
-const apiEndpoint = "http://localhost:3001/api/listings";
-const imagesEndpoint = "https://s3.amazonaws.com/fec-overview-service-images";
+const apiEndpoint = 'http://localhost:3001/api/listings';
+const imagesEndpoint = 'https://s3.amazonaws.com/fec-overview-service-images';
 const amenitiesThreshold = 6;
 const sleepingArrangementsThreshold = 3;
 const houseRulesThreshold = 3;
 const dummyListing = {
-  title: "Oops! No listing found.",
-  listingType: { name: "Nonexistent" },
+  title: 'Oops! No listing found.',
+  listingType: { name: 'Nonexistent' },
   location: {
-    city: "Nowheresville",
-    state: "Nowherenia",
-    country: "Nowheresland"
+    city: 'Nowheresville',
+    state: 'Nowherenia',
+    country: 'Nowheresland',
   },
-  host: { name: "Nobody", avatar: `${imagesEndpoint}/confused_avatar.png` },
-  capacity: [{ name: "Rooms", number: 0, icon: "" }]
+  host: { name: 'Nobody', avatar: `${imagesEndpoint}/confused_avatar.png` },
+  capacity: [{ name: 'Bedroom', number: 0, icon: '' }],
 };
 
 const processKeyUp = (e, handler) => {
-  if (e.key === "Enter") {
+  if (e.key === 'Enter') {
     handler();
   }
 };
@@ -28,9 +28,9 @@ module.exports = {
     amenitiesThreshold,
     houseRulesThreshold,
     sleepingArrangementsThreshold,
-    dummyListing
+    dummyListing,
   },
   functions: {
-    processKeyUp
-  }
+    processKeyUp,
+  },
 };
