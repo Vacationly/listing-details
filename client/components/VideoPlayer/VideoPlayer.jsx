@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import * as GO from 'react-icons/lib/go';
 
 import Section from '../Utilities/Section/Section';
 import styles from './VideoPlayer.css';
@@ -153,18 +154,9 @@ const Controls = (props) => {
   } = props;
   return (
     <div className={`${styles.controls} ${playing ? styles.playing : styles.paused}`}>
-      <button onClick={togglePlay}>
-        {playing ? 'pause' : 'play'}
-      </button>
-      <button onClick={toggleMute}>
-        {muted ? 'unmute' : 'mute'}
-      </button>
-      <input
-        type="range"
-        className={`${styles.volume} ${styles.slider}`}
-        defaultValue="100"
-        onChange={handleVolume}
-      />
+      <div className={styles.controller} onClick={togglePlay}>
+        {playing ? <GO.GoPlaybackPause /> : <GO.GoPlaybackPlay />}
+      </div>
       <input
         type="range"
         className={`${styles.progress} ${styles.slider}`}
@@ -173,9 +165,18 @@ const Controls = (props) => {
         onMouseDown={pauseForNow}
         onMouseUp={restoreStatus}
       />
-      <button onClick={requestFullscreen}>
-fullscreen
-      </button>
+      <div className={styles.controller} onClick={toggleMute}>
+        {muted ? <GO.GoUnmute /> : <GO.GoMute />}
+      </div>
+      <input
+        type="range"
+        className={`${styles.slider} ${styles.volume} ${muted ? styles.hidden : ''}`}
+        defaultValue="100"
+        onChange={handleVolume}
+      />
+      <div className={styles.controller} onClick={requestFullscreen}>
+        <GO.GoScreenFull />
+      </div>
     </div>
   );
 };

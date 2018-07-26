@@ -14,7 +14,7 @@ import { constants } from './utils';
 
 import styles from './App.css';
 
-const { apiEndpoint, dummyListing, imagesEndpoint } = constants;
+const { apiEndpoint, dummyListing } = constants;
 
 const getListingIdFromUrl = () => window.location.pathname.split('listing/')[1] || 0;
 
@@ -62,6 +62,7 @@ export default class App extends React.Component {
       sleepingArrangements,
       houseRules,
       cancellationPolicy,
+      videoSource,
     } = listingData;
     if (dataReady) {
       return (
@@ -73,7 +74,7 @@ export default class App extends React.Component {
           {sleepingArrangements && <SleepingArrangements {...listingData} />}
           {houseRules && <HouseRules {...listingData} />}
           {cancellationPolicy && <CancellationPolicy {...listingData} />}
-          <VideoPlayer videoSource={`${imagesEndpoint}/home_video.mp4`} />
+          {videoSource && <VideoPlayer {...listingData} />}
         </div>
       );
     }
