@@ -132,7 +132,10 @@ const Video = (props) => {
       <video className={styles.video} src={videoSource}>
         Please upgrade your browser.
       </video>
-      <div className={`${styles.videoOverlay} ${playing ? styles.playing : ''}`}>
+      <div
+        className={`${styles.videoOverlay} ${playing ? styles.playing : ''}`}
+        onDoubleClick={Document.exitFullscreen}
+      >
         <div className={styles.screen} onClick={togglePlay} role="button" tabIndex="0">
           {!playing && <FaPlayCircle className={styles.bigPlay} />}
         </div>
