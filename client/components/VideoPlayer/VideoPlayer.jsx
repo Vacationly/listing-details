@@ -1,7 +1,13 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import * as GO from 'react-icons/lib/go';
-import * as FA from 'react-icons/lib/fa';
+import {
+  GoPlaybackPlay,
+  GoPlaybackPause,
+  GoMute,
+  GoUnmute,
+  GoScreenFull,
+} from 'react-icons/lib/go';
+import FaPlayCircle from 'react-icons/lib/fa/play-circle';
 
 import Section from '../Utilities/Section/Section';
 import styles from './VideoPlayer.css';
@@ -25,6 +31,9 @@ export default class VideoPlayer extends React.Component {
 
   componentDidMount() {
     [this.video] = document.getElementsByTagName('video');
+
+    // update video progress value every time the "timeupdate" event
+    // is triggered by video playback
     this.video.addEventListener('timeupdate', () => {
       const progress = (this.video.currentTime / this.video.duration) * 100;
       this.setState({ progress }, () => {
@@ -42,7 +51,7 @@ export default class VideoPlayer extends React.Component {
         playing: !prevState.playing,
       }),
       () => {
-        this.state.playing ? this.video.play() : this.video.pause();
+        this.restoreStatus();
       },
     );
   }
@@ -57,7 +66,12 @@ export default class VideoPlayer extends React.Component {
   }
 
   restoreStatus() {
-    this.state.playing ? this.video.play() : this.video.pause();
+    const { playing } = this.state;
+    if (playing) {
+      this.video.play();
+    } else {
+      this.video.pause();
+    }
   }
 
   toggleMute() {
@@ -74,25 +88,16 @@ export default class VideoPlayer extends React.Component {
 
   handleVolume(event) {
     const volume = event.target.value / 100;
-    this.setState(
-      {
-        volume,
-        muted: false,
-      },
-      () => {
-        this.video.volume = volume;
-        this.video.muted = false;
-      },
-    );
+    this.video.volume = volume;
   }
 
   requestFullscreen() {
     if (this.video.requestFullscreen) {
       this.video.requestFullscreen();
-    } else if (this.video.mozRequestFullScreen) {
-      this.video.mozRequestFullScreen();
     } else if (this.video.webkitRequestFullscreen) {
       this.video.webkitRequestFullscreen();
+    } else if (this.video.mozRequestFullScreen) {
+      this.video.mozRequestFullScreen();
     }
   }
 
@@ -119,20 +124,19 @@ export default class VideoPlayer extends React.Component {
 }
 
 VideoPlayer.propTypes = {
-  // title: PropTypes.string.isRequired,
   videoSource: PropTypes.string.isRequired,
 };
 
 const Video = (props) => {
-  const { videoSource, togglePlay, playing } = props;
+  const { videoSource, playing, togglePlay } = props;
   return (
     <div className={styles.videoContainer}>
       <video className={styles.video} src={videoSource}>
         Please upgrade your browser.
       </video>
-      <div className={styles.videoOverlay}>
-        <div className={`${styles.screen} ${playing ? '' : styles.paused}`} onClick={togglePlay}>
-          {!playing && <FA.FaPlayCircle className={styles.bigPlay} />}
+      <div className={`${styles.videoOverlay} ${playing ? styles.playing : ''}`}>
+        <div className={styles.screen} onClick={togglePlay} role="button" tabIndex="0">
+          {!playing && <FaPlayCircle className={styles.bigPlay} />}
         </div>
         <Controls {...props} />
       </div>
@@ -142,6 +146,8 @@ const Video = (props) => {
 
 Video.propTypes = {
   videoSource: PropTypes.string.isRequired,
+  playing: PropTypes.bool.isRequired,
+  togglePlay: PropTypes.func.isRequired,
 };
 
 const Controls = (props) => {
@@ -158,9 +164,9 @@ const Controls = (props) => {
     requestFullscreen,
   } = props;
   return (
-    <div className={`${styles.controls} ${playing ? styles.playing : styles.paused}`}>
-      <div className={styles.controller} onClick={togglePlay}>
-        {playing ? <GO.GoPlaybackPause /> : <GO.GoPlaybackPlay />}
+    <div className={`${styles.controls} ${playing ? styles.playing : ''}`}>
+      <div className={styles.button} onClick={togglePlay} role="button" tabIndex="0">
+        {playing ? <GoPlaybackPause /> : <GoPlaybackPlay />}
       </div>
       <input
         type="range"
@@ -170,8 +176,8 @@ const Controls = (props) => {
         onMouseDown={pauseForNow}
         onMouseUp={restoreStatus}
       />
-      <div className={styles.controller} onClick={toggleMute}>
-        {muted ? <GO.GoUnmute /> : <GO.GoMute />}
+      <div className={styles.button} onClick={toggleMute} role="button" tabIndex="0">
+        {muted ? <GoUnmute /> : <GoMute />}
       </div>
       <input
         type="range"
@@ -179,9 +185,22 @@ const Controls = (props) => {
         defaultValue="100"
         onChange={handleVolume}
       />
-      <div className={styles.controller} onClick={requestFullscreen}>
-        <GO.GoScreenFull />
+      <div className={styles.button} onClick={requestFullscreen} role="button" tabIndex="0">
+        <GoScreenFull />
       </div>
     </div>
   );
+};
+
+Controls.propTypes = {
+  playing: PropTypes.bool.isRequired,
+  togglePlay: PropTypes.func.isRequired,
+  progress: PropTypes.number.isRequired,
+  handleProgress: PropTypes.func.isRequired,
+  pauseForNow: PropTypes.func.isRequired,
+  restoreStatus: PropTypes.func.isRequired,
+  muted: PropTypes.bool.isRequired,
+  toggleMute: PropTypes.func.isRequired,
+  handleVolume: PropTypes.func.isRequired,
+  requestFullscreen: PropTypes.func.isRequired,
 };

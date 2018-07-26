@@ -24,26 +24,26 @@
   flex: 1;
   align-items: center;
   justify-content: center;
+  opacity: 0.2;
+  background-color: #484848;
   cursor: pointer;
 }
 
-.screen.paused {
-  opacity: 0.4;
-  background-color: black;
-}
-
-.screen.paused:hover {
-  opacity: 0.2;
-  background-color: black;
+.videoOverlay.playing > .screen {
+  opacity: 0;
 }
 
 .bigPlay {
   font-size: 8rem;
-  color: #888888;
+  color: lightgrey;
 }
 
 .bigPlay:hover {
   color: white;
+}
+
+.videoOverlay.playing:not(:hover) > .controls {
+  opacity: 0;
 }
 
 .controls {
@@ -60,27 +60,19 @@
   background: linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.4));
 }
 
-.controls.paused {
-  background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(255, 255, 255, 0.4));
-}
-
-.playing:not(:hover) > .controls {
-  opacity: 0;
-  cursor: default;
-}
-
-.controller {
+.button {
   width: 2rem;
   opacity: 0.6;
-  margin: 0 0.4rem 0.4rem;
+  margin: 0 0.2rem 0.4rem 0.4rem;
   font-size: 2rem;
-  color: #444444;
+  color: #484848;
   cursor: pointer;
   vertical-align: inherit;
 }
 
-.controller:hover {
+.button:hover {
   opacity: 1;
+  text-align: center;
   font-size: 2.5rem;
   vertical-align: middle;
 }
@@ -89,10 +81,9 @@
   height: 0.1rem;
   opacity: 0.6;
   border-radius: 0.2rem;
-  box-shadow: rgba(255, 255, 255, 0.8) 0px 1px 10px 0px;
   margin: 0 0.5rem 0;
-  -webkit-transition: 0.2s;
   transition: opacity 0.2s;
+  -webkit-transition: 0.2s;
   -webkit-appearance: none;
   appearance: none;
   background: #888888;
