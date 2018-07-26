@@ -18,7 +18,6 @@ export default class VideoPlayer extends React.Component {
       playing: false,
       muted: false,
       progress: 0,
-      volume: 100,
     };
   }
 
@@ -28,10 +27,7 @@ export default class VideoPlayer extends React.Component {
       const progress = (this.video.currentTime / this.video.duration) * 100;
       this.setState({ progress });
     });
-    this.video.addEventListener('volumechange', () => {
-      const volume = this.video.volume * 100;
-      this.setState({ volume });
-    });
+    this.video.volume = 1;
   }
 
   togglePlay() {
@@ -150,7 +146,6 @@ const Controls = (props) => {
     handleProgress,
     pauseForNow,
     restoreStatus,
-    volume,
     muted,
     toggleMute,
     handleVolume,
@@ -167,7 +162,7 @@ const Controls = (props) => {
       <input
         type="range"
         className={`${styles.volume} ${styles.slider}`}
-        value={volume}
+        defaultValue="100"
         onChange={handleVolume}
       />
       <input
