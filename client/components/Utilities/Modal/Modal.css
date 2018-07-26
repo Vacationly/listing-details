@@ -58,6 +58,6 @@
 
 @media (max-width: 640px) {
   .frame {
-    margin: 0 20px;
+    max-width: 80%;
   }
 }
