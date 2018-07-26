@@ -130,7 +130,7 @@ const Video = (props) => {
       <video className={styles.video} src={videoSource}>
         Please upgrade your browser.
       </video>
-      <div className={`${styles.videoOverlay} ${playing ? styles.playing : styles.paused}`}>
+      <div className={styles.videoOverlay}>
         <div className={`${styles.screen} ${playing ? '' : styles.paused}`} onClick={togglePlay}>
           {!playing && <FA.FaPlayCircle className={styles.bigPlay} />}
         </div>
@@ -164,7 +164,7 @@ const Controls = (props) => {
       </div>
       <input
         type="range"
-        className={`${styles.progress} ${styles.slider}`}
+        className={`${styles.slider} ${styles.progress} `}
         value={progress}
         onChange={handleProgress}
         onMouseDown={pauseForNow}
