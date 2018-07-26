@@ -36,7 +36,7 @@
   font-weight: 100;
   color: grey;
   cursor: pointer;
-  line-height: 75%;
+  line-height: 1.2rem;
 }
 
 .dismiss:focus {
