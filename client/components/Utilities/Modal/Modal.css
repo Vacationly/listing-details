@@ -1,40 +1,42 @@
 .backdrop {
-  display: block;
+  display: flex;
+  align-items: center;
   position: fixed;
   top: 0;
   left: 0;
   width: 100vw;
   height: 100vh;
+  align-content: center;
   z-index: 100;
-  background-color: rgba(255, 255, 255, 0.8);
   overflow: auto;
+  background-color: rgba(255, 255, 255, 0.8);
 }
 
 .frame {
   display: flex;
   flex-direction: column;
   position: relative;
-  top: 4rem;
   width: fit-content;
   height: fit-content;
+  max-height: 80%;
   max-width: 600px;
   z-index: 1000;
   box-shadow: rgba(0, 0, 0, 0.2) 0px 1px 10px 0px;
   margin: 0 auto;
-  padding: 2rem;
+  padding: 2rem 1rem 2rem;
   background-color: white;
 }
 
 .dismiss {
-  width: 1.2rem;
-  height: 1.2rem;
+  width: 1.5rem;
+  height: 1.5rem;
   border-radius: 1rem;
   text-align: center;
   font-size: 1.5rem;
   font-weight: 100;
   color: grey;
   cursor: pointer;
-  line-height: 1rem;
+  line-height: 75%;
 }
 
 .dismiss:focus {
@@ -50,18 +52,12 @@
 
 .content {
   margin: 0 0.5rem;
+  padding: 0 1rem 0 0;
+  overflow-y: auto;
 }
 
 @media (max-width: 640px) {
   .frame {
     margin: 0 20px;
-  }
-}
-
-@media (max-width: 360px) {
-  .frame {
-    width: 100vw;
-    height: 100vh;
-    margin: 0;
   }
 }
