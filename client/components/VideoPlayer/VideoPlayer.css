@@ -57,7 +57,7 @@
 }
 
 .videoOverlay.playing > .controls {
-  background: linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.6));
+  background: linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.5));
 }
 
 .videoOverlay.playing:not(:hover) > .controls {
@@ -70,7 +70,7 @@
   margin: 0 0.2rem 0.4rem 0.4rem;
   vertical-align: inherit;
   font-size: 2rem;
-  color: #484848;
+  color: #888888;
   outline: 0;
   cursor: pointer;
 }
@@ -79,7 +79,20 @@
   opacity: 1;
   text-align: center;
   vertical-align: middle;
-  font-size: 2.5rem;
+  color: #bbbbbb;
+}
+
+.slider {
+  height: 0.1rem;
+  opacity: 0.6;
+  border-radius: 0.2rem;
+  margin: 0 0.5rem 0;
+  background: #888888;
+  outline: 0;
+  -webkit-transition: 0.2s;
+  transition: opacity 0.2s;
+  -webkit-appearance: none;
+  appearance: none;
 }
 
 .slider {
@@ -128,17 +141,10 @@
 .volume {
   width: 5rem;
   -webkit-transition: 0.5s;
-  transition: width 0.5s;
+  transition: all 0.5s;
 }
 
 .volume.hidden {
   width: 0;
-}
-
-.hidden::-webkit-slider-thumb {
-  display: none;
-}
-
-.hidden::-moz-range-thumb {
-  display: none;
+  opacity: 0;
 }
