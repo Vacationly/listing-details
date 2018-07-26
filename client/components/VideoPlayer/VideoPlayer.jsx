@@ -128,7 +128,7 @@ const Video = (props) => {
       <video className={styles.video} src={videoSource}>
         Please upgrade your browser.
       </video>
-      <div className={styles.videoOverlay}>
+      <div className={`${styles.videoOverlay} ${playing ? styles.playing : styles.paused}`}>
         <div className={`${styles.screen} ${playing ? '' : styles.paused}`} onClick={togglePlay} />
         <Controls {...props}>
 text
@@ -157,7 +157,7 @@ const Controls = (props) => {
     requestFullscreen,
   } = props;
   return (
-    <div className={`${styles.controls} ${playing ? '' : styles.paused}`}>
+    <div className={`${styles.controls} ${playing ? styles.playing : styles.paused}`}>
       <button onClick={togglePlay}>
         {playing ? 'pause' : 'play'}
       </button>
