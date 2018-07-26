@@ -43,6 +43,7 @@ const getFakeListing = function (id, amenityIds, highlights, houseRules, sleepin
         { title: 'Other notables', text: faker.lorem.paragraph() },
       ],
     },
+    videoSource: `${imageEndpoint}/home_video.mp4`,
   };
 };
 

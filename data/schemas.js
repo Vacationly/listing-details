@@ -22,6 +22,7 @@ const listing = {
   description: { main: String, more: [{ title: String, text: String }] },
   sleepingArrangements: [{ spaceName: String, mattressType: String, number: Number }],
   houseRules: [String],
+  videoSource: String,
 };
 
 const listingType = {
