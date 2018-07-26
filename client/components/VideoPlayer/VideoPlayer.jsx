@@ -57,8 +57,7 @@ export default class VideoPlayer extends React.Component {
   }
 
   handleProgress(event) {
-    const newTime = (event.target.value / 100) * this.video.duration;
-    this.video.currentTime = newTime;
+    this.video.currentTime = (event.target.value / 100) * this.video.duration;
   }
 
   pauseForNow() {
@@ -87,8 +86,7 @@ export default class VideoPlayer extends React.Component {
   }
 
   handleVolume(event) {
-    const volume = event.target.value / 100;
-    this.video.volume = volume;
+    this.video.volume = event.target.value / 100;
   }
 
   requestFullscreen() {
@@ -164,7 +162,7 @@ const Controls = (props) => {
     requestFullscreen,
   } = props;
   return (
-    <div className={`${styles.controls} ${playing ? styles.playing : ''}`}>
+    <div className={styles.controls}>
       <div className={styles.button} onClick={togglePlay} role="button" tabIndex="0">
         {playing ? <GoPlaybackPause /> : <GoPlaybackPlay />}
       </div>
