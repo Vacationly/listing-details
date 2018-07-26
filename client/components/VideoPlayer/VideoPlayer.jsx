@@ -8,23 +8,25 @@ export default class VideoPlayer extends React.Component {
   constructor(props) {
     super(props);
     this.togglePlay = this.togglePlay.bind(this);
-    this.toggleMute = this.toggleMute.bind(this);
-    this.requestFullscreen = this.requestFullscreen.bind(this);
     this.handleProgress = this.handleProgress.bind(this);
-    this.updateProgress = this.updateProgress.bind(this);
+    this.pauseForNow = this.pauseForNow.bind(this);
+    this.restoreStatus = this.restoreStatus.bind(this);
+    this.toggleMute = this.toggleMute.bind(this);
     this.handleVolume = this.handleVolume.bind(this);
-    this.pauseVideo = this.pauseVideo.bind(this);
-    this.resumeVideo = this.resumeVideo.bind(this);
+    this.requestFullscreen = this.requestFullscreen.bind(this);
     this.state = {
       playing: false,
       muted: false,
-      // fullscreen: false,
       progress: 0,
     };
   }
 
   componentDidMount() {
     [this.video] = document.getElementsByTagName('video');
+    this.video.addEventListener('timeupdate', () => {
+      const progress = (this.video.currentTime / this.video.duration) * 100;
+      this.setState({ progress });
+    });
   }
 
   togglePlay() {
@@ -38,64 +40,30 @@ export default class VideoPlayer extends React.Component {
     );
   }
 
+  handleProgress(event) {
+    const newTime = (event.target.value / 100) * this.video.duration;
+    this.video.currentTime = newTime;
+  }
+
+  pauseForNow() {
+    console.log('pausing...');
+    this.video.pause();
+  }
+
+  restoreStatus() {
+    this.state.playing ? this.video.play() : this.video.pause();
+  }
+
   toggleMute() {
     this.setState(
       prevState => ({
         muted: !prevState.muted,
       }),
       () => {
-        this.video.muted = this.state.muted;
+        const { muted } = this.state;
+        this.video.muted = muted;
       },
     );
-  }
-
-  // requestFullscreen() {
-  //   this.setState(
-  //     prevState => ({
-  //       fullscreen: !prevState.fullsreen,
-  //     }),
-  //     () => {
-  //       this.state.fullscreen ? this.requestFullscreen() : this.exitFullscreen();
-  //     },
-  //   );
-  // }
-
-  pauseVideo() {
-    this.video.pause();
-  }
-
-  resumeVideo() {
-    this.state.playing ? this.video.play() : this.video.pause();
-  }
-
-  requestFullscreen() {
-    if (this.video.requestFullscreen) {
-      this.video.requestFullscreen();
-    } else if (this.video.mozRequestFullScreen) {
-      this.video.mozRequestFullScreen();
-    } else if (this.video.webkitRequestFullscreen) {
-      this.video.webkitRequestFullscreen();
-    }
-  }
-
-  // exitFullscreen() {
-  //   if (this.video.exitFullscreen) {
-  //     this.video.exitFullscreen();
-  //   } else if (this.video.mozExitFullScreen) {
-  //     this.video.mozExitFullScreen();
-  //   } else if (this.video.webkitExitFullscreen) {
-  //     this.video.webkitExitFullscreen();
-  //   }
-  // }
-
-  handleProgress(event) {
-    const newTime = (event.target.value / 100) * this.video.duration;
-    this.video.currentTime = newTime;
-  }
-
-  updateProgress(callback) {
-    const progress = (this.video.duration / 100) * this.video.currentTime;
-    callback(progress);
   }
 
   handleVolume(event) {
@@ -110,16 +78,28 @@ export default class VideoPlayer extends React.Component {
     );
   }
 
+  requestFullscreen() {
+    if (this.video.requestFullscreen) {
+      this.video.requestFullscreen();
+    } else if (this.video.mozRequestFullScreen) {
+      this.video.mozRequestFullScreen();
+    } else if (this.video.webkitRequestFullscreen) {
+      this.video.webkitRequestFullscreen();
+    }
+  }
+
   render() {
     const video = (
       <Video
         {...this.props}
         {...this.state}
         togglePlay={this.togglePlay}
-        toggleMute={this.toggleMute}
-        requestFullscreen={this.requestFullscreen}
         handleProgress={this.handleProgress}
+        pauseForNow={this.pauseForNow}
+        restoreStatus={this.restoreStatus}
+        toggleMute={this.toggleMute}
         handleVolume={this.handleVolume}
+        requestFullscreen={this.requestFullscreen}
       />
     );
     return (
@@ -155,21 +135,14 @@ Video.propTypes = {
   videoSource: PropTypes.string.isRequired,
 };
 
-// this.togglePlay = this.togglePlay.bind(this);
-// this.toggleMute = this.toggleMute.bind(this);
-// this.requestFullscreen = this.requestFullscreen.bind(this);
-// this.handleProgress = this.handleProgress.bind(this);
-// this.updateProgress = this.updateProgress.bind(this);
-// this.handleVolume = this.handleVolume.bind(this);
-// this.pauseVideo = this.pauseVideo.bind(this);
-// this.resumeVideo = this.resumeVideo.bind(this);
-
 const Controls = (props) => {
   const {
     togglePlay,
-    toggleMute,
     progress,
     handleProgress,
+    pauseForNow,
+    restoreStatus,
+    toggleMute,
     handleVolume,
     requestFullscreen,
   } = props;
@@ -184,7 +157,13 @@ mute
       <button onClick={requestFullscreen}>
 full
       </button>
-      <input type="range" onChange={handleProgress} />
+      <input
+        type="range"
+        value={progress}
+        onChange={handleProgress}
+        onMouseDown={pauseForNow}
+        onMouseUp={restoreStatus}
+      />
       <input type="range" onChange={handleVolume} />
     </div>
   );
