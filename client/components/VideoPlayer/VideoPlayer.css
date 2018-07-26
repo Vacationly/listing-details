@@ -21,13 +21,69 @@
 
 .screen {
   flex: 1;
+  cursor: pointer;
+}
+
+.screen.paused:hover {
+  background-color: black;
+  opacity: 0.1;
+}
+
+.screen.paused {
+  background: initial;
+  background-color: black;
+  opacity: 0.2;
 }
 
 .controls {
-  align-self: flex-end;
-  height: 2rem;
   display: flex;
+  align-self: flex-end;
+  align-items: center;
+  justify-content: space-around;
   width: 100%;
+  height: 4rem;
+  opacity: 0.5;
+  background: linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.8));
+}
+
+.controls.paused {
+  background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 1));
+}
+
+.slider {
+  height: 1rem;
+  opacity: 0.7;
+  -webkit-transition: 0.2s;
+  transition: opacity 0.2s;
+  -webkit-appearance: none;
+  appearance: none;
+  background: lightgrey;
+  outline: none;
+}
+
+.slider::-webkit-slider-thumb {
+  width: 1rem;
+  height: 1rem;
+  cursor: pointer;
+  -webkit-appearance: none;
+  appearance: none;
+  background: grey;
+}
+
+.slider::-moz-range-thumb,
+.slider::-webkit-slider-thumb {
+  width: 1rem;
+  height: 1rem;
+  cursor: pointer;
+  background: grey;
+}
+
+.slider:hover {
+  opacity: 1;
+}
+
+.volume {
+  width: 10%;
 }
 
 .progress {

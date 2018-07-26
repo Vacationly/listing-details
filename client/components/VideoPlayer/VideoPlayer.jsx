@@ -7,17 +7,18 @@ import styles from './VideoPlayer.css';
 export default class VideoPlayer extends React.Component {
   constructor(props) {
     super(props);
-    this.handlePlay = this.handlePlay.bind(this);
+    this.togglePlay = this.togglePlay.bind(this);
     this.handleProgress = this.handleProgress.bind(this);
     this.pauseForNow = this.pauseForNow.bind(this);
     this.restoreStatus = this.restoreStatus.bind(this);
-    this.handleMute = this.handleMute.bind(this);
+    this.toggleMute = this.toggleMute.bind(this);
     this.handleVolume = this.handleVolume.bind(this);
-    this.handleFullscreen = this.handleFullscreen.bind(this);
+    this.requestFullscreen = this.requestFullscreen.bind(this);
     this.state = {
       playing: false,
       muted: false,
       progress: 0,
+      volume: 100,
     };
   }
 
@@ -27,10 +28,13 @@ export default class VideoPlayer extends React.Component {
       const progress = (this.video.currentTime / this.video.duration) * 100;
       this.setState({ progress });
     });
+    this.video.addEventListener('volumechange', () => {
+      const volume = this.video.volume * 100;
+      this.setState({ volume });
+    });
   }
 
-  handlePlay(event) {
-    event.stopPropagation();
+  togglePlay() {
     this.setState(
       prevState => ({
         playing: !prevState.playing,
@@ -42,7 +46,6 @@ export default class VideoPlayer extends React.Component {
   }
 
   handleProgress(event) {
-    event.stopPropagation();
     const newTime = (event.target.value / 100) * this.video.duration;
     this.video.currentTime = newTime;
   }
@@ -55,8 +58,7 @@ export default class VideoPlayer extends React.Component {
     this.state.playing ? this.video.play() : this.video.pause();
   }
 
-  handleMute(event) {
-    event.stopPropagation();
+  toggleMute() {
     this.setState(
       prevState => ({
         muted: !prevState.muted,
@@ -69,20 +71,20 @@ export default class VideoPlayer extends React.Component {
   }
 
   handleVolume(event) {
-    event.stopPropagation();
-    this.video.volume = event.target.value / 100;
+    const volume = event.target.value / 100;
     this.setState(
       {
+        volume,
         muted: false,
       },
       () => {
+        this.video.volume = volume;
         this.video.muted = false;
       },
     );
   }
 
-  handleFullscreen(event) {
-    event.stopPropagation();
+  requestFullscreen() {
     if (this.video.requestFullscreen) {
       this.video.requestFullscreen();
     } else if (this.video.mozRequestFullScreen) {
@@ -97,13 +99,13 @@ export default class VideoPlayer extends React.Component {
       <Video
         {...this.props}
         {...this.state}
-        handlePlay={this.handlePlay}
+        togglePlay={this.togglePlay}
         handleProgress={this.handleProgress}
         pauseForNow={this.pauseForNow}
         restoreStatus={this.restoreStatus}
-        handleMute={this.handleMute}
+        toggleMute={this.toggleMute}
         handleVolume={this.handleVolume}
-        handleFullscreen={this.handleFullscreen}
+        requestFullscreen={this.requestFullscreen}
       />
     );
     return (
@@ -120,14 +122,14 @@ VideoPlayer.propTypes = {
 };
 
 const Video = (props) => {
-  const { videoSource, handlePlay } = props;
+  const { videoSource, togglePlay, playing } = props;
   return (
     <div className={styles.videoContainer}>
       <video className={styles.video} src={videoSource}>
         Please upgrade your browser.
       </video>
       <div className={styles.videoOverlay}>
-        <div className={styles.screen} onClick={handlePlay} />
+        <div className={`${styles.screen} ${playing ? '' : styles.paused}`} onClick={togglePlay} />
         <Controls {...props}>
 text
         </Controls>
@@ -143,34 +145,40 @@ Video.propTypes = {
 const Controls = (props) => {
   const {
     playing,
-    handlePlay,
     progress,
+    togglePlay,
     handleProgress,
     pauseForNow,
     restoreStatus,
+    volume,
     muted,
-    handleMute,
+    toggleMute,
     handleVolume,
-    handleFullscreen,
+    requestFullscreen,
   } = props;
   return (
-    <div className={styles.controls}>
-      <button onClick={handlePlay}>
+    <div className={`${styles.controls} ${playing ? '' : styles.paused}`}>
+      <button onClick={togglePlay}>
         {playing ? 'pause' : 'play'}
       </button>
-      <button onClick={handleMute}>
+      <button onClick={toggleMute}>
         {muted ? 'unmute' : 'mute'}
       </button>
-      <input type="range" onChange={handleVolume} />
       <input
         type="range"
-        className={styles.progress}
+        className={`${styles.volume} ${styles.slider}`}
+        value={volume}
+        onChange={handleVolume}
+      />
+      <input
+        type="range"
+        className={`${styles.progress} ${styles.slider}`}
         value={progress}
         onChange={handleProgress}
         onMouseDown={pauseForNow}
         onMouseUp={restoreStatus}
       />
-      <button onClick={handleFullscreen}>
+      <button onClick={requestFullscreen}>
 fullscreen
       </button>
     </div>
