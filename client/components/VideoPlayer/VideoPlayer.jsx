@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import * as GO from 'react-icons/lib/go';
+import * as FA from 'react-icons/lib/fa';
 
 import Section from '../Utilities/Section/Section';
 import styles from './VideoPlayer.css';
@@ -26,7 +27,11 @@ export default class VideoPlayer extends React.Component {
     [this.video] = document.getElementsByTagName('video');
     this.video.addEventListener('timeupdate', () => {
       const progress = (this.video.currentTime / this.video.duration) * 100;
-      this.setState({ progress });
+      this.setState({ progress }, () => {
+        if (progress === 100) {
+          this.setState({ playing: false });
+        }
+      });
     });
     this.video.volume = 1;
   }
@@ -126,10 +131,10 @@ const Video = (props) => {
         Please upgrade your browser.
       </video>
       <div className={`${styles.videoOverlay} ${playing ? styles.playing : styles.paused}`}>
-        <div className={`${styles.screen} ${playing ? '' : styles.paused}`} onClick={togglePlay} />
-        <Controls {...props}>
-text
-        </Controls>
+        <div className={`${styles.screen} ${playing ? '' : styles.paused}`} onClick={togglePlay}>
+          {!playing && <FA.FaPlayCircle className={styles.bigPlay} />}
+        </div>
+        <Controls {...props} />
       </div>
     </div>
   );
