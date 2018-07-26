@@ -52,7 +52,7 @@
   justify-content: space-around;
   align-self: flex-end;
   width: 96%;
-  height: 4rem;
+  height: 3rem;
   padding: 0 2%;
   cursor: pointer;
   -webkit-transition: 2s;
@@ -61,7 +61,7 @@
 }
 
 .controls.paused {
-  background: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0));
+  background: linear-gradient(rgba(0, 0, 0, 0), rgba(255, 255, 255, 0.4));
 }
 
 .playing:not(:hover) > .controls {
@@ -72,14 +72,16 @@
 .controller {
   width: 2rem;
   opacity: 0.6;
-  margin: 0 0.5rem 0.5rem;
+  margin: 0 0.4rem 0.4rem;
   font-size: 2rem;
   color: #444444;
   cursor: pointer;
+  vertical-align: inherit;
 }
 
 .controller:hover {
   opacity: 1;
+  vertical-align: middle;
   font-size: 2.5rem;
 }
 
@@ -88,12 +90,13 @@
   opacity: 0.6;
   border-radius: 0.2rem;
   box-shadow: rgba(255, 255, 255, 0.8) 0px 1px 10px 0px;
+  margin: 0 0.5rem 0;
   -webkit-transition: 0.2s;
   transition: opacity 0.2s;
   -webkit-appearance: none;
   appearance: none;
   background: #888888;
-  outline: none;
+  outline: 0;
 }
 
 .slider::-webkit-slider-thumb {
