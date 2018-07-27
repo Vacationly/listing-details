@@ -65,9 +65,7 @@ export default class App extends React.Component {
       return (
         <div className={styles.detailsContainer}>
           <Summary {...listingData} />
-          {highlights && (
-            <Highlights highlights={highlights} saveFeedback={this.saveFeedbackData} />
-          )}
+          {highlights && <Highlights {...listingData} saveFeedback={this.saveFeedbackData} />}
           {description && <Description {...listingData} />}
           {amenities && <Amenities {...listingData} />}
           {sleepingArrangements && <SleepingArrangements {...listingData} />}

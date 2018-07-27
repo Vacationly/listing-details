@@ -12,7 +12,7 @@ const dummyListing = {
     country: 'Nowheresland',
   },
   host: { name: 'Nobody', avatar: `${imagesEndpoint}/confused_avatar.png` },
-  capacity: [{ name: 'Bedroom', number: 0, icon: '' }],
+  capacity: [{ name: 'Bedroom', number: 0, icon: `${imagesEndpoint}/bedroom.png` }],
 };
 
 const processKeyUp = (e, handler) => {
