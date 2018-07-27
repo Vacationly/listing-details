@@ -62,7 +62,7 @@ const SleepingArrangementsMain = (props) => {
       <div className={styles.sleepingArrangements}>
         {sleepingArrangements.map(
           (sleepingArrangement, index) => index < sleepingArrangementsThreshold && (
-          <SleepingArrangement {...{ sleepingArrangement }} />
+          <SleepingArrangement key={`sleeping_${index}`} {...{ sleepingArrangement }} />
           ),
         )}
       </div>
@@ -86,7 +86,7 @@ const SleepingArrangementsMore = (props) => {
     <div className={styles.sleepingArrangements}>
       {sleepingArrangements.map(
         (sleepingArrangement, index) => index >= sleepingArrangementsThreshold && (
-        <SleepingArrangement {...{ sleepingArrangement }} />
+        <SleepingArrangement key={`sleeping_${index}`} {...{ sleepingArrangement }} />
         ),
       )}
     </div>

@@ -56,7 +56,7 @@ const AmenitiesShortList = (props) => {
     <div className={styles.amenityList}>
       {amenities.map(
         (amenity, index) => index < amenitiesThreshold && (
-        <div className={styles.amenityItem}>
+        <div key={`amenity_${index}`} className={styles.amenityItem}>
           <span>
             <img className={styles.icon} src={amenity.icon} alt={amenity.name} />
           </span>
@@ -81,8 +81,8 @@ const AmenitiesFullList = (props) => {
   const { amenities } = props;
   return (
     <div className={styles.amenitiesList}>
-      {amenities.map(amenity => (
-        <div className={styles.amenityItem}>
+      {amenities.map((amenity, index) => (
+        <div key={`amenity_${index}`} className={styles.amenityItem}>
           {amenity.name}
         </div>
       ))}

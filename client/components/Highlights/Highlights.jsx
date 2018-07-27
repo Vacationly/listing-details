@@ -37,8 +37,8 @@ export default class Highlights extends React.Component {
         <div className={styles.heading}>
 home highlights
         </div>
-        {highlights.map(highlight => (
-          <div className={styles.highlight}>
+        {highlights.map((highlight, index) => (
+          <div key={`highlight_${index}`} className={styles.highlight}>
             <div className={styles.details}>
               <span className={styles.tagline}>
                 {highlight.tagline}

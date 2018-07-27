@@ -55,7 +55,7 @@ const RulesMain = (props) => {
     <div>
       {houseRules.map(
         (rule, index) => index < houseRulesThreshold && (
-        <div className={styles.ruleItem}>
+        <div key={`rule_${index}`} className={styles.ruleItem}>
           {rule}
         </div>
         ),
@@ -74,7 +74,7 @@ const RulesMore = (props) => {
     <div>
       {houseRules.map(
         (rule, index) => index >= houseRulesThreshold && (
-        <div className={styles.ruleItem}>
+        <div key={`rule_${index}`} className={styles.ruleItem}>
           {rule}
         </div>
         ),

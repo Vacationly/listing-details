@@ -40,15 +40,9 @@ Summary.propTypes = {
   }).isRequired,
   location: PropTypes.shape({
     city: PropTypes.string,
-    state: PropTypes,
-    country: PropTypes,
+    state: PropTypes.string,
+    country: PropTypes.string,
   }).isRequired,
-  capacity: PropTypes.arrayOf(
-    PropTypes.shape({
-      name: PropTypes.string,
-      number: PropTypes.number,
-    }),
-  ).isRequired,
   host: PropTypes.shape({
     name: PropTypes.string,
     avatar: PropTypes.string,
@@ -59,8 +53,8 @@ const Capacity = (props) => {
   const { capacity } = props;
   return (
     <div className={styles.capacity}>
-      {capacity.map(field => (
-        <span className={styles.capacityField}>
+      {capacity.map((field, index) => (
+        <span key={`capacity_${index}`} className={styles.capacityField}>
           <img src={field.icon} alt={field.name} />
           {field.number}
           {' '}

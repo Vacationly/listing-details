@@ -68,6 +68,7 @@ const DescriptionMore = (props) => {
     <div>
       {more.map(info => (
         <Section
+          key={`description_${info.title}`}
           subtitle={info.title}
           content={(
             <div>
