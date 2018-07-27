@@ -9,7 +9,15 @@
 
 <body>
   <div id="Details"></div>
-  <script src="dist/bundle.js"></script>
+  <script crossorigin src="https://unpkg.com/react@16/umd/react.development.js"></script>
+  <script crossorigin src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"></script>
+  <script src="http://localhost:3001/dist/bundle.js"></script>
+  <script>
+    ReactDOM.render(
+      React.createElement(Details),
+      document.getElementById('Details')
+    );
+  </script>
 </body>
 
 </html>
