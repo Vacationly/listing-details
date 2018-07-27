@@ -16,6 +16,8 @@ import styles from './App.css';
 
 const { apiEndpoint, dummyListing } = constants;
 
+const getListingIdFromUrl = () => window.location.pathname.split('listing/')[1] || 0;
+
 export default class App extends React.Component {
   constructor(props) {
     super(props);
@@ -62,6 +64,7 @@ export default class App extends React.Component {
       cancellationPolicy,
       videoSource,
     } = listingData;
+    console.log(videoSource);
     if (dataReady) {
       return (
         <div className={styles.detailsContainer}>
