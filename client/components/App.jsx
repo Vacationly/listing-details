@@ -64,7 +64,6 @@ export default class App extends React.Component {
       cancellationPolicy,
       videoSource,
     } = listingData;
-    console.log(videoSource);
     if (dataReady) {
       return (
         <div className={styles.detailsContainer}>
