@@ -8,6 +8,8 @@ import Amenities from './Amenities/Amenities';
 import SleepingArrangements from './SleepingArrangements/SleepingArrangements';
 import HouseRules from './HouseRules/HouseRules';
 import CancellationPolicy from './CancellationPolicy/CancellationPolicy';
+import VideoPlayer from './VideoPlayer/VideoPlayer';
+
 import { constants } from './utils';
 
 import styles from './App.css';
@@ -60,6 +62,7 @@ export default class App extends React.Component {
       sleepingArrangements,
       houseRules,
       cancellationPolicy,
+      videoSource,
     } = listingData;
     if (dataReady) {
       return (
@@ -71,6 +74,7 @@ export default class App extends React.Component {
           {sleepingArrangements && <SleepingArrangements {...listingData} />}
           {houseRules && <HouseRules {...listingData} />}
           {cancellationPolicy && <CancellationPolicy {...listingData} />}
+          {videoSource && <VideoPlayer {...listingData} />}
         </div>
       );
     }

@@ -1,0 +1,135 @@
+.videoContainer {
+  position: relative;
+}
+
+.video,
+.videoOverlay {
+  width: 90%;
+  box-shadow: rgba(0, 0, 0, 0.2) 0px 1px 10px 0px;
+  margin: 1rem 5%;
+}
+
+.videoOverlay {
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+}
+
+.screen {
+  display: flex;
+  flex: 1;
+  align-items: center;
+  justify-content: center;
+  opacity: 0.2;
+  background-color: #484848;
+  cursor: pointer;
+}
+
+.videoOverlay.playing > .screen {
+  opacity: 0;
+}
+
+.bigPlay {
+  font-size: 8rem;
+  color: lightgrey;
+}
+
+.bigPlay:hover {
+  color: white;
+}
+
+.controls {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  align-self: flex-end;
+  width: 96%;
+  height: 3rem;
+  padding: 0 2% 0 2%;
+  background-color: black;
+  cursor: pointer;
+  -webkit-transition: 2s;
+  transition: opacity 2s;
+}
+
+.videoOverlay.playing > .controls {
+  background: linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.5));
+}
+
+.videoOverlay.playing:not(:hover) > .controls {
+  opacity: 0;
+}
+
+.button {
+  width: 2rem;
+  opacity: 0.6;
+  margin: 0 0.2rem 0.4rem 0.4rem;
+  vertical-align: inherit;
+  font-size: 2rem;
+  color: #888888;
+  outline: 0;
+  cursor: pointer;
+}
+
+.button:hover {
+  opacity: 1;
+  color: #bbbbbb;
+}
+
+.slider {
+  height: 0.1rem;
+  opacity: 0.6;
+  border-radius: 0.2rem;
+  margin: 0 0.5rem 0;
+  background: #888888;
+  outline: 0;
+  -webkit-transition: 0.2s;
+  transition: opacity 0.2s;
+  -webkit-appearance: none;
+  appearance: none;
+}
+
+.slider::-webkit-slider-thumb {
+  width: 1rem;
+  height: 1rem;
+  z-index: 40;
+  border-radius: 0.5rem;
+  box-shadow: rgba(255, 255, 255, 0.2) 0px 1px 10px 0px;
+  background: #444444;
+  cursor: pointer;
+  -webkit-appearance: none;
+  appearance: none;
+}
+
+.slider::-moz-range-thumb {
+  width: 1rem;
+  height: 1rem;
+  z-index: 40;
+  border-radius: 0.5rem;
+  box-shadow: rgba(255, 255, 255, 0.2) 0px 1px 10px 0px;
+  background: #444444;
+  cursor: pointer;
+}
+
+.slider:hover {
+  opacity: 1;
+}
+
+.progress {
+  flex: 1;
+}
+
+.volume {
+  width: 5rem;
+  -webkit-transition: 0.5s;
+  transition: all 0.5s;
+}
+
+.volume.hidden {
+  width: 0;
+  opacity: 0;
+}
