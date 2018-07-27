@@ -1,6 +1,5 @@
 import axios from 'axios';
 import React from 'react';
-import PropTypes from 'prop-types';
 
 import Summary from './Summary/Summary';
 import Highlights from './Highlights/Highlights';
@@ -84,11 +83,3 @@ Hello, world!
     );
   }
 }
-
-App.propTypes = {
-  match: PropTypes.shape({
-    params: PropTypes.shape({
-      listingId: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
-    }),
-  }).isRequired,
-};
