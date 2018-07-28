@@ -5,8 +5,12 @@
 }
 
 .listingType {
-  font-variant: small-caps;
   font-weight: 400;
+  font-variant: small-caps;
+}
+
+.altTitle {
+  display: none;
 }
 
 .headline {
@@ -16,15 +20,16 @@
   margin: 0.25rem 0 1rem;
 }
 
-.title {
+.mainTitle,
+.altTitle {
   padding: 0 1rem 0 0;
   font-size: 2rem;
   font-weight: 600;
 }
 
 .capacity {
-  margin: 1rem 0;
   display: flex;
+  margin: 1rem 0;
 }
 
 .capacityField {
@@ -55,9 +60,20 @@
   border-color: white;
 }
 
-@media (max-width: 360px) {
+@media (max-width: 420px) {
+  .altTitle {
+    display: block;
+  }
+  .mainTitle {
+    display: none;
+  }
   .capacity {
     display: grid;
     grid-template-columns: 50% 50%;
+    min-width: 200px;
+  }
+  .avatar {
+    width: 3rem;
+    height: auto;
   }
 }
