@@ -34,7 +34,9 @@ export default class Amenities extends React.Component {
           <Section title="Amenities" content={amenitiesShort} link={link} action={action} />
         )}
         {showModal && (
-          <Modal title="Amenities" content={amenitiesLong} dismiss={this.toggleModal} />
+          <Modal title="Amenities" dismiss={this.toggleModal}>
+            {amenitiesLong}
+          </Modal>
         )}
       </div>
     );

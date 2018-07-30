@@ -34,11 +34,9 @@ export default class CancellationPolicy extends React.Component {
           />
         )}
         {modalVisible && (
-          <Modal
-            title="Cancellation policy"
-            content={cancellationPolicyDetails}
-            dismiss={this.toggleModal}
-          />
+          <Modal title="Cancellation policy" dismiss={this.toggleModal}>
+            {cancellationPolicyDetails}
+          </Modal>
         )}
       </div>
     );
