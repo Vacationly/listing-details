@@ -36,12 +36,13 @@ const Expandable = (props) => {
   return (
     <Section
       title={title}
-      content={content}
       link={more ? link : null}
       action={toggleMoreInfo}
       expandable
       expanded={expanded}
-    />
+    >
+      {content}
+    </Section>
   );
 };
 

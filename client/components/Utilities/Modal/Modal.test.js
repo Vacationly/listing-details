@@ -6,7 +6,7 @@ import Modal from './Modal';
 
 const validProps = {
   title: 'Testing',
-  content: <div />,
+  children: <div />,
   dismiss() {
     return true;
   },
@@ -14,7 +14,7 @@ const validProps = {
 
 const invalidProps = {
   title: 'Testing',
-  content: 'Div',
+  children: 'div',
   dismiss() {
     return true;
   },
