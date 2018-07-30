@@ -7,7 +7,7 @@ import styles from './Modal.css';
 const { processKeyUp } = functions;
 
 const Modal = (props) => {
-  const { title, content, dismiss } = props;
+  const { title, children, dismiss } = props;
   const handleDismiss = (e) => {
     if (e.target.className === styles.backdrop || e.target.className === styles.dismiss) {
       e.stopPropagation();
@@ -41,7 +41,7 @@ const Modal = (props) => {
             {title}
           </div>
           <div id="content" className={styles.content}>
-            {content}
+            {children}
           </div>
         </div>
       </div>
@@ -51,8 +51,8 @@ const Modal = (props) => {
 
 Modal.propTypes = {
   title: PropTypes.string.isRequired,
+  children: PropTypes.element.isRequired,
   dismiss: PropTypes.func.isRequired,
-  content: PropTypes.element.isRequired,
 };
 
 module.exports = Modal;

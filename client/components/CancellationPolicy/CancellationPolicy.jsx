@@ -28,17 +28,16 @@ export default class CancellationPolicy extends React.Component {
         {cancellationPolicy.name && (
           <Section
             title="Cancellation policy"
-            content={cancellationPolicyOverview}
             link={cancellationPolicy.description ? 'Show more' : null}
             action={this.toggleModal}
-          />
+          >
+            {cancellationPolicyOverview}
+          </Section>
         )}
         {modalVisible && (
-          <Modal
-            title="Cancellation policy"
-            content={cancellationPolicyDetails}
-            dismiss={this.toggleModal}
-          />
+          <Modal title="Cancellation policy" dismiss={this.toggleModal}>
+            {cancellationPolicyDetails}
+          </Modal>
         )}
       </div>
     );

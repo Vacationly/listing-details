@@ -67,15 +67,11 @@ const DescriptionMore = (props) => {
   return (
     <div>
       {more.map(info => (
-        <Section
-          key={`description_${info.title}`}
-          subtitle={info.title}
-          content={(
-            <div>
-              {info.text}
-            </div>
-)}
-        />
+        <Section key={`description_${info.title}`} subtitle={info.title}>
+          <div>
+            {info.text}
+          </div>
+        </Section>
       ))}
     </div>
   );

@@ -115,7 +115,9 @@ export default class VideoPlayer extends React.Component {
     );
     return (
       <div>
-        <Section title="Take a tour" content={video} />
+        <Section title="Take a tour">
+          {video}
+        </Section>
       </div>
     );
   }
