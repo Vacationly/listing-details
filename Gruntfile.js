@@ -2,9 +2,6 @@ module.exports = function (grunt) {
   // Load S3 plugin
   grunt.loadNpmTasks('grunt-aws');
 
-  // Static Webserver
-  grunt.loadNpmTasks('grunt-contrib-connect');
-
   // Project configuration.
   grunt.initConfig({
     pkg: grunt.file.readJSON('package.json'),
@@ -20,17 +17,5 @@ module.exports = function (grunt) {
         src: '**',
       },
     },
-    connect: {
-      server: {
-        options: {
-          port: 3001,
-          base: 'public',
-          keepalive: true,
-        },
-      },
-    },
   });
-
-  // Default task(s).
-  grunt.registerTask('default', ['connect']);
 };

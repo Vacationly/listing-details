@@ -62,7 +62,6 @@
     "grunt": "^1.0.3",
     "grunt-aws": "^0.6.2",
     "grunt-cli": "^1.2.0",
-    "grunt-contrib-connect": "^1.0.2",
     "jest": "^23.4.1",
     "jest-cli": "^23.4.1",
     "nodemon": "^1.18.3",
