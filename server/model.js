@@ -4,7 +4,7 @@ const getListingDetails = function (id, callback) {
   let listing = {};
   models.Listing.findOne({ listingId: id })
     .then((result) => {
-      listing = { ...result._doc };
+      listing = Object.assign(listing, result._doc);
     })
     .then(() => models.ListingType.findOne({ id: listing.typeId }))
     .then((result) => {
@@ -35,7 +35,7 @@ const getListingDetails = function (id, callback) {
 const updateHighlightFeedback = function (listingId, highlightId, feedback, callback) {
   models.Listing.findOneAndUpdate(
     { listingId, 'highlights.id': highlightId },
-    { $inc: { 'highlights.$.upvotes': feedback } },
+    { $inc: { 'highlights.$.upvotes': feedback } }
   )
     .then(() => callback(null, 'Successfully updated'))
     .catch(err => callback(err));
