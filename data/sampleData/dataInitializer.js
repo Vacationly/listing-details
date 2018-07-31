@@ -14,7 +14,7 @@ const initializeData = function () {
         .catch((err) => {
           console.log(`Error initializing data for ${model}, ${err}`);
           process.exit(-1);
-        }),
+        })
     );
   });
   Promise.all(processes).then(() => process.exit(0));
