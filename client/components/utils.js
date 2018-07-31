@@ -1,4 +1,4 @@
-const apiEndpoint = 'http://ec2-54-200-241-130.us-west-2.compute.amazonaws.com:3001/api/listings';
+const apiEndpoint = process.env.API_ENDPOINT || 'http://localhost:3001';
 const imagesEndpoint = 'https://s3.amazonaws.com/fec-overview-service-images';
 const amenitiesThreshold = 6;
 const sleepingArrangementsThreshold = 3;

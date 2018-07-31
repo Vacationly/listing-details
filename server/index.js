@@ -21,7 +21,6 @@ app.use((req, res, next) => {
 });
 
 app.get('/api/listings/:listingId', (req, res) => {
-  console.log('getting listing...');
   const { listingId } = req.params;
   model.getListingDetails(listingId, (err, results) => {
     res.statusCode = err ? 400 : 200;
