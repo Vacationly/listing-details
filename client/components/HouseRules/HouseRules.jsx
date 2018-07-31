@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import Expandable from '../Utilities/Expandable/Expandable';
-import { constants } from '../utils';
+import { constants } from '../../utils';
 
 import styles from './HouseRules.css';
 

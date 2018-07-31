@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { functions } from '../../utils';
+import { functions } from '../../../utils';
 
 import styles from './Modal.css';
 

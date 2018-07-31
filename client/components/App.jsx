@@ -10,7 +10,7 @@ import HouseRules from './HouseRules/HouseRules';
 import CancellationPolicy from './CancellationPolicy/CancellationPolicy';
 import VideoPlayer from './VideoPlayer/VideoPlayer';
 
-import { constants } from './utils';
+import { constants } from '../utils';
 
 import styles from './App.css';
 

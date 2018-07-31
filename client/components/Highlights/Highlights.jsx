@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import { constants, functions } from '../utils';
+import { constants, functions } from '../../utils';
 import styles from './Highlights.css';
 
 const thumbsUpEmpty = `${constants.imagesEndpoint}/thumbs_up_empty.png`;
