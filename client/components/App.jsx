@@ -16,7 +16,7 @@ import styles from './App.css';
 
 const { apiEndpoint, dummyListing } = constants;
 
-const getListingIdFromUrl = () => window.location.pathname.split('listing/')[1] || 0;
+const getListingIdFromUrl = () => parseInt(window.location.pathname.split('listing/')[1]) || 0;
 
 export default class App extends React.Component {
   constructor(props) {
