@@ -4,7 +4,6 @@ const parser = require('body-parser');
 const model = require('./model.js');
 
 const port = process.env.PORT || 3001;
-console.log(port);
 
 const app = express();
 
@@ -22,6 +21,7 @@ app.use((req, res, next) => {
 });
 
 app.get('/api/listings/:listingId', (req, res) => {
+  console.log('getting listing...');
   const { listingId } = req.params;
   model.getListingDetails(listingId, (err, results) => {
     res.statusCode = err ? 400 : 200;
