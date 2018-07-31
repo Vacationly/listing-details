@@ -66,7 +66,7 @@ export default class App extends React.Component {
     } = listingData;
     if (dataReady) {
       return (
-        <div className={styles.detailsContainer}>
+        <div id="details" className={styles.detailsContainer}>
           <Summary {...listingData} />
           {highlights && <Highlights {...listingData} saveFeedback={this.saveFeedbackData} />}
           {description && <Description {...listingData} />}
