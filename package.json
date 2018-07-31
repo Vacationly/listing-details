@@ -28,7 +28,8 @@
     "build": "webpack --mode production",
     "serve": "grunt s3",
     "start-dev": "nodemon server/index.js",
-    "start": "pm2 start server/index.js -- --production"
+    "start": "pm2 start server/index.js -- --production",
+    "stop": "pm2 stop server/index.js"
   },
   "dependencies": {
     "axios": "^0.18.0",
