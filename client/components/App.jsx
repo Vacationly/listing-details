@@ -15,7 +15,6 @@ import { constants } from '../utils';
 import styles from './App.css';
 
 const { apiEndpoint, dummyListing } = constants;
-console.log(apiEndpoint);
 
 const getListingIdFromUrl = () => parseInt(window.location.pathname.split('listing/')[1], 10) || 0;
 
