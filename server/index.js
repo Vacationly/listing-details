@@ -7,9 +7,6 @@ const port = process.env.PORT || 3001;
 
 const app = express();
 
-app.use('/', express.static(`${__dirname}/../public`));
-app.use('/listing/:listingId', express.static(`${__dirname}/../public`));
-
 app.use(parser.json());
 app.use(parser.urlencoded({ extended: true }));
 
@@ -36,6 +33,8 @@ app.put('/api/listings/:listingId/highlights/:highlightId', (req, res) => {
     res.send(err || results);
   });
 });
+
+app.use('/*', express.static(`${__dirname}/../public`));
 
 app.listen(port, () => console.log(`Listening on port ${port}!`));
 
