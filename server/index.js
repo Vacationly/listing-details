@@ -4,6 +4,7 @@ const parser = require('body-parser');
 const model = require('./model.js');
 
 const port = process.env.PORT || 3001;
+console.log(port);
 
 const app = express();
 

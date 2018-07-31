@@ -26,3 +26,4 @@ dist/
 
 # Credentials
 .aws.json
+config.js
