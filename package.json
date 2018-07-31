@@ -25,8 +25,9 @@
     "seed": "node ./data/sampleData/dataInitializer.js",
     "lint": "eslint ./",
     "build-dev": "webpack --watch --mode development",
-    "start-dev": "nodemon server/index.js",
     "build": "webpack --mode production",
+    "start-dev": "nodemon server/index.js",
+    "start": "node server/index.js",
     "serve": "grunt s3"
   },
   "dependencies": {
