@@ -1,7 +1,8 @@
 const mongoose = require('mongoose');
 const schemas = require('./schemas.js');
 
-mongoose.connect('mongodb://localhost/airbnh');
+const URI = process.env.MONGO_URI || 'mongodb://localhost/airbnh';
+mongoose.connect(URI);
 
 const listingSchema = mongoose.Schema(schemas.listing);
 const listingTypeSchema = mongoose.Schema(schemas.listingType);
