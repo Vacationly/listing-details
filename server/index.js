@@ -20,6 +20,7 @@ app.use((req, res, next) => {
 app.get('/api/listings/:listingId', (req, res) => {
   const { listingId } = req.params;
   model.getListingDetails(listingId, (err, results) => {
+    console.log(err || 'Get request successful!');
     res.statusCode = err ? 400 : 200;
     res.send(err || results);
   });
@@ -29,6 +30,7 @@ app.put('/api/listings/:listingId/highlights/:highlightId', (req, res) => {
   const { listingId, highlightId } = req.params;
   const { feedback } = req.body;
   model.updateHighlightFeedback(listingId, highlightId, feedback, (err, results) => {
+    console.log(err || 'Put request successful!');
     res.statusCode = err ? 400 : 200;
     res.send(err || results);
   });
