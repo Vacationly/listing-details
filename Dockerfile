@@ -7,4 +7,4 @@ COPY . /app
 EXPOSE 3001
 ENV DB database
 ENV PORT 3001
-CMD ["npm", "run"]
+CMD ["npm", "start"]

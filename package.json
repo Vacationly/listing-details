@@ -26,8 +26,7 @@
     "build-dev": "webpack --watch --mode development",
     "build": "webpack --mode production && grunt s3",
     "start-dev": "nodemon server/index.js",
-    "start": "docker-compose up",
-    "clean": "docker-compose down --rmi all && docker volume prune"
+    "start": "node server/index.js"
   },
   "dependencies": {
     "axios": "^0.18.0",
