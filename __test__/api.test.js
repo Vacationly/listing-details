@@ -47,7 +47,7 @@ describe('PUT highlight feedback data', () => {
   const findHighlightWithId = (highlights, id) => highlights.reduce((found, current) => (current.id === id ? current : found), null);
 
   test('It should be able to find a highlight for a valid id', (done) => {
-    agent.get(validGetUrl).end((err, res) => {
+    agent.get(validGetUrl).then((res) => {
       const highlight = findHighlightWithId(res.body.highlights, validHighlightId);
       expect(highlight).toHaveProperty('tagline');
       done();
