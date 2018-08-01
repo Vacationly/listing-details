@@ -1,0 +1,16 @@
+version: '3'
+
+services:
+  details:
+    container_name: details
+    build: .
+    command: bash -c "npm run seed && node server/index.js"
+    depends_on:
+      - "database"
+    ports:
+      - "3001:3001"
+  database:
+    container_name: database
+    image: mongo:latest
+    ports:
+      - "27017:27017"
