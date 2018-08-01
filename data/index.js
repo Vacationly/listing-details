@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 const schemas = require('./schemas.js');
 
-const URI = 'mongodb://database:27017/airbnh';
+const URI = `mongodb://${process.env.DB || 'localhost'}:27017/airbnh`;
 mongoose.connect(URI, { useNewUrlParser: true }).catch(err => console.log(err));
 
 const listingSchema = mongoose.Schema(schemas.listing);
