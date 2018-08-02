@@ -24,8 +24,10 @@ export default class Amenities extends React.Component {
   render() {
     const { amenities } = this.props;
     const { showModal } = this.state;
-    const amenitiesShort = <AmenitiesShortList {...this.props} />;
-    const amenitiesLong = <AmenitiesFullList {...this.props} />;
+    const amenitiesShort = (
+      <AmenitiesList amenities={amenities} start={0} end={amenitiesThreshold} />
+    );
+    const amenitiesLong = <AmenitiesList {...this.props} start={0} end={amenities.length} />;
     const link = amenities.length > amenitiesThreshold ? `Show all ${amenities.length} amenities` : '';
     const action = amenities.length > amenitiesThreshold ? this.toggleModal : null;
     return (
@@ -54,51 +56,32 @@ Amenities.propTypes = {
   ).isRequired,
 };
 
-const AmenitiesShortList = (props) => {
-  const { amenities } = props;
+const AmenitiesList = (props) => {
+  const { amenities, start, end } = props;
   return (
     <div className={styles.amenityList}>
       {amenities.map(
-        (amenity, index) => index < amenitiesThreshold && (
-        <div key={`amenity_${index}`} className={styles.amenityItem}>
-          <span>
-            <img className={styles.icon} src={amenity.icon} alt={amenity.name} />
-          </span>
-          {amenity.name}
-        </div>
+        (amenity, index) => index >= start
+          && index < end && (
+            <div key={`amenity_${index}`} className={styles.amenityItem}>
+              <span>
+                <img className={styles.icon} src={amenity.icon} alt={amenity.name} />
+              </span>
+              {amenity.name}
+            </div>
         ),
       )}
     </div>
   );
 };
 
-AmenitiesShortList.propTypes = {
+AmenitiesList.propTypes = {
   amenities: PropTypes.arrayOf(
     PropTypes.shape({
       name: PropTypes.string.isRequired,
       icon: PropTypes.string.isRequired,
     }),
   ).isRequired,
-};
-
-const AmenitiesFullList = (props) => {
-  const { amenities } = props;
-  return (
-    <div className={styles.amenitiesList}>
-      {amenities.map((amenity, index) => (
-        <div key={`amenity_${index}`} className={styles.amenityItem}>
-          {amenity.name}
-        </div>
-      ))}
-    </div>
-  );
-};
-
-AmenitiesFullList.propTypes = {
-  amenities: PropTypes.arrayOf(
-    PropTypes.shape({
-      name: PropTypes.string,
-      icon: PropTypes.string,
-    }),
-  ).isRequired,
+  start: PropTypes.number.isRequired,
+  end: PropTypes.number.isRequired,
 };

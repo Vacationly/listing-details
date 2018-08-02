@@ -66,13 +66,17 @@ export default class App extends React.Component {
       return (
         <div id="Details">
           <Summary {...listingData} />
-          {highlights && <Highlights {...listingData} saveFeedback={this.saveFeedbackData} />}
-          {description && <Description {...listingData} />}
-          {amenities && <Amenities {...listingData} />}
-          {sleepingArrangements && <SleepingArrangements {...listingData} />}
-          {houseRules && <HouseRules {...listingData} />}
-          {cancellationPolicy && <CancellationPolicy {...listingData} />}
-          {videoSource && <VideoPlayer {...listingData} />}
+          {highlights && (
+            <Highlights highlights={highlights} saveFeedback={this.saveFeedbackData} />
+          )}
+          {description && <Description description={description} />}
+          {amenities && <Amenities amenities={amenities} />}
+          {sleepingArrangements && (
+            <SleepingArrangements sleepingArrangements={sleepingArrangements} />
+          )}
+          {houseRules && <HouseRules houseRules={houseRules} />}
+          {cancellationPolicy && <CancellationPolicy cancellationPolicy={cancellationPolicy} />}
+          {videoSource && <VideoPlayer videoSource={videoSource} />}
         </div>
       );
     }
