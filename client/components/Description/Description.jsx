@@ -17,17 +17,19 @@ export default class Description extends React.Component {
   }
 
   render() {
-    const { description } = this.props;
+    const {
+      description: { main, more },
+    } = this.props;
     const { expanded } = this.state;
-    const main = <DescriptionMain description={description} />;
-    const more = <DescriptionMore description={description} />;
+    const mainContent = <DescriptionMain main={main} />;
+    const moreContent = <DescriptionMore description={more} />;
     const link = expanded ? 'Hide' : 'Read more about the space';
     return (
       <Expandable
         id="description"
-        main={main}
-        more={more}
-        link={description.more.length ? link : null}
+        main={mainContent}
+        more={moreContent}
+        link={more.length ? link : null}
         toggle={this.toggleMoreInfo}
         expandable
         expanded={expanded}
@@ -44,9 +46,7 @@ Description.propTypes = {
 };
 
 const DescriptionMain = (props) => {
-  const {
-    description: { main },
-  } = props;
+  const { main } = props;
   return (
     <div>
       {main}
@@ -55,30 +55,26 @@ const DescriptionMain = (props) => {
 };
 
 DescriptionMain.propTypes = {
-  description: PropTypes.shape({
-    main: PropTypes.string,
-  }).isRequired,
+  main: PropTypes.string.isRequired,
 };
 
 const DescriptionMore = (props) => {
-  const {
-    description: { more },
-  } = props;
+  const { more } = props;
   return (
     <div>
-      {more.map(info => (
-        <Section key={`description_${info.title}`} subtitle={info.title}>
-          <div>
-            {info.text}
-          </div>
-        </Section>
-      ))}
+      {more
+        && more.map(info => (
+          <Section key={`description_${info.title}`} subtitle={info.title}>
+            <div>
+              {info.text}
+            </div>
+          </Section>
+        ))}
     </div>
   );
 };
 
 DescriptionMore.propTypes = {
-  description: PropTypes.shape({
-    more: PropTypes.array,
-  }).isRequired,
+  more: PropTypes.arrayOf(PropTypes.shape({ title: PropTypes.string, text: PropTypes.string }))
+    .isRequired,
 };
