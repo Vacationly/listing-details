@@ -44,3 +44,8 @@
 .downvote:hover {
   color: #008489;
 }
+
+.upvote:focus,
+.downvote:focus {
+  outline: 0;
+}

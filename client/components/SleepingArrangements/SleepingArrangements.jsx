@@ -24,8 +24,20 @@ export default class SleepingArrangements extends React.Component {
     const { sleepingArrangements } = this.props;
     const { expanded } = this.state;
     const link = expanded ? 'Hide' : 'Show all';
-    const sleepingArrangementsMain = <SleepingArrangementsMain {...this.props} />;
-    const sleepingArrangementsMore = <SleepingArrangementsMore {...this.props} />;
+    const sleepingArrangementsMain = (
+      <SleepingArrangementsList
+        sleepingArrangements={sleepingArrangements}
+        start={0}
+        end={sleepingArrangementsThreshold}
+      />
+    );
+    const sleepingArrangementsMore = (
+      <SleepingArrangementsList
+        sleepingArrangements={sleepingArrangements}
+        start={sleepingArrangementsThreshold}
+        end={sleepingArrangements.length}
+      />
+    );
     return (
       <div>
         {sleepingArrangements.length && (
@@ -55,14 +67,15 @@ SleepingArrangements.propTypes = {
   ).isRequired,
 };
 
-const SleepingArrangementsMain = (props) => {
-  const { sleepingArrangements } = props;
+const SleepingArrangementsList = (props) => {
+  const { sleepingArrangements, start, end } = props;
   return (
     <div>
       <div className={styles.sleepingArrangements}>
         {sleepingArrangements.map(
-          (sleepingArrangement, index) => index < sleepingArrangementsThreshold && (
-          <SleepingArrangement key={`sleeping_${index}`} {...{ sleepingArrangement }} />
+          (sleepingArrangement, index) => index >= start
+            && index < end && (
+              <SleepingArrangement key={`sleeping_${index}`} {...{ sleepingArrangement }} />
           ),
         )}
       </div>
@@ -70,7 +83,7 @@ const SleepingArrangementsMain = (props) => {
   );
 };
 
-SleepingArrangementsMain.propTypes = {
+SleepingArrangementsList.propTypes = {
   sleepingArrangements: PropTypes.arrayOf(
     PropTypes.shape({
       spaceName: PropTypes.string.isRequired,
@@ -78,29 +91,8 @@ SleepingArrangementsMain.propTypes = {
       number: PropTypes.number.isRequired,
     }),
   ).isRequired,
-};
-
-const SleepingArrangementsMore = (props) => {
-  const { sleepingArrangements } = props;
-  return (
-    <div className={styles.sleepingArrangements}>
-      {sleepingArrangements.map(
-        (sleepingArrangement, index) => index >= sleepingArrangementsThreshold && (
-        <SleepingArrangement key={`sleeping_${index}`} {...{ sleepingArrangement }} />
-        ),
-      )}
-    </div>
-  );
-};
-
-SleepingArrangementsMore.propTypes = {
-  sleepingArrangements: PropTypes.arrayOf(
-    PropTypes.shape({
-      spaceName: PropTypes.string,
-      mattressType: PropTypes.string,
-      number: PropTypes.number,
-    }),
-  ).isRequired,
+  start: PropTypes.number.isRequired,
+  end: PropTypes.number.isRequired,
 };
 
 const SleepingArrangement = (props) => {

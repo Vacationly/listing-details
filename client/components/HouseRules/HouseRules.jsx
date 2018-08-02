@@ -24,8 +24,10 @@ export default class HouseRules extends React.Component {
     const { houseRules } = this.props;
     const { expanded } = this.state;
     const link = expanded ? 'Hide' : 'Read all rules';
-    const rulesMain = <RulesMain {...this.props} />;
-    const rulesMore = <RulesMore {...this.props} />;
+    const rulesMain = <RulesList rules={houseRules} start={0} end={houseRulesThreshold} />;
+    const rulesMore = (
+      <RulesList rules={houseRules} start={houseRulesThreshold} end={houseRules.length} />
+    );
     return (
       <div>
         {houseRules.length && (
@@ -49,40 +51,24 @@ HouseRules.propTypes = {
   houseRules: PropTypes.arrayOf(PropTypes.string).isRequired,
 };
 
-const RulesMain = (props) => {
-  const { houseRules } = props;
+const RulesList = (props) => {
+  const { rules, start, end } = props;
   return (
     <div>
-      {houseRules.map(
-        (rule, index) => index < houseRulesThreshold && (
-        <div key={`rule_${index}`} className={styles.ruleItem}>
-          {rule}
-        </div>
+      {rules.map(
+        (rule, index) => index >= start
+          && index < end && (
+            <div key={`rule_${index}`} className={styles.ruleItem}>
+              {rule}
+            </div>
         ),
       )}
     </div>
   );
 };
 
-RulesMain.propTypes = {
-  houseRules: PropTypes.arrayOf(PropTypes.string).isRequired,
-};
-
-const RulesMore = (props) => {
-  const { houseRules } = props;
-  return (
-    <div>
-      {houseRules.map(
-        (rule, index) => index >= houseRulesThreshold && (
-        <div key={`rule_${index}`} className={styles.ruleItem}>
-          {rule}
-        </div>
-        ),
-      )}
-    </div>
-  );
-};
-
-RulesMore.propTypes = {
-  houseRules: PropTypes.arrayOf(PropTypes.string).isRequired,
+RulesList.propTypes = {
+  rules: PropTypes.arrayOf(PropTypes.string).isRequired,
+  start: PropTypes.number.isRequired,
+  end: PropTypes.number.isRequired,
 };
