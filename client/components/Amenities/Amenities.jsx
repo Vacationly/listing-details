@@ -27,7 +27,9 @@ export default class Amenities extends React.Component {
     const amenitiesShort = (
       <AmenitiesList amenities={amenities} start={0} end={amenitiesThreshold} />
     );
-    const amenitiesLong = <AmenitiesList {...this.props} start={0} end={amenities.length} />;
+    const amenitiesLong = (
+      <AmenitiesList {...this.props} start={0} end={amenities.length} showIcons={false} />
+    );
     const link = amenities.length > amenitiesThreshold ? `Show all ${amenities.length} amenities` : '';
     const action = amenities.length > amenitiesThreshold ? this.toggleModal : null;
     return (
@@ -57,16 +59,20 @@ Amenities.propTypes = {
 };
 
 const AmenitiesList = (props) => {
-  const { amenities, start, end } = props;
+  const {
+    amenities, start, end, showIcons,
+  } = props;
   return (
     <div className={styles.amenityList}>
       {amenities.map(
         (amenity, index) => index >= start
           && index < end && (
             <div key={`amenity_${index}`} className={styles.amenityItem}>
-              <span>
-                <img className={styles.icon} src={amenity.icon} alt={amenity.name} />
-              </span>
+              {showIcons && (
+                <span>
+                  <img className={styles.icon} src={amenity.icon} alt={amenity.name} />
+                </span>
+              )}
               {amenity.name}
             </div>
         ),
@@ -84,4 +90,9 @@ AmenitiesList.propTypes = {
   ).isRequired,
   start: PropTypes.number.isRequired,
   end: PropTypes.number.isRequired,
+  showIcons: PropTypes.bool,
+};
+
+AmenitiesList.defaultProps = {
+  showIcons: true,
 };
