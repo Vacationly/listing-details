@@ -1,6 +1,4 @@
-const apiEndpoint = window.location.href.includes('localhost')
-  ? 'http://localhost:3001/api/listings'
-  : 'http://ec2-54-200-238-109.us-west-2.compute.amazonaws.com:3001/api/listings';
+const apiEndpoint = '/api/details';
 const imagesEndpoint = 'https://s3.amazonaws.com/fec-overview-service-images';
 const amenitiesThreshold = 6;
 const sleepingArrangementsThreshold = 3;
