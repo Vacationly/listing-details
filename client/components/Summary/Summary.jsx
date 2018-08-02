@@ -5,7 +5,7 @@ import styles from './Summary.css';
 
 const Summary = (props) => {
   const {
-    title, listingType, location, host,
+    title, listingType, location, host, capacity,
   } = props;
   return (
     <div className={styles.listingSummary}>
@@ -23,7 +23,7 @@ const Summary = (props) => {
           <div className={styles.city}>
             {location.city}
           </div>
-          <Capacity {...props} />
+          <Capacity capacity={capacity} />
         </div>
         <div className={styles.host}>
           <img src={host.avatar} className={styles.avatar} alt={host.name} />
@@ -50,6 +50,13 @@ Summary.propTypes = {
     name: PropTypes.string,
     avatar: PropTypes.string,
   }).isRequired,
+  capacity: PropTypes.arrayOf(
+    PropTypes.shape({
+      name: PropTypes.string,
+      number: PropTypes.number,
+      icon: PropTypes.string,
+    }),
+  ).isRequired,
 };
 
 const Capacity = (props) => {
