@@ -12,8 +12,6 @@ import VideoPlayer from './VideoPlayer/VideoPlayer';
 
 import { constants } from '../utils';
 
-import styles from './App.css';
-
 const { apiEndpoint, dummyListing } = constants;
 
 const getListingIdFromUrl = () => parseInt(window.location.pathname.split('listing/')[1], 10) || 0;
@@ -66,7 +64,7 @@ export default class App extends React.Component {
     } = listingData;
     if (dataReady) {
       return (
-        <div id="Details" className={styles.detailsContainer}>
+        <div id="Details">
           <Summary {...listingData} />
           {highlights && <Highlights {...listingData} saveFeedback={this.saveFeedbackData} />}
           {description && <Description {...listingData} />}

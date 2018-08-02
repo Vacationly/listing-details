@@ -1,4 +1,4 @@
-.detailsContainer {
+#Details {
   max-width: 600px;
   margin: 1rem auto;
   font-family: Circular, "Helvetica Neue", Helvetica, Arial, sans-serif;
@@ -7,7 +7,7 @@
 }
 
 @media (max-width: 640px) {
-  .detailsContainer {
-    margin: 0 20px;
+  #Details {
+    margin: 0 2rem;
   }
 }
