@@ -17,7 +17,7 @@ app.use((req, res, next) => {
   next();
 });
 
-app.get('/api/listings/:listingId', (req, res) => {
+app.get('/api/details/:listingId', (req, res) => {
   const { listingId } = req.params;
   model.getListingDetails(listingId, (err, results) => {
     console.log(err || 'GET request successful!');
@@ -26,7 +26,7 @@ app.get('/api/listings/:listingId', (req, res) => {
   });
 });
 
-app.put('/api/listings/:listingId/highlights/:highlightId', (req, res) => {
+app.put('/api/details/:listingId/highlights/:highlightId', (req, res) => {
   const { listingId, highlightId } = req.params;
   const { feedback } = req.body;
   model.updateHighlightFeedback(listingId, highlightId, feedback, (err, results) => {
