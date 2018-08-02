@@ -22,7 +22,7 @@ export default class Description extends React.Component {
     } = this.props;
     const { expanded } = this.state;
     const mainContent = <DescriptionMain main={main} />;
-    const moreContent = <DescriptionMore description={more} />;
+    const moreContent = <DescriptionMore more={more} />;
     const link = expanded ? 'Hide' : 'Read more about the space';
     return (
       <Expandable
