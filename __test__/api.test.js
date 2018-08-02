@@ -8,9 +8,9 @@ const invalidListingId = 101;
 const validHighlightId = 1;
 const voteValue = 1;
 
-const validGetUrl = `/api/listings/${validListingId}`;
-const invalidGetUrl = `/api/listings/${invalidListingId}`;
-const putUrl = `/api/listings/${validListingId}/highlights/${validHighlightId}`;
+const validGetUrl = `/api/details/${validListingId}`;
+const invalidGetUrl = `/api/details/${invalidListingId}`;
+const putUrl = `/api/details/${validListingId}/highlights/${validHighlightId}`;
 const putData = { feedback: voteValue };
 
 describe('GET listing data', () => {
