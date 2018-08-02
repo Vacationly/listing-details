@@ -19,8 +19,8 @@ export default class Description extends React.Component {
   render() {
     const { description } = this.props;
     const { expanded } = this.state;
-    const main = <DescriptionMain {...this.props} />;
-    const more = <DescriptionMore {...this.props} />;
+    const main = <DescriptionMain description={description} />;
+    const more = <DescriptionMore description={description} />;
     const link = expanded ? 'Hide' : 'Read more about the space';
     return (
       <Expandable
