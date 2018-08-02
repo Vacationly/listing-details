@@ -4,7 +4,7 @@ import Section from '../Section/Section';
 
 import styles from './Expandable.css';
 
-const toggleCollapse = (wrapperId, contentId, expanded) => {
+const toggleExpand = (wrapperId, contentId, expanded) => {
   const wrapper = window.document.getElementById(wrapperId);
   const content = window.document.getElementById(contentId);
   wrapper.style.height = expanded ? `${content.clientHeight + content.style.margin}px` : '0px';
@@ -18,7 +18,7 @@ const Expandable = (props) => {
   } = props;
   const toggleMoreInfo = () => {
     toggle(() => {
-      toggleCollapse(`${id}_wrapper`, `${id}_content`, !expanded);
+      toggleExpand(`${id}_wrapper`, `${id}_content`, !expanded);
     });
   };
   const content = (
