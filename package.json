@@ -22,12 +22,12 @@
   "scripts": {
     "test": "jest --coverage",
     "seed": "node ./data/sampleData/dataInitializer.js",
-    "lint": "eslint ./",
-    "build-dev": "webpack --watch --mode development",
-    "build-client": "webpack --mode production && grunt s3",
-    "build-server": "docker build . -t bcronin2/fec-airbnh-details && docker push bcronin2/fec-airbnh-details",
-    "start-dev": "nodemon server/index.js",
-    "start": "node server/index.js"
+    "lint": "eslint ./client",
+    "build:local": "webpack --watch --mode development",
+    "build:S3": "webpack --mode production && grunt s3",
+    "build:D": "docker build . -t bcronin2/fec-airbnh-details && docker push bcronin2/fec-airbnh-details",
+    "build": "npm run build:S3 && npm run build:D",
+    "start": "nodemon server/index.js"
   },
   "dependencies": {
     "axios": "^0.18.0",
