@@ -1,9 +1,9 @@
-.section {
-  margin: 1rem 0;
+.subsection {
+  margin: 1rem 0 0;
 }
 
-.title {
-  font-weight: 600;
+.subtitle {
+  font-weight: 400;
 }
 
 .content {

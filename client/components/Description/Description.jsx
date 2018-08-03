@@ -1,7 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import Section from '../Utilities/Section/Section';
 import Expandable from '../Utilities/Expandable/Expandable';
+
+import styles from './Description.css';
 
 export default class Description extends React.Component {
   constructor(props) {
@@ -64,11 +65,14 @@ const DescriptionMore = (props) => {
     <div>
       {more
         && more.map(info => (
-          <Section key={`description_${info.title}`} subtitle={info.title}>
-            <div>
+          <div key={`description_${info.title}`} className={styles.subsection}>
+            <div className={styles.subtitle}>
+              {info.title}
+            </div>
+            <div className={styles.content}>
               {info.text}
             </div>
-          </Section>
+          </div>
         ))}
     </div>
   );

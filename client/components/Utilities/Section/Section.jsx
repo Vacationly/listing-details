@@ -10,7 +10,7 @@ const { processKeyUp } = functions;
 
 const Section = (props) => {
   const {
-    title, subtitle, children, link, action, expandable, expanded,
+    title, children, link, action, expandable, expanded,
   } = props;
   return (
     <div className={styles.section}>
@@ -18,11 +18,6 @@ const Section = (props) => {
         <div id="title" className={styles.title}>
           <hr className={styles.hr} />
           {title}
-        </div>
-      )}
-      {subtitle && (
-        <div id="subtitle" className={styles.subtitle}>
-          {subtitle}
         </div>
       )}
       {children && (
@@ -57,7 +52,6 @@ const Section = (props) => {
 
 Section.propTypes = {
   title: PropTypes.string,
-  subtitle: PropTypes.string,
   children: PropTypes.element,
   link: PropTypes.string,
   action: PropTypes.func,
@@ -67,7 +61,6 @@ Section.propTypes = {
 
 Section.defaultProps = {
   title: null,
-  subtitle: null,
   children: null,
   link: null,
   action: null,
