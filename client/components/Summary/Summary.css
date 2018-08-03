@@ -8,7 +8,7 @@
   font-variant: small-caps;
 }
 
-.altTitle {
+.smallscreenTitle {
   display: none;
 }
 
@@ -20,7 +20,7 @@
 }
 
 .mainTitle,
-.altTitle {
+.smallscreenTitle {
   padding: 0 1rem 0 0;
   font-size: 2rem;
   font-weight: 600;
@@ -60,16 +60,18 @@
 }
 
 @media (max-width: 420px) {
-  .altTitle {
+  .smallscreenTitle {
     display: block;
   }
   .mainTitle {
     display: none;
   }
+  .headlineText {
+    min-width: 80%;
+  }
   .capacity {
     display: grid;
     grid-template-columns: 50% 50%;
-    min-width: 200px;
   }
   .avatar {
     width: 3rem;

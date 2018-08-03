@@ -12,11 +12,11 @@ const Summary = (props) => {
       <div className={styles.listingType}>
         {listingType.name.toLowerCase()}
       </div>
-      <div className={styles.altTitle}>
+      <div className={styles.smallscreenTitle}>
         {title}
       </div>
       <div className={styles.headline}>
-        <div>
+        <div className={styles.headlineText}>
           <div className={styles.mainTitle}>
             {title}
           </div>
