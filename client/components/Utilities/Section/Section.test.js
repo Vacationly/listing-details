@@ -6,7 +6,6 @@ import Section from './Section';
 
 const completeProps = {
   title: 'title',
-  subtitle: 'subtitle',
   children: <div />,
   link: 'link',
   expandable: true,
@@ -22,7 +21,6 @@ const incompleteProps = {
 
 const invalidProps = {
   title: 'title',
-  subtitle: 'subtitle',
   children: 'div',
   link: 'link',
   expandable: true,
