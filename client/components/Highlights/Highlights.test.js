@@ -32,7 +32,7 @@ describe('rendering', () => {
     expect(target.length).toBe(0);
   });
   it('should NOT throw an error when there are no highlights', () => {
-    const error = sinon.spy(console, 'error');
+    const error = sinon.stub(console, 'error');
     mount(<Highlights {...emptyProps} />);
     expect(error.callCount).toBe(0);
     error.restore();

@@ -52,7 +52,7 @@ describe('rendering', () => {
 describe('interaction', () => {
   let action;
   beforeEach(() => {
-    action = sinon.spy(completeProps, 'action');
+    action = sinon.stub(completeProps, 'action');
   });
   afterEach(() => {
     action.restore();
@@ -68,7 +68,7 @@ describe('interaction', () => {
 describe('validation', () => {
   let error;
   beforeEach(() => {
-    error = sinon.spy(console, 'error');
+    error = sinon.stub(console, 'error');
   });
   afterEach(() => {
     error.restore();

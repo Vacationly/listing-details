@@ -37,7 +37,7 @@ describe('rendering', () => {
     expect(target.length).toBe(0);
   });
   it('should NOT throw an error when there are no sleeping arrangements', () => {
-    const error = sinon.spy(console, 'error');
+    const error = sinon.stub(console, 'error');
     mount(<SleepingArrangments {...emptyProps} />);
     expect(error.callCount).toBe(0);
     error.restore();

@@ -58,7 +58,7 @@ const clickEvent = {
 describe('interaction', () => {
   let toggle;
   beforeEach(() => {
-    toggle = sinon.spy(validProps, 'toggle');
+    toggle = sinon.stub(validProps, 'toggle');
   });
   afterEach(() => {
     toggle.restore();
@@ -88,7 +88,7 @@ describe('rendering', () => {
 describe('validation', () => {
   let error;
   beforeEach(() => {
-    error = sinon.spy(console, 'error');
+    error = sinon.stub(console, 'error');
   });
   afterEach(() => {
     error.restore();

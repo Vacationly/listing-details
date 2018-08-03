@@ -29,7 +29,7 @@ const clickEvent = {
 describe('interaction', () => {
   let dismiss;
   beforeEach(() => {
-    dismiss = sinon.spy(validProps, 'dismiss');
+    dismiss = sinon.stub(validProps, 'dismiss');
   });
   afterEach(() => {
     dismiss.restore();
@@ -63,7 +63,7 @@ describe('interaction', () => {
 describe('validation', () => {
   let error;
   beforeEach(() => {
-    error = sinon.spy(console, 'error');
+    error = sinon.stub(console, 'error');
   });
   afterEach(() => {
     error.restore();

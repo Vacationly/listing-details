@@ -21,7 +21,7 @@ describe('componentDidMount() with successful API request', () => {
     axiosGet.restore();
   });
   it('should call getDataForListing once when mounting', (done) => {
-    const getListingData = sinon.spy(App.prototype, 'getListingData');
+    const getListingData = sinon.stub(App.prototype, 'getListingData');
     const wrapper = shallow(<App {...dummyProps} />);
     return Promise.resolve(wrapper).then(() => {
       expect(getListingData.callCount).toBe(1);
@@ -77,7 +77,7 @@ describe('componentDidMount() with unsuccessful API request', () => {
 describe('saveFeedbackData()', () => {
   let axiosPut;
   beforeEach(() => {
-    axiosPut = sinon.spy(axios, 'put');
+    axiosPut = sinon.stub(axios, 'put');
   });
   afterEach(() => {
     axiosPut.restore();
