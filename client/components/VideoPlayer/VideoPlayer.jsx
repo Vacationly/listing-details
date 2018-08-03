@@ -117,7 +117,7 @@ export default class VideoPlayer extends React.Component {
               onDoubleClick={Document.exitFullscreen}
             >
               <div className={styles.screen} onClick={this.togglePlay} role="button" tabIndex="0">
-                {!playing && <FaPlayCircle className={styles.bigPlay} />}
+                {!playing && <FaPlayCircle id="bigPlay" className={styles.bigPlay} />}
               </div>
               <Controls
                 playing={playing}
