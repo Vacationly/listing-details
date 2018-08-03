@@ -20,6 +20,7 @@ export default class VideoPlayer extends React.Component {
       muted: false,
       progress: 0,
     };
+    this.updateProgress = this.updateProgress.bind(this);
     this.togglePlay = this.togglePlay.bind(this);
     this.handleProgress = this.handleProgress.bind(this);
     this.pauseForNow = this.pauseForNow.bind(this);
@@ -31,18 +32,17 @@ export default class VideoPlayer extends React.Component {
 
   componentDidMount() {
     [this.video] = document.getElementsByTagName('video');
-
-    // update video progress value every time the "timeupdate" event
-    // is triggered by video playback
-    this.video.addEventListener('timeupdate', () => {
-      const progress = (this.video.currentTime / this.video.duration) * 100;
-      this.setState({ progress }, () => {
-        if (progress === 100) {
-          this.setState({ playing: false });
-        }
-      });
-    });
+    this.video.addEventListener('timeupdate', this.updateProgress);
     this.video.volume = 1;
+  }
+
+  updateProgress() {
+    const progress = (this.video.currentTime / this.video.duration) * 100;
+    this.setState({ progress }, () => {
+      if (progress === 100) {
+        this.setState({ playing: false });
+      }
+    });
   }
 
   togglePlay() {
@@ -58,9 +58,11 @@ export default class VideoPlayer extends React.Component {
 
   handleProgress(event) {
     this.video.currentTime = (event.target.value / 100) * this.video.duration;
+    this.setState({ progress: event.target.value });
   }
 
   pauseForNow() {
+    this.video.removeEventListener('timeupdate', this.updateProgress);
     this.video.pause();
   }
 
@@ -71,6 +73,7 @@ export default class VideoPlayer extends React.Component {
     } else {
       this.video.pause();
     }
+    this.video.addEventListener('timeupdate', this.updateProgress);
   }
 
   toggleMute() {
@@ -160,7 +163,7 @@ const Controls = (props) => {
       </div>
       <input
         type="range"
-        className={`${styles.slider} ${styles.progress} `}
+        className={`${styles.slider} ${styles.progress}`}
         value={progress}
         onChange={handleProgress}
         onMouseDown={pauseForNow}
