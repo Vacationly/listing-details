@@ -159,9 +159,10 @@ const Controls = (props) => {
   return (
     <div className={styles.controls}>
       <div className={styles.button} onClick={togglePlay} role="button" tabIndex="0">
-        {playing ? <GoPlaybackPause /> : <GoPlaybackPlay />}
+        {playing ? <GoPlaybackPause id="pause" /> : <GoPlaybackPlay id="play" />}
       </div>
       <input
+        id="progress"
         type="range"
         className={`${styles.slider} ${styles.progress}`}
         value={progress}
@@ -170,9 +171,10 @@ const Controls = (props) => {
         onMouseUp={restoreStatus}
       />
       <div className={styles.button} onClick={toggleMute} role="button" tabIndex="0">
-        {muted ? <GoUnmute /> : <GoMute />}
+        {muted ? <GoUnmute id="unmute" /> : <GoMute id="mute" />}
       </div>
       <input
+        id="volume"
         type="range"
         className={`${styles.slider} ${styles.volume} ${muted ? styles.hidden : ''}`}
         defaultValue="100"
