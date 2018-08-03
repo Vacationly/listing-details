@@ -31,7 +31,7 @@ export default class VideoPlayer extends React.Component {
   }
 
   componentDidMount() {
-    [this.video] = document.getElementsByTagName('video');
+    [this.video] = window.document.getElementsByTagName('video');
     this.video.addEventListener('timeupdate', this.updateProgress);
     this.video.volume = 1;
   }
