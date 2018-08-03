@@ -15,6 +15,11 @@ import styles from './VideoPlayer.css';
 export default class VideoPlayer extends React.Component {
   constructor(props) {
     super(props);
+    this.state = {
+      playing: false,
+      muted: false,
+      progress: 0,
+    };
     this.togglePlay = this.togglePlay.bind(this);
     this.handleProgress = this.handleProgress.bind(this);
     this.pauseForNow = this.pauseForNow.bind(this);
@@ -22,11 +27,6 @@ export default class VideoPlayer extends React.Component {
     this.toggleMute = this.toggleMute.bind(this);
     this.handleVolume = this.handleVolume.bind(this);
     this.requestFullscreen = this.requestFullscreen.bind(this);
-    this.state = {
-      playing: false,
-      muted: false,
-      progress: 0,
-    };
   }
 
   componentDidMount() {
@@ -100,23 +100,36 @@ export default class VideoPlayer extends React.Component {
   }
 
   render() {
-    const video = (
-      <Video
-        {...this.props}
-        {...this.state}
-        togglePlay={this.togglePlay}
-        handleProgress={this.handleProgress}
-        pauseForNow={this.pauseForNow}
-        restoreStatus={this.restoreStatus}
-        toggleMute={this.toggleMute}
-        handleVolume={this.handleVolume}
-        requestFullscreen={this.requestFullscreen}
-      />
-    );
+    const { videoSource } = this.props;
+    const { playing, progress, muted } = this.state;
     return (
       <div>
-        <Section title="Take a tour">
-          {video}
+        <Section title="Take the tour">
+          <div className={styles.videoContainer}>
+            <video className={styles.video} src={videoSource}>
+              Please upgrade your browser.
+            </video>
+            <div
+              className={`${styles.videoOverlay} ${playing ? styles.playing : ''}`}
+              onDoubleClick={Document.exitFullscreen}
+            >
+              <div className={styles.screen} onClick={this.togglePlay} role="button" tabIndex="0">
+                {!playing && <FaPlayCircle className={styles.bigPlay} />}
+              </div>
+              <Controls
+                playing={playing}
+                progress={progress}
+                togglePlay={this.togglePlay}
+                handleProgress={this.handleProgress}
+                pauseForNow={this.pauseForNow}
+                restoreStatus={this.restoreStatus}
+                muted={muted}
+                toggleMute={this.toggleMute}
+                handleVolume={this.handleVolume}
+                requestFullscreen={this.requestFullscreen}
+              />
+            </div>
+          </div>
         </Section>
       </div>
     );
@@ -125,32 +138,6 @@ export default class VideoPlayer extends React.Component {
 
 VideoPlayer.propTypes = {
   videoSource: PropTypes.string.isRequired,
-};
-
-const Video = (props) => {
-  const { videoSource, playing, togglePlay } = props;
-  return (
-    <div className={styles.videoContainer}>
-      <video className={styles.video} src={videoSource}>
-        Please upgrade your browser.
-      </video>
-      <div
-        className={`${styles.videoOverlay} ${playing ? styles.playing : ''}`}
-        onDoubleClick={Document.exitFullscreen}
-      >
-        <div className={styles.screen} onClick={togglePlay} role="button" tabIndex="0">
-          {!playing && <FaPlayCircle className={styles.bigPlay} />}
-        </div>
-        <Controls {...props} />
-      </div>
-    </div>
-  );
-};
-
-Video.propTypes = {
-  videoSource: PropTypes.string.isRequired,
-  playing: PropTypes.bool.isRequired,
-  togglePlay: PropTypes.func.isRequired,
 };
 
 const Controls = (props) => {
