@@ -20,6 +20,7 @@ export default class VideoPlayer extends React.Component {
       muted: false,
       progress: 0,
     };
+    this.video = React.createRef();
     this.updateProgress = this.updateProgress.bind(this);
     this.togglePlay = this.togglePlay.bind(this);
     this.handleProgress = this.handleProgress.bind(this);
@@ -31,7 +32,6 @@ export default class VideoPlayer extends React.Component {
   }
 
   componentDidMount() {
-    [this.video] = window.document.getElementsByTagName('video');
     this.video.addEventListener('timeupdate', this.updateProgress);
     this.video.volume = 1;
   }
@@ -109,13 +109,10 @@ export default class VideoPlayer extends React.Component {
       <div>
         <Section title="Take the tour">
           <div className={styles.videoContainer}>
-            <video className={styles.video} src={videoSource}>
+            <video ref={this.video} className={styles.video} src={videoSource}>
               Please upgrade your browser.
             </video>
-            <div
-              className={`${styles.videoOverlay} ${playing ? styles.playing : ''}`}
-              onDoubleClick={Document.exitFullscreen}
-            >
+            <div className={`${styles.videoOverlay} ${playing ? styles.playing : ''}`}>
               <div className={styles.screen} onClick={this.togglePlay} role="button" tabIndex="0">
                 {!playing && <FaPlayCircle id="bigPlay" className={styles.bigPlay} />}
               </div>
