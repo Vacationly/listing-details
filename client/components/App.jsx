@@ -14,32 +14,14 @@ import { constants } from '../utils';
 
 const { apiEndpoint, dummyListing } = constants;
 
-const getListingIdFromUrl = () => parseInt(window.location.pathname.split('listing/')[1], 10) || 0;
-
 export default class App extends React.Component {
   constructor(props) {
     super(props);
-    this.saveFeedbackData = this.saveFeedbackData.bind(this);
+    const { listing } = props;
     this.state = {
-      listingData: {},
-      dataReady: false,
+      listingData: listing || dummyListing,
     };
-  }
-
-  componentDidMount() {
-    const listingId = getListingIdFromUrl();
-    this.getListingData(listingId);
-  }
-
-  getListingData(listingId) {
-    axios.get(`${apiEndpoint}/${listingId}`).then(
-      (response) => {
-        this.setState({ listingData: response.data, dataReady: true });
-      },
-      () => {
-        this.setState({ listingData: dummyListing, dataReady: true });
-      },
-    );
+    this.saveFeedbackData = this.saveFeedbackData.bind(this);
   }
 
   saveFeedbackData(id, value) {
@@ -52,7 +34,7 @@ export default class App extends React.Component {
   }
 
   render() {
-    const { listingData, dataReady } = this.state;
+    const { listingData } = this.state;
     const {
       highlights,
       description,
@@ -62,7 +44,7 @@ export default class App extends React.Component {
       cancellationPolicy,
       videoSource,
     } = listingData;
-    if (dataReady) {
+    if (listingData) {
       return (
         <div id="Details">
           <Summary {...listingData} />

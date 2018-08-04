@@ -1,6 +1,5 @@
 __test__/
 .circleci/
-client/
 coverage/
 node_modules/
 public/dist/

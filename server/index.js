@@ -1,7 +1,11 @@
-const express = require('express');
-const parser = require('body-parser');
+import express from 'express';
+import parser from 'body-parser';
+import React from 'react';
+import ReactDOM from 'react-dom/server';
 
-const model = require('./model.js');
+import model from './model';
+import App from '../client/components/App';
+import Html from '../client/Html';
 
 const port = process.env.PORT || 3001;
 
@@ -36,7 +40,15 @@ app.put('/api/details/:listingId/highlights/:highlightId', (req, res) => {
   });
 });
 
-app.use('/*', express.static(`${__dirname}/../public`));
+app.get('/listing/:listingId', (req, res) => {
+  const { listingId } = req.params;
+  model.getListingDetails(listingId, (err, results) => {
+    if (err) console.log(err);
+    res.statusCode = err ? 400 : 200;
+    const body = ReactDOM.renderToString(<App listing={results} />);
+    res.send(Html({ title: 'AirBnH', body }));
+  });
+});
 
 app.listen(port, () => console.log(`Listening on port ${port}!`));
 

@@ -1,8 +1,9 @@
 const path = require('path');
+const nodeExternals = require('webpack-node-externals');
 
-const ENTRY_POINT = path.resolve(__dirname, 'client/index.jsx');
+const ENTRY_POINT = path.resolve(__dirname, 'server/index.js');
 
-const OUTPUT_PATH = path.resolve(__dirname, 'public/dist');
+const OUTPUT_PATH = path.resolve(__dirname, 'server/dist');
 
 const LOADER_OBJECT = [
   {
@@ -16,7 +17,7 @@ const LOADER_OBJECT = [
   {
     test: /\.css$/,
     loader:
-      'style-loader!css-loader?modules&importLoaders=1&localIdentName=[name]__[local]___[hash:base64:5]',
+      'css-loader/locals?modules&importLoaders=1&localIdentName=[name]__[local]___[hash:base64:5]',
   },
 ];
 
@@ -26,6 +27,7 @@ module.exports = {
     filename: 'bundle.js',
     path: OUTPUT_PATH,
   },
+  externals: nodeExternals(),
   devtool: 'source-map',
   module: {
     rules: LOADER_OBJECT,
