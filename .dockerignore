@@ -2,12 +2,10 @@ __test__/
 .circleci/
 coverage/
 node_modules/
-public/dist/
 .aws.json
 .babelrc
 .gitignore
 Dockerfile
-Gruntfile.js
 README.md
 STYLE-GUIDE.md
 webpack.config.js
