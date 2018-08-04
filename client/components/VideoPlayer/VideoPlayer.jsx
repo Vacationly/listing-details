@@ -106,7 +106,7 @@ export default class VideoPlayer extends React.Component {
     } else if (current.webkitRequestFullscreen) {
       current.webkitRequestFullscreen();
     } else if (current.mozRequestFullScreen) {
-      current.mozRequestFullScreen();
+      this.video.current.mozRequestFullScreen();
     }
   }
 
