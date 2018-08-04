@@ -102,7 +102,7 @@ describe('interaction', () => {
   it('should change video volume when volume bar is changed', () => {
     const dragEvent = { target: { value: 50 } };
     wrapper.find('#volume').simulate('change', dragEvent);
-    expect(wrapper.instance().video.volume).toBe(0.5);
+    expect(wrapper.instance().video.current.volume).toBe(0.5);
   });
 });
 
