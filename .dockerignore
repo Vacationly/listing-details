@@ -3,7 +3,6 @@ __test__/
 client/
 coverage/
 node_modules/
-public/dist/
 .aws.json
 .babelrc
 .gitignore
