@@ -97,7 +97,7 @@ _NOTE: If you plan on running with Docker, please modify the `build:docker` scri
 Current script:
 
 ```sh
-docker build . -t bcronin2/fec-airbnh-details:MY_FORK && docker push bcronin2/fec-airbnh-details:MY_FORK
+docker build . -t bcronin2/fec-airbnh-details && docker push bcronin2/fec-airbnh-details
 ```
 
 Your script:
