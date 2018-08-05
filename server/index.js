@@ -1,11 +1,11 @@
-import express from 'express';
-import parser from 'body-parser';
-import React from 'react';
-import ReactDOM from 'react-dom/server';
+const ReactDOM = require('react-dom/server');
+const React = require('react');
+const express = require('express');
+const parser = require('body-parser');
 
-import model from './model';
-import App from '../client/components/App';
-import Html from '../client/Html';
+const App = require('../client/components/App');
+const html = require('./html');
+const model = require('./model');
 
 const port = process.env.PORT || 3001;
 
@@ -46,7 +46,7 @@ app.get('/listing/:listingId', (req, res) => {
     if (err) console.log(err);
     res.statusCode = err ? 400 : 200;
     const body = ReactDOM.renderToString(<App listing={results} />);
-    res.send(Html({ title: 'AirBnH', body }));
+    res.send(html({ title: 'AirBnH', body }));
   });
 });
 
