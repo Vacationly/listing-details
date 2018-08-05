@@ -30,7 +30,7 @@ Data is randomly generated to fill in each part of the component.
 
 ### Prod Dependencies (installed with npm)
 
-- axios (sending )
+- axios (sending API requests from client)
 - body-parser (handling requests on server)
 - css-modules (modular styles)
 - faker (data generation)
