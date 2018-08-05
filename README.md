@@ -45,15 +45,22 @@ An `nvmrc` file is included if using [nvm](https://github.com/creationix/nvm).
 
 ## Setting Up
 
-The server for this component is run locally on port 3001. It can be run either directly with NPM scripts from local files or from its respective container on DockerHub (see more below).
+The server for this component is run locally on port 3001. It can be run either with NPM scripts from local files or from its respective container on DockerHub (see more below).
 
-When the server is running, navigating to _localhose:3001/listing/[id from 1 to 100]_ should display a listing details page (with unique data for the given id).
+When the server is running, navigating to **localhost:3001/listing/[id from 1 to 100]** should display a listing details page (with unique data for the given id).
 
-_By default, the static js bundle is served from S3; to serve from localhost, change the appropriate commented-out lines in public/index.html._
+**By default, the static js bundle is served from S3; to serve from localhost, change the appropriate commented-out lines in public/index.html.**
 
 > All commands below to be run from within the root directory
 
 ### Running with npm
+
+In order to run with npm, you need to:
+
+- Install dependencies
+- Seed your database
+- Build client bundle.js, locally and/or to S3
+- Run the server
 
 #### Installing Dependencies
 
@@ -92,7 +99,7 @@ npm run start
 
 ### Running with Docker
 
-_NOTE: If you plan on running with Docker, please modify the `build:docker` script in `package.json` to add tags. For example:_
+**NOTE: If you plan on running with Docker, please modify the `build:docker` script in `package.json` to add tags. For example:**
 
 Current script:
 
@@ -106,7 +113,7 @@ Your script:
 docker build . -t bcronin2/fec-airbnh-details:MY_FORK && docker push bcronin2/fec-airbnh-details:MY_FORK
 ```
 
-You should also update line 5 in `docker-compose.yml` with this new tag.
+**You should also update line 5 in `docker-compose.yml` with this new tag.**
 
 #### Building Container to DockerHub
 
