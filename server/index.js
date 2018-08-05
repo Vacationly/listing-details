@@ -3,7 +3,7 @@ const React = require('react');
 const express = require('express');
 const parser = require('body-parser');
 
-const App = require('../client/components/App');
+const App = require('../client/index.jsx');
 const html = require('./html');
 const model = require('./model');
 
@@ -22,7 +22,8 @@ app.use((req, res, next) => {
 });
 
 app.get('/api/details/:listingId', (req, res) => {
-  const { listingId } = req.params;
+  const listingId = req.params.listingId;
+
   model.getListingDetails(listingId, (err, results) => {
     if (err) console.log(err);
     res.statusCode = err ? 400 : 200;
@@ -31,8 +32,11 @@ app.get('/api/details/:listingId', (req, res) => {
 });
 
 app.put('/api/details/:listingId/highlights/:highlightId', (req, res) => {
-  const { listingId, highlightId } = req.params;
-  const { feedback } = req.body;
+  let _req$params = req.params,
+    listingId = _req$params.listingId,
+    highlightId = _req$params.highlightId;
+  const feedback = req.body.feedback;
+
   model.updateHighlightFeedback(listingId, highlightId, feedback, (err, results) => {
     if (err) console.log(err);
     res.statusCode = err ? 400 : 200;
@@ -41,11 +45,12 @@ app.put('/api/details/:listingId/highlights/:highlightId', (req, res) => {
 });
 
 app.get('/listing/:listingId', (req, res) => {
-  const { listingId } = req.params;
+  const listingId = req.params.listingId;
+
   model.getListingDetails(listingId, (err, results) => {
     if (err) console.log(err);
     res.statusCode = err ? 400 : 200;
-    const body = ReactDOM.renderToString(<App listing={results} />);
+    const body = ReactDOM.renderToString(React.createElement(App, { listing: results }));
     res.send(html({ title: 'AirBnH', body }));
   });
 });

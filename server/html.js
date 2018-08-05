@@ -9,6 +9,8 @@ const Html = ({ body, title }) => `
   <html>
     <head>
       <title>${title}</title>
+      <base href="/">
+      <link rel="stylesheet" href="/dist/bundle.css">
     </head>
     <body style="margin:0">
       <div id="app">${body}</div>
@@ -16,4 +18,4 @@ const Html = ({ body, title }) => `
   </html>
 `;
 
-export default Html;
+module.exports = Html;
