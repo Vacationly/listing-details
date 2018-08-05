@@ -1,5 +1,6 @@
 const path = require('path');
 const nodeExternals = require('webpack-node-externals');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
 const ENTRY_POINT = path.resolve(__dirname, 'server/index.js');
 
@@ -16,8 +17,7 @@ const LOADER_OBJECT = [
   },
   {
     test: /\.css$/,
-    loader:
-      'css-loader/locals?modules&importLoaders=1&localIdentName=[name]__[local]___[hash:base64:5]',
+    use: ['css-loader/locals'],
   },
 ];
 
@@ -33,4 +33,9 @@ module.exports = {
     rules: LOADER_OBJECT,
   },
   resolve: { extensions: ['.js', '.jsx'] },
+  // plugins: [
+  //   new MiniCssExtractPlugin({
+  //     filename: '[name].css',
+  //   }),
+  // ],
 };
