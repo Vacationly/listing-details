@@ -1,6 +1,6 @@
 # Listing Details
 
-A full-stack React component that recreates the listing details section of an AirBnB listing page, including:
+A full-stack React module that recreates the listing details section of an AirBnB listing page, including:
 
 - Overview (title, type, location, host, capacity)
 - Highlights
@@ -45,13 +45,13 @@ An `nvmrc` file is included if using [nvm](https://github.com/creationix/nvm).
 
 ## Setting Up
 
-The server for this component is run locally on port 3001. It can be run either with NPM scripts from local files or from its respective container on DockerHub (see more below).
+You can locally run this module either (1) with NPM scripts from local files, or (2) from its respective container on DockerHub (see more below).
 
 When the server is running, navigating to **localhost:3001/listing/[id from 1 to 100]** should display a listing details page (with unique data for the given id).
 
 **By default, the static js bundle is served from S3; to serve from localhost, change the appropriate commented-out lines in public/index.html.**
 
-> All commands below to be run from within the root directory
+> NOTE: All commands below to be run from within the root directory
 
 ### Running with npm
 
@@ -99,7 +99,14 @@ npm run start
 
 ### Running with Docker
 
-**NOTE: If you plan on running with Docker, please modify the `build:docker` script in `package.json` to add tags. For example:**
+In order to run with Docker, you need to:
+
+- Create your own image on DockerHub, updating the `package.json` and `docker-compose.yml` files accordingly
+- Build your image to DockerHub
+- Run the `docker-compose` file
+- Modify some of the scripts further if you want to work out of a locally Dockerized version
+
+**NOTE: If you plan on running with Docker, please modify the `build:docker` script in `package.json` to create images in your own account. For example:**
 
 Current script:
 
@@ -110,7 +117,7 @@ docker build . -t bcronin2/fec-airbnh-details && docker push bcronin2/fec-airbnh
 Your script:
 
 ```sh
-docker build . -t bcronin2/fec-airbnh-details:MY_FORK && docker push bcronin2/fec-airbnh-details:MY_FORK
+docker build . -t YOUR_NAME/fec-airbnh-details && docker push YOUR_NAME/fec-airbnh-details
 ```
 
 **You should also update line 5 in `docker-compose.yml` with this new tag.**
@@ -122,8 +129,6 @@ npm run build:docker
 ```
 
 #### Running Container from DockerHub (includes seeding database)
-
-> Note that this will just take the latest image of this repo on DockerHub. To update that image based on the current state of the repo, run `npm run build:docker`.
 
 ```sh
 docker-compose up (-d)
