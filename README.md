@@ -138,6 +138,8 @@ docker-compose up (-d)
 
 #### Testing
 
+> NOTE: The \_\_test\_\_ folder only contains API tests and config files; other integration tests and unit tests of components are in client/components. The command below runs tests from both locations.
+
 ```sh
 npm run test
 ```
