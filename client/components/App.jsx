@@ -17,7 +17,7 @@ import { constants } from '../utils';
 
 const { apiEndpoint, dummyListing } = constants;
 
-const getListingIdFromUrl = () => parseInt(window.location.pathname.split('listing/')[1], 10) || 0;
+// const getListingIdFromUrl = () => parseInt(window.location.pathname.split('listing/')[1], 10) || 0;
 
 export default class App extends React.Component {
   constructor(props) {
@@ -29,21 +29,21 @@ export default class App extends React.Component {
     this.saveFeedbackData = this.saveFeedbackData.bind(this);
   }
 
-  componentDidMount() {
-    const listingId = getListingIdFromUrl();
-    this.getListingData(listingId);
-  }
+  // componentDidMount() {
+  //   const listingId = getListingIdFromUrl();
+  //   this.getListingData(listingId);
+  // }
 
-  getListingData(listingId) {
-    axios.get(`${apiEndpoint}/${listingId}`).then(
-      (response) => {
-        this.setState({ listingData: response.data });
-      },
-      () => {
-        this.setState({ listingData: dummyListing });
-      },
-    );
-  }
+  // getListingData(listingId) {
+  //   axios.get(`${apiEndpoint}/${listingId}`).then(
+  //     (response) => {
+  //       this.setState({ listingData: response.data });
+  //     },
+  //     () => {
+  //       this.setState({ listingData: dummyListing });
+  //     },
+  //   );
+  // }
 
   saveFeedbackData(id, value) {
     const {

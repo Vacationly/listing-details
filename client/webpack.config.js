@@ -8,7 +8,7 @@ const OUTPUT_PATH = path.resolve(__dirname, 'dist');
 const LOADER_OBJECT = [
   {
     test: /\.jsx?$/,
-    exclude: /node_modules/,
+    exclude: /node_modules|dist/,
     loader: 'babel-loader',
     query: {
       presets: ['react', 'env'],

@@ -6,8 +6,7 @@ const parser = require('body-parser');
 const fs = require('fs');
 const path = require('path');
 const model = require('./model');
-const Html = require('./html');
-
+const Html = require('./Html');
 require('../client/dist/bundle.js');
 
 let styles;
@@ -50,10 +49,14 @@ app.put('/api/details/:listingId/highlights/:highlightId', (req, res) => {
   });
 });
 
-app.get('/listing/:listingId', (req, res) => {
-  const {
-    params: { listingId },
-  } = req;
+app.use(express.static(path.resolve(__dirname, '../client/dist')));
+
+app.get('/', (req, res) => {
+  // const {
+  //   params: { listingId },
+  // } = req;
+
+  const listingId = 1;
 
   model.getListingDetails(listingId, (err, results) => {
     if (err) console.log(err);
@@ -62,8 +65,6 @@ app.get('/listing/:listingId', (req, res) => {
     res.send(Html({ title: 'AirBnH', body, styles }));
   });
 });
-
-app.use(express.static(path.resolve(__dirname, '../client/dist')));
 
 const port = process.env.PORT || 3001;
 

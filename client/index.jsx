@@ -1,9 +1,15 @@
-// import ReactDOM from 'react-dom';
+import axios from 'axios';
+import React from 'react';
+import ReactDOM from 'react-dom';
 import App from './components/App';
 
-global.App = App;
+const window = window || global;
 
-// const container = document.getElementById('details');
-// if (container) {
-//   ReactDOM.hydrate(App, container);
-// }
+window.App = App;
+
+const container = window.document && window.document.getElementById('details');
+if (container) {
+  axios.get('api/details/1').then((response) => {
+    ReactDOM.hydrate(React.createElement(App, { listing: response.data }), container);
+  });
+}
