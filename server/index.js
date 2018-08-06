@@ -49,14 +49,10 @@ app.put('/api/details/:listingId/highlights/:highlightId', (req, res) => {
   });
 });
 
-app.use(express.static(path.resolve(__dirname, '../client/dist')));
-
-app.get('/', (req, res) => {
-  // const {
-  //   params: { listingId },
-  // } = req;
-
-  const listingId = 1;
+app.get('/listing/:listingId', (req, res) => {
+  const {
+    params: { listingId },
+  } = req;
 
   model.getListingDetails(listingId, (err, results) => {
     if (err) console.log(err);
@@ -65,6 +61,8 @@ app.get('/', (req, res) => {
     res.send(Html({ title: 'AirBnH', body, styles }));
   });
 });
+
+app.use('/listing/:listingId', express.static(path.resolve(__dirname, '../client/dist')));
 
 const port = process.env.PORT || 3001;
 
