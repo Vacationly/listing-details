@@ -24,7 +24,9 @@ app.use(parser.urlencoded({ extended: true }));
 app.use(cors());
 
 app.get('/api/details/:listingId', (req, res) => {
-  const listingId = req.params.listingId;
+  const {
+    params: { listingId },
+  } = req;
 
   model.getListingDetails(listingId, (err, results) => {
     if (err) console.log(err);
@@ -34,10 +36,12 @@ app.get('/api/details/:listingId', (req, res) => {
 });
 
 app.put('/api/details/:listingId/highlights/:highlightId', (req, res) => {
-  let _req$params = req.params,
-    listingId = _req$params.listingId,
-    highlightId = _req$params.highlightId;
-  const feedback = req.body.feedback;
+  const {
+    params: { listingId, highlightId },
+  } = req;
+  const {
+    body: { feedback },
+  } = req;
 
   model.updateHighlightFeedback(listingId, highlightId, feedback, (err, results) => {
     if (err) console.log(err);
@@ -46,8 +50,10 @@ app.put('/api/details/:listingId/highlights/:highlightId', (req, res) => {
   });
 });
 
-app.get('/*', (req, res) => {
-  const listingId = 1;
+app.get('/listing/:listingId', (req, res) => {
+  const {
+    params: { listingId },
+  } = req;
 
   model.getListingDetails(listingId, (err, results) => {
     if (err) console.log(err);
@@ -56,6 +62,8 @@ app.get('/*', (req, res) => {
     res.send(Html({ title: 'AirBnH', body, styles }));
   });
 });
+
+app.use(express.static(path.resolve(__dirname, '../client/dist')));
 
 const port = process.env.PORT || 3001;
 

@@ -13,7 +13,7 @@ const Html = ({ body, title, styles }) => `
     </head>
     <body>
       <div id="details">${body}</div>
-      <script src="./hydrate.js"></script>
+      <script src="./bundle.js"></script>
     </body>
   </html>
 `;
