@@ -75,6 +75,10 @@ Hello, world!
 
 App.propTypes = {
   listing: PropTypes.shape({
+    title,
+    listingType,
+    host,
+    capacity,
     highlights,
     description,
     amenities,
