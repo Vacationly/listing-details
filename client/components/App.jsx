@@ -1,5 +1,6 @@
 import axios from 'axios';
 import React from 'react';
+import PropTypes from 'prop-types';
 
 import Summary from './Summary/Summary';
 import Highlights from './Highlights/Highlights';
@@ -9,6 +10,8 @@ import SleepingArrangements from './SleepingArrangements/SleepingArrangements';
 import HouseRules from './HouseRules/HouseRules';
 import CancellationPolicy from './CancellationPolicy/CancellationPolicy';
 import VideoPlayer from './VideoPlayer/VideoPlayer';
+
+import styles from './App.css';
 
 import { constants } from '../utils';
 
@@ -46,7 +49,7 @@ export default class App extends React.Component {
     } = listingData;
     if (listingData) {
       return (
-        <div id="Details">
+        <div className={styles.Details}>
           <Summary {...listingData} />
           {highlights && (
             <Highlights highlights={highlights} saveFeedback={this.saveFeedbackData} />
@@ -69,3 +72,15 @@ Hello, world!
     );
   }
 }
+
+App.propTypes = {
+  listing: PropTypes.shape({
+    highlights,
+    description,
+    amenities,
+    sleepingArrangements,
+    houseRules,
+    cancellationPolicy,
+    videoSource,
+  }).isRequired,
+};
