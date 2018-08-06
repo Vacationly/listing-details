@@ -4,13 +4,12 @@
  * application code into before sending it to the client as regular HTML.
  * Note we're returning a template string from this function.
  */
-const Html = ({ body, title }) => `
+const Html = ({ body, title, styles }) => `
   <!DOCTYPE html>
   <html>
     <head>
       <title>${title}</title>
-      <base href="/">
-      <link rel="stylesheet" href="/dist/bundle.css">
+      <style type="text/css">${styles}</style>
     </head>
     <body style="margin:0">
       <div id="app">${body}</div>

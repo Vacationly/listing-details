@@ -1,14 +1,14 @@
 const path = require('path');
-const nodeExternals = require('webpack-node-externals');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
-const ENTRY_POINT = path.resolve(__dirname, 'server/index.js');
+const ENTRY_POINT = path.resolve(__dirname, 'index.jsx');
 
-const OUTPUT_PATH = path.resolve(__dirname, 'server/dist');
+const OUTPUT_PATH = path.resolve(__dirname, 'dist');
 
 const LOADER_OBJECT = [
   {
     test: /\.jsx?$/,
+    exclude: /node_modules/,
     loader: 'babel-loader',
     query: {
       presets: ['react', 'env'],
@@ -32,9 +32,6 @@ module.exports = {
   module: {
     rules: LOADER_OBJECT,
   },
-  context: __dirname,
-  externals: nodeExternals(),
-  devtool: 'source-map',
   resolve: { extensions: ['.js', '.jsx'] },
   plugins: [
     new MiniCssExtractPlugin({

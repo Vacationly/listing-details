@@ -1,3 +1,5 @@
 import App from './components/App';
 
-module.exports = App;
+console.log(App);
+
+global.App = App;

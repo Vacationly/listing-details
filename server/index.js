@@ -2,12 +2,19 @@ const ReactDOM = require('react-dom/server');
 const React = require('react');
 const express = require('express');
 const parser = require('body-parser');
-
-const App = require('../client/index.jsx');
-const html = require('./html');
+const fs = require('fs');
+const path = require('path');
 const model = require('./model');
+const html = require('./html');
 
-const port = process.env.PORT || 3001;
+require('../client/dist/bundle.js');
+
+let styles;
+
+fs.readFile(path.resolve(__dirname, '../client/dist/bundle.css'), 'utf8', (err, result) => {
+  if (err) console.log(err);
+  else styles = result;
+});
 
 const app = express();
 
@@ -51,9 +58,11 @@ app.get('/listing/:listingId', (req, res) => {
     if (err) console.log(err);
     res.statusCode = err ? 400 : 200;
     const body = ReactDOM.renderToString(React.createElement(App, { listing: results }));
-    res.send(html({ title: 'AirBnH', body }));
+    res.send(html({ title: 'AirBnH', body, styles }));
   });
 });
+
+const port = process.env.PORT || 3001;
 
 app.listen(port, () => console.log(`Listening on port ${port}!`));
 
