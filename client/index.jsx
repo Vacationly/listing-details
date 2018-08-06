@@ -9,7 +9,8 @@ window.App = App;
 
 const container = window.document && window.document.getElementById('details');
 if (container) {
-  axios.get('api/details/1').then((response) => {
+  const listingId = parseInt(window.location.pathname.split('listing/')[1], 10) || 1;
+  axios.get(`api/details/${listingId}`).then((response) => {
     ReactDOM.hydrate(React.createElement(App, { listing: response.data }), container);
   });
 }
