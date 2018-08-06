@@ -86,5 +86,9 @@ App.propTypes = {
     houseRules,
     cancellationPolicy,
     videoSource,
-  }).isRequired,
+  }),
+};
+
+App.defaultProps = {
+  listing: null,
 };
