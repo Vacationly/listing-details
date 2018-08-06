@@ -11,8 +11,9 @@ const Html = ({ body, title, styles }) => `
       <title>${title}</title>
       <style type="text/css">${styles}</style>
     </head>
-    <body style="margin:0">
-      <div id="app">${body}</div>
+    <body>
+      <div id="details">${body}</div>
+      <script src="./hydrate.js"></script>
     </body>
   </html>
 `;

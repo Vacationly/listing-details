@@ -1,11 +1,12 @@
 const ReactDOM = require('react-dom/server');
 const React = require('react');
 const express = require('express');
+const cors = require('cors');
 const parser = require('body-parser');
 const fs = require('fs');
 const path = require('path');
 const model = require('./model');
-const html = require('./html');
+const Html = require('./html');
 
 require('../client/dist/bundle.js');
 
@@ -20,13 +21,7 @@ const app = express();
 
 app.use(parser.json());
 app.use(parser.urlencoded({ extended: true }));
-
-app.use((req, res, next) => {
-  res.header('Access-Control-Allow-Origin', '*');
-  res.header('Access-Control-Allow-Headers', '*');
-  res.header('Access-Control-Allow-Methods', 'PUT, GET');
-  next();
-});
+app.use(cors());
 
 app.get('/api/details/:listingId', (req, res) => {
   const listingId = req.params.listingId;
@@ -51,14 +46,14 @@ app.put('/api/details/:listingId/highlights/:highlightId', (req, res) => {
   });
 });
 
-app.get('/listing/:listingId', (req, res) => {
-  const listingId = req.params.listingId;
+app.get('/*', (req, res) => {
+  const listingId = 1;
 
   model.getListingDetails(listingId, (err, results) => {
     if (err) console.log(err);
     res.statusCode = err ? 400 : 200;
     const body = ReactDOM.renderToString(React.createElement(App, { listing: results }));
-    res.send(html({ title: 'AirBnH', body, styles }));
+    res.send(Html({ title: 'AirBnH', body, styles }));
   });
 });
 

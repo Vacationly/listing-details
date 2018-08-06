@@ -93,17 +93,17 @@ Hello, world!
 
 App.propTypes = {
   listing: PropTypes.shape({
-    title,
-    listingType,
-    host,
-    capacity,
-    highlights,
-    description,
-    amenities,
-    sleepingArrangements,
-    houseRules,
-    cancellationPolicy,
-    videoSource,
+    // title,
+    // listingType,
+    // host,
+    // capacity,
+    // highlights,
+    // description,
+    // amenities,
+    // sleepingArrangements,
+    // houseRules,
+    // cancellationPolicy,
+    // videoSource,
   }),
 };
 
