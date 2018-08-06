@@ -5,7 +5,7 @@ import App from './components/App';
 
 window.Details = App;
 
-const container = document.getElementById('Details');
+const container = document.getElementById('details');
 if (container) {
   ReactDOM.render(<App />, container);
 }
