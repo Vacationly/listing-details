@@ -1,5 +1,6 @@
 const express = require('express');
 const parser = require('body-parser');
+const cors = require('cors');
 
 const model = require('./model.js');
 
@@ -9,13 +10,7 @@ const app = express();
 
 app.use(parser.json());
 app.use(parser.urlencoded({ extended: true }));
-
-app.use((req, res, next) => {
-  res.header('Access-Control-Allow-Origin', '*');
-  res.header('Access-Control-Allow-Headers', '*');
-  res.header('Access-Control-Allow-Methods', 'PUT, GET');
-  next();
-});
+app.use(cors());
 
 app.get('/api/details/:listingId', (req, res) => {
   const { listingId } = req.params;
