@@ -49,17 +49,24 @@ app.put('/api/details/:listingId/highlights/:highlightId', (req, res) => {
   });
 });
 
-app.get('/listing/:listingId', (req, res) => {
-  const {
-    params: { listingId },
-  } = req;
-
+const getListingDetails = (listingId, res) => {
   model.getListingDetails(listingId, (err, results) => {
     if (err) console.log(err);
     res.statusCode = err ? 400 : 200;
     const body = ReactDOM.renderToString(React.createElement(App, { listing: results }));
     res.send(Html({ title: 'Vacation.ly', body, styles }));
   });
+};
+
+app.get('/listing/:listingId', (req, res) => {
+  const {
+    params: { listingId },
+  } = req;
+  getListingDetails(listingId, res);
+});
+
+app.get('/*', (req, res) => {
+  getListingDetails(1, res);
 });
 
 const port = process.env.PORT || 3001;
