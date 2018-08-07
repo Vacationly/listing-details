@@ -2,7 +2,7 @@ version: '3'
 
 services:
   details:
-    image: bcronin2/fec-airbnh-details
+    image: bcronin2/fec-airbnh-details:ssr
     command: bash -c "npm run seed && npm run start"
     depends_on:
       - "database"
