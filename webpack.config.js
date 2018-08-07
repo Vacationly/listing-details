@@ -1,9 +1,9 @@
 const path = require('path');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
-const ENTRY_POINT = path.resolve(__dirname, 'index.jsx');
+const ENTRY_POINT = path.resolve(__dirname, 'client/index.jsx');
 
-const OUTPUT_PATH = path.resolve(__dirname, 'dist');
+const OUTPUT_PATH = path.resolve(__dirname, 'dist/ssr');
 
 const LOADER_OBJECT = [
   {

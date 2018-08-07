@@ -7,11 +7,11 @@ const fs = require('fs');
 const path = require('path');
 const model = require('./model');
 const Html = require('./Html');
-require('../client/dist/bundle.js');
+require('../dist/ssr/bundle.js');
 
 let styles;
 
-fs.readFile(path.resolve(__dirname, '../client/dist/bundle.css'), 'utf8', (err, result) => {
+fs.readFile(path.resolve(__dirname, '../dist/ssr/bundle.css'), 'utf8', (err, result) => {
   if (err) console.log(err);
   else styles = result;
 });
@@ -58,11 +58,9 @@ app.get('/listing/:listingId', (req, res) => {
     if (err) console.log(err);
     res.statusCode = err ? 400 : 200;
     const body = ReactDOM.renderToString(React.createElement(App, { listing: results }));
-    res.send(Html({ title: 'AirBnH', body, styles }));
+    res.send(Html({ title: 'Vacation.ly', body, styles }));
   });
 });
-
-app.use('/listing/:listingId', express.static(path.resolve(__dirname, '../client/dist')));
 
 const port = process.env.PORT || 3001;
 

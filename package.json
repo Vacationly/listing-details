@@ -23,8 +23,8 @@
     "test": "jest --coverage",
     "seed": "node ./data/sampleData/dataInitializer.js",
     "lint": "eslint ./client/**/*.js*",
-    "build:dev": "cd client && webpack --mode development --watch",
-    "build:prod": "cd client && webpack --mode production",
+    "build:dev": "webpack --mode development --watch",
+    "build:prod": "webpack --mode production && grunt s3",
     "build:docker": "docker build . -t bcronin2/fec-airbnh-details:ssr && docker push bcronin2/fec-airbnh-details:ssr",
     "build:all": "npm run build:prod && npm run build:docker",
     "start": "nodemon server/index.js"
