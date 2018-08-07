@@ -11,7 +11,7 @@ A full-stack React module that recreates the listing details section of an AirBn
 - Cancellation policy
 - Video tour (add-on to what AirBnB actually has)
 
-Data is randomly generated to fill in each part of the component.
+Data is randomly generated to fill in each part of the component. See a sample of data sent to the client here: https://gist.github.com/bcronin2/4b220cb71d18c3ca3a94afa0b39f33c9 (but note that underscore properties are not used by client).
 
 ## Related Projects
 
@@ -63,39 +63,33 @@ In order to run with npm, you need to:
 - Run the server
 
 #### Installing Dependencies
-
 ```sh
 npm install -g webpack
 npm install
 ```
 
 #### Seeding Database
-
 ```sh
 npm run seed
 ```
 
 #### Building Local Client Bundle
-
-> NOTE: The files built in this way will only be served if you change the script tags used in public/index.html!
-
 ```sh
 npm run build:dev
 ```
+> NOTE: The files built in this way will only be served if you change the script tags used in public/index.html!
+
 
 #### Building Client Bundle to S3
-
 ```sh
 npm run build:prod
 ```
 
 #### Running Server
-
-> NOTE: This uses nodemon, so changes will update the server environment automatically.
-
 ```sh
 npm run start
 ```
+> NOTE: This uses nodemon, so changes will update the server environment automatically.
 
 ### Running with Docker
 
@@ -109,13 +103,11 @@ In order to run with Docker, you need to:
 **NOTE: If you plan on running with Docker, please modify the `build:docker` script in `package.json` to create images in your own account. For example:**
 
 Current script:
-
 ```sh
 docker build . -t bcronin2/fec-airbnh-details && docker push bcronin2/fec-airbnh-details
 ```
 
 Your script:
-
 ```sh
 docker build . -t YOUR_NAME/fec-airbnh-details && docker push YOUR_NAME/fec-airbnh-details
 ```
@@ -123,13 +115,11 @@ docker build . -t YOUR_NAME/fec-airbnh-details && docker push YOUR_NAME/fec-airb
 **You should also update line 5 in `docker-compose.yml` with this new tag.**
 
 #### Building Container to DockerHub
-
 ```sh
 npm run build:docker
 ```
 
 #### Running Container from DockerHub (includes seeding database)
-
 ```sh
 docker-compose up (-d)
 ```
@@ -137,12 +127,11 @@ docker-compose up (-d)
 ### Maintenance
 
 #### Testing
-
-> NOTE: The \_\_test\_\_ folder only contains API tests and config files; other integration tests and unit tests of components are in client/components. The command below runs tests from both locations.
-
 ```sh
 npm run test
 ```
+
+> NOTE: The \_\_test\_\_ folder only contains API tests and config files; other integration tests and unit tests of components are in client/components. The command below runs tests from both locations.
 
 #### Linting
 
