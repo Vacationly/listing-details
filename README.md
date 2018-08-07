@@ -11,14 +11,14 @@ A full-stack React module that recreates the listing details section of an AirBn
 - Cancellation policy
 - Video tour (add-on to what AirBnB actually has)
 
-Data is randomly generated to fill in each part of the component. See a sample of data sent to the client here: https://gist.github.com/bcronin2/4b220cb71d18c3ca3a94afa0b39f33c9 (but note that underscore properties are not used by client).
+Data is randomly generated to fill in each part of the component. See a sample of data sent to the client here: https://gist.github.com/bcronin2/4b220cb71d18c3ca3a94afa0b39f33c9
 
 ## Related Projects
 
-- https://github.com/HalalGuys/navigation
-- https://github.com/HalalGuys/reviews
-- https://github.com/HalalGuys/bookings
-- https://github.com/HalalGuys/photos
+- https://github.com/Vacationly/navigation
+- https://github.com/Vacationly/reviews
+- https://github.com/Vacationly/bookings
+- https://github.com/Vacationly/photos
 
 ## Build with...
 
@@ -32,6 +32,7 @@ Data is randomly generated to fill in each part of the component. See a sample o
 
 - axios (sending API requests from client)
 - body-parser (handling requests on server)
+- cors (handling cross-origin requests from proxy)
 - css-modules (modular styles)
 - faker (data generation)
 - mongoose (database connections)
