@@ -1,5 +1,6 @@
 const express = require('express');
 const parser = require('body-parser');
+const path = require('path');
 const cors = require('cors');
 
 const model = require('./model.js');
@@ -31,7 +32,9 @@ app.put('/api/details/:listingId/highlights/:highlightId', (req, res) => {
   });
 });
 
-app.use('/*', express.static(`${__dirname}/../public`));
+app.get('/*', (req, res) => {
+  res.sendFile(path.resolve(`${__dirname}/../public/index.html`));
+});
 
 app.listen(port, () => console.log(`Listening on port ${port}!`));
 
