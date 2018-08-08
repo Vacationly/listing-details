@@ -1,6 +1,6 @@
 ## Api Routes
 
-C: `/api/details/:listingId`
+C: `/api/details/`
 
 R: `/api/details/:listingId'`
 
