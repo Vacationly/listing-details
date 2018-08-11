@@ -14,43 +14,69 @@ d: `/api/details/:listingId/delete'`
 
     {
       listingId: { type: Number, unique: true },
-
-      // Old Server Code
-      // typeId: Number,
-      // hostId: Number,
-      // amenityIds: [ Number ],
-      // cancellationPolicyId: Number,
-
       type: ForeignKey<Type>,
       host: ForeignKey<Host>,
       amenitys: [ ForeignKey<Amenities> ],
       cancellationPolicy ForeignKey<CancellationPolicy>,
       title: String,
-      location: {
-        city: String,
-        state: String,
-        country: String,
-      },
-      capacity: [{ name: String, number: Number, icon: String }],
-      highlights: [
-        {
-          id: Number,
-          tagline: String,
-          description: String,
-          upvotes: Number,
-        },
-      ],
+      location: ForgeinKey<Location>,
+
+      <!-- old -->
+      // capacity: [{ name: String, number: Number, icon: String }],
+      <!-- new -->
+      guests: Number,
+      bedrooms: Number,
+      beds: Number,
+      bathrooms: Number
+      <!-- / -->
+
+      <!-- old -->
+      // highlights: [
+      // {
+        //  id: Number,
+        //  tagline: String,
+        //  description: String,
+        //  upvotes: Number,
+       // },
+      // ],
+      <!-- new -->
+      highlights: <join table>
+      <!-- / -->
+
+      <!-- old -->
       description: { main: String, more: [{ title: String, text: String }] },
-      sleepingArrangements: [{ spaceName: String, mattressType: String, number: Number }],
+      <!-- new -->
+      description: textArea
+      additionalDescription: wysiwyg || textarea
+      <!-- / -->
+
+      // sleepingArrangements: [{ spaceName: String, mattressType: String, number: Number }], refactor
       houseRules: [String],
       videoSource: String,
     }
+
+#### Highlights
+
+      {
+        id: Number,
+        tagline: String,
+        description: String,
+        upvotes: Number,
+        listingId: Number<Listing main id>
+      }
+
+#### HouseRules
+
+      {
+        rule: String
+        listingId: Number<Listing main id>
+      }
 
 #### ListingType
 
     {
       // id: Number, -> db unquie id
-      name: String,
+      name: String
     }
 
 #### Host
@@ -58,15 +84,15 @@ d: `/api/details/:listingId/delete'`
     {
       // id: Number, -> db unquie id
       name: String,
-      avatar: String,
+      avatar: String
     }
 
-#### Amenity
+#### Amenities
 
     {
       // id: Number, -> db unquie id
       name: String,
-      icon: String,
+      icon: String
     }
 
 #### cancellationPolicy
@@ -76,4 +102,5 @@ d: `/api/details/:listingId/delete'`
       name: String,
       overview: String,
       description: String,
+      listingId: Number<Listing main id>
     }
