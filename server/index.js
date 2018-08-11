@@ -32,9 +32,8 @@ app.put('/api/details/:listingId/highlights/:highlightId', (req, res) => {
   });
 });
 
-app.get('/*', (req, res) => {
-  res.sendFile(path.resolve(`${__dirname}/../public/index.html`));
-});
+app.use('/', express.static(path.join(__dirname, '../public')));
+app.use('/listing/:listingId', express.static(path.join(__dirname, '../public')));
 
 app.listen(port, () => console.log(`Listening on port ${port}!`));
 
