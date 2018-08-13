@@ -24,7 +24,7 @@ function ranNum(max) {
 
 function generateHighlights(id, listingId) {
   this.id = faker.random.uuid();
-  this.tagline = faker.random.words();
+  this.tagline = faker.lorem.sentence();
   this.description = faker.lorem.sentence();
   this.upvotes = 0;
   this.listingId = listingId || '';
@@ -32,7 +32,7 @@ function generateHighlights(id, listingId) {
 function generateHouseRules(id, listingId) {
   // this.id = id || '';
   this.id = faker.random.uuid();
-  this.rule = faker.random.words();
+  this.rule = faker.lorem.sentence();
   this.listingId = listingId || '';
 }
 // function generateLocation(id) {
@@ -43,7 +43,7 @@ function generateHouseRules(id, listingId) {
 // }
 function generateListingType(id) {
   this.id = id || '';
-  this.name = faker.random.words();
+  this.name = faker.lorem.sentence();
 }
 function generateHost(id) {
   this.id = id || '';
@@ -59,7 +59,7 @@ function generateAmenity(id) {
 function generateCancellationPolicy(id, listingId) {
   // this.id = id || '';
   this.id = faker.random.uuid();
-  this.name = faker.random.words();
+  this.name = faker.lorem.sentence();
   this.overview = faker.lorem.sentence();
   this.description = faker.lorem.sentence();
   this.listingId = listingId || '';
@@ -69,7 +69,7 @@ function generateListing(id) {
   this.listingId = id || '';
   this.typeId = ranNum(MAX_TYPES);
   this.hostId = ranNum(MAX_HOSTS);
-  // this.title = faker.random.words();
+  // this.title = faker.lorem.sentence();
   // this.locationId = ranNum(MAX_LOCATIONS);
   this.city = faker.address.city();
   this.guests = ranNum(4);
