@@ -19,7 +19,7 @@ const csvPath = path.join(__dirname, 'csv');
 const imageEndpoint = 'https://s3.amazonaws.com/fec-overview-service-images';
 
 function ranNum(max) {
-  return Math.floor(Math.random() * max);
+  return Math.floor(Math.random() * (max - 1) + 1);
 }
 
 function generateHighlights(id, listingId) {
