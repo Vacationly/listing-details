@@ -12,7 +12,7 @@ export default class HouseRules extends React.Component {
     super(props);
     this.toggleMoreInfo = this.toggleMoreInfo.bind(this);
     this.state = {
-      expanded: false,
+      expanded: false
     };
   }
 
@@ -24,9 +24,15 @@ export default class HouseRules extends React.Component {
     const { houseRules } = this.props;
     const { expanded } = this.state;
     const link = expanded ? 'Hide' : 'Read all rules';
-    const rulesMain = <RulesList rules={houseRules} start={0} end={houseRulesThreshold} />;
+    const rulesMain = (
+      <RulesList rules={houseRules} start={0} end={houseRulesThreshold} />
+    );
     const rulesMore = (
-      <RulesList rules={houseRules} start={houseRulesThreshold} end={houseRules.length} />
+      <RulesList
+        rules={houseRules}
+        start={houseRulesThreshold}
+        end={houseRules.length}
+      />
     );
     return (
       <div>
@@ -47,28 +53,29 @@ export default class HouseRules extends React.Component {
   }
 }
 
-HouseRules.propTypes = {
-  houseRules: PropTypes.arrayOf(PropTypes.string).isRequired,
-};
+// HouseRules.propTypes = {
+//   houseRules: PropTypes.arrayOf(PropTypes.string).isRequired,
+// };
 
-const RulesList = (props) => {
+const RulesList = props => {
   const { rules, start, end } = props;
   return (
     <div>
       {rules.map(
-        (rule, index) => index >= start
-          && index < end && (
+        (rule, index) =>
+          index >= start &&
+          index < end && (
             <div key={`rule_${index}`} className={styles.ruleItem}>
-              {rule}
+              {rule.rule}
             </div>
-        ),
+          )
       )}
     </div>
   );
 };
 
 RulesList.propTypes = {
-  rules: PropTypes.arrayOf(PropTypes.string).isRequired,
+  // rules: PropTypes.arrayOf(PropTypes.string).isRequired,
   start: PropTypes.number.isRequired,
-  end: PropTypes.number.isRequired,
+  end: PropTypes.number.isRequired
 };

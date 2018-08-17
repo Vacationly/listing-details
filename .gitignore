@@ -29,3 +29,5 @@ client/dist/
 .aws.json
 
 csv/
+
+.env
