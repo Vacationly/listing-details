@@ -9,7 +9,7 @@ export default class Description extends React.Component {
     super(props);
     this.toggleMoreInfo = this.toggleMoreInfo.bind(this);
     this.state = {
-      expanded: false,
+      expanded: false
     };
   }
 
@@ -18,19 +18,19 @@ export default class Description extends React.Component {
   }
 
   render() {
-    const {
-      description: { main, more },
-    } = this.props;
+    const { description, additionalDescription } = this.props;
     const { expanded } = this.state;
-    const mainContent = <DescriptionMain main={main} />;
-    const moreContent = <DescriptionMore more={more} />;
+    const mainContent = <DescriptionMain description={description} />;
+    const moreContent = (
+      <DescriptionMore additionalDescription={additionalDescription} />
+    );
     const link = expanded ? 'Hide' : 'Read more about the space';
     return (
       <Expandable
         id="description"
         main={mainContent}
         more={moreContent}
-        link={more.length ? link : null}
+        link={additionalDescription.length ? link : null}
         toggle={this.toggleMoreInfo}
         expandable
         expanded={expanded}
@@ -39,46 +39,39 @@ export default class Description extends React.Component {
   }
 }
 
-Description.propTypes = {
-  description: PropTypes.shape({
-    main: PropTypes.string,
-    more: PropTypes.array,
-  }).isRequired,
-};
+// Description.propTypes = {
+//   description: PropTypes.shape({
+//     main: PropTypes.string,
+//     more: PropTypes.array,
+//   }).isRequired,
+// };
 
-const DescriptionMain = (props) => {
+const DescriptionMain = props => {
   const { main } = props;
-  return (
-    <div>
-      {main}
-    </div>
-  );
+  return <div>{main}</div>;
 };
 
 DescriptionMain.propTypes = {
-  main: PropTypes.string.isRequired,
+  description: PropTypes.string.isRequired
 };
 
-const DescriptionMore = (props) => {
-  const { more } = props;
+const DescriptionMore = props => {
+  const { additionalDescription } = props;
   return (
     <div>
-      {more
-        && more.map(info => (
+      {
+        additionalDescription /* &&
+        additionalDescription.map(info => (
           <div key={`description_${info.title}`} className={styles.subsection}>
-            <div className={styles.subtitle}>
-              {info.title}
-            </div>
-            <div className={styles.content}>
-              {info.text}
-            </div>
+            <div className={styles.subtitle}>{info.title}</div>
+            <div className={styles.content}>{info.text}</div>
           </div>
-        ))}
+        ))*/
+      }
     </div>
   );
 };
 
 DescriptionMore.propTypes = {
-  more: PropTypes.arrayOf(PropTypes.shape({ title: PropTypes.string, text: PropTypes.string }))
-    .isRequired,
+  additionalDescription: PropTypes.string.isRequired
 };
