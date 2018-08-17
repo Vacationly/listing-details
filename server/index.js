@@ -53,8 +53,16 @@ const getListingDetails = (listingId, res) => {
   model.getListingDetails(listingId, (err, results) => {
     if (err) console.log(err);
     res.statusCode = err ? 400 : 200;
-    const body = ReactDOM.renderToString(React.createElement(App, { listing: results }));
-    res.send(Html({ title: 'Vacation.ly', body, styles }));
+    const props = { listing: results };
+    const body = ReactDOM.renderToString(React.createElement(App, props));
+    res.send(
+      Html({
+        title: 'Vacation.ly',
+        body,
+        props,
+        styles,
+      }),
+    );
   });
 };
 
