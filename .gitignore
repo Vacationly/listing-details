@@ -27,3 +27,7 @@ client/dist/
 
 # Credentials
 .aws.json
+
+csv/
+
+.env
