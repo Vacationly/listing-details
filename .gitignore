@@ -31,3 +31,6 @@ client/dist/
 csv/
 
 .env
+
+nrdiag*
+newrelic_agent.log

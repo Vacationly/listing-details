@@ -3,31 +3,33 @@
 */
 
 const db = require('./index');
+const cache = require('./vacation-me-cache');
 const Detail = (module.exports = {});
 
-const connect = function(action) {
-  return db.connect().then(function(client) {
-    return action(client)
-      .then(function(res) {
-        console.log('done with action');
-        client.release();
-        // done(null, res.rows);
-        return Promise.resolve(res);
-      })
-      .catch(function(err) {
-        client.release();
-        console.log(err.stack);
-      });
+Detail.getListing = function(listingid) {
+  return cache.getOrSet(listingid, function() {
+    console.log(listingid, 'no cache saved must get from database');
+    return _getListingFromDatabase(listingid);
   });
 };
 
-Detail.getListing = function(listingid) {
-  return connect(function(client) {
+const formatListing = function(data) {
+  var listing = data[0].rows[0];
+
+  listing.houseRules = data[1].rows;
+  listing.cancellationPolicies = data[2].rows;
+  listing.highlights = data[3].rows;
+
+  return Promise.resolve(listing);
+};
+
+const _getListingFromDatabase = function(listingid) {
+  return db.connectAndEnd(function(client) {
     var listings = client.query(`\
-      SELECT l.*, t.name as listing_type_name, h.name as host_name, h.avatar as avatar FROM listings l
-      INNER JOIN hosts h ON h.id = l.hostid
-      INNER JOIN listing_types t ON t.id = l.typeid
-      WHERE l.listingid = 22;`);
+    SELECT l.*, t.name as listing_type_name, h.name as host_name, h.avatar as avatar FROM listings l
+    INNER JOIN hosts h ON h.id = l.hostid
+    INNER JOIN listing_types t ON t.id = l.typeid
+    WHERE l.listingid = ${listingid};`);
 
     var house_rules = client.query(
       `SELECT * FROM house_rules WHERE listingid=${listingid}`
@@ -41,11 +43,8 @@ Detail.getListing = function(listingid) {
       `SELECT * FROM highlights WHERE listingid=${listingid}`
     );
 
-    return Promise.all([
-      listings,
-      house_rules,
-      cancellation_policies,
-      highlights
-    ]);
+    var promises = [listings, house_rules, cancellation_policies, highlights];
+
+    return Promise.all(promises).then(formatListing);
   });
 };
