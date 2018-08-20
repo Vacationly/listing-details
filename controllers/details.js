@@ -9,9 +9,13 @@ const ctrl = (module.exports = {});
 ctrl.show = function(req, res) {
   const { listingId } = req.params;
 
-  db.Detail.getListing(listingId).then(function(listing) {
-    res.json(listing);
-  });
+  db.Detail.getListing(listingId)
+    .then(function(listing) {
+      res.json(listing);
+    })
+    .catch(function(err) {
+      console.log(err);
+    });
 };
 
 ctrl.create = function(req, res) {

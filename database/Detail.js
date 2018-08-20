@@ -7,10 +7,17 @@ const cache = require('./vacation-me-cache');
 const Detail = (module.exports = {});
 
 Detail.getListing = function(listingid) {
-  return cache.getOrSet(listingid, function() {
-    console.log(listingid, 'no cache saved must get from database');
-    return _getListingFromDatabase(listingid);
+  return cache.getListingCache(listingid).then(function(cacheData) {
+    // console.log('there is cacheData: ', !!cacheData, cacheData);
+    return cacheData
+      ? Promise.resolve(cacheData)
+      : _getListingFromDatabase(listingid);
   });
+
+  // return cache.getOrSet(listingid, function() {
+  //   console.log(listingid, 'no cache saved must get from database');
+  //   return _getListingFromDatabase(listingid);
+  // });
 };
 
 const formatListing = function(data) {
@@ -19,6 +26,15 @@ const formatListing = function(data) {
   listing.houseRules = data[1].rows;
   listing.cancellationPolicies = data[2].rows;
   listing.highlights = data[3].rows;
+
+  cache
+    .setListingCache(listing.listingid, 600, listing)
+    // .then(function() {
+    //   console.log(listing.listingid, 'is now saved to cache');
+    // })
+    .catch(function(err) {
+      console.log(err);
+    });
 
   return Promise.resolve(listing);
 };

@@ -15,7 +15,7 @@ pool.connectAndEnd = function(action) {
   return pool.connect().then(function(client) {
     return action(client)
       .then(function(res) {
-        console.log('done with action');
+        // console.log('done with action');
         client.release();
         // done(null, res.rows);
         return Promise.resolve(res);
