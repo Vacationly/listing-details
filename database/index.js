@@ -1,5 +1,6 @@
 const pg = require('pg');
 const cache = require('./vacation-me-cache');
+const promise = require('bluebird');
 
 const pool = new pg.Pool();
 
@@ -12,17 +13,17 @@ pool.on('error', function(err) {
 module.exports = pool;
 
 pool.connectAndEnd = function(action) {
-  return pool.connect().then(function(client) {
+  return pool.connect(function(err, client) {
     return action(client)
       .then(function(res) {
         // console.log('done with action');
         client.release();
         // done(null, res.rows);
-        return Promise.resolve(res);
+        return promise.resolve(res);
       })
       .catch(function(err) {
         client.release();
-        return Promise.reject(err);
+        return promise.reject(err);
       });
   });
 };

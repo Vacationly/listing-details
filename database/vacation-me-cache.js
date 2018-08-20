@@ -1,6 +1,7 @@
-var redis = require('redis'),
-  client = redis.createClient();
-// const lru = require('redis-lru');
+const promise = require('bluebird');
+const redis = promise.promisifyAll(require('redis'));
+
+const client = redis.createClient();
 
 redis.debug = true;
 
@@ -8,34 +9,17 @@ client.on('error', function(err) {
   console.log('Error ' + err);
 });
 
-// const listingsCache = lru(client, { max: 1000, namespace: 'listings' });
-
-// module.exports = listingsCache;
-
 module.exports = {
   getListingCache: getListingCache,
   setListingCache: setListingCache
 };
 
-function getListingCache(key, next) {
-  return new Promise(function(resolve, reject) {
-    client.get('postgres:' + key, function(err, result) {
-      // console.log(err, result);
-      if (err) return reject(err);
-      return resolve(result && JSON.parse(result));
-    });
-  });
+function getListingCache(key) {
+  return client.getAsync('postgres:' + key);
 }
 
-function setListingCache(key, ttl, data, next) {
-  return new Promise(function(resolve, reject) {
-    // console.log(key);
-    client.setex('postgres:' + key, ttl, JSON.stringify(data), function(
-      err,
-      result
-    ) {
-      if (err) return next(err);
-      return resolve(result);
-    });
+function setListingCache(key, ttl, data, cb) {
+  process.nextTick(function() {
+    client.setex('postgres:' + key, ttl, JSON.stringify(data), cb);
   });
 }

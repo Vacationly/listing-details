@@ -3,6 +3,7 @@
 */
 const db = require('../database/');
 const path = require('path');
+const promise = require('bluebird');
 
 const ctrl = (module.exports = {});
 
