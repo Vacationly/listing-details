@@ -2,6 +2,7 @@ version: '3'
 
 services:
   details:
+    container_name: vacation_me_details_server
     image: bcronin2/fec-airbnh-details
     command: bash -c "npm run seed && npm run start"
     depends_on:
@@ -13,3 +14,22 @@ services:
     image: mongo:latest
     ports:
       - "27017:27017"
+
+version: "2"
+services:
+  airfec:
+    container_name: airfec_photos_server
+    build: .
+    image: airfec_photos
+    ports:
+      - '80:3000'
+    environment:
+      - MONGODB_URI=mongo_server
+      - PORT=3000
+    depends_on:
+      - 'database'
+    links: 
+      - database:mongo_server
+  database:
+    container_name: mongo
+    image: mongo:latest

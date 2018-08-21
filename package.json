@@ -23,11 +23,14 @@
     "test": "jest --coverage",
     "seed": "node ./data/sampleData/dataInitializer.js",
     "lint": "eslint ./client/**/*.js*",
-    "build:dev": "webpack --watch --mode development",
-    "build:prod": "webpack --mode production && grunt s3",
     "build:docker": "docker build . -t bcronin2/fec-airbnh-details && docker push bcronin2/fec-airbnh-details",
     "build:all": "npm run build:prod && npm run build:docker",
-    "start": "nodemon server/index.js"
+    
+    "build:dev": "webpack --watch --mode development",
+    "build:prod": "webpack --mode production && grunt s3",
+    "start:dev": "nodemon server/index.js",
+    "start": "node server/index.js",
+    "ssh": "ssh vacation-me"
   },
   "dependencies": {
     "axios": "^0.18.0",
