@@ -9,7 +9,6 @@ const promise = require('bluebird');
 
 Detail.getListing = function(listingid) {
   return cache.getListingCache(listingid).then(function(cacheData) {
-    // console.log('there is cacheData: ', !!cacheData, cacheData);
     return cacheData
       ? promise.resolve(cacheData)
       : _getListingFromDatabase(listingid);
@@ -17,7 +16,6 @@ Detail.getListing = function(listingid) {
 };
 
 const formatListing = function(data) {
-  // console.log(data);
   var listing = data[0].rows[0];
 
   listing.houseRules = data[1].rows;
@@ -37,7 +35,6 @@ const formatListing = function(data) {
 };
 
 const _getListingFromDatabase = function(listingid) {
-  console.log('save cache to redis');
   return db.connectAndEnd(function(client) {
     var listings = query(
       client,
