@@ -27,3 +27,12 @@ client/dist/
 
 # Credentials
 .aws.json
+
+csv/
+
+.env
+
+nrdiag*
+newrelic_agent.log
+
+vacationme.pem
