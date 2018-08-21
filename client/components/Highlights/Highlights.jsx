@@ -13,7 +13,7 @@ export default class Highlights extends React.Component {
     super(props);
     this.handleFeedback = this.handleFeedback.bind(this);
     this.state = {
-      feedbackStatus: [],
+      feedbackStatus: []
     };
   }
 
@@ -34,18 +34,11 @@ export default class Highlights extends React.Component {
     }
     return (
       <div className={styles.highlights}>
-        <div className={styles.heading}>
-home highlights
-        </div>
+        <div className={styles.heading}>home highlights</div>
         {highlights.map((highlight, index) => (
           <div key={`highlight_${index}`} className={styles.highlight}>
             <div className={styles.details}>
-              <span className={styles.tagline}>
-                {highlight.tagline}
-              </span>
-              {' '}
-·
-              {' '}
+              <span className={styles.tagline}>{highlight.tagline}</span> ·{' '}
               <span className={styles.description}>
                 {highlight.description}
               </span>
@@ -65,18 +58,18 @@ home highlights
 Highlights.propTypes = {
   highlights: PropTypes.arrayOf(
     PropTypes.shape({
-      id: PropTypes.number,
+      id: PropTypes.string,
       tagline: PropTypes.string,
       description: PropTypes.string,
-      upvotes: PropTypes.number,
-    }),
+      upvotes: PropTypes.number
+    })
   ).isRequired,
-  saveFeedback: PropTypes.func.isRequired,
+  saveFeedback: PropTypes.func.isRequired
 };
 
-const HighlightFeedback = (props) => {
+const HighlightFeedback = props => {
   const { id, feedbackStatus, handleFeedback } = props;
-  const handleUpvoteHover = (e) => {
+  const handleUpvoteHover = e => {
     const target = e.target.children[0] || e.target;
     const oldSource = target.src;
     target.src = oldSource === thumbsUpEmpty ? thumbsUpFull : thumbsUpEmpty;
@@ -84,9 +77,7 @@ const HighlightFeedback = (props) => {
   return (
     <div className={styles.feedback}>
       {feedbackStatus[id] ? (
-        <span>
-Thank you for your feedback.
-        </span>
+        <span>Thank you for your feedback.</span>
       ) : (
         <span>
           <span
@@ -99,13 +90,14 @@ Thank you for your feedback.
             tabIndex="0"
             role="link"
           >
-            Helpful
-            {' '}
-            <img className={styles.thumbsUp} src={thumbsUpEmpty} alt="thumbs up" />
-          </span>
-          {' '}
-          ·
-          {' '}
+            Helpful{' '}
+            <img
+              className={styles.thumbsUp}
+              src={thumbsUpEmpty}
+              alt="thumbs up"
+            />
+          </span>{' '}
+          ·{' '}
           <span
             id="downvote"
             className={styles.downvote}
@@ -123,7 +115,7 @@ Thank you for your feedback.
 };
 
 HighlightFeedback.propTypes = {
-  id: PropTypes.number.isRequired,
+  // id: PropTypes.number.isRequired,
   feedbackStatus: PropTypes.arrayOf(PropTypes.number).isRequired,
-  handleFeedback: PropTypes.func.isRequired,
+  handleFeedback: PropTypes.func.isRequired
 };

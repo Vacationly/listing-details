@@ -1,4 +1,4 @@
-module.exports = function (grunt) {
+module.exports = function(grunt) {
   // Load S3 plugin
   grunt.loadNpmTasks('grunt-aws');
 
@@ -11,11 +11,12 @@ module.exports = function (grunt) {
         accessKeyId: '<%= aws.accessKeyId %>',
         secretAccessKey: '<%= aws.secretAccessKey %>',
         bucket: '<%= aws.bucket %>',
+        region: 'us-west-1'
       },
       build: {
         cwd: 'public',
-        src: '**',
-      },
-    },
+        src: '**'
+      }
+    }
   });
 };
