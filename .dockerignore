@@ -4,7 +4,7 @@ client/
 public/dist/
 coverage/
 node_modules/
-csv/
+database/csv/
 generate/
 
 .git/
@@ -16,8 +16,6 @@ Dockerfile
 Gruntfile.js
 webpack.config.js
 ecosystem.config.js
-
-newrelic*
 
 README.md
 STYLE-GUIDE.md

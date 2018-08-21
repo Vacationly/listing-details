@@ -1,7 +1,9 @@
 const promise = require('bluebird');
 const redis = promise.promisifyAll(require('redis'));
 
-const client = redis.createClient();
+const client = redis.createClient({
+  host: process.env.REDIS_URI || 'localhost'
+});
 
 redis.debug = true;
 

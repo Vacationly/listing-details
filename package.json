@@ -27,7 +27,7 @@
     "build:all": "npm run build:prod && npm run build:docker",
     
     "build:dev": "webpack --watch --mode development",
-    "build:prod": "webpack --mode production && grunt s3",
+    "build": "webpack --mode production && grunt s3",
     "start:dev": "nodemon server/index.js",
     "start": "node server/index.js",
     "ssh": "ssh vacation-me"

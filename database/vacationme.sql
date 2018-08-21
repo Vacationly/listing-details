@@ -1,9 +1,7 @@
+DROP DATABASE IF EXISTS vacation_me;
 
--- run cqlsh < database/vacationme.cql
+CREATE DATABASE vacation_me;
 
--- DROP DATABASE IF EXISTS vacation_me;
-
-CREATE DATABASE IF NOT EXISTS vacation_me;
 
 \c vacation_me;
 
@@ -73,27 +71,49 @@ CREATE TABLE house_rules(
 );
 CREATE INDEX ON house_rules (listingId);
 
-COPY amenities FROM '/Users/marcelinoornelas/Desktop/SDC/details/csv/Amenities.csv' DELIMITER ',' CSV HEADER;
-COPY hosts FROM '/Users/marcelinoornelas/Desktop/SDC/details/csv/Hosts.csv' DELIMITER ',' CSV HEADER;
-COPY listing_types FROM '/Users/marcelinoornelas/Desktop/SDC/details/csv/ListingTypes.csv' DELIMITER ',' CSV HEADER;
-COPY listings FROM '/Users/marcelinoornelas/Desktop/SDC/details/csv/Listings.csv' DELIMITER ',' CSV HEADER;
+-- COPY amenities FROM '/Users/marcelinoornelas/Desktop/SDC/details/csv/Amenities.csv' DELIMITER ',' CSV HEADER;
+-- COPY hosts FROM '/Users/marcelinoornelas/Desktop/SDC/details/csv/Hosts.csv' DELIMITER ',' CSV HEADER;
+-- COPY listing_types FROM '/Users/marcelinoornelas/Desktop/SDC/details/csv/ListingTypes.csv' DELIMITER ',' CSV HEADER;
+-- COPY listings FROM '/Users/marcelinoornelas/Desktop/SDC/details/csv/Listings.csv' DELIMITER ',' CSV HEADER;
 
-COPY house_rules FROM '/Users/marcelinoornelas/Desktop/SDC/details/csv/houseRules1.csv' DELIMITER ',' CSV HEADER;
-COPY house_rules FROM '/Users/marcelinoornelas/Desktop/SDC/details/csv/houseRules2.csv' DELIMITER ',' CSV HEADER;
-COPY house_rules FROM '/Users/marcelinoornelas/Desktop/SDC/details/csv/houseRules3.csv' DELIMITER ',' CSV HEADER;
-COPY house_rules FROM '/Users/marcelinoornelas/Desktop/SDC/details/csv/houseRules4.csv' DELIMITER ',' CSV HEADER;
-
-
-COPY highlights FROM '/Users/marcelinoornelas/Desktop/SDC/details/csv/highlights1.csv' DELIMITER ',' CSV HEADER;
-COPY highlights FROM '/Users/marcelinoornelas/Desktop/SDC/details/csv/highlights2.csv' DELIMITER ',' CSV HEADER;
-COPY highlights FROM '/Users/marcelinoornelas/Desktop/SDC/details/csv/highlights3.csv' DELIMITER ',' CSV HEADER;
-COPY highlights FROM '/Users/marcelinoornelas/Desktop/SDC/details/csv/highlights4.csv' DELIMITER ',' CSV HEADER;
+-- COPY house_rules FROM '/Users/marcelinoornelas/Desktop/SDC/details/csv/houseRules1.csv' DELIMITER ',' CSV HEADER;
+-- COPY house_rules FROM '/Users/marcelinoornelas/Desktop/SDC/details/csv/houseRules2.csv' DELIMITER ',' CSV HEADER;
+-- COPY house_rules FROM '/Users/marcelinoornelas/Desktop/SDC/details/csv/houseRules3.csv' DELIMITER ',' CSV HEADER;
+-- COPY house_rules FROM '/Users/marcelinoornelas/Desktop/SDC/details/csv/houseRules4.csv' DELIMITER ',' CSV HEADER;
 
 
-COPY cancellation_policies FROM '/Users/marcelinoornelas/Desktop/SDC/details/csv/CancellationPolicies1.csv' DELIMITER ',' CSV HEADER;
-COPY cancellation_policies FROM '/Users/marcelinoornelas/Desktop/SDC/details/csv/CancellationPolicies2.csv' DELIMITER ',' CSV HEADER;
-COPY cancellation_policies FROM '/Users/marcelinoornelas/Desktop/SDC/details/csv/CancellationPolicies3.csv' DELIMITER ',' CSV HEADER;
-COPY cancellation_policies FROM '/Users/marcelinoornelas/Desktop/SDC/details/csv/CancellationPolicies4.csv' DELIMITER ',' CSV HEADER;
+-- COPY highlights FROM '/Users/marcelinoornelas/Desktop/SDC/details/csv/highlights1.csv' DELIMITER ',' CSV HEADER;
+-- COPY highlights FROM '/Users/marcelinoornelas/Desktop/SDC/details/csv/highlights2.csv' DELIMITER ',' CSV HEADER;
+-- COPY highlights FROM '/Users/marcelinoornelas/Desktop/SDC/details/csv/highlights3.csv' DELIMITER ',' CSV HEADER;
+-- COPY highlights FROM '/Users/marcelinoornelas/Desktop/SDC/details/csv/highlights4.csv' DELIMITER ',' CSV HEADER;
+
+
+-- COPY cancellation_policies FROM '/Users/marcelinoornelas/Desktop/SDC/details/csv/CancellationPolicies1.csv' DELIMITER ',' CSV HEADER;
+-- COPY cancellation_policies FROM '/Users/marcelinoornelas/Desktop/SDC/details/csv/CancellationPolicies2.csv' DELIMITER ',' CSV HEADER;
+-- COPY cancellation_policies FROM '/Users/marcelinoornelas/Desktop/SDC/details/csv/CancellationPolicies3.csv' DELIMITER ',' CSV HEADER;
+-- COPY cancellation_policies FROM '/Users/marcelinoornelas/Desktop/SDC/details/csv/CancellationPolicies4.csv' DELIMITER ',' CSV HEADER;
+
+COPY amenities FROM '/database/csv/Amenities.csv' DELIMITER ',' CSV HEADER;
+COPY hosts FROM '/database/csv/Hosts.csv' DELIMITER ',' CSV HEADER;
+COPY listing_types FROM '/database/csv/ListingTypes.csv' DELIMITER ',' CSV HEADER;
+COPY listings FROM '/database/csv/Listings.csv' DELIMITER ',' CSV HEADER;
+
+COPY house_rules FROM '/database/csv/houseRules1.csv' DELIMITER ',' CSV HEADER;
+COPY house_rules FROM '/database/csv/houseRules2.csv' DELIMITER ',' CSV HEADER;
+COPY house_rules FROM '/database/csv/houseRules3.csv' DELIMITER ',' CSV HEADER;
+COPY house_rules FROM '/database/csv/houseRules4.csv' DELIMITER ',' CSV HEADER;
+
+
+COPY highlights FROM '/database/csv/highlights1.csv' DELIMITER ',' CSV HEADER;
+COPY highlights FROM '/database/csv/highlights2.csv' DELIMITER ',' CSV HEADER;
+COPY highlights FROM '/database/csv/highlights3.csv' DELIMITER ',' CSV HEADER;
+COPY highlights FROM '/database/csv/highlights4.csv' DELIMITER ',' CSV HEADER;
+
+
+COPY cancellation_policies FROM '/database/csv/CancellationPolicies1.csv' DELIMITER ',' CSV HEADER;
+COPY cancellation_policies FROM '/database/csv/CancellationPolicies2.csv' DELIMITER ',' CSV HEADER;
+COPY cancellation_policies FROM '/database/csv/CancellationPolicies3.csv' DELIMITER ',' CSV HEADER;
+COPY cancellation_policies FROM '/database/csv/CancellationPolicies4.csv' DELIMITER ',' CSV HEADER;
 
 -- \timing;
 -- \x on;
