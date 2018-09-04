@@ -44,24 +44,23 @@ Data is randomly generated to fill in each part of the component. See a sample o
 
 An `nvmrc` file is included if using [nvm](https://github.com/creationix/nvm).
 
-## Running in Development
+## Development
 
 This module is set up to run locally at **localhost:3001/listing/[id from 1 to 100]**.
 
-You can run this module either (1) with NPM scripts from local files, or (2) from its respective container on DockerHub (see more below).
+You can run this module either (1) with NPM scripts from local files, or (2) from a container on DockerHub (see more below).
 
 **By default, the static js bundle is served from S3; to serve from localhost, change the appropriate commented-out lines in public/index.html.**
 
-> NOTE: All commands below to be run from within the root directory
-
 ### Running with npm
-
 In order to run with npm, you need to:
 
 - Install dependencies
 - Seed your database
 - Build client bundle.js, locally and/or to S3
 - Run the server
+
+> NOTE: All commands below to be run from within the root directory
 
 #### Installing Dependencies
 
