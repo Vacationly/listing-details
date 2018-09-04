@@ -39,7 +39,8 @@ This module is built on a MERN (Mongo, Express, React, Node) stack.
 - express (server framework)
 - faker (data generation)
 - mongoose (database connections)
-- nodemon (running/watching server)
+- 
+(running/watching server)
 - prop-types (validating component data)
 - react (component library)
 - react-dom (rendering component)
