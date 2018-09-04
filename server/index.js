@@ -32,7 +32,7 @@ app.put('/api/details/:listingId/highlights/:highlightId', (req, res) => {
   });
 });
 
-app.use('/', express.static(path.join(__dirname, '../public')));
+app.use(express.static(path.join(__dirname, '../public')));
 app.use('/listing/:listingId', express.static(path.join(__dirname, '../public')));
 
 app.listen(port, () => console.log(`Listening on port ${port}!`));
