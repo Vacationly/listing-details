@@ -9,9 +9,9 @@ A full-stack React module that recreates the listing details section of an vacat
 - Sleeping arrangements
 - House rules
 - Cancellation policy
-- Video tour (add-on to what AirBnB actually has)
+- Video tour
 
-Data is randomly generated to fill in each part of the component. See a sample of data sent to the client here: https://gist.github.com/bcronin2/4b220cb71d18c3ca3a94afa0b39f33c9
+Each of these components is populated with mock data for 100 listings. See a sample of data sent to the client here: https://gist.github.com/bcronin2/4b220cb71d18c3ca3a94afa0b39f33c9
 
 ## Related Projects
 
@@ -21,6 +21,8 @@ Data is randomly generated to fill in each part of the component. See a sample o
 - https://github.com/Vacationly/photos
 
 ## Tech Used
+
+This module is built on a MERN (Mongo, Express, React, Node) stack.
 
 ### System Requirements
 
@@ -34,6 +36,7 @@ Data is randomly generated to fill in each part of the component. See a sample o
 - body-parser (handling requests on server)
 - cors (handling cross-origin requests from proxy)
 - css-modules (modular styles)
+- express (server framework)
 - faker (data generation)
 - mongoose (database connections)
 - nodemon (running/watching server)
@@ -50,7 +53,7 @@ This module is set up to run locally at **localhost:3001/listing/[id from 1 to 1
 
 You can run this module either (1) with NPM scripts from local files, or (2) from a container on DockerHub (see more below).
 
-**By default, the static js bundle is served from S3; to serve from localhost, change the appropriate commented-out lines in public/index.html.**
+**By default, the static js bundle is served from S3. To serve from localhost, change the appropriate commented-out lines in public/index.html.**
 
 ### Running with npm
 In order to run with npm, you need to:
@@ -80,7 +83,6 @@ npm run seed
 ```sh
 npm run build:dev
 ```
-
 > NOTE: The files built in this way will only be served if you change the script tags used in public/index.html.
 
 #### Building Client Bundle to S3
@@ -88,6 +90,8 @@ npm run build:dev
 ```sh
 npm run build:prod
 ```
+> NOTE: To build to S3, you will need to set up your own bucket and include an .aws.json file in this repo with your credentials.
+
 
 #### Running Server
 
