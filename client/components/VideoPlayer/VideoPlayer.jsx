@@ -59,9 +59,9 @@ export default class VideoPlayer extends React.Component {
   }
 
   handleProgress(event) {
-    const { current } = this.video;
-    current.currentTime = (event.target.value / 100) * current.duration;
-    this.setState({ progress: event.target.value });
+    const { value } = event.target;
+    this.video.currentTime = (value / 100) * this.video.duration;
+    this.setState({ progress: value });
   }
 
   pauseForNow() {
