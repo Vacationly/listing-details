@@ -32,14 +32,12 @@ export default class VideoPlayer extends React.Component {
   }
 
   componentDidMount() {
-    const { current } = this.video;
-    current.addEventListener('timeupdate', this.updateProgress);
-    current.volume = 1;
+    this.video.addEventListener('timeupdate', this.updateProgress);
+    this.video.volume = 1;
   }
 
   updateProgress() {
-    const { current } = this.video;
-    const progress = (current.currentTime / current.duration) * 100;
+    const progress = (this.video.currentTime / this.video.duration) * 100;
     this.setState({ progress }, () => {
       if (progress === 100) {
         this.setState({ playing: false });
@@ -65,48 +63,44 @@ export default class VideoPlayer extends React.Component {
   }
 
   pauseForNow() {
-    const { current } = this.video;
-    current.removeEventListener('timeupdate', this.updateProgress);
-    current.pause();
+    this.video.removeEventListener('timeupdate', this.updateProgress);
+    this.video.pause();
   }
 
   restoreStatus() {
     const { playing } = this.state;
-    const { current } = this.video;
     if (playing) {
-      current.play();
+      this.video.play();
     } else {
-      current.pause();
+      this.video.pause();
     }
-    current.addEventListener('timeupdate', this.updateProgress);
+    this.video.addEventListener('timeupdate', this.updateProgress);
   }
 
   toggleMute() {
-    const { current } = this.video;
     this.setState(
       prevState => ({
         muted: !prevState.muted,
       }),
       () => {
         const { muted } = this.state;
-        current.muted = muted;
+        this.video.muted = muted;
       },
     );
   }
 
   handleVolume(event) {
-    const { current } = this.video;
-    current.volume = event.target.value / 100;
+    const { value } = event.target;
+    this.video.volume = value / 100;
   }
 
   requestFullscreen() {
-    const { current } = this.video;
-    if (current.requestFullscreen) {
-      current.requestFullscreen();
-    } else if (current.webkitRequestFullscreen) {
-      current.webkitRequestFullscreen();
-    } else if (current.mozRequestFullScreen) {
-      current.mozRequestFullScreen();
+    if (this.video.requestFullscreen) {
+      this.video.requestFullscreen();
+    } else if (this.video.webkitRequestFullscreen) {
+      this.video.webkitRequestFullscreen();
+    } else if (this.video.mozRequestFullScreen) {
+      this.video.mozRequestFullScreen();
     }
   }
 
