@@ -79,9 +79,7 @@ export default class VideoPlayer extends React.Component {
 
   toggleMute() {
     this.setState(
-      prevState => ({
-        muted: !prevState.muted,
-      }),
+      prevState => ({ muted: !prevState.muted }),
       () => {
         const { muted } = this.state;
         this.video.muted = muted;
